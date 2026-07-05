@@ -1,0 +1,111 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== パッケージ =====
+\PassOptionsToPackage{numbers,sort&compress}{natbib}
+
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{amsmath,amsfonts,bm}
+\usepackage{graphicx}
+\usepackage{booktabs,multirow,array}
+\usepackage{caption,subcaption}
+\usepackage{algorithm2e}
+\usepackage{relsize}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[hyphens]{url}
+\usepackage{natbib}  
+\usepackage{multirow}
+
+% ===== External References =====
+\usepackage{xr}
+\externaldocument{main}
+
+% ===== Proposition Environment =====
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proof}{Proof}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theequation}{S\arabic{equation}}
+
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\topfraction}{0.8}     % ページ上部に float を詰める割合を緩める
+\renewcommand{\bottomfraction}{0.8}  % ページ下部も少し緩める
+\renewcommand{\textfraction}{0.2}   % テキストの最低割合を下げる
+
+\begin{document}
+
+% ===== Title and Authors =====
+\title{Supplementary Materials for \\
+    ``Through Alice's Rabbit Holes: \\
+    A Disentangled Tale of Serendipity Paradoxes''}
+\author{
+    Tatsuya Kanatsu\textsuperscript{1}, Tohru Iwasaki\textsuperscript{2}, Hideaki Ishibashi\textsuperscript{1}, \\
+    Kaori Yoshida\textsuperscript{1}, and Tetsuo Furukawa\textsuperscript{1} \\[3pt]
+    \small \textsuperscript{1}Graduate School of Life Science and Systems Engineering, Kyushu Institute of Technology, Japan \\
+    \small \textsuperscript{2}Data / AI System Division, ZOZO, Inc., Japan \\
+    \small Corresponding author: furukawa@brain.kyutech.ac.jp
+}
+\date{}
+\maketitle
+
+\section{Ethics}
+The study protocol was approved by the Research Ethics Committee
+for Research Involving Human Subjects, Graduate School of Life
+Science and Systems Engineering, Kyushu Institute of Technology
+(Approval No. 25-7).
+
+All participants received written and oral explanations of the
+study's purpose, procedures, and data handling, and provided
+written informed consent prior to participation.
+
+
+
+\section{Use of Large Language Models}\label{sup:use_of_llms}
+In preparing this manuscript and the associated system, we used Large Language Models (LLMs)
+in the following capacities, in accordance with the journal's guidelines.
+
+\paragraph{Experimental data generation.}
+GPT-4o (OpenAI) was used to generate tags for the children's literature dataset.
+Specifically, for each of the 409 books, GPT-4o produced soft genre assignments,
+and noun/adjective tags that serve as input features to the
+OT-FB learning pipeline.
+
+\paragraph{Programming assistance.}
+ChatGPT (OpenAI), Claude (Anthropic), and Cursor were used to assist in developing
+the web application. Concretely, they supported code generation and debugging
+for the TypeScript, React, and Node.js implementation of the multi-floor library interface.
+
+\paragraph{Manuscript preparation.}
+Claude (Anthropic) was used for translation assistance (converting the authors' ideas
+from Japanese to English), language polishing (grammar, sentence structure, and clarity),
+and consistency checking (terminology throughout the manuscript).
+
+\paragraph{Human oversight.}
+All scientific content---conceptual frameworks, mathematical formulations, experimental
+designs, results, and interpretations---originated entirely from the authors.
+All LLM outputs were critically reviewed, and the authors retain full responsibility
+for all claims and content in this manuscript.
+
+
+\section{Acknowledgments}
+We are deeply grateful to the reviewers for their thorough and constructive feedback.
+Their comments led us to substantially deepen our understanding of our own research,
+and the paper has been greatly strengthened as a result.
+
+This research was supported in part by JSPS KAKENHI Grant Number 21K12061 and 26K14941.
+We also gratefully acknowledge the support of Zozo, Inc.
+We are deeply grateful to Ms.\ Hirowatari for her invaluable assistance.
+The music data used in this study was utilized in accordance with YouTube's terms of service,
+based on content from YouTube Music.
+
+\end{document}
+
+
+
+

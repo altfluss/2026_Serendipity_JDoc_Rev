@@ -1,0 +1,156 @@
+%%%%% Section 2 Serendipity %%%%%
+\section{Serendipity in Information Systems: Prior Work and Research Challenge}\label{sec:serendipity}
+
+\subsection{Serendipity through the Exploration Process}
+\label{subsec:serendipity_process}
+\paragraph{Origin.}
+The word \textit{serendipity} was coined by Horace Walpole after
+\textit{The Three Princes of Serendip}, whose heroes made discoveries
+``by accidents and sagacity''~\cite{The-Three-Princes-of-Serendip,Walpole1754}.
+From the start, the notion held two things together: a chance encounter,
+and the prepared mind that recognizes its significance and turns it into
+discovery---as in Pasteur's dictum, ``chance favors the prepared
+mind''~\cite{Pasteur1854}. Serendipity is thus not luck befalling a passive
+observer but something met halfway by a mind that goes looking. What such a
+mind gains is more than a new item: a shift in how one sees a domain.
+
+\paragraph{Paradoxes of serendipity.}
+Serendipity has long been described in paired terms that pull against each
+other: \textit{unexpected yet relevant}, \textit{surprising yet useful},
+\textit{novel yet
+    familiar}~\cite{Kotkov2016180,Ziarani2021375,Chen2019,Hasan2023933}. Each
+pairing names the same tension from a different angle---a discovery must arrive
+from somewhere one was not looking, yet land as something that matters. We read
+these as facets of a single relation, which we call \textit{distant yet close}.
+Before it appears, the user feels only the distance. Once it appears, it seems
+close. Yet even then, they cannot say in what. Recall Miles Davis and
+Debussy---categorically far apart, yet sharing a contemplative quality. This
+paradox takes on a slightly different meaning in each of the two paradigms we
+turn to next.
+
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \includegraphics[width=1.0\linewidth]{fig/fig1a.pdf}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}{0.5\linewidth}
+        \includegraphics[width=1.0\linewidth]{fig/fig1b.pdf}
+        \caption{}
+    \end{subfigure}
+    \caption{
+        \textbf{Two approaches to serendipity.}
+        (a) \textit{Recommendation-based}: A passive user receives
+        suggestions; serendipitous items (diamond) are \textit{unexpected
+            yet relevant} items discovered among recommendations.
+        (b) \textit{Exploration-based}: An active user encounters
+        a serendipitous item (key) that serves as a \textit{gateway},
+        transforming the exploration trajectory toward a
+        \textit{distant-yet-close} region.
+    }
+    \label{fig:serendipity}
+\end{figure}
+
+\paragraph{Two paradigms.}
+Serendipity research has pursued two complementary paths, differing in where
+they place the user and the system (Figure~\ref{fig:serendipity})~\cite{McCayPeet20181}.
+\textbf{Recommendation-based} approaches deliver items that are \textit{unexpected
+    yet relevant}~\cite{Kotkov2016180,Ziarani2021375,Fu202529}: the system models the
+user and selects, computationally, the items worth surprising them
+with~\cite{Shrivastava20231,Hasan2023933,Kunaver2017,Chen2019}. Here the
+discovered item is itself the prize---a diamond placed before the user
+(Figure~\ref{fig:serendipity}a). \textbf{Exploration-based} approaches instead
+give the user a structured space to navigate, and agency reverses: the user
+moves, and the system provides the terrain~\cite{Marchionini200641,Thudt20121461,Beale2007ambient}.
+Here a discovered item is not the prize but a \textit{key}---its value lies in
+the door it opens onto a further world to explore (Figure~\ref{fig:serendipity}b).
+Both paths are fertile; we take the second.
+
+\paragraph{A serendipitous process, and what it asks of a space.}
+This second path stands on a particular view of serendipity---not as a quality
+of outcomes but as a process of experience---which has its own rich body of
+work. A recurring finding is that serendipity is not a single lucky moment but a
+\textit{process}~\cite{Makri2012part1,McCayPeet20151463,Rubin2011,Busch20241110,Corneli2020}:
+an unexpected encounter is noticed, judged worth pursuing, and followed until it
+reshapes how one sees a domain. A second is that this process is driven by the
+user's own \textit{active exploration}~\cite{Dervin1983,Makri20142179}, which
+carries them beyond their \textit{comfort zone}---past habitual categories and
+settled preferences~\cite{Lee20154851}.
+
+What such a user needs is a space they can explore on their own. Some of what
+they seek they can name: they know \textit{what} it is before they reach it, and
+it gives their search a first bearing. The rest they cannot name, and learn
+\textit{how} it is only on contact---when they play the track, or open the
+book. Yet once touched, it points a new way. A single ranking cannot hold this;
+what the user needs is a space with directions to turn along, echoing the
+affordances Bj\"orneborn finds in a physical
+library~\cite{Bjorneborn20171053}: \textit{diversifiability},
+\textit{traversability}, and \textit{sensoriability}. The question this paper
+pursues is what such a space asks of the \textit{representation} beneath any
+interface.
+
+\paragraph{Descriptor data and body data.}
+Information retrieval has long recognized a gap between the \textit{descriptive
+    relevance} a system can compute and the \textit{affective relevance} a user
+seeks, and asked how to ease that tension~\cite{Saracevic1996201,Cosijn2000533}.
+The closeness in \textit{distant yet close} is of this affective kind. An
+item's \textit{descriptor data}---its named attributes: genre, period,
+author---does not carry it, for a descriptor records only what can be named.
+Documentation has refined naming into a
+discipline---faceted classification~\cite{Broughton200649}---and pressed it
+even toward the felt~\cite{Pejtersen1983230,Cho2023567}; yet however
+fine the terms, a remainder stays.
+Affective relevance lives instead in the \textit{body data}: the work itself,
+the track or the text, dense and whole. That relevance resolves into more than
+one separable aspect, Xu showed on the side of users'
+cognition~\cite{Xu2007179}; the same, on the side of information systems, is the
+question we turn to next.
+
+So the task is to resolve the body data, guided by the descriptor, into two
+separable directions of exploration. A descriptor names some attributes and
+leaves the rest unnamed; this unnamed remainder we call the \textit{atmosphere}.
+One direction is \textit{descriptor-fixed}, visiting various atmospheres with a
+genre held fixed; the other is \textit{atmosphere-fixed}, visiting items across
+various genres with an atmosphere held fixed.
+This resolved space is what we set out to design---a \textit{disentangled
+    information representation}, a coordinate system drawn from the body alone,
+telling the user which way to turn. It comes first, before any interface; how to
+learn it is the question we turn to next.
+
+
+\subsection{Representation Learning and the Disentanglement Challenge}\label{subsec:disentanglement}
+\paragraph{Distant yet close as a disentangled representation.}
+The structure we seek is, then, a question of \textit{representation
+    learning}~\cite{Bengio20131798}: mapping observations into a space whose
+distances, neighborhoods, and paths carry meaning~\cite{Bronstein201718}. What
+appeared in Section~\ref{subsec:serendipity_process} as a felt relation,
+\textit{distant yet close}, the field of representation learning describes as a
+\textit{disentangled representation}~\cite{Higgins2017,Higgins2018}: one in which
+the underlying factors of variation align with separable directions of the space.
+In our setting these factors are the two we have already met---one
+\textit{descriptor-fixed}, the other \textit{atmosphere-fixed}. When the two are
+separable, an item can be far in one and near in the other at once. When
+they are entangled, the two collapse into a single distance, and the
+contemplative closeness between Davis and Debussy is absorbed into their
+categorical separation.
+
+\paragraph{The challenge: an appropriate inductive bias.}
+Constructing such a representation is a recognized open challenge. In the
+unsupervised setting it is provably ill-posed: for any disentangled solution,
+infinitely many entangled ones generate the same
+observations~\cite{Locatello20197247}. Some \textit{inductive bias}---a
+structural assumption about the space---is therefore unavoidable. The challenge
+is not to add \textit{some} bias, but to define the \textit{appropriate} one for
+\textit{distant yet close}. This is where the present work places itself:
+Section~\ref{sec:modeling} develops that bias in terms of optimal transport.
+
+
+\bigskip
+\noindent The \textit{atmosphere-fixed} direction the user follows---crossing
+descriptors while holding an atmosphere---is what we call a \textit{rabbit hole}:
+among the infinitely many such directions, the one that carries meaning. Finding
+it is the work we take up---its vision in
+Section~\ref{sec:library_universe_model}, its realization in
+Section~\ref{sec:modeling}.
+
+

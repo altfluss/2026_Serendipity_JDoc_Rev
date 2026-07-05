@@ -1,0 +1,146 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== Packages =====
+\PassOptionsToPackage{numbers,sort&compress}{natbib}
+
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{amsmath,amsfonts,bm}
+\usepackage{graphicx}
+\usepackage{booktabs,multirow,array}
+\usepackage{caption,subcaption}
+\usepackage{algorithm2e}
+\usepackage{relsize}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[hyphens]{url}
+\usepackage{natbib}  
+\usepackage{comment}
+
+% ===== External References =====
+\usepackage{xr}
+\externaldocument{supplements}
+
+% ===== Proposition Environment =====
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proof}{Proof}
+\newtheorem{hypothesis}{Hypothesis}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\renewcommand{\topfraction}{0.75}  
+\renewcommand{\bottomfraction}{0.75} 
+\renewcommand{\textfraction}{0.2} 
+
+\begin{document}
+
+% ===== Title and Authors =====
+\title{Through Alice's Rabbit Holes: \\
+    A Disentangled Tale of Serendipity Paradoxes}
+\author{
+    Tatsuya Kanatsu\textsuperscript{1}, Tohru Iwasaki\textsuperscript{2}, Hideaki Ishibashi\textsuperscript{1}, \\
+    Kaori Yoshida\textsuperscript{1}, and Tetsuo Furukawa\textsuperscript{1} \\[3pt]
+    \small \textsuperscript{1}Graduate School of Life Science and Systems Engineering, Kyushu Institute of Technology, Japan \\
+    \small \textsuperscript{2}Data / AI System Division, ZOZO, Inc., Japan \\
+    \small Corresponding author: furukawa@brain.kyutech.ac.jp
+}
+\date{}
+\author{} % Remove the author name from the title page
+\maketitle
+
+\begin{abstract}\noindent
+    Serendipity is often described as finding something ``unexpected yet relevant.''
+    We read this as the \textit{distant-yet-close paradox}: items explicitly distant
+    in named features yet implicitly close in unnamed ones. This is a problem of
+    \textit{representation}, not of interface design: the paradox can be addressed
+    only in a space that disentangles the two senses of closeness. Disentangled
+    representation, however, is ill-posed; the right one is singled out by an
+    \textit{inductive bias} suited to what one wants. We propose \textit{optimal
+        transport} as that bias, and the representation it yields is the
+    \textbf{Optimal Transport Fiber Bundle (OT-FB)}: genre-ness and atmosphere
+    coordinates form separable axes of one geometry, connected by \textit{rabbit
+        holes} between genre-distant yet atmosphere-close regions. Two
+    views render this one structure: the \textbf{multi-galaxy curved universe}, the
+    entangled form in which data arrive, and the \textbf{multi-floor library}, the
+    disentangled form in which users may walk. We pursue this representation through
+    five inseparable levels---conceptual, mathematical, computational,
+    implementational, and empirical. Participants explored across genres while
+    staying along an atmosphere axis, and described discovering not only items
+    but also their own preferences. The contribution is the disentangled
+    representation itself, given well-defined form: distant yet close ceases to be
+    a paradox and becomes the local geometry of the bundle.
+\end{abstract}
+
+\begin{quote}\parindent=0pt\parskip=.5em\noindent
+    \begin{center}
+        \textbf{Structured Abstract}
+    \end{center}
+    \textbf{Purpose.}
+    We address the \textit{distant-yet-close paradox} of serendipity---items
+    explicitly distant in named features yet implicitly close in unnamed
+    ones---as a problem of \textit{information representation} rather than
+    interface design. Our aim is to construct, from data, a \textit{disentangled
+        representation space} in which this paradox becomes navigable.
+
+    \textbf{Design/methodology/approach.}
+    Disentangled representation is ill-posed; the right one is singled out by an
+    \textit{inductive bias} suited to what one wants. We propose the
+    \textit{optimal transport (OT) hypothesis} as that bias, aligning the
+    atmosphere coordinate across genres. Under this hypothesis the
+    representation takes the form of an \textbf{Optimal Transport Fiber Bundle
+        (OT-FB)}, in which genre-ness and atmosphere coordinates form separable
+    axes of one geometry, connected by \textit{rabbit holes}. We pursue this
+    representation through five inseparable levels---\textbf{conceptual}
+    (multi-galaxy curved universe, multi-floor library), \textbf{mathematical}
+    (OT-FB), \textbf{computational} (learning the bundle from data),
+    \textbf{implementational} (rendering the library as interface), and
+    \textbf{empirical} (a user study with 135 participants exploring music).
+
+    \textbf{Findings.}
+    The OT-FB learned from the Million Song Dataset arranged ten genres along a
+    common atmosphere coordinate independent of any genre. In the user study, participants
+    explored more broadly across genres while staying along an atmosphere axis,
+    and described discovering not only items but also that their preferences
+    lived along that axis.
+
+    \textbf{Originality/value.}
+    The contribution is the disentangled representation itself, given well-defined
+    mathematical form through the OT hypothesis and realized coherently from
+    concept to user experience. With this representation in place, distant yet
+    close ceases to be a paradox and becomes the local geometry of the bundle.
+\end{quote}
+
+\noindent\textbf{Keywords:}
+serendipity, exploratory search, information representation,
+disentangled representation, optimal transport, fiber bundle
+
+
+
+\input{sec1.tex}
+\input{sec2.tex}
+\input{sec3.tex}
+\input{sec4.tex}
+\input{sec5.tex}
+\input{sec6.tex}
+\input{sec7.tex}
+\input{sec8.tex}
+\input{sec9.tex}
+
+\begin{comment}
+\section*{Acknowledgments}
+This research was supported in part by JSPS KAKENHI Grant Number 21K12061. We also gratefully acknowledge the support of Zozo, Inc. We are deeply grateful to Ms.\ Hirowatari for her invaluable assistance. The music data used in this study was utilized in accordance with YouTube's terms of service, based on content from YouTube Music.
+\end{comment}
+
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
+
+\appendix
+\input{appendix.tex}
+
+\end{document}
+
+
+
+

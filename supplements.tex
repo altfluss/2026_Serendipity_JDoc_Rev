@@ -1,0 +1,681 @@
+%%%%% Supplements (reviewer-facing, anonymized) %%%%%
+%
+% Purpose:
+%   Materials provided for reproducibility, transparency, and supporting
+%   evidence. NOT counted toward the 10,000-word limit. Reviewer-facing,
+%   so anonymity is preserved (no institutional affiliations, no author
+%   names, no grant numbers, no ethics approval IDs).
+%
+% Companion file:
+%   supplements2.tex --- editor-facing, includes ethics approval,
+%   LLM disclosure, and acknowledgments.
+%
+% Structure:
+%   Preamble. Scope (unnumbered)                          ~  70 words
+%   S1. Experimental Data Preparation                     ~ 250 words
+%   S2. Quantitative Comparison with Baselines            ~ 400 words + table
+%   S3. Soft-Category Extension on Children's Literature  ~ 300 words + 2 figures
+%   S4. Two-body data of Children's literature           ~ 300 words + 3 figures
+%   S5. Complete Questionnaire (20 items)                 ~ 200 words
+%   S6. Detailed Statistical Tables                       ~ 200 words + 4 tables
+%   S7. System Availability                               ~  30 words
+
+
+\documentclass[11pt,a4paper]{article}
+
+% ===== Packages =====
+\PassOptionsToPackage{numbers,sort&compress}{natbib}
+
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{amsmath,amsfonts,bm}
+\usepackage{graphicx}
+\usepackage{booktabs,multirow,array}
+\usepackage{caption,subcaption}
+\usepackage{algorithm2e}
+\usepackage{relsize}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[hyphens]{url}
+\usepackage{natbib}
+\usepackage{multirow}
+
+% ===== External References =====
+\usepackage{xr}
+\externaldocument{main}
+
+% ===== Theorem Environments =====
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% ===== Numbering with `S' prefix =====
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theequation}{S\arabic{equation}}
+
+\renewcommand{\topfraction}{0.8}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.2}
+
+
+\begin{document}
+
+% ===== Title (anonymized) =====
+\title{Supplementary Materials for \\
+    ``Through Alice's Rabbit Holes: \\
+    A Disentangled Tale of Serendipity Paradoxes''}
+\author{}
+\date{}
+\maketitle
+
+\noindent\textbf{Scope.}\quad
+This supplement provides materials for reproducibility and supporting evidence.
+The mathematical derivation of the OT-FB objective, theoretical analysis of its
+properties, and convergence analysis of the learning algorithm are deliberately
+omitted; these constitute the focus of a companion paper currently in preparation.
+What follows covers experimental data preparation~(S1), quantitative comparison
+with baselines~(S2), a soft-category extension on children's literature~(S3),
+two-body data of children's literature~(S4), the complete questionnaire~(S5),
+detailed statistical tables~(S6), and system availability~(S7).
+
+\bigskip
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Experimental Data Preparation}\label{sup:data_prep}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We carefully prepared input features to be as unfolded as possible
+before OT-FB learning. Tags explicitly naming genres were excluded,
+and descriptors were composed into meaningful sentences rather than
+bare lists. Even so, descriptors still carry implicit genre
+associations; full disentanglement of genre-ness and atmospheric structure
+is left to the OT-FB learning.
+
+\paragraph{Music dataset.}
+From the Million Song Dataset~\cite{Bertin-Mahieux2011}, we selected 2,500 songs
+evenly distributed across ten genres: rock, pop, jazz, classical, electronic,
+hip-hop, folk, country, metal, and blues. Each song carries a single
+hard-assigned genre label. We extracted 237 high-frequency descriptive tags from
+Last.fm annotations, explicitly excluding genre labels. Tags were formatted as
+``These are vibe-only tags describing the mood and style of a music track:
+\textit{tag\textsubscript{1}}, \ldots, and \textit{tag\textsubscript{N}}''
+(median six tags per song) and embedded using \texttt{text-embedding-3-large}
+(3072~dimensions, L2-normalized), then reduced to $d=10$ via PCA. A small TF-IDF
+perturbation (weight ratio 0.1) was added to break ties between songs sharing
+identical tag sets; this does not essentially affect the feature distribution.
+
+\paragraph{Children's literature dataset.}
+We curated 409 canonical children's books spanning fifteen genres including
+fantasy, realistic fiction, adventure, historical fiction, mystery, and school
+stories. Weighted (soft) genre assignments---up to three per book---were
+estimated using GPT-4o (e.g., ``fantasy~(0.6), adventure~(0.3), school
+story~(0.1)''). Because all selected books are well-known titles, we used GPT-4o
+to automatically generate 153 semantic descriptors per book---adjectives
+capturing tonal impressions (e.g., \textit{whimsical}, \textit{heartwarming})
+and nouns capturing themes (e.g., \textit{friendship}, \textit{coming-of-age}).
+Descriptors were formatted as ``This is a children's book. The impressions are
+\textit{adj\textsubscript{1}}, \ldots\ The themes are
+\textit{noun\textsubscript{1}}, \ldots'' (median 13 descriptors per book),
+embedded using \texttt{text-embedding-3-small} (1536~dimensions, L2-normalized),
+with the embedding, and reduced to $d=10$. A small TF-IDF perturbation (weight
+ratio 0.1) was also added.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quantitative Comparison with Baselines}\label{sup:baselines}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We compare the proposed method with three autoencoder-based disentanglement
+baselines: $\beta$-VAE~\cite{Higgins2017}, $\beta$-TCVAE~\cite{Chen2018},
+and WAE~\cite{Tolstikhin2018}. All models use a 4-dimensional latent space
+$(u,v)\in\mathbb{R}^2\times\mathbb{R}^2$ and aim to separate category
+information ($u$) from atmospheric structure ($v$).
+Performance is evaluated using two complementary metrics.
+
+The \textbf{Mutual Information Gap (MIG)}~\cite{Chen2018} measures
+statistical independence between the two axes:
+\[
+    \text{MIG} = \frac{I[C;U]-I[C;V]}{H[C]},
+\]
+where $I[\cdot;\cdot]$ denotes mutual information and $H[\cdot]$ denotes
+entropy. A higher MIG (approaching~1) means genre-ness and atmosphere are
+more nearly independent. As noted in the main text, however, statistical
+independence alone admits infinitely many solutions; it does not pin down
+which of them aligns the categories.
+
+The \textbf{OT Score} measures exactly that alignment---whether items
+at homologous positions across categories are mapped to one another:
+\[
+    \text{OT Score} =
+    \frac{D^2_{\text{random}}-D^2_V}
+    {D^2_{\text{random}}-D^2_{\text{OT}}},
+\]
+where $D^2_{\text{OT}}$ is the optimal transport distance in the original
+feature space~$X$, $D^2_V$ uses the learned atmosphere coordinates~$V$ to
+compute the transport plan applied to~$X$, and $D^2_{\text{random}}$
+provides a random transport baseline. An OT Score approaching~1 indicates
+that this cross-category correspondence is faithfully preserved in the
+learned latent space.
+
+Table~\ref{tab:comparison_results} shows results averaged over 10 trials.
+All methods achieve comparable MIG scores: statistical independence does
+not single out one approach. What distinguishes them is the OT Score---
+whether that independence is reached while preserving cross-category
+correspondence. Here the proposed method consistently scores higher on
+both datasets, with standard deviations an order of magnitude smaller,
+suggesting a more stable alignment. Among the baselines, WAE comes
+closest, consistent with its use of optimal transport in training.
+
+\begin{table}[t]
+    \caption{Comparison with baseline disentanglement methods
+        (mean $\pm$ std over 10 trials).}
+    \label{tab:comparison_results}
+    \centering
+    \begin{tabular}{lcccc}
+        \toprule
+        \textbf{Method}
+         & \textbf{MIG}
+         & \textbf{OT Score}
+         & \textbf{MIG}
+         & \textbf{OT Score}                                          \\
+        \midrule
+         & \multicolumn{2}{c}{\textit{Music Dataset}}
+         & \multicolumn{2}{c}{\textit{Children's Literature Dataset}} \\
+        \midrule
+        Proposed Method
+         & $\mathbf{0.891 \pm 0.008}$
+         & $\mathbf{0.399 \pm 0.011}$
+         & $0.318 \pm 0.004$
+         & $\mathbf{0.514 \pm 0.005}$                                 \\
+        $\beta$-VAE
+         & $0.876 \pm 0.018$
+         & $0.273 \pm 0.040$
+         & $\mathbf{0.366 \pm 0.012}$
+         & $0.076 \pm 0.032$                                          \\
+        $\beta$-TCVAE
+         & $0.862 \pm 0.024$
+         & $0.236 \pm 0.045$
+         & $0.344 \pm 0.011$
+         & $0.222 \pm 0.035$                                          \\
+        WAE
+         & $0.847 \pm 0.033$
+         & $0.316 \pm 0.036$
+         & $0.303 \pm 0.018$
+         & $0.465 \pm 0.038$                                          \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Soft-Category Extension on Children's Literature}\label{sup:children}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.6\linewidth]{fig/figS1.png}
+    \caption{\textbf{Learned fiber bundle structure for children's
+            literature.} The scattered points are the original items,
+        entangled across the feature space. Through OT-FB learning the
+        genre fibers are aligned via optimal transport, and one can see a
+        multi-floor library formed within the curved universe: each floor
+        is an atmosphere stratum shared across all fifteen genres.}
+    \label{fig:children_bundle}
+
+    \bigskip
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=1.0\linewidth]{fig/figS2a.pdf}
+        \caption{Genre-ness space $\mathcal{U}$.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=1.0\linewidth]{fig/figS2b.pdf}
+        \caption{Atmosphere space $\mathcal{V}$.}
+    \end{subfigure}
+    \caption{\textbf{Learned structure for children's literature.}
+        (a) Genre-ness space $\mathcal{U}$: the fifteen genres as
+        continuous unnamed affect. (b) Atmosphere space $\mathcal{V}$:
+        the most informative tags. Because genres are assigned
+        softly, each genre and tag is placed at the peak of a
+        weighted kernel density estimate over the items carrying
+        it; the items themselves are not confined to that point but
+        spread as a distribution around it.}
+    \label{fig:children_uv}
+\end{figure}
+
+The OT-FB framework assumes each item belongs to a single category.
+For children's literature, where books often span multiple genres,
+we extend the framework via soft memberships.
+
+\paragraph{Two-step approach.}
+When explicit categories are unavailable, we infer latent category
+coordinates from auxiliary features (e.g., metadata, tags).
+First, given auxiliary feature vectors $y_i$, we infer
+$u_i \in \mathcal{U}$ by assuming $y_i = \psi(u_i)$ and minimizing:
+\[
+    E[U] = \frac{1}{N} \sum_i \left\{
+    \frac{\beta}{2} \| y_i - \psi(u_i) \|^2 - \log q(u_i)
+    \right\}.
+\]
+Second, we define soft memberships via local neighborhoods:
+\[
+    \rho(j \mid i) =
+    \frac{\mathcal{N}(u_j \mid u_i, \lambda^{-1} I)}
+    {\sum_{j'} \mathcal{N}(u_{j'} \mid u_i, \lambda^{-1} I)}.
+\]
+These soft memberships replace hard category assignments,
+accommodating overlapping or fuzzy genre boundaries.
+Once $u_i$ are estimated, atmosphere coordinates $v_i$ are extracted
+through the same OT-FB learning as the music dataset.
+
+\paragraph{Results.}
+Figure~\ref{fig:children_bundle} shows the learned fiber bundle structure.
+Figure~\ref{fig:children_uv}(a) and~(b) show the learned structure of
+$\mathcal{U}$ and $\mathcal{V}$, respectively. In $\mathcal{U}$, genres are
+arranged continuously along two readable contrasts: a cold--warm axis,
+with mystery and horror at one end and picture books and poetry/wordplay
+at the other, and a fictional--realistic axis, with fantasy and myths on
+one side and drama on the other. In $\mathcal{V}$, the atmosphere is
+organized by two contrasts as well: a light--heavy axis, from playful and
+humorous to tragic and melancholic, and a tense--restful axis, from
+thrilling and dramatic to warm and pastoral. Together these two contrasts
+form a cycle, atmospheric character progressing continuously across genre
+boundaries---the same structure observed in the music dataset. The two
+axes $\mathcal{U}$ and $\mathcal{V}$ are independent: one can move across
+genres while staying at the same atmosphere coordinate, or vary genre-ness
+while remaining within an atmosphere region. The independence is confirmed
+quantitatively by the MIG and OT Scores reported in
+Table~\ref{tab:comparison_results}.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Two-body data of Children's literature: noun and adjective tags}\label{sup:twobody}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[p]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=1.0\linewidth]{fig/figS3a.pdf}
+        \caption{Genre-ness space $\mathcal{U}$.}
+        \label{fig:twobody_genre}
+    \end{subfigure}
+
+    \bigskip
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=1.0\linewidth]{fig/figS3b.pdf}
+        \caption{Thematic atmosphere $\mathcal{V}_{\mathrm{thematic}}$.}
+        \label{fig:twobody_thematic}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \includegraphics[width=1.0\linewidth]{fig/figS3c.pdf}
+        \caption{Tonal atmosphere $\mathcal{V}_{\mathrm{tonal}}$.}
+        \label{fig:twobody_tonal}
+    \end{subfigure}
+    \caption{\textbf{Three spaces from the same books.}
+        (a) Genre-ness space $\mathcal{U}$, shared by both body data.
+        (b) Thematic atmosphere $\mathcal{V}_{\mathrm{thematic}}$ from the
+        noun tags.
+        (c) Tonal atmosphere $\mathcal{V}_{\mathrm{tonal}}$ from the
+        adjective tags.
+        As in Figure~\ref{fig:children_uv}, each word is placed at the
+        peak of a weighted kernel density estimate over the items
+        carrying it; the items spread as a distribution around it.}
+    \label{fig:twobody_spaces}
+\end{figure}
+
+A single item may be embedded through more than one view. As noted in
+the main text, our children's literature instantiation does exactly
+this: from the same books, the noun tags and the adjective tags give
+two descriptions, hence two body data, each carving out its own
+universe with its own rabbit hole.
+
+\paragraph{Two body data.}
+For each book we form two texts. The noun tags become
+``This is a children's book. The themes are
+\textit{noun\textsubscript{1}}, \ldots,'' and the adjective tags become
+``This is a children's book. The impressions are
+\textit{adjective\textsubscript{1}}, \ldots.'' Each text is embedded and
+learned through the same OT-FB procedure as in
+Section~\ref{sup:children}, over a shared genre-ness space $\mathcal{U}$.
+The single atmosphere space $\mathcal{V}$ of Section~\ref{sup:children}
+thus splits into two: the noun-tag body yields a \textbf{thematic
+atmosphere} $\mathcal{V}_{\mathrm{thematic}}$, and the adjective-tag body
+yields a \textbf{tonal atmosphere} $\mathcal{V}_{\mathrm{tonal}}$.
+
+\paragraph{What appears.}
+Figure~\ref{fig:twobody_spaces} shows the three spaces. The genre-ness
+space~(a) reproduces the structure of Figure~\ref{fig:children_uv}(a),
+as theory predicts---the two body data share the same $\mathcal{U}$. The
+two atmosphere spaces differ. The thematic atmosphere
+$\mathcal{V}_{\mathrm{thematic}}$~(b) recovers the literature counterpart
+of the affective structure seen in music: cold themes such as truth,
+oppression, war, and isolation gather at one pole, warm themes such as
+belonging, kindness, and empathy at the other, while an exciting direction
+(curiosity, problem-solving, discovery) runs against a calm one (hope,
+resilience). The tonal atmosphere $\mathcal{V}_{\mathrm{tonal}}$~(c)
+appears less cyclic and closer to a one-dimensional spectrum, running from
+playful and cheerful at one end to tragic and grim at the other.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Complete Questionnaire (20~Items)}\label{sup:questionnaire}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Items 3--14 and 16--18 are adapted from the \textit{Serendipitous Digital
+    Environment Scale}~\cite{McCayPeet20181}, a validated instrument for
+evaluating digital information environments. We replaced the original
+placeholder ``[the digital information environment]'' with ``this system''
+and adapted general terms (e.g., ``information'') to the music discovery
+context (e.g., ``content (music)''). Items 1, 2, 15, 19, and 20 were
+developed for this study.
+
+\paragraph{Category A: Ease of discovery (developed for this study)}
+\begin{enumerate}
+    \item I found it easy to discover my preferred content (music) with this system.
+    \item I was able to find my preferred content (music) with this system.
+\end{enumerate}
+
+\paragraph{Category B: Leads to the unexpected (McCay-Peet \& Toms)}
+\begin{enumerate}
+    \setcounter{enumi}{2}
+    \item I bumped into unexpected content (music) with this system.
+    \item I came across content (music) by chance with this system.
+    \item I was exposed to unanticipated content (music) with this system.
+    \item I stumbled upon content (music) unexpectedly with this system.
+    \item I encountered unforeseen content (music) with this system.
+\end{enumerate}
+
+\paragraph{Category C: Trigger-rich (McCay-Peet \& Toms)}
+\begin{enumerate}
+    \setcounter{enumi}{7}
+    \item This system was full of information useful to me.
+    \item I found information of value to me with this system.
+    \item This system was a treasure trove of information.
+\end{enumerate}
+
+\paragraph{Category D: Highlights triggers (McCay-Peet \& Toms + original)}
+\begin{enumerate}
+    \setcounter{enumi}{10}
+    \item This system had features that drew my attention to information.
+    \item This system had features that alerted me to information.
+    \item This system had features that ensured my attention was drawn to useful information.
+    \item This system had mechanisms that guided me from one piece of content (music) to another.
+    \item This system allowed me to explore content beyond existing classifications.\textsuperscript{\dag}
+\end{enumerate}
+\textsuperscript{\dag}Originally developed for this study.
+
+\paragraph{Category E: Enables connections (McCay-Peet \& Toms)}
+\begin{enumerate}
+    \setcounter{enumi}{15}
+    \item I was able to see connections between pieces of content (music) within this system.
+    \item This system helped me connect different pieces of content (music).
+    \item This system enabled me to understand relationships among content (music).
+\end{enumerate}
+
+\paragraph{Category F: Discovering preferences (developed for this study)}
+\begin{enumerate}
+    \setcounter{enumi}{18}
+    \item I discovered new interests or made new discoveries by using this system.
+    \item This system helped me gain a deeper understanding of my own preferences and tastes.
+\end{enumerate}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Detailed Statistical Tables}\label{sup:tables}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Tables~\ref{tab:behavior_change_exp1} and~\ref{tab:behavior_change_exp2}
+report entropy differences for Experiments~1 and~2.
+Significance levels throughout: {*}~$p < 0.05$, {**}~$p < 0.01$,
+{***}~$p < 0.001$.
+
+\paragraph{Experiment 1 (P vs.\ C1).}
+Table~\ref{tab:behavior_change_exp1} shows entropy differences between
+systems P and C1.
+In Group CP, genre breadth in discovery increased when using system~P
+($+0.115$, $p < 0.01$); in Group PC, the difference was not significant
+upon returning to C1 ($+0.016$, $p = 0.590$).
+Simultaneously, atmosphere entropy narrowed in system~P for both groups
+($p < 0.001$).
+
+\paragraph{Experiment 2 (P vs.\ C2).}
+Table~\ref{tab:behavior_change_exp2} shows results from the three-phase
+sequence (C2b$\to$P$\to$C2a).
+Genre breadth expanded in system~P (C2b$\to$P: $+0.144$ to $+0.166$,
+$p < 0.001$) and remained elevated in C2a
+(P$\to$C2a: $+0.268$ to $+0.275$, $p < 0.001$).
+Atmosphere exploration narrowed in~P ($-0.040$, $p < 0.001$) and showed
+no significant further change in C2a ($-0.007$, $p = 0.197$).
+
+\begin{table}[t]
+    \caption{Behavioral breadth change in Experiment~1 (entropy differences, P minus C1).}
+    \label{tab:behavior_change_exp1}
+    \centering
+    \small
+    \begin{tabular}{lccrr}
+        \toprule
+        \textbf{Metric}         & \textbf{Group} & \textbf{Mean $\pm$ s.d.} & $p$ ($t$-test) & $p$ (Wilcoxon) \\
+        \midrule
+        Exploration: Genre      & CP             & $+0.066 \pm 0.187$       & 0.053          & * 0.038        \\
+                                & PC             & $-0.028 \pm 0.102$       & 0.138          & 0.120          \\
+        \midrule
+        Discovery: Genre        & CP             & $+0.115 \pm 0.209$       & ** 0.004       & ** 0.005       \\
+                                & PC             & $+0.016 \pm 0.165$       & 0.590          & 0.829          \\
+        \midrule
+        Exploration: Atmosphere & CP             & $-0.046 \pm 0.044$       & *** 0.000      & *** 0.000      \\
+                                & PC             & $-0.035 \pm 0.034$       & *** 0.000      & *** 0.000      \\
+        \midrule
+        Discovery: Atmosphere   & CP             & $-0.071 \pm 0.043$       & *** 0.000      & *** 0.000      \\
+                                & PC             & $-0.073 \pm 0.037$       & *** 0.000      & *** 0.000      \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[t]
+    \caption{Behavioral breadth change in Experiment~2 (entropy differences, P minus C2).}
+    \label{tab:behavior_change_exp2}
+    \centering
+    \small
+    \begin{tabular}{lccrr}
+        \toprule
+        \textbf{Metric}         & \textbf{Comparison} & \textbf{Mean $\pm$ s.d.} & $p$ ($t$-test) & $p$ (Wilcoxon) \\
+        \midrule
+        Exploration: Genre      & C2b$\to$P           & $+0.144 \pm 0.258$       & *** 0.000      & *** 0.000      \\
+                                & P$\to$C2a           & $+0.268 \pm 0.221$       & *** 0.000      & *** 0.000      \\
+        \midrule
+        Discovery: Genre        & C2b$\to$P           & $+0.166 \pm 0.239$       & *** 0.000      & *** 0.000      \\
+                                & P$\to$C2a           & $+0.275 \pm 0.210$       & *** 0.000      & *** 0.000      \\
+        \midrule
+        Exploration: Atmosphere & C2b$\to$P           & $-0.040 \pm 0.052$       & *** 0.000      & *** 0.000      \\
+                                & P$\to$C2a           & $-0.007 \pm 0.046$       & 0.197          & 0.586          \\
+        \midrule
+        Discovery: Atmosphere   & C2b$\to$P           & $-0.032 \pm 0.049$       & *** 0.000      & *** 0.000      \\
+                                & P$\to$C2a           & $-0.019 \pm 0.046$       & *** 0.001      & ** 0.002       \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Tables~\ref{tab:questionnaire_diff_exp1} and~\ref{tab:questionnaire_diff_exp2}
+present complete questionnaire results for Experiments~1 and~2,
+with mean ratings and standard deviations for systems C1/C2 and P,
+and $p$-values from paired $t$-tests.
+See Section~\ref{sup:questionnaire} for the complete item list.
+
+\begin{table}[p]
+    \caption{Questionnaire results for Experiment~1 (mean ratings with standard deviations, P vs.\ C1).}
+    \label{tab:questionnaire_diff_exp1}
+    \centering
+    \small
+    \begin{tabular}{lp{6.8cm}ccr}
+        \toprule
+        \textbf{Cat.}      & \textbf{Question}                                                                                            & \textbf{Sys.} & \textbf{Mean $\pm$ s.d.} & $p$       \\
+        \midrule
+        \multirow{2}{*}{A} & \multirow{2}{6.8cm}{I found it easy to discover my preferred content (music) with this system.}              & C1            & $2.810 \pm 1.060$        &           \\
+                           &                                                                                                              & P             & $4.175 \pm 0.908$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{I was able to find my preferred content (music) with this system.}                       & C1            & $2.952 \pm 1.237$        &           \\
+                           &                                                                                                              & P             & $3.810 \pm 1.030$        & *** 0.000 \\
+        \midrule
+        \multirow{2}{*}{B} & \multirow{2}{6.8cm}{I bumped into unexpected content (music) with this system.}                              & C1            & $3.222 \pm 1.464$        &           \\
+                           &                                                                                                              & P             & $3.254 \pm 1.231$        & 0.858     \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{I came across content (music) by chance with this system.}                               & C1            & $3.698 \pm 1.213$        &           \\
+                           &                                                                                                              & P             & $3.524 \pm 1.189$        & 0.355     \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{I was exposed to unanticipated content (music) with this system.}                        & C1            & $3.667 \pm 1.391$        &           \\
+                           &                                                                                                              & P             & $3.397 \pm 1.225$        & 0.174     \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{I stumbled upon content (music) unexpectedly with this system.}                          & C1            & $3.429 \pm 1.146$        &           \\
+                           &                                                                                                              & P             & $3.476 \pm 0.998$        & 0.807     \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{I encountered unforeseen content (music) with this system.}                              & C1            & $3.603 \pm 1.199$        &           \\
+                           &                                                                                                              & P             & $3.206 \pm 1.166$        & * 0.038   \\
+        \midrule
+        \multirow{2}{*}{C} & \multirow{2}{6.8cm}{This system was full of information useful to me.}                                       & C1            & $2.937 \pm 1.190$        &           \\
+                           &                                                                                                              & P             & $3.778 \pm 1.156$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{I found information of value to me with this system.}                                    & C1            & $3.175 \pm 1.115$        &           \\
+                           &                                                                                                              & P             & $3.952 \pm 1.156$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system was a treasure trove of information.}                                        & C1            & $3.381 \pm 1.156$        &           \\
+                           &                                                                                                              & P             & $4.079 \pm 1.067$        & *** 0.000 \\
+        \midrule
+        \multirow{2}{*}{D} & \multirow{2}{6.8cm}{This system had features that drew my attention to information.}                         & C1            & $2.968 \pm 1.150$        &           \\
+                           &                                                                                                              & P             & $4.254 \pm 1.015$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system had features that alerted me to information.}                                & C1            & $3.444 \pm 1.188$        &           \\
+                           &                                                                                                              & P             & $4.032 \pm 1.062$        & ** 0.004  \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system had features that ensured my attention was drawn to useful information.}     & C1            & $3.048 \pm 1.038$        &           \\
+                           &                                                                                                              & P             & $4.048 \pm 0.958$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system had mechanisms that guided me from one piece of content (music) to another.} & C1            & $3.111 \pm 1.193$        &           \\
+                           &                                                                                                              & P             & $4.524 \pm 0.859$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system allowed me to explore content beyond existing classifications.}              & C1            & $3.143 \pm 1.318$        &           \\
+                           &                                                                                                              & P             & $4.095 \pm 1.214$        & *** 0.000 \\
+        \midrule
+        \multirow{2}{*}{E} & \multirow{2}{6.8cm}{I was able to see connections between pieces of content (music) within this system.}     & C1            & $3.143 \pm 1.176$        &           \\
+                           &                                                                                                              & P             & $4.333 \pm 0.916$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system helped me connect different pieces of content (music).}                      & C1            & $3.095 \pm 1.160$        &           \\
+                           &                                                                                                              & P             & $4.413 \pm 0.835$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system enabled me to understand relationships among content (music).}               & C1            & $3.048 \pm 1.156$        &           \\
+                           &                                                                                                              & P             & $3.841 \pm 1.066$        & *** 0.000 \\
+        \midrule
+        \multirow{2}{*}{F} & \multirow{2}{6.8cm}{I discovered new interests or made new discoveries by using this system.}                & C1            & $3.556 \pm 1.353$        &           \\
+                           &                                                                                                              & P             & $3.952 \pm 1.007$        & * 0.023   \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system helped me gain a deeper understanding of my own preferences and tastes.}     & C1            & $3.476 \pm 1.148$        &           \\
+                           &                                                                                                              & P             & $4.238 \pm 0.928$        & *** 0.000 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[p]
+    \caption{Questionnaire results for Experiment~2 (mean ratings with standard deviations, P vs.\ C2).}
+    \label{tab:questionnaire_diff_exp2}
+    \centering
+    \small
+    \begin{tabular}{lp{6.8cm}ccr}
+        \toprule
+        \textbf{Cat.}      & \textbf{Question}                                                                                            & \textbf{Sys.} & \textbf{Mean $\pm$ s.d.} & $p$       \\
+        \midrule
+        \multirow{2}{*}{A} & \multirow{2}{6.8cm}{I found it easy to discover my preferred content (music) with this system.}              & C2            & $2.542 \pm 0.887$        &           \\
+                           &                                                                                                              & P             & $4.333 \pm 0.732$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{I was able to find my preferred content (music) with this system.}                       & C2            & $2.917 \pm 1.004$        &           \\
+                           &                                                                                                              & P             & $4.153 \pm 0.883$        & *** 0.000 \\
+        \midrule
+        \multirow{2}{*}{B} & \multirow{2}{6.8cm}{I bumped into unexpected content (music) with this system.}                              & C2            & $3.528 \pm 1.233$        &           \\
+                           &                                                                                                              & P             & $3.194 \pm 1.252$        & 0.062     \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{I came across content (music) by chance with this system.}                               & C2            & $3.625 \pm 1.080$        &           \\
+                           &                                                                                                              & P             & $3.681 \pm 1.173$        & 0.748     \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{I was exposed to unanticipated content (music) with this system.}                        & C2            & $3.639 \pm 1.248$        &           \\
+                           &                                                                                                              & P             & $3.542 \pm 1.321$        & 0.600     \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{I stumbled upon content (music) unexpectedly with this system.}                          & C2            & $3.444 \pm 1.086$        &           \\
+                           &                                                                                                              & P             & $3.486 \pm 1.222$        & 0.803     \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{I encountered unforeseen content (music) with this system.}                              & C2            & $3.708 \pm 1.180$        &           \\
+                           &                                                                                                              & P             & $3.472 \pm 1.289$        & 0.251     \\
+        \midrule
+        \multirow{2}{*}{C} & \multirow{2}{6.8cm}{This system was full of information useful to me.}                                       & C2            & $2.681 \pm 1.085$        &           \\
+                           &                                                                                                              & P             & $4.125 \pm 1.006$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{I found information of value to me with this system.}                                    & C2            & $2.764 \pm 1.144$        &           \\
+                           &                                                                                                              & P             & $4.097 \pm 0.981$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system was a treasure trove of information.}                                        & C2            & $2.931 \pm 1.105$        &           \\
+                           &                                                                                                              & P             & $4.000 \pm 1.061$        & *** 0.000 \\
+        \midrule
+        \multirow{2}{*}{D} & \multirow{2}{6.8cm}{This system had features that drew my attention to information.}                         & C2            & $2.847 \pm 1.183$        &           \\
+                           &                                                                                                              & P             & $4.556 \pm 0.625$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system had features that alerted me to information.}                                & C2            & $2.792 \pm 1.074$        &           \\
+                           &                                                                                                              & P             & $4.222 \pm 0.982$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system had features that ensured my attention was drawn to useful information.}     & C2            & $2.792 \pm 1.138$        &           \\
+                           &                                                                                                              & P             & $4.361 \pm 0.844$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system had mechanisms that guided me from one piece of content (music) to another.} & C2            & $3.069 \pm 1.039$        &           \\
+                           &                                                                                                              & P             & $4.583 \pm 0.727$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system allowed me to explore content beyond existing classifications.}              & C2            & $3.097 \pm 1.323$        &           \\
+                           &                                                                                                              & P             & $4.444 \pm 0.729$        & *** 0.000 \\
+        \midrule
+        \multirow{2}{*}{E} & \multirow{2}{6.8cm}{I was able to see connections between pieces of content (music) within this system.}     & C2            & $2.958 \pm 1.067$        &           \\
+                           &                                                                                                              & P             & $4.389 \pm 0.815$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system helped me connect different pieces of content (music).}                      & C2            & $2.958 \pm 1.013$        &           \\
+                           &                                                                                                              & P             & $4.389 \pm 0.797$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system enabled me to understand relationships among content (music).}               & C2            & $2.764 \pm 1.120$        &           \\
+                           &                                                                                                              & P             & $4.028 \pm 1.162$        & *** 0.000 \\
+        \midrule
+        \multirow{2}{*}{F} & \multirow{2}{6.8cm}{I discovered new interests or made new discoveries by using this system.}                & C2            & $3.139 \pm 1.154$        &           \\
+                           &                                                                                                              & P             & $3.986 \pm 1.216$        & *** 0.000 \\
+        \cmidrule{2-5}
+                           & \multirow{2}{6.8cm}{This system helped me gain a deeper understanding of my own preferences and tastes.}     & C2            & $2.875 \pm 1.186$        &           \\
+                           &                                                                                                              & P             & $4.472 \pm 0.855$        & *** 0.000 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{System Availability}\label{sup:availability}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+All systems described in this paper are publicly accessible.
+
+\begin{description}
+    \item[Portal] \url{https://serendipity-portal.vercel.app/}
+    \item[Music] \url{https://serendipity-portal.vercel.app/music/index.html}
+    \item[Children's Literature] \url{https://serendipity-portal.vercel.app/childbooks/index.html}
+    \item[Children's Literature ($\mathcal{U}\times\mathcal{V}$ dual map)]
+          \url{https://serendipity-portal.vercel.app/childbooks-dual/index.html}
+    \item[Children's Literature (two-body: noun and adjective tags)]
+          \url{https://serendipity-books-demo.vercel.app/?lang=en}\\
+          An AI Librarian is available to guide exploration.
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Bibliography (anonymized, if needed)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
+
+\end{document}

@@ -1,0 +1,152 @@
+%%%%% Appendix: Computational and Empirical Details %%%%%
+%
+% Scope:
+%   - Appendix A: Computing the Bundle (referenced from Section 5.1)
+%   - Appendix B: User Study Protocol (referenced from Sections 7.1, 7.2)
+%
+% Structure:
+%   - A and B are top-level sections.
+%   - B is composed of four \paragraph blocks
+%     (Participants / Task and Procedure / Behavioral Metrics / Questionnaire);
+%     only B as a whole is referenced from the main text, so the inner
+%     subdivisions do not need their own labels.
+%
+% Word budget:
+%   - Appendix A: ~180 words
+%   - Appendix B: ~465 words  (Participants 65 / Task & Proc. 150
+%                              / Metrics 200 / Questionnaire 50)
+%   - Total:      ~645 words
+%
+% Note: \appendix is declared in main.tex before \input{appendix.tex}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Appendix A: Computing the Bundle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Computing the Bundle}\label{app:algorithm}
+
+The objective in Eq.~\eqref{eq:objective} is not directly tractable.
+We treat the problem as one of unbalanced optimal transport, in which
+the two directions $p \to q$ and $q \to p$ are addressed separately.
+
+In the $q \to p$ direction, with the genre-ness coordinates
+$U = \{u_k\}_{k=1}^K$ and the atmosphere coordinates
+$V = \{v_n\}_{n=1}^N$ held fixed, the optimum over the embedding
+$\Phi$ admits a closed form:
+\begin{equation}\label{eq:phi-closed}
+    \Phi(u, v \mid U, V) =
+    \frac{\sum_k \mathcal{N}(u \mid u_k, \alpha^{-1} I)\, \varphi_k(v)}
+    {\sum_l \mathcal{N}(u \mid u_l, \alpha^{-1} I)},
+\end{equation}
+where $\varphi_k$ is the manifold model of the $k$-th genre:
+\begin{equation}\label{eq:varphi}
+    \varphi_k(v) =
+    \frac{\sum_{n:\rho_{kn}=1} \mathcal{N}(v \mid v_n, \alpha^{-1} I)\, \mathbf{x}_n}
+    {\sum_{m:\rho_{km}=1} \mathcal{N}(v \mid v_m, \alpha^{-1} I)}.
+\end{equation}
+Here $\rho_{kn} = 1$ when item $n$ belongs to genre $k$ and $0$
+otherwise, and $\alpha$ controls the kernel width.
+
+Substituting this expression back into the $p \to q$ direction reduces
+the joint problem to one over $U$ and $V$ alone:
+\begin{equation}\label{eq:E-UV}
+    E[U, V] = \sum_n p(n) \left\{
+    \tfrac{\beta}{2}
+    \bigl\|\mathbf{x}_n - \Phi(u_{c_n}, v_n \mid U, V)\bigr\|^2
+    - \log q(u_{c_n}) - \log q(v_n)
+    \right\},
+\end{equation}
+where $c_n$ is the genre label of item $n$ (as in
+Section~\ref{sec:modeling}), and $\beta$ weighs the reconstruction term
+against the density terms. Here $p(n)$ denotes the data probability of item $n$, and $q(u)$, $q(v)$ its marginal model distributions. We minimize $E[U, V]$ by stochastic gradient
+Langevin dynamics.
+
+The derivation, theoretical properties, and convergence analysis of this method
+are developed separately, as a self-contained study in disentanglement learning
+theory.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Appendix B: User Study Protocol
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{User Study Protocol}\label{app:user_study}
+
+% --- 目的 -----------------------------------------------------------
+% 本文 Section 7.1 (全体) と Section 7.2 (metrics 定義) からの参照先。
+% Reviewer の「user study 方法論の記述不足」懸念への直接応答。
+% 本文の Section 7 は「観察モード」で書くため、「何を見たか」を本文に、
+% 「どう測ったか」をここに置く役割分担。
+%
+% --- 構成 (4 paragraphs) -------------------------------------------
+%   \paragraph{Participants.}        ~ 65 words
+%   \paragraph{Task and Procedure.}  ~150 words
+%   \paragraph{Behavioral Metrics.}  ~200 words
+%   \paragraph{Questionnaire.}       ~ 50 words
+
+
+\paragraph{Participants.}
+We recruited 135 participants across two independent experiments.
+Experiment~1 involved 63 participants (Group~CP: $n=31$, Group~PC: $n=32$;
+ages~18--43, mean~21.6, median~20; 46~male, 17~female).
+Experiment~2 involved 72 participants (ages~21--62, mean~30.2, median~25;
+55~male, 17~female).
+Participants were recruited through open calls.
+
+
+\paragraph{Task and Procedure.}
+Participants explored the music map and created a playlist titled
+\textit{`Fresh Finds'}, marking playlist candidates with $\star$ and
+personal favorites with $\heartsuit$. Instructions emphasized natural
+behavior: ``Please explore music as you normally would. This is not
+a competition for playlist size, but an observation of your usual
+discovery process.'' Each session began with a short tutorial in which
+participants learned basic operations (genre selection, map navigation,
+playback, and marking) using songs excluded from the main trials. They
+then performed the experimental sequences described in
+Section~\ref{sec:experiments}, followed by a questionnaire and a brief
+interview. The 2,500-song dataset was partitioned into two disjoint
+subsets so that no song appeared in both system~P and systems~C1/C2.
+All sessions were conducted on 27-inch monitors with a standard mouse.
+
+
+\paragraph{Behavioral Metrics.}
+We used three quantitative indicators of exploratory behavior.
+(1)~\textit{Genre entropy} $H_g = -\sum_k p_k \log p_k$ measured breadth
+across 10~genres, where $p_k$ denotes the proportion of items
+in genre~$k$.
+(2)~\textit{Atmosphere entropy} $H_a$ measured diversity within the
+2D~atmosphere space~$\mathcal{V}$, discretized into a $20 \times 20$ grid
+with kernel density estimation. Because system~C1 represents each genre
+on an independent manifold and admits no unified atmosphere space, $H_a$
+for C1 was computed as the weighted average of genre-conditional
+entropies. For systems~P and~C2, which share a unified atmosphere space,
+$H_a$ was computed over that space; in C2 this measures entropy over
+the \textit{true underlying distribution} that the interface conceals
+from users, so $H_a$ in~C2 captures whether users move along
+correspondences they cannot directly see.
+(3)~\textit{Exploration chain length} quantified consecutive
+Focus-of-Interest (FoI) movements within atmosphere distance $d = 0.28$.
+In system~P, chains could continue across genre boundaries; in C1/C2,
+genre switches terminated chains.
+Significance was evaluated using paired $t$-tests and Wilcoxon
+signed-rank tests with Bonferroni correction.
+
+
+\paragraph{Questionnaire.}
+Participants rated each system on 20~items using a 5-point Likert scale
+(1~=~strongly disagree, 5~=~strongly agree). Items were grouped into
+six aspects: (A)~Ease of discovery, (B)~Leads to the unexpected,
+(C)~Trigger-rich, (D)~Highlights triggers, (E)~Enables connections,
+and (F)~Discovering preferences. Aspects~B--E were adapted from
+McCay-Peet and Toms~\cite{McCayPeet20181}; A and F were developed for
+this study. The complete list of items is provided in
+Supplement~\ref{sup:questionnaire}.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% End of Appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

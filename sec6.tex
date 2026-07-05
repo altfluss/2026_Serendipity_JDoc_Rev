@@ -1,0 +1,50 @@
+%%% Section 6. Implementation: The Multi-Floor Library as Interface %%%%%
+\section{Implementation: The Multi-Floor Library as Interface}\label{sec:systems}
+
+With the representation in place, we arrive at the \textbf{fourth of the five
+    levels---the Implementational}: how to let users walk in it. We did the simplest
+thing possible. We rendered the multi-floor library directly as the
+interface---each element of the library, one to one, as an element of the UI
+(Figure~\ref{fig:prototype_systems}). Aside from this being a web
+application,\footnote{Two domain instantiations of this design are accessible:
+    music (\url{https://serendipity-portal.vercel.app/music/index.html})
+    and children's literature
+    (\url{https://serendipity-portal.vercel.app/childbooks/index.html}).} nothing special was done at the
+interface level.
+
+\begin{figure}[t]
+    \centering
+    \fbox{\includegraphics[width=0.99\linewidth]{fig/fig6.png}}
+    \caption{
+        \textbf{Music discovery interface---a direct instantiation of the
+            multi-floor library.} From left to right: (1) the floor selector
+        showing the stack of floors with their rabbit-hole openings;
+        (2) the current floor map, in which a circle marks the rabbit hole
+        around the FoI, and the transparent floors below show favorited
+        items ($\heartsuit$, $\star$) at the same atmosphere coordinate on
+        other floors; (3) the list of songs near the FoI; (4) the player.
+        The literature version replaces the player with book summaries.
+    }
+    \label{fig:prototype_systems}
+\end{figure}
+
+Because the interface \emph{is} the library, the three requirements
+\textbf{(R1--R3)} of Section~\ref{subsec:multi_floor_library} pass through
+unchanged. The user positions the Focus of Interest (FoI) anywhere by mouse
+and browses or plays the items nearby, making the space tangible and one's
+position locatable \textbf{(R1)}. Because the space separates genre-ness and
+atmosphere, each direction is separable and its consequences foreseeable
+\textbf{(R2)}. Around every FoI position, a rabbit-hole opening is always
+shown; the user decides at will whether to plunge through it into another genre
+or to move freely within the current floor, keeping the space steerable and
+traversable \textbf{(R3)}. The interface inherits them at no further cost.
+
+This is not the only interface this representation admits. The same bundle
+can equally be navigated, say, by a dual-map design in which the genre-ness
+space $\mathcal{U}$ and the atmosphere space $\mathcal{V}$ are presented as
+independent two-dimensional maps---a four-dimensional exploration of the
+bundle (Figures~\ref{fig:msd_bundle}c,d).\footnote{A four-dimensional dual-map instantiation on children's
+    literature is available at
+    \url{https://serendipity-portal.vercel.app/childbooks-dual/index.html}.} What matters is that, with a sound representation in place, interface
+design becomes genuine craft rather than the burden of carrying
+the structure. We now turn to what users do inside it.

@@ -1,0 +1,92 @@
+%%%%% Section 1 Introduction %%%%%
+\section{Introduction}\label{sec:introduction}
+
+Consider a jazz piece by Miles Davis and a classical work by Debussy.
+Categorically and acoustically, they are distant. Yet listeners discover
+profound commonalities---contemplative sensibility, evocative atmosphere, an
+implicit closeness transcending categorical boundaries. Such transformation of
+perspective---seeing new relations across distant domains---lies at the heart of
+serendipitous experience. This discovery of closeness in distant
+pieces---finding ``unexpected yet relevant'' connections---exemplifies such
+transformation.
+
+The paradoxical phrase ``unexpected yet relevant,'' sometimes appearing as
+``surprising yet useful'' or ``familiar yet novel,'' frequently emerges in
+serendipity
+research~\cite{Kotkov2016180,Ziarani2021375,Chen2019,Hasan2023933,Nahm2023}.
+These phrases form a tangle of paradoxes that articulates both serendipity's
+appeal and its elusive nature. In exploratory systems, we reinterpret this as
+the \textit{distant-yet-close paradox}: items explicitly distant in features we
+\emph{can name}, yet implicitly close in some aspect of features we \emph{cannot}.
+
+Our aim is to provide users with a coordinate system that embodies this paradox:
+a space whose axes serve as a guide, allowing users to explore freely in search
+of serendipitous encounters. In the coordinate system, one axis lies
+\emph{along} a named descriptor such as genre, a feature that can be made
+explicit. The other lies \emph{across} descriptors, following an unnamed feature
+they share, one that stays implicit. Such a space is what we call a
+\emph{representation}---and it is here, before any interface, that our true aim
+lies: no interface can surface what the underlying representation does not
+already encode~\cite{Blair1985289,Furnas1987964}.
+
+What, then, \emph{is} such a representation? Is there a space in which the
+distant-yet-close relation is not a tension to resolve, but a structure one can
+build and traverse---and if so, what is it? Our answer is the \textbf{Optimal
+    Transport Fiber Bundle} (OT-FB): a \textit{disentangled} representation space in
+which that relation is geometrically encoded. We convey this space through two
+equivalent images, the \textbf{multi-galaxy curved universe} and the
+\textbf{multi-floor library}, both populated by \textit{rabbit
+    holes}\footnote{In \textit{Alice's Adventures in Wonderland}, Alice follows a
+    rabbit down a hole into another world.} that bridge distant regions---an unnamed
+affinity that runs \emph{across} categories and is \emph{shared} among them. A
+rabbit hole from Debussy in the classical galaxy/floor arrives at Miles Davis in
+the jazz galaxy/floor---distant in the names we can give them, yet close in what
+those names cannot.
+
+What makes a representation good for distant-yet-close serendipity, and how
+should such a representation be given concrete form? We pursue this through five
+inseparable levels---each a different facet of the same question.
+(1)~\textbf{Conceptual}: can the distant-yet-close structure be realized as a
+navigable concept? (2)~\textbf{Mathematical}: can this concept be given sound
+formal definition? (3)~\textbf{Computational}: can such a representation be
+learned from data? (4)~\textbf{Implementational}: can it be instantiated as an
+interactive system that users can traverse? (5)~\textbf{Empirical}: can it
+afford exploration toward distant-yet-close regions? These five levels are not
+separate contributions but five views of one object---the representation
+itself, conceived, formalized, learned, instantiated, and inhabited. Their
+coherence is the contribution.
+
+\paragraph{Paper structure.}
+Section~\ref{sec:serendipity} surveys serendipity research and situates the
+``distant yet close'' paradox within the classical theory of information
+relevance, motivating a \emph{disentangled information representation} as the
+key challenge. The next five sections develop the five levels in turn.
+Section~\ref{sec:library_universe_model} presents our
+vision---the multi-floor library, the disentangled form of the entangled
+multi-galaxy curved universe. Section~\ref{sec:modeling} shows how Optimal
+Transport Fiber Bundle (OT-FB) geometry realizes this vision.
+Section~\ref{sec:computational} characterizes the challenge of
+learning this bundle from data and demonstrates the resulting
+representation on real data.
+Section~\ref{sec:systems} presents an exploratory system built directly on this
+representation.
+Section~\ref{sec:experiments} reports a user study assessing whether the
+representation affords exploration beyond the comfort zone.
+Section~\ref{sec:discussion} reflects on what the pursuit revealed---the
+necessity of disentanglement and the fitness of OT as an inductive bias---and
+Section~\ref{sec:conclusion} closes the circle opened by Miles Davis and
+Debussy.
+
+\paragraph{Conceptual anchor.}
+The \textbf{multi-galaxy curved universe}, the \textbf{multi-floor library},
+and the \textbf{Optimal Transport Fiber Bundle (OT-FB)} are three names for
+one structure. The universe is the view from the \emph{entangled} data
+space, where straight lines in data are not straight lines in meaning; the
+library, the view from the \emph{disentangled} representation space, where
+each book sits in its proper place and straight walks within a floor
+\emph{are} semantic walks. OT-FB is their shared mathematical expression.
+\emph{Rabbit holes}---curving through the universe, vertical between floors
+in the library---realize the distant-yet-close relation. Throughout the
+paper, the curved universe names the entangled data space, the library
+names the disentangled representation space, and OT-FB names their
+mathematics.

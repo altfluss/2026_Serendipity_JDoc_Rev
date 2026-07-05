@@ -1,0 +1,213 @@
+%%%%% Section 4. Realizing the Multi-Floor Library: Optimal Transport on a Fiber Bundle %%%%%
+\section{Realizing the Multi-Floor Library: Optimal Transport on a Fiber Bundle}
+\label{sec:modeling}
+
+Section~\ref{sec:library_universe_model} cast the vision: the multi-galaxy
+curved universe is to be turned into the multi-floor library. We carry it
+out here, at the \textbf{second of the five levels---the Mathematical}.
+
+In machine learning, this transformation is called \textbf{disentanglement},
+and it is genuinely difficult~\cite{Locatello20197247}: between any two
+galaxies an infinite number of rabbit holes can be drawn, and no algorithm
+can choose among them until we define what makes a correspondence
+\textit{good}. This forces us to ask: \textit{What is the right rabbit hole?}
+The work begins not with the algorithm, but with the representation---asking
+what, precisely, we want it to look like.
+
+
+%%% Subsection 4.1 What representation do we want? %%%%%
+\subsection{What representation do we want?}\label{subsec:what-representation}
+
+% --- (1) Setup: body data, genre label, coordinates ---
+Let us first formalize the situation. We are given, for each item $n$,
+body data $\mathbf{x}_n \in \mathcal{X} = \mathbb{R}^D$ in the body-data
+universe of Section~\ref{subsec:multi_galaxy}, together with a genre
+label $c_n$ as descriptor.
+
+% --- (2) (u,v) coordinates first, then U×V ---
+What we want is a coordinate pair $(u_{c_n},\, v_n)$ for each item:
+$u_{c_n}$ identifying which floor the item occupies---its
+genre-ness---and $v_n$ its position within that floor---its atmosphere.
+Together, these coordinates span the multi-floor library of
+Section~\ref{subsec:multi_floor_library}, made mathematical as a
+low-dimensional space $\mathcal{U} \times \mathcal{V}$, where
+$\mathcal{U}$ is the genre-ness space and $\mathcal{V}$ the atmosphere
+space.
+
+% --- (3) Φ: both rabbit holes and floors ---
+The two are related by an embedding map
+\[
+    \Phi: \mathcal{U} \times \mathcal{V} \to \mathcal{X},
+\]
+which places each coordinate pair $(u, v)$ into the body-data universe
+(Figure~\ref{fig:library_universe}). For each $v$, the curve
+$\Phi(\cdot, v)$ traces one rabbit hole through the universe; for each
+genre $c$, the curve $\Phi(u_c, \cdot)$ traces its floor. Our goal is
+to assign each item $n$ coordinates $(u_{c_n}, v_n)$---where $v$ is
+common across all genres yet independent of any---and to find the map
+$\Phi$ that traces the rabbit holes.
+
+% --- (4) Provably impossible → forces the right question ---
+This goal cannot be reached by computation alone. Disentanglement
+without further specification is \textbf{provably}
+impossible~\cite{Locatello20197247}: infinitely many $\Phi$ satisfy
+the formal setup, and data alone cannot tell us which one draws the
+rabbit holes we want. This is not a technical inconvenience---it forces
+us to ask what makes one correspondence better than another.
+
+% --- Figure 3: U×V, X, Φ ---
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.95\linewidth]{fig/fig3.pdf}
+    \caption{
+        \textbf{An optimal-transport fiber bundle (OT-FB).}
+        The embedding map $\Phi: \mathcal{U} \times \mathcal{V} \to
+        \mathcal{X}$ maps the disentangled multi-floor library (left)
+        to the entangled multi-galaxy universe (right). Fibers---the
+        warped rabbit holes---traverse all galaxies, pairing items
+        that share atmospheric character across genres.
+        ($\mathcal{U}$ is depicted as one-dimensional like a real
+        library's floors; both $\mathcal{U}$ and $\mathcal{V}$ may be
+        two-dimensional or higher.)
+    }
+    \label{fig:library_universe}
+\end{figure}
+
+
+%%% Subsection 4.2 The goodness of a rabbit hole %%%%%
+\subsection{The goodness of a rabbit hole}\label{subsec:OT-hypothesis}
+
+% --- Para A: 2-galaxy case + Miles & Debussy ---
+Let us start from the two-galaxy case. Consider jazz and classical:
+two galaxies in the universe, sitting far apart. We wish to draw
+rabbit holes between them, pairing items that share atmospheric
+character across the genre gap. Miles Davis's contemplative
+piece in the jazz galaxy and Debussy's contemplative piece in the
+classical galaxy---these we want paired, the rabbit hole connecting
+them (Figure~\ref{fig:two_category_ot}).
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.6\linewidth]{fig/fig4.pdf}
+    \caption{
+        \textbf{Resolving the \textit{distant yet close} paradox through optimal transport.}
+        Miles Davis's piece (orange) and Debussy's piece (red) lie far apart in body-data space $\mathbb{R}^D$, yet the optimal transport map (gray lines) reveals their implicit closeness: they occupy corresponding positions within their respective genre distributions (jazz, upper; classical, lower). The red line marks the \textbf{rabbit hole} connecting these pieces.
+    }
+    \label{fig:two_category_ot}
+\end{figure}
+
+% --- Para B: §4.1 復習 + 独立性の限界 ---
+Recall what we asked of $v$ in
+Section~\ref{subsec:what-representation}: an atmosphere coordinate
+\emph{common across all genres yet independent of any}. The word
+\emph{independent} here is the statistical one---$v$ must carry no
+information about the genre $u$. Yet statistical independence
+alone does not determine $\Phi$. Infinitely many independent
+$\Phi$ exist, all satisfying the formal
+setup~\cite{Locatello20197247}; data alone cannot tell us which one
+draws the rabbit holes we want. Genre labels are our only descriptor;
+no explicit supervision on $v$ is available.
+
+% --- Para C: inductive bias + 中核問い + われわれの答え予告 ---
+Independence is necessary but not sufficient. We must add a second
+condition---an inductive bias---that singles out, among the
+infinitely many independent $\Phi$, the one we seek. The bias is not
+ours to invent freely: it must be the one the structure we wish to
+recover actually requires.
+
+What is this inductive bias? To this single question, the entire
+paper is sharpened. Our answer:
+\begin{quote}
+    \begin{hypothesis}[Optimal Transport Hypothesis]\label{hyp:OT}
+        The goodness of a correspondence between two galaxies is the
+        cost of optimally transporting one galaxy onto the other. We
+        take the right rabbit hole---the right correspondence---to be
+        the one realizing this minimum.
+    \end{hypothesis}
+\end{quote}
+% --- Para 5+6: Monge unpacking (concretely と統合) ---
+To unpack this, picture two galaxies of equal total mass---you may read
+mass as probability normalized to one. A correspondence transports the
+mass of one galaxy onto the other; the \textit{transport cost} is the
+total mass-weighted squared distance moved. We take minimizing this
+transport cost as our definition of the right rabbit hole. Concretely, if each galaxy holds $N=1{,}000$
+items of equal indivisible mass, the hypothesis pairs them one-to-one
+to minimize the sum of squared moving distances---every item finds
+exactly one counterpart, none unpaired, none paired twice.
+
+% --- Para 7: Three reasons ---
+Why is this the right bias? Three reasons.
+\textit{First}, it gives both statistical independence and uniqueness
+in a single stroke~\cite{villani2009optimal,peyre2019computational}:
+among all independent $\Phi$, optimal transport singles out the one of
+\emph{shortest correspondence}---paired items as close as possible.
+\textit{Second}---and this is the inductive bias we sought---shortest
+correspondence is precisely the structure the rabbit hole requires:
+items that share atmosphere, however distant in genre, are pulled as
+close as the transport allows.
+\textit{Third}, optimal transport preserves each galaxy's internal
+geometry: close items pair with close items, peripheral with
+peripheral~\cite{villani2009optimal}.
+
+% --- Para 8: Returning to Miles & Debussy + relational identity ---
+Returning to Miles Davis and Debussy
+(Figure~\ref{fig:two_category_ot}): the optimal transport map sends
+Miles Davis's piece in the jazz galaxy to a position in the classical
+galaxy, and Debussy's piece occupies precisely that position. They are
+paired not because they sound alike---by direct feature distance they
+do not---but because they occupy \textit{corresponding positions within
+    their respective galaxies}, each at the contemplative, atmospheric
+region of its own genre. The pairing is not pointwise similarity, but
+\emph{relational identity}: each is, within its own galaxy, what the
+other is within theirs. This is the rabbit hole connecting them.
+
+% --- Para 9: Bridge to §4.3 ---
+This establishes the goodness criterion for two galaxies.
+Section~\ref{subsec:OTFB-model} extends it to $K$ galaxies.
+
+
+%%% Subsection 4.3 A bundle of rabbit holes %%%%%
+\subsection{A bundle of rabbit holes}\label{subsec:OTFB-model}
+
+% --- (1) 2-cat → K-cat への拡張動機 ---
+The two-galaxy case shows the principle, but real collections carry many
+genres---jazz, classical, rock, electronic, folk, $\ldots$ $K$ galaxies
+in all. To build the multi-floor library we must extend the optimal
+transport hypothesis from two galaxies to $K$, with all rabbit holes
+consistent with one another.
+
+% --- (2) 拡張条件: 全ペア OT + 共通 v ---
+The extension comes in two parts. First, every pair of galaxies is
+aligned by optimal transport, as in the two-galaxy case above. Second,
+we equip each galaxy with a common low-dimensional \textit{atmosphere
+    coordinate} $v$: items connected by a rabbit hole share the same
+value of $v$, regardless of which galaxy they belong to.
+
+% --- (3) Manifold + bundle of smooth curves ---
+Under these conditions, each galaxy becomes a smooth manifold. A rabbit
+hole is no longer a single line segment: it is a continuous curve
+threading every galaxy, visiting the points sharing a common $v$. We
+treat the genre-ness coordinate as continuous, with unobserved
+genres filling between the observed ones. Each rabbit hole then
+runs as a smooth, shortest curve through them all. The full collection
+of rabbit holes forms a \textit{bundle of smooth curves} tying the
+galaxies together (Figure~\ref{fig:library_universe}, right).
+
+% --- (4) fiber bundle → OT-FB + multi-floor library として再認識 ---
+In mathematics, a geometric structure consisting of manifolds tied
+together by a bundle of curves is called a \textit{fiber bundle}.
+Because ours is constructed through optimal transport, we call it the
+\textit{optimal transport fiber bundle}, or \textbf{OT-FB}. This is
+precisely the multi-floor library specified in
+Section~\ref{subsec:what-representation}
+(Figure~\ref{fig:library_universe}, left): the genre-ness coordinate
+$u$ identifies the floor, and the atmosphere coordinate $v$ the
+location on it.
+
+% --- (5) 締めくくり: well-defined mathematical form の獲得 ---
+Serendipity's elusive nature, named at the opening of this paper, has
+now acquired a well-defined mathematical form. \textit{Distant yet
+close} is no longer a paradox; it is the local geometry of the
+bundle. Section~\ref{sec:computational} turns to learning this bundle
+from data.
+
