@@ -1,50 +1,66 @@
-%%% Section 6. Implementation: The Multi-Floor Library as Interface %%%%%
-\section{Implementation: The Multi-Floor Library as Interface}\label{sec:systems}
+%%%%% Section 8. Discussion %%%%%
+\section{Discussion}\label{sec:discussion}
 
-With the representation in place, we arrive at the \textbf{fourth of the five
-    levels---the Implementational}: how to let users walk in it. We did the simplest
-thing possible. We rendered the multi-floor library directly as the
-interface---each element of the library, one to one, as an element of the UI
-(Figure~\ref{fig:prototype_systems}). Aside from this being a web
-application,\footnote{Two domain instantiations of this design are accessible:
-    music (\url{https://serendipity-portal.vercel.app/music/index.html})
-    and children's literature
-    (\url{https://serendipity-portal.vercel.app/childbooks/index.html}).} nothing special was done at the
-interface level.
+Our point of departure was the \textit{distant-yet-close paradox} of
+serendipity. The pursuit led us to the need for a well-formed
+information representation space---one in which an \textbf{atmospheric
+axis}, swept with a genre held fixed, and a \textbf{genre-ness axis},
+swept with an atmosphere held fixed, are disentangled. We modeled such
+a space as the multi-floor library.
 
-\begin{figure}[t]
-    \centering
-    \fbox{\includegraphics[width=0.99\linewidth]{fig/fig6.png}}
-    \caption{
-        \textbf{Music discovery interface---a direct instantiation of the
-            multi-floor library.} From left to right: (1) the floor selector
-        showing the stack of floors with their rabbit-hole openings;
-        (2) the current floor map, in which a circle marks the rabbit hole
-        around the FoI, and the transparent floors below show favorited
-        items ($\heartsuit$, $\star$) at the same atmosphere coordinate on
-        other floors; (3) the list of songs near the FoI; (4) the player.
-        The literature version replaces the player with book summaries.
-    }
-    \label{fig:prototype_systems}
-\end{figure}
+Learning such a representation from data confronts a hard problem:
+straightening the galaxies of a curved universe with no
+\textit{a priori} knowledge of how a star in one galaxy relates to a
+star in another. This is nothing other than the task of defining, in
+mathematical form, an inductive bias that matches what we want.
 
-Because the interface \emph{is} the library, the three requirements
-\textbf{(R1--R3)} of Section~\ref{subsec:multi_floor_library} pass through
-unchanged. The user positions the Focus of Interest (FoI) anywhere by mouse
-and browses or plays the items nearby, making the space tangible and one's
-position locatable \textbf{(R1)}. Because the space separates genre-ness and
-atmosphere, each direction is separable and its consequences foreseeable
-\textbf{(R2)}. Around every FoI position, a rabbit-hole opening is always
-shown; the user decides at will whether to plunge through it into another genre
-or to move freely within the current floor, keeping the space steerable and
-traversable \textbf{(R3)}. The interface inherits them at no further cost.
+We therefore asked ourselves what kind of information representation
+space we wanted, and put the answer in well-defined form. The answer
+was the OT hypothesis. Under it, the disentangled representation we
+sought---the multi-floor library---took the form of an OT-FB.
 
-This is not the only interface this representation admits. The same bundle
-can equally be navigated, say, by a dual-map design in which the genre-ness
-space $\mathcal{U}$ and the atmosphere space $\mathcal{V}$ are presented as
-independent two-dimensional maps---a four-dimensional exploration of the
-bundle (Figures~\ref{fig:msd_bundle}c,d).\footnote{A four-dimensional dual-map instantiation on children's
-    literature is available at
-    \url{https://serendipity-portal.vercel.app/childbooks-dual/index.html}.} What matters is that, with a sound representation in place, interface
-design becomes genuine craft rather than the burden of carrying
-the structure. We now turn to what users do inside it.
+Computing an OT-FB from data was itself no small undertaking; we
+developed a method that does so. With it, we built a web application
+in which the representation itself serves as the interface---a virtual
+library with rabbit holes---requiring no special UI craft.
+
+We then observed how users behaved and what they experienced inside
+this library. They paused at places that resonated with what they
+were seeking, moved between floors through the rabbit holes, and
+found what they were looking for. Along the way, they discovered not
+only items they liked, but a sense of what their preferences were.
+
+Through all of this, what is it that we have come to understand?
+
+\paragraph{The space had to be disentangled.}
+In an entangled space, distance and closeness fold into each other:
+items may be far in one sense and near in another, but the sense in
+which they are far or near is not separately readable. The paradox of
+\textit{distant yet close} cannot even be stated there. The
+disentangled space is not one design choice among others; it is the
+precondition for the paradox to be addressable at all.
+
+\paragraph{An inductive bias was needed, and OT was a fitting one.}
+Statistical independence alone does not pin down what is independent
+from what; the same data admit many disentanglings. The real task is
+to ask what unnamed commonality we tacitly expect across genres, and
+to give it a definite mathematical form. The OT hypothesis is one such
+form, simple and domain-agnostic: along the rabbit holes, the mass of
+one genre is transported to another at minimum cost. Other forms are
+possible, none can be shown superior to another---yet a form this
+general and reasonable is not easy to find.
+
+\paragraph{What this hypothesis still allows.}
+The hypothesis admits more than one axis. On the descriptor side,
+attributes beyond genre---artist, era, and the like---each layer in
+their own descriptor-ness axis. On the body side, an item may be
+embedded through several views, each carving out its own universe with
+its own rabbit hole. Our children's
+literature instantiation does exactly this: from the same books, the
+noun tags and the adjective tags give two descriptions, hence two body
+data, carrying a \textbf{thematic atmosphere} and a \textbf{tonal
+atmosphere} respectively, disentangled through the same
+shelves.\footnote{Available at
+    \url{https://serendipity-books-demo.vercel.app/?lang=en}.} However
+many axes are added, they remain disentangled as far as the OT
+hypothesis allows.
