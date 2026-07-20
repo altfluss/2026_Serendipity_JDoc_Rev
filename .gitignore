@@ -17,5 +17,8 @@
 # 5) この.gitignore自体を許可
 !.gitignore
 
+# 5b) ビルド設定(.latexmkrc)を許可
+!.latexmkrc
+
 # 6) fig/ 以下でもOSのメタファイルは無視する(!fig/** より後に置いて優先させる)
 .DS_Store
