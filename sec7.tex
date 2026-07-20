@@ -1,235 +1,66 @@
-%%%%% Section 7. User Behavior in Disentangled Representation Space %%%%%
-\section{User Behavior in Disentangled Representation Space}\label{sec:experiments}
+%%%%% Section 8. Discussion %%%%%
+\section{Discussion}\label{sec:discussion}
 
-Placed in such a representation space, what do users do? What experience
-emerges for them? These questions bring us to the
-\textbf{fifth of the five levels---the Empirical}.
+Our point of departure was the \textit{distant-yet-close paradox} of
+serendipity. The pursuit led us to the need for a well-formed
+information representation space---one in which an \textbf{atmospheric
+axis}, swept with a genre held fixed, and a \textbf{genre-ness axis},
+swept with an atmosphere held fixed, are disentangled. We modeled such
+a space as the multi-floor library.
 
+Learning such a representation from data confronts a hard problem:
+straightening the galaxies of a curved universe with no
+\textit{a priori} knowledge of how a star in one galaxy relates to a
+star in another. This is nothing other than the task of defining, in
+mathematical form, an inductive bias that matches what we want.
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.98\linewidth]{fig/fig7a.png}\\
-    (a) Exploration trajectories of Participant 1.\\[2mm]
-    \includegraphics[width=0.98\linewidth]{fig/fig7b.png}\\
-    (b) Exploration trajectories of Participant 2.\\[2mm]
-    \caption{
-        \textbf{Exploration trajectories of two representative participants,
-            instantiating the multi-floor library model (Figure~\ref{fig:two_views}a).}
-        Horizontal axes: atmosphere coordinate $v$;
-        vertical axes: genre-ness coordinate $u$;
-        marker colors: genre;
-        lines: consecutive exploration chains.}
-    \label{fig:exploration_behavior}
-\end{figure}
+We therefore asked ourselves what kind of information representation
+space we wanted, and put the answer in well-defined form. The answer
+was the OT hypothesis. Under it, the disentangled representation we
+sought---the multi-floor library---took the form of an OT-FB.
 
+Computing an OT-FB from data was itself no small undertaking; we
+developed a method that does so. With it, we built a web application
+in which the representation itself serves as the interface---a virtual
+library with rabbit holes---requiring no special UI craft.
 
-%%% 7.1 From Representation to Behavior %%%
-\subsection{From Representation to Behavior}
+We then observed how users behaved and what they experienced inside
+this library. They paused at places that resonated with what they
+were seeking, moved between floors through the rabbit holes, and
+found what they were looking for. Along the way, they discovered not
+only items they liked, but a sense of what their preferences were.
 
-In a disentangled representation space, a user can act with a clear sense
-of what each direction does: what it changes, and what it leaves
-untouched. One direction---the genre-ness coordinate $u$ (here, music
-genre)---carries them across genres; the other moves them along the
-atmosphere coordinate $v$. And the latter---the atmosphere---escapes language: it is felt rather than named. How do users move
-in such a space, and what does the journey become for them? That is what
-this section sets out to observe.
+Through all of this, what is it that we have come to understand?
 
-Let us begin by looking at what two participants did, exploring songs
-for a personal playlist with the music discovery system from
-Section~\ref{sec:systems}. Figure~\ref{fig:exploration_behavior} shows
-their trajectories through the multi-floor library across a three-phase
-session.
+\paragraph{The space had to be disentangled.}
+In an entangled space, distance and closeness fold into each other:
+items may be far in one sense and near in another, but the sense in
+which they are far or near is not separately readable. The paradox of
+\textit{distant yet close} cannot even be stated there. The
+disentangled space is not one design choice among others; it is the
+precondition for the paradox to be addressable at all.
 
-In the first phase, when rabbit holes were not made visible, exploration
-stayed within a few favored genres. In the second phase, when the same
-representation was equipped with rabbit-hole cues, vertical movement
-appeared: lines now span genres at similar atmosphere coordinates. In the
-third phase, with the cues removed, the participants did not return to
-where they had been; they continued moving toward other floors.
+\paragraph{An inductive bias was needed, and OT was a fitting one.}
+Statistical independence alone does not pin down what is independent
+from what; the same data admit many disentanglings. The real task is
+to ask what unnamed commonality we tacitly expect across genres, and
+to give it a definite mathematical form. The OT hypothesis is one such
+form, simple and domain-agnostic: along the rabbit holes, the mass of
+one genre is transported to another at minimum cost. Other forms are
+possible, none can be shown superior to another---yet a form this
+general and reasonable is not easy to find.
 
-These two participants are not exceptional. Trajectories of similar
-character appeared across the cohort, and similar voices were heard in
-the post-experiment interviews. We now turn to the cohort as a whole.
-
-
-%%% 7.2 Observed User Behavior %%%
-\subsection{Observed User Behavior}
-
-
-\subsubsection{User Study Protocol}\label{subsubsec:protocol}
-
-The user study consisted of two experiments answering different
-questions about the same space. Experiment~1 asked whether the
-representation alone---with the interface held fixed---changes how
-users explore. Experiment~2 asked how exploration moves as the
-navigational scaffolding becomes available and is then withdrawn.
-
-Experiment~1 had each participant explore two libraries in turn. The
-two were visually identical but built on different models: the
-proposed disentangled one (P) against an alternative (C1) in which
-each genre carries its own atmosphere axis (e.g., orchestra/piano
-within Classical).
-Experiment~2 placed users inside a single disentangled library (P)
-and observed how their exploration moved as the navigational
-scaffolding---the rabbit-hole cues and the cross-floor alignment of
-the atmosphere coordinate---became available and was then withdrawn.
-The model itself stayed the same throughout; we rotated $\mathcal{V}$
-independently per genre, so that switching genres no longer foretells
-where each atmosphere lies (C2).
-
-In total, 135 participants took part (63 and 72 across the two
-experiments, ages 18--62). Each was asked to explore songs and build a
-personal playlist titled \textit{`Fresh Finds'}, with the instruction
-to behave naturally: ``not a competition for playlist size, but an
-observation of your usual discovery process.'' Sessions ended with a
-questionnaire and a brief interview. Three behavioral indicators were
-recorded: \textit{genre entropy} $H_g$, breadth across genre floors;
-\textit{atmosphere entropy} $H_a$, breadth along the atmosphere
-coordinate $v$; and \textit{exploration chain length}, the length of
-consecutive moves within a small atmosphere distance. Full procedure,
-metric definitions, and statistical tests are given in
-Appendix~\ref{app:user_study}. The study was approved by the authors'
-institutional research ethics committee.
-
-
-\subsubsection{Genre Expansion with Atmosphere Focus}
-
-\begin{figure}[t]
-    \centering
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=1.0\linewidth]{fig/fig8a.png}
-        \caption{Exploration: Genre}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=1.0\linewidth]{fig/fig8b.png}
-        \caption{Discovery: Genre}
-    \end{subfigure}  \\[4mm]
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=1.0\linewidth]{fig/fig8c.png}
-        \caption{Exploration: Atmospheric}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=1.0\linewidth]{fig/fig8d.png}
-        \caption{Discovery: Atmospheric}
-    \end{subfigure}
-    \caption{
-        \textbf{Behavioral breadth in Experiment 1.}
-        Normalized entropy over genres (a,b) and atmosphere space (c,d)
-        for played items (exploration) and marked items (discovery).
-        Asterisks and $p$-values indicate statistical significance between conditions.
-        Presentation order was counterbalanced (Group~CP: C1$\to$P; Group~PC: P$\to$C1).
-        (See Supplement~\ref{sup:tables}.)
-    }
-    \label{fig:behavioral_measurements1}
-\end{figure}
-
-
-Figure~\ref{fig:behavioral_measurements1} compares the two breadth
-measures between systems~P and~C1 in Experiment~1. Two observations
-appear together: in system~P, behavior was broader
-\textit{across} genre floors and narrower \textit{along} the
-atmosphere coordinate---both in what participants played
-(exploration; panels a, c) and in what they marked (discovery; panels b, d). The two
-movements occurred in the same participants at the same time, under
-both presentation orders.
-
-This is what we saw earlier in the trajectories of two participants;
-here it is, across the cohort. It is also what the representation was
-designed to make available: a coordinate common to all genres yet
-independent of any.
-
-
-\subsubsection{Sustained Cross-Genre Exploration}
-
-Figure~\ref{fig:chain_length} turns to Experiment~2, where the same
-library was traversed in three phases (C2~$\to$~P~$\to$~C2) as the
-meaning of the space became visible and was then withheld. The figure
-overlays the exploration chains of all 72~participants---each dot a
-chain, measured by consecutive moves within a small atmosphere distance.
-
-In the P phase, mean chain length remains modest, but the distribution
-shows a pronounced long tail. Some chains extend over dozens of songs,
-moving across genre floors while staying at a similar atmosphere
-coordinate (red dots).
-
-It is worth dwelling on what this says. We cannot prove that $v$
-represents affect itself---no behavioral data could settle that. What
-we can say is that users stayed along the same $v$, song after song.
-The coordinate carried meaning for them: the path along a rabbit hole
-was, for these listeners, far from arbitrary.
-
-What we saw earlier in two participants now appears across the cohort,
-aligning with the genre expansion with atmosphere focus seen in
-Experiment~1. Perhaps one might put it this way: through perceiving
-the meaning of the representation, users were afforded cross-genre
-exploration along a resonant atmosphere axis.
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.8\linewidth]{fig/fig9.png}
-    \caption{
-        \textbf{Exploration chain length in Experiment 2.}
-        Each dot represents a continuous exploration sequence.
-        Red dots indicate cross-genre transitions.
-        Yellow bars show means.
-        System P produces a long-tail distribution with occasional extended chains.
-    }
-    \label{fig:chain_length}
-\end{figure}
-
-
-
-%%% 7.3 User Experience %%%
-\subsection{User Experience}
-
-\begin{figure}[t]
-    \centering
-    \begin{subfigure}[b]{0.48\textwidth}
-        \includegraphics[width=1.0\linewidth]{fig/fig10a.png}
-        \caption{Experiment 1 (P vs. C1)}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.48\textwidth}
-        \includegraphics[width=1.0\linewidth]{fig/fig10b.png}
-        \caption{Experiment 2 (P vs. C2)}
-    \end{subfigure}
-    \caption{
-        \textbf{User experience evaluation.}
-        Box plots show rating differences (System P minus comparison) for six aspects.
-        Positive values favor system P\@.
-        Both experiments show system P outperforms in five of six aspects,
-        with no difference in unexpectedness (B).
-        (See Supplement~\ref{sup:tables}.)
-    }
-    \label{fig:user_experience_evaluation}
-\end{figure}
-
-The previous subsection observed what users did from the outside. What
-did they make of it?
-
-The questionnaire (Figure~\ref{fig:user_experience_evaluation}) gathers
-what participants reported feeling, in twenty Likert items grouped into
-six aspects---four adapted from the Serendipitous Digital
-Environment Scale~\cite{McCayPeet20181} and two developed for this
-study. Across both experiments, ratings spoke of finding it easier to
-discover (A: ease of discovery), of noticing the cues that drew their
-attention (C: trigger-rich; D: highlights triggers), of seeing
-connections among items (E: enables connections), and of learning
-about their own preferences (F: discovering preferences).
-Unexpectedness (B: leads to the unexpected) was rated about the same;
-interviews suggested why---in a foreseeable space, discoveries arrived
-less as surprise than as something anticipated.
-
-Post-experiment interviews echoed this in many ways. Recurring themes
-included finding tastes in genres they would not normally enter,
-noticing that what they liked spanned genres rather than belonged
-to one, and recognizing why a piece from one floor resonated with a
-piece from another. Most striking was how often participants spoke of
-discovering not just music but themselves: of finding that their
-preferences lived along an atmosphere axis rather than within any
-genre, of putting into words what they had previously only felt. Each
-described it in their own way; what they described was strikingly
-similar.
-
-It seems that when humans are given a well-formed representation
-space with signposts, they tend to explore---each in their own
-direction---and discover themselves.
+\paragraph{What this hypothesis still allows.}
+The hypothesis admits more than one axis. On the descriptor side,
+attributes beyond genre---artist, era, and the like---each layer in
+their own descriptor-ness axis. On the body side, an item may be
+embedded through several views, each carving out its own universe with
+its own rabbit hole. Our children's
+literature instantiation does exactly this: from the same books, the
+noun tags and the adjective tags give two descriptions, hence two body
+data, carrying a \textbf{thematic atmosphere} and a \textbf{tonal
+atmosphere} respectively, disentangled through the same
+shelves.\footnote{Available at
+    \url{https://serendipity-books-demo.vercel.app/?lang=en}.} However
+many axes are added, they remain disentangled as far as the OT
+hypothesis allows.
