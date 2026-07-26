@@ -50,26 +50,27 @@
 \maketitle
 
 \begin{abstract}\noindent
-    Serendipity is often described as finding something ``unexpected yet relevant.''
-    We read this as the \textit{distant-yet-close paradox}: items explicitly distant
-    in named features yet implicitly close in unnamed ones. This is a problem of
-    \textit{representation}, not of interface design: the paradox can be addressed
-    only in a space that disentangles the two senses of closeness. Disentangled
-    representation, however, is ill-posed; the right one is singled out by an
-    \textit{inductive bias} declaring what one wants. We propose \textit{optimal
-        transport} as that bias, and the representation it yields is the
-    \textbf{Optimal Transport Fiber Bundle (OT-FB)}: genre-ness and atmosphere
-    coordinates form separable axes of one geometry, connected by \textit{rabbit
-        holes} between genre-distant yet atmosphere-close regions. Two
-    views render this one structure: the \textbf{multi-galaxy curved universe}, the
-    entangled form in which data arrive, and the \textbf{multi-floor library}, the
-    disentangled form in which users may walk. Mathematics secures the concept:
-    once declared, the bundle is well-defined and essentially unique. Computation
-    gives it reality: the bundle is learned from real data and offered to the
-    reader as an explorable system. The unnamed is never put into words; held as
-    geometry, it gains a place where it can be felt. The contribution is the
-    disentangled representation itself: distant yet close ceases to be a paradox
-    and becomes the local geometry of the bundle.
+    Serendipity cannot be searched for: no one can name in advance what would
+    count as finding it. What one can do is explore, as visitors to a library
+    always have. This paper asks what an information space must hold if
+    serendipity is to be sought in it, and answers with a concept: a library
+    with rabbit holes. Its floors gather works under a named descriptor such as
+    genre; between them run \textit{rabbit holes}, passages that cross the names
+    entirely while holding fixed a commonality no such name carries. An explorer
+    can leap through a rabbit hole into another world whenever they want, with a
+    chance of finding something serendipitous there. Such doors belong to
+    \textit{representation}, not interface design---no interface can surface
+    what the underlying representation does not already encode. Separating the
+    named from the unnamed is ill-posed: infinitely many representations fit the
+    same data, and no computation can choose among them. An \textit{inductive
+        bias} must declare what one wants, and it cannot itself be a naming. We
+    propose \textit{optimal transport} as that bias. Once declared, the
+    resulting \textbf{Optimal Transport Fiber Bundle (OT-FB)} is well-defined
+    and essentially unique, with a closed-form embedding; learned from 2,500
+    songs across ten genres, it yields an atmosphere coordinate common to all
+    genres yet independent of any. The contribution is the representation, and
+    the account it carries: designing an exploration space holds an irreducible
+    act of declaration---one for documentation, not computation.
 \end{abstract}
 
 \begin{quote}\parindent=0pt\parskip=.5em\noindent
@@ -77,41 +78,37 @@
         \textbf{Structured Abstract}
     \end{center}
     \textbf{Purpose.}
-    We address the \textit{distant-yet-close paradox} of serendipity---items
-    explicitly distant in named features yet implicitly close in unnamed
-    ones---as a problem of \textit{information representation} rather than
-    interface design. Our aim is to construct, from data, a \textit{disentangled
-        representation space} in which this paradox becomes navigable.
+    Serendipity cannot be searched for: no one can name in advance what would
+    count as finding it. What one can do is explore. This paper asks what an
+    information space must hold if serendipity is to be sought in it, and
+    answers with a concept: a library with \textit{rabbit holes}---a question of
+    \textit{representation}, not interface design.
 
     \textbf{Design/methodology/approach.}
-    Disentangled representation is ill-posed; the right one is singled out by an
-    \textit{inductive bias} declaring what one wants. We propose the
-    \textit{optimal transport (OT) hypothesis} as that bias, aligning the
-    atmosphere coordinate across genres. Under this hypothesis the
-    representation takes the form of an \textbf{Optimal Transport Fiber Bundle
-        (OT-FB)}, in which genre-ness and atmosphere coordinates form separable
-    axes of one geometry, connected by \textit{rabbit holes}. The paper is
-    self-contained at three levels: \textbf{conceptual} (the multi-galaxy curved
-    universe and the multi-floor library), \textbf{mathematical}
-    (well-definedness and essential uniqueness of the bundle), and
-    \textbf{computational} (an alternating optimization that learns the bundle
-    from data).
+    Floors gather works under a named descriptor such as genre; rabbit holes
+    cross the names while holding fixed a commonality none of them carries.
+    Separating the two is ill-posed: infinitely many representations fit the
+    same data. An \textit{inductive bias} must declare what one wants---and
+    cannot itself be a naming. We propose the \textit{optimal transport (OT)
+        hypothesis}, yielding the \textbf{Optimal Transport Fiber Bundle
+        (OT-FB)}. It is self-contained at three levels: conceptual, mathematical
+    (well-definedness, essential uniqueness, a closed-form embedding), and
+    computational (learning from works and descriptors).
 
     \textbf{Findings.}
-    In the OT-FB learned from the Million Song Dataset, the atmosphere
-    coordinate emerged common to all ten genres yet independent of any: tags
-    that cross genre boundaries organized the atmosphere space, while
-    genre-bound tags did not. Quantitative comparison with baseline methods
-    supports this separation. The learned representation is offered to the
-    reader as an explorable system.
+    Declaring the hypothesis determines the bundle: well-defined and essentially
+    unique. Learned from 2,500 songs across ten genres of the Million Song
+    Dataset, it yields an atmosphere coordinate common to all genres yet
+    independent of any---organized by tags that cross genres, not by genre-bound
+    ones.
 
     \textbf{Originality/value.}
-    The contribution is the disentangled representation itself, given
-    well-defined mathematical form by the OT hypothesis and shown to be
-    learnable from real data. It offers an account of why the felt closeness of
-    serendipity resists reduction to named attributes, and of what a
-    representation must hold instead. With this representation in place, distant
-    yet close ceases to be a paradox and becomes the local geometry of the bundle.
+    The contribution is the representation itself: an unnamed affinity given
+    definite geometric form without being named, and learnable from real data.
+    With it comes an account of why serendipity's felt closeness resists
+    reduction to named attributes, and of what a representation must hold
+    instead. Designing an exploration space holds an irreducible act of
+    declaration---one for documentation, not computation.
 \end{quote}
 
 \noindent\textbf{Keywords:}
