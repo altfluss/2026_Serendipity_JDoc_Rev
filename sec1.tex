@@ -8,46 +8,45 @@ implicit closeness transcending categorical boundaries. Such discoveries
 transform perspective---one sees a door between distant domains---and that
 transformation lies at the heart of serendipitous experience.
 
-Serendipity research returns again and again to pairs of terms held in
-tension: \textit{unexpected and relevant}, \textit{surprising and useful}, \textit{novel and
-    familiar}~\cite{Kotkov2016180,Ziarani2021375,Chen2019,Hasan2023933,Nahm2023}.
-These pairings form a tangle of paradoxes that articulates both serendipity's
-appeal and its elusive nature. In exploratory systems, this tangle takes a
-single concrete form, which we call the \textit{distant-yet-close paradox}:
-the items an explorer hopes to encounter are explicitly distant in features we
-\emph{can name}---no search by those features can reach them---yet implicitly
-close in some aspect of features we \emph{cannot}, and it is in that unnamed
-closeness that their relevance resides.
+What we pursue is an information exploration space in which such
+doors---doors between distant domains---stand everywhere. Each door joins one
+genre or category to another by a commonality that no such name carries. Each
+joins things so far apart that, without such a door, only chance would bring
+them together. An explorer who opens a door may find a serendipitous
+experience; or may find nothing, and the door closes quietly again. Either
+way, the space affords the search: a door always beside them, to leap into
+another world. We call such doors \textit{rabbit holes}.\footnote{In
+    \textit{Alice's Adventures in Wonderland}, Alice follows a rabbit down a hole
+    into another world.}
 
-Our aim is to provide users with a coordinate system that embodies this paradox:
-a space whose axes serve as a guide, allowing users to explore freely in search
-of serendipitous encounters. In the coordinate system, one axis lies
-\emph{along} a named descriptor such as genre, a feature that can be made
-explicit. The other lies \emph{across} descriptors, following an unnamed feature
-they share, one that stays implicit. Such a space is what we call a
-\emph{representation}---and it is here, before any interface, that our true aim
-lies: no interface can surface what the underlying representation does not
-already encode~\cite{Blair1985289,Furnas1987964}.
+A space equipped with rabbit holes everywhere is not a matter of interface
+design, but one of representation. A door can be entered only if it exists in
+the space beneath the display---the space in which each work has its place,
+and each step leads somewhere one can mean to go. That space is what we call a
+\emph{representation}: no interface can surface what it does not already
+encode~\cite{Blair1985289,Furnas1987964}. Our aim lies there, before any
+interface.
 
-What, then, \emph{is} such a representation? Is there a space in which the
-distant-yet-close relation is not a tension to resolve, but a structure one can
-build and traverse---and if so, what is it? We answer first as a concept: the
-original data space---the \textbf{multi-galaxy curved universe}---is recast as
-a representation space, the \textbf{multi-floor library}, whose floors are
-connected by \textit{rabbit holes}\footnote{In \textit{Alice's Adventures in
-        Wonderland}, Alice follows a rabbit down a hole into another world.} that
-bridge distant regions---an unnamed affinity that runs \emph{across} categories
-and is \emph{shared} among them. A rabbit hole from Debussy on the classical
+What, then, \emph{is} such a representation? We answer first as a concept.
+The original data space---the \textbf{multi-galaxy curved universe}, where
+genres form separate galaxies and straight lines in data are not straight
+lines in meaning---is recast as the \textbf{multi-floor library}. Each floor
+gathers works sharing a named descriptor, genre say, and to walk a floor is
+to hold that name fixed while moving through everything the name leaves
+unnamed. Between the floors the rabbit holes run straight: passages that hold
+that unnamed quality fixed while crossing the names entirely. Curved in the
+\emph{entangled} universe, straight in the \emph{disentangled} library, the
+passage is one and the same. A rabbit hole leaving Debussy on the classical
 floor arrives at Miles Davis on the jazz floor---distant in the names we can
-give them, yet close in what those names cannot.
+give them, close in what those names cannot.
 
-What makes a representation good for distant-yet-close serendipity, and how
-should such a representation be given concrete form? Our answer is the
+How is such a library to be given definite form? Our answer is the
 \textbf{Optimal Transport Fiber Bundle} (OT-FB): a \textit{disentangled}
-representation space in which the distant-yet-close relation is geometrically
-encoded. Mathematics secures this concept: once declared, the bundle is
-well-defined and essentially unique. Computation gives it reality: it can be
-learned from real data.
+representation space in which floors and rabbit holes are geometric objects,
+determined by the optimal transport that carries the works of one genre onto
+those of another. Mathematics secures the concept---once declared, the bundle
+is well-defined and essentially unique. Computation gives it reality---it can
+be learned from real data.
 
 The affinity between Miles Davis and Debussy is never put into words in this
 paper, and never needs to be. It receives a definite form instead: held as
@@ -60,35 +59,22 @@ with it, an account of why the felt closeness of serendipity resists reduction
 to named attributes, and of what a representation must hold instead.
 
 \paragraph{Paper structure.}
-Section~\ref{sec:serendipity} surveys serendipity research and situates the
-distant-yet-close paradox within the classical theory of information
-relevance, motivating a \emph{disentangled information representation} as the
-key challenge.
-Section~\ref{sec:library_universe_model} presents our
-vision---the multi-floor library, the disentangled form of the entangled
-multi-galaxy curved universe. Section~\ref{sec:modeling} shows how Optimal
-Transport Fiber Bundle (OT-FB) geometry realizes this vision.
-Section~\ref{sec:computational} turns the geometry into computation:
-an alternating optimization that learns the bundle from data.
-Section~\ref{sec:demonstration} gives the concept reality: the
-representation is learned from real data and offered to the reader as an
-explorable system.
+Section~\ref{sec:serendipity} reviews serendipity research---its process
+models, the affordances of the physical library, and the classical theory of
+relevance and of naming---and asks what an information space must hold if
+serendipity is to be sought in it: a \emph{disentangled information
+    representation}.
+Section~\ref{sec:library_universe_model} presents our vision---the multi-floor
+library, the disentangled form of the entangled multi-galaxy curved universe.
+Section~\ref{sec:modeling} shows how Optimal Transport Fiber Bundle (OT-FB)
+geometry realizes this vision.
+Section~\ref{sec:computational} turns the geometry into computation: how the
+bundle can be learned from the works themselves and the names they are given.
+Section~\ref{sec:demonstration} gives the concept reality: the bundle is
+learned from an actual music collection, and the result is opened to the
+reader as an explorable system.
 Section~\ref{sec:discussion} reflects on what the pursuit revealed---the
 necessity of disentanglement, the fitness of OT as an inductive bias, and
 what the geometry returns to the theory of relevance.
 Section~\ref{sec:conclusion} closes the circle opened by Miles
 Davis and Debussy.
-
-\paragraph{Conceptual anchor.}
-The \textbf{multi-galaxy curved universe}, the \textbf{multi-floor library},
-and the \textbf{Optimal Transport Fiber Bundle (OT-FB)} are three names for
-one structure. The universe is the view from the \emph{entangled} data
-space, where straight lines in data are not straight lines in meaning; the
-library, the view from the \emph{disentangled} representation space, where
-each book sits in its proper place and straight walks within a floor
-\emph{are} semantic walks. OT-FB is their shared mathematical expression.
-\emph{Rabbit holes}---curving through the universe, vertical between floors
-in the library---realize the distant-yet-close relation. Throughout the
-paper, the curved universe names the entangled data space, the library
-names the disentangled representation space, and OT-FB names their
-mathematics.
