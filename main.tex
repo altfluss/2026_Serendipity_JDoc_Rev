@@ -55,22 +55,21 @@
     always have. This paper asks what an information space must hold if
     serendipity is to be sought in it, and answers with a concept: a library
     with rabbit holes. Its floors gather works under a named descriptor such as
-    genre; between them run \textit{rabbit holes}, passages that cross the names
-    entirely while holding fixed a commonality no such name carries. An explorer
-    can leap through a rabbit hole into another world whenever they want, with a
-    chance of finding something serendipitous there. Such doors belong to
-    \textit{representation}, not interface design---no interface can surface
-    what the underlying representation does not already encode. Separating the
-    named from the unnamed is ill-posed: infinitely many representations fit the
-    same data, and no computation can choose among them. An \textit{inductive
-        bias} must declare what one wants, and it cannot itself be a naming. We
-    propose \textit{optimal transport} as that bias. Once declared, the
-    resulting \textbf{Optimal Transport Fiber Bundle (OT-FB)} is well-defined
-    and essentially unique, with a closed-form embedding; learned from 2,500
-    songs across ten genres, it yields an atmosphere coordinate common to all
-    genres yet independent of any. The contribution is the representation, and
-    the account it carries: designing an exploration space holds an irreducible
-    act of declaration---one for documentation, not computation.
+    genre; through them run \textit{rabbit holes}, vertical passages that cross
+    the names entirely while holding fixed a commonality no such name carries.
+    An explorer can leap through one into another world whenever they want,
+    with a chance of finding something serendipitous there. Such an exploration
+    space is a matter of information \textit{representation}---the layer any
+    interface presupposes and none can substitute for. What is needed, then, is
+    a \textit{disentangled} representation: one that separates named descriptors
+    from unnamed commonalities. To achieve disentanglement, we introduce
+    \textit{optimal transport} as a natural inductive bias: the resulting
+    \textbf{Optimal Transport Fiber Bundle (OT-FB)} is well-defined and
+    essentially unique among the infinitely many representations that fit the
+    same data, with a closed-form embedding learnable from real data. What the
+    bundle says about rabbit holes is this: they are determined not by what any
+    two works have in common, but by how one genre stands to another as a
+    whole---which is what transport, and not pairwise distance, can express.
 \end{abstract}
 
 \begin{quote}\parindent=0pt\parskip=.5em\noindent
@@ -78,37 +77,36 @@
         \textbf{Structured Abstract}
     \end{center}
     \textbf{Purpose.}
-    Serendipity cannot be searched for: no one can name in advance what would
-    count as finding it. What one can do is explore. This paper asks what an
-    information space must hold if serendipity is to be sought in it, and
-    answers with a concept: a library with \textit{rabbit holes}---a question of
-    \textit{representation}, not interface design.
+    Serendipity cannot be searched for: what would count as finding it cannot
+    be named in advance. What remains is exploration. This paper asks what an
+    information space must hold if serendipity is to be sought in it---a
+    question of information \textit{representation}.
 
     \textbf{Design/methodology/approach.}
-    Floors gather works under a named descriptor such as genre; rabbit holes
-    cross the names while holding fixed a commonality none of them carries.
-    Separating the two is ill-posed: infinitely many representations fit the
-    same data. An \textit{inductive bias} must declare what one wants---and
-    cannot itself be a naming. We propose the \textit{optimal transport (OT)
-        hypothesis}, yielding the \textbf{Optimal Transport Fiber Bundle
-        (OT-FB)}. It is self-contained at three levels: conceptual, mathematical
-    (well-definedness, essential uniqueness, a closed-form embedding), and
-    computational (learning from works and descriptors).
+    We propose a concept: a library with \textit{rabbit holes}---a
+    \textit{disentangled representation} of an otherwise entangled data space.
+    Its floors gather works under a named descriptor such as genre; rabbit
+    holes run vertically through the floors, crossing the names entirely while
+    holding fixed a commonality none of them carries. Once the space is
+    disentangled, an explorer can move within a genre or leap through a rabbit
+    hole into another, both by intent.
 
     \textbf{Findings.}
-    Declaring the hypothesis determines the bundle: well-defined and essentially
-    unique. Learned from 2,500 songs across ten genres of the Million Song
-    Dataset, it yields an atmosphere coordinate common to all genres yet
-    independent of any---organized by tags that cross genres, not by genre-bound
-    ones.
+    Introducing \textit{optimal transport} as a natural bias yields the
+    \textit{Optimal Transport Fiber Bundle (OT-FB)}: a definite form,
+    essentially unique among the infinitely many representations that fit the
+    same data, and learnable from real data. What it says about rabbit holes is
+    this: they are determined not by what any two works share, but by how one
+    genre stands to another as a whole---which is what transport, and not
+    pairwise distance, can express.
 
     \textbf{Originality/value.}
-    The contribution is the representation itself: an unnamed affinity given
-    definite geometric form without being named, and learnable from real data.
-    With it comes an account of why serendipity's felt closeness resists
-    reduction to named attributes, and of what a representation must hold
-    instead. Designing an exploration space holds an irreducible act of
-    declaration---one for documentation, not computation.
+    The paper locates the design of an exploration space in representation
+    rather than interface; realizes that representation in a form both unique
+    and learnable from data; and shows that a commonality between distant
+    genres is found not pairwise but in how whole domains stand to one another.
+    For information science, it marks a limit of naming, which attaches to
+    individual works.
 \end{quote}
 
 \noindent\textbf{Keywords:}
