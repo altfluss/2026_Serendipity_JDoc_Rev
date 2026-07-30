@@ -1,80 +1,115 @@
 %%%%% Section 1 Introduction %%%%%
 \section{Introduction}\label{sec:introduction}
 
-Consider a jazz piece by Miles Davis and a classical work by Debussy.
-Categorically and acoustically, they are distant. Yet listeners discover
-profound commonalities---contemplative sensibility, evocative atmosphere, an
-implicit closeness transcending categorical boundaries. Such discoveries
-transform perspective---one sees a door between distant domains---and that
-transformation lies at the heart of serendipitous experience.
+A visitor comes to the reference desk of a music library.
 
-What we pursue is an information exploration space in which such
-doors---doors between distant domains---stand everywhere. Each door joins one
-genre or category to another by a commonality that no such name carries. Each
-joins things so far apart that, without such a door, only chance would bring
-them together. An explorer who opens a door may find a serendipitous
-experience; or may find nothing, and the door closes quietly again. Either
-way, the space affords the search: a door always beside them, to leap into
-another world. We call such doors \textit{rabbit holes}.\footnote{In
-    \textit{Alice's Adventures in Wonderland}, Alice follows a rabbit down a hole
-    into another world.}
+\begin{quote}
+I am looking for something like Miles Davis---that atmosphere I cannot
+quite name.
+\end{quote}
 
-A space equipped with rabbit holes everywhere is not a matter of interface
-design, but one of representation. A door can be entered only if it exists in
-the space beneath the display---the space in which each work has its place,
-and each step leads somewhere one can mean to go. That space is what we call a
-\emph{representation}: no interface can surface what it does not already
-encode~\cite{Blair1985289,Furnas1987964}. Our aim lies there, before any
-interface.
+The librarian asks for something more specific. The visitor searches for
+words, falls silent for a while, and finally offers:
 
-What, then, \emph{is} such a representation? We answer first as a concept.
-The original data space---the \textbf{multi-galaxy curved universe}, where
-genres form separate galaxies and straight lines in data are not straight
-lines in meaning---is recast as the \textbf{multi-floor library}. Each floor
-gathers works sharing a named descriptor, genre say, and to walk a floor is
-to hold that name fixed while moving through everything the name leaves
-unnamed. Between the floors the rabbit holes run straight: passages that hold
-that unnamed quality fixed while crossing the names entirely. Curved in the
-\emph{entangled} universe, straight in the \emph{disentangled} library, the
-passage is one and the same. A rabbit hole leaving Debussy on the classical
-floor arrives at Miles Davis on the jazz floor---distant in the names we can
-give them, close in what those names cannot.
+\begin{quote}
+Quiet, but with feeling in it; impressionistic; colours that seem to melt
+into one another\ldots{} I cannot say it well.
+\end{quote}
 
-How is such a library to be given definite form? Our answer is the
-\textbf{Optimal Transport Fiber Bundle} (OT-FB): a \textit{disentangled}
-representation space in which floors and rabbit holes are geometric objects,
-determined by the optimal transport that carries the works of one genre onto
-those of another. Mathematics secures the concept---once declared, the bundle
-is well-defined and essentially unique. Computation gives it reality---it can
-be learned from real data.
+A visitor who gets this far is doing well; most never move past the first
+sentence. The librarian understands the request---or feels she does. But
+consider what the catalogue gives her to work with. From ``Miles Davis'' it
+retrieves a genre (jazz), an instrument (trumpet), a period (the 1950s and
+60s), a country (the United States). A search on these facets returns hard
+bop, fusion, and a quantity of other trumpeters, most of it not what the
+visitor wants. Some weeks later, by another route---browsing a shelf, or a
+friend's recommendation---he comes upon Debussy's piano music, and thinks:
+\emph{so this is what I was looking for.}
 
-The affinity between Miles Davis and Debussy is never put into a single word in
-this paper, and never needs to be. It receives a definite form instead: held as
-geometry, as coordinates that do not name, the unnamed remains unnamed and yet
-gains a place where it can be felt. This is what the rabbit holes offer:
-passages through which an explorer can be led by a resonance that no name
-reaches---an exploration in which serendipity has somewhere to happen. Our
-contribution is the representation that makes such passage possible---and, with
-it, an account of why the felt closeness of serendipity resists reduction to
-named attributes, and of what a representation must hold instead.
+This scene is our point of departure, and we take it apart before building
+on it. First, everything the catalogue records has changed. Jazz has become
+classical, trumpet piano, the 1950s the 1900s, America France; a performer
+has even become a composer. Not one catalogued attribute survived the
+passage---and yet the visitor's criterion was met. Second, the affinity is
+not a private fancy. The kinship between the music around Miles Davis and
+impressionist harmony has been remarked many times: the modal language of
+\emph{Kind of Blue}, Bill Evans's pianism, and Gil Evans's orchestration
+have all been discussed in relation to Debussy and
+Ravel~\cite{TODO-musicology}. What the visitor sensed lies \emph{in the
+works}; it is simply written in none of the catalogue's fields. Third, what
+the visitor discovered was not a piano piece. He did not say ``what a fine
+piece''; he said ``this is what \emph{I} was looking for.'' The object of
+his discovery was his own criterion---something he could not have stated
+before the encounter. Fourth, he had indicated his need in two ways: by
+pointing at a work (``like Miles Davis''), and by heaping up partially apt
+words (``quiet, with feeling, melting colours''). Neither is a subject
+term, and the catalogue has a field for neither.
 
-\paragraph{Paper structure.}
-Section~\ref{sec:serendipity} reviews serendipity research---its process
-models, the affordances of the physical library, and the classical theory of
-relevance and of naming---and asks what an information space must hold if
-serendipity is to be sought in it: a \emph{disentangled information
-    representation}.
-Section~\ref{sec:library_universe_model} presents our vision---the multi-floor
-library, the disentangled form of the entangled multi-galaxy curved universe.
-Section~\ref{sec:modeling} shows how Optimal Transport Fiber Bundle (OT-FB)
-geometry realizes this vision.
-Section~\ref{sec:computational} turns the geometry into computation: how the
-bundle can be learned from the works themselves and the names they are given.
-Section~\ref{sec:demonstration} gives the concept reality: the bundle is
-learned from an actual music collection, and the result is opened to the
-reader as an explorable system.
-Section~\ref{sec:discussion} reflects on what the pursuit revealed---the
-necessity of disentanglement, the fitness of OT as an inductive bias, and
-what the geometry returns to the theory of relevance.
-Section~\ref{sec:conclusion} closes the circle opened by Miles
-Davis and Debussy.
+Wilson distinguished two powers at which bibliographic control can
+aim~\cite{Wilson1968}: \emph{descriptive} power, the power to find
+everything that bears on a topic, and \emph{exploitative} power, the power
+to put recorded knowledge to one's own best use. What the cataloguing
+tradition built to a high finish---from Cutter's objects through facet
+analysis---is the former; the latter has been left, for the most part, to
+the skill of readers and librarians. Our visitor is asking for the latter:
+not what a work is \emph{about}, but how it \emph{feels}.
+
+Two kinds of attribute must therefore be told apart, and the pair will
+anchor everything that follows. \emph{Denotative} attributes can be
+expressed as sets of mutually exclusive labels and implemented as facets:
+genre, period, creator, instrument, country. \emph{Connotative} attributes
+cannot. They resist a single name, come in degrees, are many-dimensional,
+interfere with one another, and take form in the encounter between work and
+listener. What Miles Davis and Debussy share is of this second kind. Cross
+the pair with the familiar division between known-item search and
+exploratory browsing, and four quadrants appear
+(Table~\ref{tab:quadrants}). Faceted navigation is exploratory yet entirely
+denotative, so the customary opposition of ``facets versus exploration''
+misses the point: what facets fail to carry is not exploration but the
+unnamed. And the quadrant of connotative search---retrieving a work by a
+quality no one can name---is nearly empty. Why it is empty will become
+clear in Section~\ref{subsec:third}.
+
+\begin{table}[t]
+\centering
+\caption{Two kinds of attribute crossed with two modes of seeking.}
+\label{tab:quadrants}
+\begin{tabular}{lll}
+\toprule
+ & Known-item search & Exploratory browsing \\
+\midrule
+Denotative  & bibliographic search, OPAC & faceted navigation \\
+Connotative & (nearly empty) & readers' advisory, Book House \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This problem is not new to library and information science. It has been
+worked on from three directions, by three lineages that rarely cite one
+another. How ``quiet, with feeling, melting colours'' might be written into
+a bibliographic record is a question of \emph{representation}
+(Section~\ref{subsec:first}). That the visitor could not say what he sought
+until he had found it is a question about \emph{the seeker}
+(Section~\ref{subsec:second}). How a system might receive ``like Miles
+Davis'' is a question about \emph{the means of access}
+(Section~\ref{subsec:third}). Section~\ref{sec:lineages} follows each
+lineage to its endpoint; laid over one another, the three endpoints
+determine what is required almost uniquely. It is not another interface. It
+is a \emph{representation}---something written into records, outliving its
+maker, shared across libraries---for qualities that have no name; for no
+interface can surface what the representation beneath it does not already
+encode~\cite{Blair1985289,Furnas1987964}. Section~\ref{sec:framework}
+states the proposal: a coordinate system in which a work's nameable
+properties and its unnamed qualities occupy separate coordinates, the
+unnamed ones serving as \emph{headings without names}---and there
+serendipity, too, acquires a precise sense: the seeker's recognition that
+one of their own unnamed targets is expressed by such a coordinate.
+Section~\ref{sec:mathematics} supplies the mathematics on which the
+proposal leans---the metric under which the coordinate system is unique, so
+that whoever computes it obtains the same one; this, we will argue, is the
+condition for coordinates to serve as authority data.
+Section~\ref{sec:computation} shows that the coordinates can be learned
+from a collection and its catalogue metadata,
+Section~\ref{sec:demonstration} demonstrates this on real data,
+Section~\ref{sec:discussion} discusses what changes for libraries, and
+Section~\ref{sec:conclusion} concludes.
