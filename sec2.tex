@@ -1,234 +1,196 @@
-%%%%% Section 2 Three lineages %%%%%
-\section{Three lineages}\label{sec:lineages}
+%%%%% Section 2 Serendipity in Information Systems %%%%%
+% 2026-08-01 全面書き直し(旧「Three lineages」構成を置換。旧稿は git 履歴にあり)
+\section{Serendipity in Information Systems: Prior Work and Research
+  Challenge}\label{sec:serendipity}\label{sec:lineages}
 
-The scene touches three questions at once, and the field has pursued all
-three: how such qualities might be represented, what the seeker is
-seeking, and how works might be reached. Three lineages---which seldom
-cite one another. What follows is not a survey of any of them. We put one
-question to all three, and follow each only as far as its answer. A thing
-this field learns can end up in two places: in the \emph{record}, where it
-outlives its maker and travels between libraries---call this a
-\emph{representation}---or in the session, the interview, the interface,
-the librarian's own skill, where it works and then vanishes---call this an
-\emph{interface}. The question, then: \emph{what did each lineage learn,
-and where did the learning end up?}
+The scene of Section~\ref{sec:introduction} is not new to research. This
+section reviews the work it touches---on serendipity, on what a record can
+hold, on systems built for encounters---with one aim: to locate what a
+library with rabbit holes requires that prior work has not yet
+supplied, and to give that requirement its technical name.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The first lineage: representing what has no name}
-\label{subsec:first}
+\subsection{What Serendipity Is}\label{subsec:serendipity_process}
 
-The instrument of this lineage has been the name. Facet analysis divides a
-domain by named characteristics into classes that are mutually exclusive
-and jointly exhaustive, and the field's standards share the commitment:
-definition by properties is preferred, definition by enumeration admitted
-only where the enumeration is closed~\cite{ISO704}. For most of what a
-catalogue does, the instrument serves.
+The word \textit{serendipity} was coined by Horace Walpole after
+\textit{The Three Princes of Serendip}, whose heroes made discoveries ``by
+accidents and sagacity''~\cite{The-Three-Princes-of-Serendip,Walpole1754}.
+From the start the notion held two things together: a chance encounter,
+and the prepared mind that recognizes its significance---Pasteur's
+``chance favors the prepared mind''~\cite{Pasteur1854}. Serendipity is not
+luck befalling a passive observer; it is met halfway by a mind in motion.
 
-The visitor said ``impressionistic'', and the word shows exactly where it
-stops serving. Debussy is routinely classed under \emph{Impressionism};
-had the librarian taken the word as a genre term, she would have reached
-the answer---and the label would have excluded Miles Davis, the very work
-the visitor started from. A label that expels the seeker's own point of
-departure is no expression of his criterion. Sharpen the label and members
-fall out; widen it and noise floods in; either way, what the seeker had
-encircled is gone. We will call this \emph{flattening by labelling}: the
-phenomenon has no established name of its own, though Olson's \emph{power
-to name} comes close~\cite{Olson2002}. Nor is it an accident of poor
-vocabulary design. The limit was identified from within the lineage
-itself. Wilson showed that even a document's \emph{subject}---the
-supposedly firm ground---is indeterminate~\cite{Wilson1968}; and Mai, in
-the lineage's sharpest formulation, concluded that indexing
+Modern research keeps this double structure. Serendipitous encounters are
+``unexpected and relevant''~\cite{Kotkov2016180}, a pairing that recurs in
+varied wordings across the
+field~\cite{Ziarani2021375,Chen2019,Hasan2023933}; the experience itself
+has been resolved into ``a mix of unexpectedness and insight'' leading to
+a valuable, unanticipated
+outcome~\cite{Makri2012part1,Makri2012part2}. That serendipity unfolds as
+a \emph{process}---an encounter noticed, judged worth pursuing, and
+followed until it reshapes how one sees a
+domain~\cite{McCayPeet20151463,Rubin2011,Busch20241110,Corneli2020}---and
+that the process runs on the seeker's own active
+exploration~\cite{Dervin1983,Makri20142179,Lee20154851} are, by now,
+premises the field shares; we take them as given.
 
-\begin{quote}
-is not a neutral and objective representation of a document's subject
-matter but the representation of an interpretation of a document for
-future use~\cite{Mai2001591}.
-\end{quote}
+What exactly is gained in the encounter? Merton's classical formulation
+repays close reading: the serendipity pattern is the experience of
+``observing an unanticipated, anomalous and strategic datum which becomes
+the occasion for developing a new theory''~\cite{Merton1948505}. The
+unexpected datum is the \emph{occasion}; what changes is the observer's
+own theory. The surprise comes from outside; the discovery happens inside.
+Our visitor reproduces this structure exactly: what he found was not a
+piano piece but his own criterion---insight, in Makri and Blandford's
+word, here into his own seeking. The information-need literature explains
+why such insight cannot be supplied in advance: a need of this kind is
+visceral before it is verbalized~\cite{Taylor1968178} and cannot, in
+principle, be specified by its owner~\cite{Belkin198261}. It is recognized
+at the encounter, not stated before it.
 
-On his Peircean account, interpretation is an unlimited chain of signs; a
-label halts the chain at a point the indexer chooses. The empirical record
-concurs: agreement between indexers on such qualities is persistently
-low---in a classic test with images, thirty-nine indexers agreed on terms
-at an average of seven per cent~\cite{Markey1984155}---and Shatford Layne
-judged the abstract layer of images, where mood and atmosphere fall,
-impossible to index ``with any consistency'', while insisting that it
-should not therefore be abandoned~\cite{ShatfordLayne1994583}. One may
-read these numbers darkly, as proof that connotative attributes cannot be
-measured at all. We leave that question open here;
-Section~\ref{sec:framework} answers it.
-
-What form remains, if not the name? Pejtersen, analysing recorded
-conversations of fiction readers with librarians, found their criteria to
-be ``a combination of several different features''---never a single
-dimension~\cite{Pejtersen1983230}. And the set that satisfied our visitor,
-\{the recordings around Miles Davis, Debussy's piano works, \ldots\},
-shares no facet value at all, yet coheres. There is a formal name for such
-a set: a \emph{polythetic class}, whose members share many attributes
-pairwise while no single attribute runs through the
-whole~\cite{Needham1975349}. The expression the visitor needs is
-extensional---the set itself, shown rather than described. But precisely
-here the lineage stops: extensional definition is admitted only as closed
-enumeration, and this set is not closed. Recordings not yet heard, works
-not yet written, belong to it. \emph{The lineage learned the right
-form---an open extension---and possessed no way to write one into a
-record.}
+The pair of Section~\ref{sec:introduction} lets these definitional
+pairings be read at a glance: each crosses a denotative predicate with a
+connotative one. A serendipitous encounter joins works explicitly distant
+in denotation and implicitly close in some connotation---\textit{distant
+  yet close}, a relation to be treated not as a puzzle but as a structure
+awaiting definite form.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The second lineage: serendipity and the unnameable need}
-\label{subsec:second}
+\subsection{Denotation, Connotation, and What a Record Can
+  Hold}\label{subsec:naming}
 
-What happens at the moment the visitor thinks, \emph{so this is what I was
-looking for}? The classical answer belongs to Merton:
+\paragraph{The reach of naming.}
+Bibliographic control is a technology of naming, and Wilson identified the
+two powers at which it can aim: \emph{descriptive} power, to find
+everything that bears on a topic, and \emph{exploitative} power, to put
+what is found to one's own best use~\cite{Wilson1968}. What the
+cataloguing tradition brought to a high finish---from Cutter's
+objects~\cite{Cutter1876} through facet analysis~\cite{Broughton200649}---is
+the former. Facets implement denotative attributes almost by definition:
+sets of mutually exclusive labels, each carried whole by a single word.
+For most of what a catalogue does, the instrument serves.
 
-\begin{quote}
-The serendipity pattern refers to the fairly common experience of
-observing an unanticipated, anomalous and strategic datum which becomes
-the occasion for developing a new theory or for extending an existing
-theory~\cite{Merton1948505}.
-\end{quote}
+\paragraph{The denotative and the connotative.}
+The other kind of meaning has been recognized under many vocabularies.
+Semiotics gave the pair its name: denotation and
+connotation~\cite{Barthes1977}. Image indexing met it as Panofsky's
+iconological layer---mood, symbol, atmosphere---which Shatford's
+\emph{of/about} matrix carried into cataloguing
+theory~\cite{Shatford198639}; which Shatford Layne judged impossible to
+index ``with any consistency,'' while insisting it should not therefore be
+abandoned~\cite{ShatfordLayne1994583}; and which Rafferty later mapped
+explicitly onto Barthes's pair~\cite{Rafferty2011283}. Svenonius drew
+the same limit for visual and aural media
+generally~\cite{Svenonius1994600}. Relevance theory met it as the gap
+between the \emph{descriptive} relevance a system computes and the
+\emph{affective} relevance a user
+seeks~\cite{Saracevic1996201,Cosijn2000533,Xu2007179}. Fiction retrieval
+met it as appeal, the qualities readers actually ask
+for~\cite{Pejtersen1983230}; and on such qualities, trained indexers agree
+with one another at rates as low as seven per
+cent~\cite{Markey1984155}. The divide is old, robust, and known
+under many names. What has been missing is not awareness of the
+connotative side, but a form in which it can be held.
 
-Look closely at what the unexpected datum occasions: not a new fact about
-the world, but a reformulation of the observer's own theory. The surprise
-comes from outside; what changes is inside. Merton's serendipity was
-reflexive at its origin---and the scene reproduces the structure exactly.
-What the visitor gained was not knowledge of Debussy but knowledge of his
-own criterion, which had existed, unverbalized, all along.
-
-LIS has built a vigorous research tradition on serendipity, and to it we
-put our one question: where has the discovered thing been placed? Foster
-and Ford moved serendipity from happy accident to something arising from
-the seeker's own conditions and strategies~\cite{Foster2003321}; Erdelez
-gave the unexpected finding of information a name and a
-research programme~\cite{Erdelez1999}; Makri and Blandford resolved the
-experience into unexpectedness, insight and
-value~\cite{Makri2012part1,Makri2012part2}. Each sharpened the
-phenomenon's structure. Yet in each, what is discovered is placed in the
-world---information, works, connections. Describe our scene in these terms
-and everything fits; but the one fact that mattered, that the visitor
-learned his own criterion, falls out of the description. Merton's
-reflexive structure was not inherited.
-
-The same field holds a second stream, one that made unnameability its
-explicit subject---and the two streams hardly cite each other. Taylor
-distinguished four levels of an information need: visceral, conscious,
-formalized, compromised~\cite{Taylor1968178}. The scene is his textbook
-case: ``that atmosphere I cannot quite name'' is visceral; the three
-groped adjectives are the move to conscious; and what is finally typed
-into the catalogue---``jazz'', ``trumpet'', ``1950s''---is compromised,
-the need pared down at every step. The anomalous-state-of-knowledge
-hypothesis went further: a need of this kind cannot, in principle, be
-specified by its owner, and the system should therefore not demand a
-specification~\cite{Belkin198261}---by which light the librarian's
-``something more specific, please'' was precisely the wrong request.
-Kuhlthau placed the formation of a focus inside the search process rather
-than before it~\cite{Kuhlthau1991361}; behavioural decision research found
-preferences \emph{constructed} in the course of elicitation rather than
-revealed by it~\cite{Slovic1995364}.
-
-Join the two streams, and a conclusion follows at once. If the need cannot
-be named in advance, its satisfaction cannot be a matching---there is
-nothing to match against. It can only be \emph{recognition after the
-encounter}. The visitor does not know, until Debussy, precisely what he
-was seeking; at the encounter, he knows. In connotative access, then,
-serendipity is not a peripheral accident: it is the normal mode in which
-criteria are discovered. \emph{The lineage learned that the target is
-recognized rather than specified---and kept placing the recognized thing
-outside the seeker, in the world.}
+\paragraph{Why naming cannot close the gap.}
+The limit is structural, not lexical. Indexing, Mai showed, is not a
+neutral representation of a document's subject but the representation of
+an interpretation---a halt imposed on an open chain of
+signs~\cite{Mai2001591}; sharpen a label and members fall out, widen it
+and noise floods in. The set our visitor circumscribed---the recordings
+around Miles Davis, Debussy's piano works---shares no facet value at all,
+yet coheres: a \emph{polythetic class}~\cite{Needham1975349}, and an open
+one, since works not yet heard belong to it. No enrichment of vocabulary
+closes this gap, for naming is what these qualities resist. Hence an
+asymmetry that shapes everything downstream: \textbf{denotation arrives
+  with the record}---it is \emph{descriptor data}, given---whereas
+\textbf{connotation is written in no field}. If it is to enter an
+information system at all, it must be drawn from the \emph{body data}: the
+work itself, the track or the text, dense and whole.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The third lineage: reaching without naming}
-\label{subsec:third}
+\subsection{Serendipity in Information Systems}\label{subsec:systems}
 
-The traditional mode of access is predicative: the user states a term, and
-the system returns what was described by it. Its premises---that the user
-can say the word, and that the work carries it---fail twice in our scene.
-But the visitor showed the other mode himself, untaught: ``like Miles
-Davis'' is not a predication but an act of pointing. Retrieval research
-formalized this as \emph{ostensive access}, the query as a growing set of
-indicated exemplars~\cite{Campbell1996251}; Pejtersen's Book House let
-readers search by icons rather than words~\cite{Pejtersen1983230}.
-Pointing adds no label, so it cannot flatten. And the scene shows why the
-exemplars must be several: ``like Miles Davis'' alone leaves undecided
-which of that music's dozens of properties is meant---the trumpet, the
-modal harmony, the decade, the quiet---and only when Debussy is added do
-genre, instrument and period fall away.
+Where does the connotative seeker stand in today's systems?
+Table~\ref{tab:quadrants} lays out the terrain: the two kinds of
+attribute, crossed with three modes of encounter---searching for what one
+can specify, receiving what a system selects, and exploring on one's own.
 
-Then one limit decides everything: an ostensive query cannot be recorded.
-Suppose the librarian had known the Miles--Debussy kinship. She could have
-answered on the spot---but where in the record could she have written that
-knowledge down? No field receives it. It leaves when she leaves, and the
-next visitor gropes for words from the beginning. An institution is
-precisely the practice of writing things down so that they can be handed
-on; what cannot be recorded may live as personal skill, but it does not
-accumulate. Here is why the connotative quadrant of
-Table~\ref{tab:quadrants} stands nearly empty---not conceptual
-impossibility, but infrastructure. Bibliographic records describe items
-one at a time; ostension requires similarity \emph{between} items. The
-tradition built collocation by author and by
-subject~\cite{Cutter1876}; it did not build collocation by connotative
-likeness. Did not---which is not the same as could not.
+\begin{table}[t]
+  \centering
+  \caption{Two kinds of attribute crossed with three modes of encounter.}
+  \label{tab:quadrants}
+  \begin{tabular}{llll}
+    \toprule
+                & Search                     & Recommendation                  & Exploration                   \\
+    \midrule
+    Denotative  & bibliographic search, OPAC & content-based filtering         & faceted navigation            \\
+    Connotative & (nearly empty)             & collaborative filtering,        & readers' advisory, Book House \\
+                &                            & serendipity-oriented recsys & \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
-Could the similarity itself be computed from the works? Two routes were
-tried. On the first, the analyst names a quality and prescribes its
-formula: readability from sentence lengths~\cite{Flesch1948221}, texture
-from six named features~\cite{Tamura1978460}, musical mood from named
-parameters mapped onto adjectives~\cite{Hevner1936246}. The route failed
-systematically---it demands that dimensions be named in advance, and
-naming is what these qualities resist; Tamura and colleagues said as much
-themselves, finding ``fundamental problems in digital analysis of
-textures''. On the second route, dimensions are derived rather than named:
-multidimensional scaling recovers a space of nearness from similarity
-judgments alone~\cite{Shepard1962125}, and latent semantic indexing
-condenses the term--document matrix into factors that are, in principle,
-unnamed~\cite{Deerwester1990391}. The watershed, note, is not machine
-learning. The vector space model had documents as feature vectors by
-1975~\cite{Salton1975613}; but its dimensions were words, and connotation
-does not live in single words---it lives in patterns of their
-distribution, which is what the latent factors recover. Modern embeddings
-continue this route rather than break with it. And within the same route
-lies a mechanism this paper will lean on: from a \emph{set} of relevant
-documents, a \emph{distribution} can be estimated~\cite{Lavrenko2001120}.
-A set goes in; a rule of judgment comes out; and the rule is open, passing
-verdicts on documents not yet seen.
-
-The newest chapter was written mostly outside libraries. The road most
-travelled to ``something like Miles Davis'' now runs through a streaming
-service, whose collaborative filtering never looks at the works at all: it
-factorizes the record of who listened to what, deriving a stand-in for
-connotative proximity from the behaviour of other users. It works. But
-consider the coordinate system it yields. It is free up to rotation, so
-the same data admit infinitely many equivalent systems and nothing in the
-mathematics prefers one; it shifts when its user population shifts; and it
-cannot be written into a bibliographic record or shared across libraries.
-\emph{The lineage learned to reach without naming---by pointing, by
-deriving, by proxy---and everything it built took the form of an
-interface. What it never produced is a representation.}
+Recommendation-based serendipity research occupies the middle column: the
+system models the user and selects, computationally, the items worth
+surprising them
+with~\cite{Kotkov2016180,Ziarani2021375,Shrivastava20231,Kunaver2017,Hasan2023933,Chen2019}.
+Collaborative filtering even reaches the connotative row: its latent
+factors are proxies for unnamed affinity, derived from the listening of
+other users---a fertile path, whose limits are instructive. What it
+delivers is an item, selected \emph{for} the user rather than found
+\emph{by} them; and the coordinates it derives are free up to rotation,
+shift as the user population shifts, and can be written into no
+bibliographic record. \textbf{Exploration-based} approaches reverse the
+agency: the user moves, and the system provides the
+terrain~\cite{McCayPeet20181,Marchionini200641,Thudt20121461,Beale2007ambient}.
+This is where our visitor belongs---serendipity, we saw, is insight met by
+a mind in motion---and this is the column in which the physical library
+has always excelled. Bj\"orneborn, studying serendipity in physical
+libraries, named the affordances that make it so:
+\emph{diversifiability}, \emph{traversability}, and
+\emph{sensoriability}~\cite{Bjorneborn20171053}---many directions to
+differ along, freedom to move among them, and qualities one can sense in
+place. The bottom-right cell holds the practices closest to our aim,
+readers' advisory and Pejtersen's icon-based Book
+House~\cite{Pejtersen1983230}; yet both live at the interface---in the
+conversation, the session, the librarian's skill. What the connotative row
+still lacks is what Section~\ref{sec:introduction} argued must come first:
+a representation---a space beneath any interface whose directions afford
+for connotation what Bj\"orneborn's library affords in its aisles.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Where the lineages meet}\label{subsec:meet}
+\subsection{Representation Learning and the Disentanglement
+  Challenge}\label{subsec:disentanglement}
 
-Now lay the three endpoints over one another.
+The requirement can now be stated in the vocabulary of
+\textit{representation learning}~\cite{Bengio20131798}: mapping
+observations---the body data---into a space whose distances,
+neighborhoods, and paths carry meaning~\cite{Bronstein201718}. What
+Section~\ref{subsec:serendipity_process} described as a felt relation,
+\textit{distant yet close}, representation learning describes as a
+\textit{disentangled representation}~\cite{Higgins2017,Higgins2018}: one
+in which the underlying factors of variation align with separable
+directions of the space. In our setting the factors are the two kinds of
+attribute themselves: one direction is \emph{denotation-fixed}, moving
+through connotation while the genre holds; the other is
+\emph{connotation-fixed}, crossing genres while the connotation holds.
+When the two are separable, a work can be far in one and near in the other
+at once. When they are entangled, the two collapse into a single distance,
+and the closeness between Davis and Debussy is absorbed into their
+categorical separation.
 
-The first lineage asks for an open extension and cannot write one down.
-The third holds the mechanism that repairs this at a stroke: derive a
-distribution from the set, and the enumeration opens---the distribution
-judges recordings not yet heard, expressing what the members share without
-ever saying it. And a distribution can be indicated by a \emph{position}.
-A position can be written down. At that moment, what was an interface
-becomes a representation. The knowledge our librarian had nowhere to put
-acquires a place in the record: not as a name, but as a position. The
-empty quadrant fills.
-
-The second lineage dictates how such positions must be found. The seeker
-cannot state coordinates---that would demand a formalized need from a
-visceral one, the very demand ruled out above. A position can only be
-narrowed the way the visitor narrowed his: through encounter, and
-recognition. And this, the lineage showed, is no makeshift but the only
-way.
-
-At the intersection, what the second lineage left unclaimed is recovered.
-What the visitor recognized in Debussy was not the piece; the piece was
-the occasion. What he recognized was that his target is expressed \emph{as
-this position}. That is Merton's reflexive structure, expressible at last
-in the form the other two lineages supply. The next section states it as a
-proposal.
+Constructing such a representation is a recognized open challenge. In the
+unsupervised setting it is provably ill-posed: for any disentangled
+solution, infinitely many entangled ones generate the same
+observations~\cite{Locatello20197247}. Some \textit{inductive bias}---a
+structural assumption about the space---is therefore unavoidable; the
+question is not whether to adopt one, but which one is appropriate for
+distant yet close. That is where the present work places itself. The
+connotation-fixed direction is precisely the rabbit hole of
+Section~\ref{sec:introduction}---among infinitely many candidate
+directions, the one that carries meaning.
+Section~\ref{sec:framework} paints the space that holds such holes;
+Section~\ref{sec:mathematics} shows that, once the scope of the data is
+fixed, an appropriate bias follows naturally, in the form of optimal
+transport.
