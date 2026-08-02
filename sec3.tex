@@ -1,171 +1,217 @@
-%%%%% Section 3 The Multi-Floor Library and the Multi-Galaxy Curved Universe %%%%%
-\section{Framework}\label{sec:framework}
-%\section{The Multi-Floor Library and the Multi-Galaxy Curved Universe: A Vision}
+%%%%% Section 3 A Library with Rabbit Holes %%%%%
+\section{A Library with Rabbit Holes}\label{sec:framework}
 
-Section~\ref{sec:serendipity} established that the distant-yet-close paradox
-calls for a disentangled representation. We carry it now to the \textbf{first of
-    the five levels---the Conceptual}: painting the vision through two contrasting images
-of the same items. The multi-floor library shows the disentangled form in which
-users may walk freely; the multi-galaxy curved universe shows the entangled
-native form in which the data arrive. To keep the exposition concrete, from here
-on we take the simplest case, in which the only descriptor data given is genre.
-We describe the library first, then the universe.
+Section~\ref{sec:introduction} gave our answer in advance;
+Section~\ref{sec:serendipity} gave what it requires a technical name, a
+\emph{disentangled representation}. It remains to present the concept
+itself. This section shows the library with rabbit holes in its two
+forms---the disentangled form a visitor would walk
+(Section~\ref{subsec:multi_floor_library}), and the entangled form in
+which the works actually arrive
+(Section~\ref{subsec:multi_galaxy})---and then lets the visitor of
+Section~\ref{sec:introduction} walk it (Section~\ref{subsec:seeking}).
+Throughout, we keep to the simplest case, in which the only descriptor
+given is genre.
 
 \begin{figure}[t]
     \centering
     \begin{subfigure}{0.51\linewidth}
-        \includegraphics[width=1.0\linewidth]{fig/fig2a.pdf}
+        \includegraphics[width=1.0\linewidth]{fig/fig1a.pdf}
         \caption{The multi-floor library (disentangled view).}
     \end{subfigure}
     \vspace{3mm}
     \begin{subfigure}{0.48\linewidth}
-        \includegraphics[width=1.0\linewidth]{fig/fig2b.pdf}
+        \includegraphics[width=1.0\linewidth]{fig/fig1b.pdf}
         \caption{The multi-galaxy curved universe (entangled view).}
     \end{subfigure}
     \caption{
         \textbf{Two views of one representation.}
-        (a) The items as floors of a children's library: each floor
+        (a) The works as floors of a children's library: each floor
         holds one genre, books within a floor are arranged by
-        atmosphere, and \textit{rabbit holes} run vertically
-        as elevators that open at every point and connect items
-        sharing the same atmosphere across genres.
-        (b) The same items as their native high-dimensional
-        body data: genres form curved \textit{galaxies} with no shared
-        axis, and the rabbit holes connecting items across galaxies
-        persist only as curved trajectories hidden in the surrounding
-        geometry.
+        connotative closeness, and \textit{rabbit holes} run
+        vertically as elevators that open at every point, connecting
+        works that share a connotative coordinate across genres.
+        (b) The same works as their native high-dimensional
+        body data: each genre scatters into a loose \textit{galaxy} of
+        its own, which can be modeled as a curved surface sharing no
+        axes with the others; works sharing one connotation trace
+        curved trajectories from galaxy to galaxy---rabbit holes in
+        their entangled form.
     }
     \label{fig:two_views}
 \end{figure}
 
 
 %%% Subsection 3.1 The Multi-Floor Library %%%%%
-\subsection{The Multi-Floor Library: The Disentangled Form}\label{subsec:multi_floor_library}
+\subsection{The Multi-Floor Library: The Disentangled
+    Form}\label{subsec:multi_floor_library}
 
-Imagine the user we are designing for. Some of what they want they can
-name---a fantasy novel, perhaps, or jazz---a \textit{named}
-bearing that points the way in. The rest they cannot: the mood that would
-resonate today, the shade of melancholy or wonder they will know only on
-contact. Often no precise question arrives at all; ``is there anything
-interesting today?'' is enough. Whatever sense of ``their kind of book'' they
-carry is felt rather than spoken. A space that serves such a user cannot rely
-on what can be named; it must let them move on their own, finding what they
-could not say in advance. Three requirements on the space follow.
+Recall the visitor introduced in Section~\ref{sec:introduction}. Part of what he
+wants he can clearly name---a genre (jazz), a performer (Miles Davis), a period
+(the 1950s)---and for that part, any catalogue serves. The rest he could only
+circle with words: that atmosphere he could not quite name---quiet, with feeling
+in it, colors melting into one another. A library that would let him seek this
+part cannot rely on names; it must let him move. What, then, must the space he
+moves in afford?
+
+Bj\"orneborn's three affordances (Section~\ref{subsec:systems})
+describe what the physical library already gives its
+explorers~\cite{Bjorneborn20171053}: qualities one can sense in place,
+many directions to differ along, freedom to move among them. Translated
+into requirements on a representation---and asked to hold for
+connotation, not only for denotation---they become three conditions.
 
 \begin{itemize}
-    \item \textbf{(R1) Tangible and locatable:} users can feel the wordless
-          texture of the items where they stand, and sense which crossing of
-          the multi-dimensional meaning-space they occupy.
-    \item \textbf{(R2) Separable and foreseeable:} from that point, users can
-          tell what each direction holds---moving that way, they foresee what
-          changes and what stays. What varies and what holds are separated.
-    \item \textbf{(R3) Steerable and traversable:} with their coordinates and
-          the axes as guides, users choose their own direction and roam the
-          space at will.
+    \item \textbf{(R1) Sensible in place:} standing anywhere in the
+          space, the visitor can feel the texture of the works around
+          him and sense where he is.
+    \item \textbf{(R2) Foreseeable in direction:} he can tell what each
+          direction holds: moving this way, what changes and what
+          stays.
+    \item \textbf{(R3) Traversable at will:} he can choose his own
+          direction and move through the space as he pleases.
 \end{itemize}
+The second condition asks more than diversifiability, and it is where
+disentanglement earns its name. Many directions to differ along do
+not, by themselves, tell an explorer which way to go; a direction
+guides only when one knows what it changes and what it keeps. That is
+what a \emph{disentangled} representation supplies
+(Section~\ref{subsec:disentanglement}): its directions hold one kind
+of attribute and vary the other---denotation-fixed or
+connotation-fixed.
 
-Figure~\ref{fig:two_views}a shows a structure that meets all three: imagine a
-children's library laid out across many floors. Each \textit{floor} gathers one
-genre---fantasy on one, realistic fiction on another, historical narratives on
-yet another---and floors of kindred feeling sit near one another, so that the
-stack runs without a break. Within each floor, books are
-arranged by a closeness one feels but cannot name: on the
-fantasy floor, \textit{The Lord of the Rings} and \textit{The Chronicles of
-    Narnia} sit together among sweeping mythological landscapes, while
-\textit{Kiki's Delivery Service} and \textit{The Worst Witch} lie nearby, both
-following young witches on journeys of growth. Standing among them, the user
-feels where they are (R1) and can see where a step along the floor would lead
-(R2).
+Figure~\ref{fig:two_views}a shows a structure that meets all three.
+Imagine a children's library built across many floors, a floor for each
+genre---fantasy on one, realistic fiction on another---with floors of
+kindred feeling near one another. Within each floor, books are arranged
+by the closeness one feels but cannot name: \textit{The Lord of the
+    Rings} and \textit{The Chronicles of Narnia} together among sweeping
+mythological landscapes; \textit{Kiki's Delivery Service} and
+\textit{The Worst Witch} nearby, both young witches on journeys of
+growth. Standing among them, the visitor feels where he is (R1) and can
+see what a step along the floor would bring (R2).
 
-What turns these isolated floors into a connected space is the
-\textbf{rabbit hole}. At every point on every floor, a rabbit hole
-lies underfoot, like an elevator that opens at any spot on the floor.
-Step into it, and one emerges at the corresponding position on
-another floor---sharing the same atmosphere, however
-distant the genre. From \textit{Kiki's Delivery Service} on the
-fantasy floor, a rabbit hole leads to \textit{Anne of Green Gables} on
-the realistic floor: both quietly luminous coming-of-age stories,
-despite their generic distance. The rabbit hole runs vertically,
-perpendicular to the within-floor
-arrangement.\footnote{For clarity we depict each rabbit hole as
-    one-dimensional; in general it may be two- or higher-dimensional.} And
-because such
-openings lie everywhere, Alice's plunge is available from any point
-in the library (R3), realizing the freedom of self-directed
-exploration set out at the start.
+What joins the floors into one space is the rabbit hole. At every
+point on every floor one lies underfoot, and it runs vertically through
+the whole building, opening onto every floor: step in, and one comes
+out at the corresponding position---the same connotation, however
+distant the genre.\footnote{For clarity we depict each rabbit hole as
+    one-dimensional; in general it may be two- or higher-dimensional.} From
+\textit{Kiki's Delivery Service} on the fantasy floor, a hole leads to
+\textit{Anne of Green Gables} on the realistic floor: two quietly
+luminous coming-of-age stories, generically far apart. And because the
+holes lie everywhere, the leap is available from wherever the visitor
+happens to stand (R3).
 
-This is, concretely, the \textbf{disentangled representation} announced
-abstractly in Section~\ref{subsec:disentanglement}: not each book having a
-coordinate, but a \textit{coordinate system} pervading the whole library, so
-that every step carries meaning. The two explorations of
-Section~\ref{sec:serendipity} are now walks one can take. A horizontal walk
-within a floor is \textit{genre-fixed}: the genre held, the atmosphere varying
-book to book. A descent through a rabbit hole is \textit{atmosphere-fixed}: the
-atmosphere held, while what varies is something we might call
-\textit{genre-ness}.
+What the library gives each work, Section~\ref{sec:introduction} said,
+is not one more label but a \emph{place}. Now we can say it precisely:
+not only each work having coordinates, but a \emph{coordinate system}
+pervading the whole library---every point where a visitor may stand
+has coordinates of its own. Two
+axes are shared by the whole building. The within-floor axis, on which
+the same coordinate means the same connotation on every floor, we call
+the \textbf{connotation space} $\mathcal{V}$; the vertical axis, on
+which the same coordinate means the same genre-ness through every hole,
+the \textbf{denotation space} $\mathcal{U}$. Each work receives its
+pair: a \emph{denotative coordinate} $u$---which floor---and a
+\emph{connotative coordinate} $v$---where on it. That is, the relation
+\textit{distant yet close} (Section~\ref{subsec:serendipity_process})
+now has an exact expression: distant in $\mathcal{U}$, yet close in
+$\mathcal{V}$.
 
-Each floor gives its own horizontal axis, each rabbit hole its own vertical one.
-When floors and rabbit holes are fully consistent, these align into two axes the
-whole library shares. We define the shared horizontal axis---where the same
-coordinate means the same atmosphere on every floor---as the \textit{atmosphere
-    space}, and the shared vertical axis---where the same coordinate means the
-same genre-ness through every rabbit hole---as the \textit{genre-ness space}.
-Both are unnamed affects read from the body data, the descriptor only orienting
-them; the vertical one is genre-ness, a felt quality on which jazz-ness and
-blues-ness lie close, not the genre label. \textit{Distant yet close} is no
-longer a paradox; it is the local geometry of the library.
-
-
+The two coordinates are not born equal. Genre arrives as a
+label---descriptor data, given with the record
+(Section~\ref{subsec:naming})---and labels alone would make the stack
+discrete, one floor per name. The coordinate $u$ is
+\emph{genre-ness}---position, not name---and it makes the stack
+continuous: the pop floor stands next to the rock floor, and a work
+that claims both genres can stand on a floor between them. Connotation
+is simpler: it never had a label---written in no field,
+Section~\ref{subsec:naming} found---and its coordinate $v$ is read
+from the body data, the works themselves.
 
 
 %%% Subsection 3.2 The Multi-Galaxy Curved Universe %%%%%
-\subsection{The Multi-Galaxy Curved Universe: The Same Items in Their Native Form}\label{subsec:multi_galaxy}
+\subsection{The Multi-Galaxy Curved Universe: The Same Works in Their
+    Native Form}\label{subsec:multi_galaxy}
 
-The library is the form we seek; the data themselves do not arrive in
-this form. Each item arrives as \textbf{body data}: raw data
-preprocessed---typically embedded into a vector space---giving hundreds or
-thousands of coordinates per item. The space these vectors inhabit
-(Figure~\ref{fig:two_views}b) is the \textbf{multi-galaxy curved
-    universe}: the same items in their native, entangled form. Its
-dimensionality alone places it beyond what a human can walk; no one
-navigates a several-hundred-dimensional space directly.
+The library is the form we seek; the works do not arrive in it. They
+arrive as body data---the track or the
+text, dense and whole, embedded by preprocessing into vectors of
+hundreds or thousands of dimensions. Section~\ref{sec:introduction} has
+already shown this space: works as stars, genres as loose galaxies, the
+whole a multi-galaxy curved universe (Figure~\ref{fig:two_views}b).
+What it could not yet say is why this universe cannot simply be walked.
 
-That, however, is not the heart of the difficulty. Each item has
-coordinates here, but they form no coordinate \textit{system} (R2): the
-axes of the body data are artifacts of preprocessing, aligned with neither the
-atmosphere nor the genre-ness a user feels, and the space itself is
-\textbf{nonlinear}---curved, often twisted---so that straight-line paths carry no
-meaning.
+The reason is not dimensionality alone. This universe has coordinates
+but no coordinate \emph{system}: the axes, artifacts of preprocessing,
+are aligned with nothing a visitor feels; no direction tells him what
+would change and what would stay (R2); and even moving straight means
+nothing, for the space is curved. The rabbit holes are there---the one
+from Miles Davis to Debussy among them---but only as curved
+trajectories that nothing singles out: real, but not navigable.
 
-Within this space, kindred items are distributed within a nonlinear region---often
-approximated by a manifold---jazz in one, classical in another, fantasy in yet
-another. We call them \textbf{galaxies}. Each galaxy carries its own curved local
-frame; no \textit{atmosphere space} or \textit{genre-ness space} is shared
-across them.
-
-Rabbit holes inhabit this universe as well, but only as curved
-trajectories between galaxies. The one that would lead from Miles
-Davis in the jazz galaxy to Debussy in the classical galaxy is such a
-curve: in straight-line distance the two pieces remain far apart,
-separated by genre though sharing an atmosphere, while the trajectory that
-connects them as
-\textit{distant yet close} winds through directions the preprocessing
-does not single out. These trajectories are precisely what become
-vertical elevators in the library once a proper coordinate system is
-imposed. For now, \textit{distant yet close} lives in this universe
-without being navigable.
+The universe and the library are thus two views of one structure---the
+same works, threaded by the same holes: curved in the entangled
+universe, straight in the disentangled library. All that separates the
+two views is whether a consistent coordinate system has been laid over
+the space; to pass from one to the other is to find that system. What
+the passage buys, we show now by letting him walk it.
 
 
-%%% Subsection 3.3 Two Views of One Representation %%%%%
-\subsection{Two Views of One Representation}\label{subsec:two_views}
+%%% Subsection 3.3 Seeking Serendipity in the Library %%%%%
+\subsection{Seeking Serendipity in the Library}\label{subsec:seeking}
 
-The library and the universe (Figure~\ref{fig:two_views}) are two views of one
-structure---the same items, threaded by the same rabbit holes. Strictly, the
-library is a low-dimensional manifold distilled from the high-dimensional
-universe; what separates them as representations is whether a consistent
-coordinate system has been laid over the space. To pass from one to the other is
-to find that system---one that runs through all galaxies, aligning each galaxy's
-internal arrangement within it. Whether it can be made mathematically precise
-and learned from data is the question we now turn to: the next section unites the
-two under a single object, \textbf{optimal transport on a fiber bundle
-    (OT-FB)}.
+Let the visitor into this space, seeking as ever ``something like
+Miles Davis.'' What he carries, the coordinates let us finally write
+down: somewhere within him is a connotative coordinate of his
+own---call it $v^*$. He cannot state it;
+Section~\ref{subsec:serendipity_process} told us why: a need of this
+kind is visceral before it is verbalized, and cannot be specified by
+its owner. He does not, in fact, know that $v^*$ exists. What he can
+do is stand before a work and feel whether it resonates---whether the
+work's coordinate lies near his own. That sense of affinity is his;
+the library has no access to it.
+
+He begins where anyone begins: with what he can name. The jazz floor
+he can ask for, and once there, he walks. Under his feet the
+connotative coordinate varies continuously; near Miles Davis the
+resonance strengthens, and he slows, and stops. Call the place where
+he stands $\tilde{v}$. Everything so far he could have foreseen (R2):
+within a floor, one moves toward more of what one already feels. So
+far this is seeking, and the space serves it.
+
+Then he steps into the hole at $\tilde{v}$. The leap holds
+$\tilde{v}$ fixed and lets the genre change entirely; he surfaces on
+the classical floor, where nothing nameable survived the
+passage---genre, instrument, period, all different---and yet, before
+Debussy, the resonance holds. The field's oldest pairing,
+``unexpected and relevant''~\cite{Kotkov2016180}, becomes readable as
+two coordinates: unexpected with respect to every denotation,
+relevant in the one connotation the hole held fixed.
+
+And what he finds is more than a piano piece. On the jazz floor the
+resonance might still have been jazz-ness, or Miles-ness; the leap
+stripped those accounts away, and what remains resonating can only be
+the coordinate the hole held. At that moment the visitor discovers
+that the place he had been circling answers to something in
+himself---that $v^*$ exists. ``\textit{So this is what I was looking
+for}'': this is the moment of serendipity---``a mix of unexpectedness
+and insight,'' as Makri and Blandford heard
+it~\cite{Makri2012part1}, the unexpectedness of the instant before,
+the insight of the instant after, when his own criterion first has a
+place.
+
+And the moment is not the end of the walk. He can act on the
+encounter---ride the same hole to a third floor, turn back, walk a
+little and leap again---Merton's ``unanticipated, anomalous and
+strategic datum''~\cite{Merton1948505}: strategic, because the space
+lets a finding become a plan. And here the division of labor is
+exact. The library measures affinity only between works; that is its
+geometry. The affinity between the $v$ of a work and the $v^*$ of the
+visitor no library can measure, for it lives in him. The space does not contain
+serendipity; it gives serendipity somewhere to happen.
+
+Whether such a space can actually be built---whether the coordinate
+system exists, is essentially unique, and can be learned from
+data---is the question the next section answers.
