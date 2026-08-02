@@ -8,11 +8,11 @@ section answers them. Section~\ref{subsec:library_as_bundle} first
 restates the two views of Figure~\ref{fig:two_views} as a single
 mathematical object, in whose vocabulary the three can be put
 exactly, and gives the short answers.
-Sections~\ref{subsec:OT-hypothesis} and~\ref{subsec:OTFB-model} then
-earn them: first between two genres, then among all of them, where
-the object receives its full name. What the answers leave
-open---whether the structure can be learned from data---is the
-business of Section~\ref{sec:computation}.
+Section~\ref{subsec:two_genres} then
+earns them: first between two genres, then among all of them, where
+the object receives its full name.
+Section~\ref{subsec:bundle_reach} closes with what the object can,
+and cannot, express.
 
 
 %%% Subsection 4.1 The Library as a Fiber Bundle %%%%%
@@ -59,21 +59,16 @@ by this geometry at all---does such a bundle exist over the works?
 Second, if it exists, is it unique? Third, if it were made unique,
 could we expect its coordinate $v$ to express connotation?
 
-% --- (4) Answers: yes / no (bias needed) / not of its own accord ---
-The answers, in order. It exists---too readily: any smooth pairing
-of galaxy with galaxy yields a bundle that fits the data. It is not
-unique, for the same reason: infinitely many such pairings can be
-drawn, and nothing in the data prefers one to another---the
-ill-posedness Section~\ref{subsec:disentanglement} announced, met
-here in geometric form~\cite{Locatello20197247}. Singling one out
-requires a further principle, an \textit{inductive bias}. And the
-bundle will not express connotation of its own accord: the bias must
-be chosen so that it does. Both burdens, uniqueness and meaning,
-thus fall on the bias. The next section shows that, for data in
-which Euclidean distance is locally meaningful, such a bias need not
-be invented: it is already at hand.
+% --- (4) Answers(予告程度。詳述は 4.2 P2 が担う)---
+The answers, in order: yes, it exists---too readily, for any
+smooth pairing of galaxy with galaxy yields a bundle that fits the
+data; no, it is not unique---singling one out requires a further
+principle, an \textit{inductive bias}; and the bundle will not
+express connotation of its own accord---the bias must be chosen so
+that it does. Both burdens, uniqueness and meaning, thus fall on
+the bias. The next section chooses it.
 
-% --- Figure 2: U×V, X, Φ (OT-FB の名は 4.3 まで出さない) ---
+% --- Figure 2: U×V, X, Φ (OT-FB の名は 4.2 末尾の命名まで出さない) ---
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.95\linewidth]{fig/fig2.pdf}
@@ -93,140 +88,138 @@ be invented: it is already at hand.
 \end{figure}
 
 
-%%% Subsection 4.2 The goodness of a rabbit hole %%%%%
-\subsection{The goodness of a rabbit hole}\label{subsec:OT-hypothesis}
-
-% --- Para A: 2-galaxy case + Miles & Debussy ---
-Let us start from the two-galaxy case. Consider jazz and classical:
-two galaxies in the universe, sitting far apart. We wish to draw
-rabbit holes between them, pairing items that share atmospheric
-character across the genre gap. Miles Davis's contemplative
-piece in the jazz galaxy and Debussy's contemplative piece in the
-classical galaxy---these we want paired, the rabbit hole connecting
-them (Figure~\ref{fig:two_category_ot}).
+%%% Subsection 4.2 The Optimal Transport Fiber Bundle %%%%%
+\subsection{The Optimal Transport Fiber Bundle}\label{subsec:two_genres}
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.6\linewidth]{fig/fig3.pdf}
     \caption{
-        \textbf{Resolving the \textit{distant yet close} paradox through optimal transport.}
-        Miles Davis's piece (orange) and Debussy's piece (red) lie far apart in body-data space $\mathbb{R}^D$, yet the optimal transport map (gray lines) reveals their implicit closeness: they occupy corresponding positions within their respective genre distributions (jazz, upper; classical, lower). The red line marks the \textbf{rabbit hole} connecting these pieces.
+        \textbf{The two-genre case.}
+        Jazz (blue) and classical (gray) as two galaxies in the
+        data space, each modeled as a manifold. The gray lines show
+        the correspondence singled out by optimal transport---the
+        pairing of the two galaxies with least total squared
+        distance. Under it, Miles Davis's piece (orange) is paired
+        with Debussy's (red): the red line is the rabbit hole
+        between the two genres.
     }
     \label{fig:two_category_ot}
 \end{figure}
 
-% --- Para B: §4.1 復習 + 独立性の限界 ---
-Recall what we asked of $v$ in
-Section~\ref{subsec:what-representation}: an atmosphere coordinate
-\emph{common across all genres yet independent of any}. The word
-\emph{independent} here is the statistical one---$v$ must carry no
-information about the genre $u$. Yet statistical independence
-alone does not determine $\Phi$. Infinitely many independent
-$\Phi$ exist, all satisfying the formal
-setup~\cite{Locatello20197247}; data alone cannot tell us which one
-draws the rabbit holes we want. Genre labels are our only descriptor;
-no explicit supervision on $v$ is available.
+% --- P1: Fig.3 で問題の難しさを直感的に(JDoc/LIS 読者向け)---
+\paragraph{The two-genre case.}
+Consider the simplest library: two genres only. Figure~\ref{fig:two_category_ot}
+shows jazz and classical as the data give them---two galaxies far apart in
+$\mathcal{X}$, each modeled as a manifold. On one sits Miles Davis's piece; on
+the other, Debussy's. Even as body data, the two are nowhere near each other.
+The problem we must solve is to find the lines that join the two
+galaxies---not this one line, but all of them.
 
-% --- Para C: inductive bias + 中核問い + われわれの答え予告 ---
-Independence is necessary but not sufficient. We must add a second
-condition---an inductive bias---that singles out, among the
-infinitely many independent $\Phi$, the one we seek. The bias is not
-ours to invent freely: it must be the one the structure we wish to
-recover actually requires.
+Drawn together, the lines form a correspondence: a rule laying one galaxy onto
+the other. Finding such a correspondence is known to be severely ill-posed
+(Section~\ref{subsec:disentanglement}): infinitely many solutions exist, all
+fitting the data equally well~\cite{Locatello20197247}. To resolve
+it, we must state which solution we count as good---the inductive bias
+Section~\ref{subsec:library_as_bundle} called for. In other words, we must
+define what we want the connotation coordinate $v$ to express. Fortunately, two
+assumptions suggest themselves naturally.
 
-What is this inductive bias? To this single question, the entire
-paper is sharpened. Our answer:
-\begin{quote}
-    \begin{hypothesis}[Optimal Transport Hypothesis]\label{hyp:OT}
-        The goodness of a correspondence between two galaxies is the
-        cost of optimally transporting one galaxy onto the other. We
-        take the right rabbit hole---the right correspondence---to be
-        the one realizing this minimum.
-    \end{hypothesis}
-\end{quote}
-% --- Para 5+6: Monge unpacking (concretely と統合) ---
-To unpack this, picture two galaxies of equal total mass---you may read
-mass as probability normalized to one. A correspondence transports the
-mass of one galaxy onto the other; the \textit{transport cost} is the
-total mass-weighted squared distance moved. We take minimizing this
-transport cost as our definition of the right rabbit hole. Concretely, if each galaxy holds $N=1{,}000$
-items of equal indivisible mass, the hypothesis pairs them one-to-one
-to minimize the sum of squared moving distances---every item finds
-exactly one counterpart, none unpaired, none paired twice.
+\begin{itemize}
+    \item \textbf{(A1) Independence:} the connotation we want is
+          information independent of the denotation---the
+          rabbit hole as the library drew it, a passage running
+          perpendicular to the floors.
+    \item \textbf{(A2) Proximity:} works sharing a connotation lie
+          closer in the data space than works that do not---Miles
+          Davis's piece lies nearer to Debussy's than to a
+          Beethoven symphony.
+\end{itemize}
 
-% --- Para 7: Three reasons ---
-Why is this the right bias? Three reasons.
-\textit{First}, it gives both statistical independence and uniqueness
-in a single stroke~\cite{villani2009optimal,peyre2019computational}:
-among all independent $\Phi$, optimal transport singles out the one of
-\emph{shortest correspondence}---paired items as close as possible.
-\textit{Second}---and this is the inductive bias we sought---shortest
-correspondence is precisely the structure the rabbit hole requires:
-items that share atmosphere, however distant in genre, are pulled as
-close as the transport allows.
-\textit{Third}, optimal transport preserves each galaxy's internal
-geometry: close items pair with close items, peripheral with
-peripheral~\cite{villani2009optimal}.
+% --- P3: (A1)+(A2) → OT への帰着(一度だけ)---
+Together, the two assumptions turn the search for rabbit holes
+into a well-posed problem mathematics already knows: lay one galaxy onto the
+other as closely as possible (A2) while keeping the match
+independent of genre (A1). This is \textit{optimal
+    transport}---carrying all the stars of one galaxy onto the other
+with the least total effort, measured by squared Euclidean
+distance
+(2-Wasserstein)~\cite{villani2009optimal,peyre2019computational}.
+For this cost, the correspondence exists and, under mild
+regularity conditions, is essentially unique---a classical result
+known as Brenier's theorem~\cite{Brenier1991,villani2009optimal}.
 
-% --- Para 8: Returning to Miles & Debussy + relational identity ---
-Returning to Miles Davis and Debussy
-(Figure~\ref{fig:two_category_ot}): the optimal transport map sends
-Miles Davis's piece in the jazz galaxy to a position in the classical
-galaxy, and Debussy's piece occupies precisely that position. They are
-paired not because they sound alike---by direct feature distance they
-do not---but because they occupy \textit{corresponding positions within
-    their respective galaxies}, each at the contemplative, atmospheric
-region of its own genre. The pairing is not pointwise similarity, but
-\emph{relational identity}: each is, within its own galaxy, what the
-other is within theirs. This is the rabbit hole connecting them.
+% --- P4: 知見(最近傍では A1 が破れる → 相同性)---
+This reformulation offers an insight. Miles Davis and Debussy are not
+matched because each is the other's nearest work---matching
+nearest works, pair by pair, would not even guarantee (A1). They
+are matched because the relative position each occupies within
+its own galaxy is homologous
+(Figure~\ref{fig:two_category_ot}). A rabbit hole is decided not
+by the pairwise relation of two works but by how one genre stands
+to another as a whole.
 
-% --- Para 9: Bridge to §4.3 ---
-This establishes the goodness criterion for two galaxies.
-Section~\ref{subsec:OTFB-model} extends it to $K$ galaxies.
+% --- Bridge: 2ジャンル → K ジャンル ---
+This settles the library with two floors. A real collection has
+many, and correspondences drawn pair by pair need not agree with
+one another.
+
+% --- MMOT への拡張(一つの問題に束ねる)---
+\paragraph{The $K$-genre case.}\label{subsec:OTFB-model}
+The extension is direct. Optimal transport generalizes from two
+distributions to $K$ as \textit{multi-marginal optimal
+    transport}~\cite{pass2015multi}: a single correspondence threads
+all $K$ galaxies at once, picking one point from each and
+minimizing the total squared distance among them. Because all
+genres now enter one problem, the threads cannot disagree with one
+another; and existence and essential uniqueness carry over under
+the same kind of regularity conditions~\cite{pass2015multi}.
+
+% --- P2: OT-FB の命名 → Figure 2 に帰結して終わり ---
+What this builds is the object
+Section~\ref{subsec:library_as_bundle} described. Works on one
+thread share one connotative coordinate $v$; with genre-ness
+treated as continuous---unobserved genres filling between the
+observed ones---each thread becomes a smooth curve through every
+galaxy. Galaxies as manifolds, bound by a bundle of such curves:
+the fiber bundle of Section~\ref{subsec:library_as_bundle}, its
+correspondence no longer arbitrary but optimal. We call this
+structure the \textbf{optimal transport fiber bundle
+    (OT-FB)}---and it is exactly what
+Figure~\ref{fig:library_universe} has been showing all along.
 
 
-%%% Subsection 4.3 A bundle of rabbit holes %%%%%
-\subsection{A bundle of rabbit holes}\label{subsec:OTFB-model}
+%%% Subsection 4.3 What the Bundle Can Express %%%%%
+% 見出しは仮(2026-08-02)
+\subsection{What the Bundle Can Express}\label{subsec:bundle_reach}
 
-% --- (1) 2-cat → K-cat への拡張動機 ---
-The two-galaxy case shows the principle, but real collections carry many
-genres---jazz, classical, rock, electronic, folk, $\ldots$ $K$ galaxies
-in all. To build the multi-floor library we must extend the optimal
-transport hypothesis from two galaxies to $K$, with all rabbit holes
-consistent with one another.
+% --- P1: 三つの限定(A1 由来・A2=データ計量由来・V の次元)---
+The OT-FB does not express every connotation. What it expresses is
+what the two assumptions define---no more. By (A1), it holds only
+connotations independent of denotation: whatever in a work depends
+on its genre is left with the genre. By (A2), it depends on the
+body data and their metric: a connotation the data do not contain
+cannot be found. And the dimension of
+$\mathcal{V}$ bounds how much is held at once: a low-dimensional
+$\mathcal{V}$ keeps only the principal share of what remains.
 
-% --- (2) 拡張条件: 全ペア OT + 共通 v ---
-The extension comes in two parts. First, every pair of galaxies is
-aligned by optimal transport, as in the two-galaxy case above. Second,
-we equip each galaxy with a common low-dimensional \textit{atmosphere
-    coordinate} $v$: items connected by a rabbit hole share the same
-value of $v$, regardless of which galaxy they belong to.
+% --- P2: PCA の比喩(一度だけ)---
+What the bundle performs might, as it were, be called a
+\textit{principal connotation analysis} (PCA): like principal
+component analysis, it does not express everything; it returns
+coordinates, not names; and it inherits the metric the data carry.
 
-% --- (3) Manifold + bundle of smooth curves ---
-Under these conditions, each galaxy becomes a smooth manifold. A rabbit
-hole is no longer a single line segment: it is a continuous curve
-threading every galaxy, visiting the points sharing a common $v$. We
-treat the genre-ness coordinate as continuous, with unobserved
-genres filling between the observed ones. Each rabbit hole then
-runs as a smooth, shortest curve through them all. The full collection
-of rabbit holes forms a \textit{bundle of smooth curves} tying the
-galaxies together (Figure~\ref{fig:library_universe}, right).
+% --- P3: multi-view の開口(限定を肯定形で閉じる)---
+It is worth noting that the connotation coordinate is determined
+by the body data: another body dataset yields another connotation
+coordinate. If music is given in two views, as audio and as
+lyrics, the two views open two kinds of rabbit holes---an audio
+connotation and a lyrics connotation---and each work receives the
+coordinates $(u, v_{\mathrm{audio}}, v_{\mathrm{lyrics}})$. The
+library has more holes than any one bundle draws.
 
-% --- (4) fiber bundle → OT-FB + multi-floor library として再認識 ---
-In mathematics, a geometric structure consisting of manifolds tied
-together by a bundle of curves is called a \textit{fiber bundle}.
-Because ours is constructed through optimal transport, we call it the
-\textit{optimal transport fiber bundle}, or \textbf{OT-FB}. This is
-precisely the multi-floor library specified in
-Section~\ref{subsec:what-representation}
-(Figure~\ref{fig:library_universe}, left): the genre-ness coordinate
-$u$ identifies the floor, and the atmosphere coordinate $v$ the
-location on it.
-
-% --- (5) 締めくくり: well-defined mathematical form の獲得 ---
-Serendipity's elusive nature, named at the opening of this paper, has
-now acquired a well-defined mathematical form. \textit{Distant yet
-    close} is no longer a paradox; it is the local geometry of the
-bundle. Section~\ref{sec:computational} turns to learning this bundle
-from data.
+% --- P4: sec4 の締め → sec5 へ(短く)---
+The OT-FB, then, exists and is essentially unique---in theory.
+Whether it can be learned from an actual collection is the
+subject of Section~\ref{sec:computation}.
 
