@@ -1,71 +1,90 @@
-%%%%% Section 4. Realizing the Multi-Floor Library: Optimal Transport on a Fiber Bundle %%%%%
-% 暫定見出し(2026-07-30、再創作で確定させる)。旧見出しは下にコメントで保存
-\section{Mathematics}\label{sec:mathematics}
+%%%%% Section 4. The Definite Form: From Fiber Bundles to Optimal Transport %%%%%
+% 見出しは提案(2026-08-02。"definite form" は sec1/sec2 の motif の回収)。討論で確定させる
+\section{The Definite Form: From Fiber Bundles to Optimal
+  Transport}\label{sec:mathematics}
 
-Section~\ref{sec:framework} cast the vision: the multi-galaxy
-curved universe is to be turned into the multi-floor library. We carry it
-out here, at the \textbf{second of the five levels---the Mathematical}.
+Section~\ref{sec:framework} closed with three questions; this
+section answers them. Section~\ref{subsec:library_as_bundle} first
+restates the two views of Figure~\ref{fig:two_views} as a single
+mathematical object, in whose vocabulary the three can be put
+exactly, and gives the short answers.
+Sections~\ref{subsec:OT-hypothesis} and~\ref{subsec:OTFB-model} then
+earn them: first between two genres, then among all of them, where
+the object receives its full name. What the answers leave
+open---whether the structure can be learned from data---is the
+business of Section~\ref{sec:computation}.
 
-In machine learning, this transformation is called \textbf{disentanglement},
-and it is genuinely difficult~\cite{Locatello20197247}: between any two
-galaxies an infinite number of rabbit holes can be drawn, and no algorithm
-can choose among them until we define what makes a correspondence
-\textit{good}. This forces us to ask: \textit{What is the right rabbit hole?}
-The work begins not with the algorithm, but with the representation---asking
-what, precisely, we want it to look like.
 
+%%% Subsection 4.1 The Library as a Fiber Bundle %%%%%
+\subsection{The Library as a Fiber
+    Bundle}\label{subsec:library_as_bundle}
 
-%%% Subsection 4.1 What representation do we want? %%%%%
-\subsection{What representation do we want?}\label{subsec:what-representation}
+% --- (1) Setup: body data + genre label → coordinate pair ---
+Let us restate what Section~\ref{sec:framework} drew. The works arrive as body
+data: each work $n$ is a point $\mathbf{x}_n \in \mathcal{X} = \mathbb{R}^D$ in
+the universe of Section~\ref{subsec:multi_galaxy}, with its genre label $c_n$ as
+descriptor. What the library gives each work $n$ is a pair of coordinates $(u_n,
+    v_n)$: a denotative coordinate $u_n\equiv u_{c_n} \in \mathcal{U}$---which
+floor, its genre-ness---and a connotative coordinate $v_n \in
+    \mathcal{V}$---where on the floor.
 
-% --- (1) Setup: body data, genre label, coordinates ---
-Let us first formalize the situation. We are given, for each item $n$,
-body data $\mathbf{x}_n \in \mathcal{X} = \mathbb{R}^D$ in the body-data
-universe of Section~\ref{subsec:multi_galaxy}, together with a genre
-label $c_n$ as descriptor.
-
-% --- (2) (u,v) coordinates first, then U×V ---
-What we want is a coordinate pair $(u_{c_n},\, v_n)$ for each item:
-$u_{c_n}$ identifying which floor the item occupies---its
-genre-ness---and $v_n$ its position within that floor---its atmosphere.
-Together, these coordinates span the multi-floor library of
-Section~\ref{subsec:multi_floor_library}, made mathematical as a
-low-dimensional space $\mathcal{U} \times \mathcal{V}$, where
-$\mathcal{U}$ is the genre-ness space and $\mathcal{V}$ the atmosphere
-space.
-
-% --- (3) Φ: both rabbit holes and floors ---
-The two are related by an embedding map
+% --- (2) Φ: floors and rabbit holes as two ways of walking; naming: fiber bundle ---
+The library and the universe are joined by an embedding map
 \[
     \Phi: \mathcal{U} \times \mathcal{V} \to \mathcal{X},
 \]
-which places each coordinate pair $(u, v)$ into the body-data universe
-(Figure~\ref{fig:library_universe}). For each $v$, the curve
-$\Phi(\cdot, v)$ traces one rabbit hole through the universe; for each
-genre $c$, the curve $\Phi(u_c, \cdot)$ traces its floor. Our goal is
-to assign each item $n$ coordinates $(u_{c_n}, v_n)$---where $v$ is
-common across all genres yet independent of any---and to find the map
-$\Phi$ that traces the rabbit holes.
+which carries every point of the library into the universe---not
+only the points where works sit, but every point a visitor may walk
+(Figure~\ref{fig:library_universe}). The structures of
+Section~\ref{sec:framework} are now two ways of walking $\Phi$. Hold
+the genre and vary the connotation: $\Phi(u_c, \cdot)$ traces the
+floor of genre $c$---its galaxy, which we model, as a working
+assumption, as a smooth low-dimensional manifold. Hold the
+connotation and vary the genre: $\Phi(\cdot, v)$ traces a rabbit
+hole---a curve threading every galaxy through the points that share
+$v$. A structure of exactly this kind---a family of manifolds bound
+together by a bundle of curves---has a ready-made name in
+mathematics: a \textit{fiber bundle}, with the denotation space
+$\mathcal{U}$ as its base and the connotation space $\mathcal{V}$ as
+its fiber. The library and the universe of
+Figure~\ref{fig:two_views} are this one bundle seen twice: flat in
+$\mathcal{U} \times \mathcal{V}$, where floors stack and holes run
+straight; curved in $\mathcal{X}$, where galaxies scatter and holes
+bend.
 
-% --- (4) Provably impossible → forces the right question ---
-This goal cannot be reached by computation alone. Disentanglement
-without further specification is \textbf{provably}
-impossible~\cite{Locatello20197247}: infinitely many $\Phi$ satisfy
-the formal setup, and data alone cannot tell us which one draws the
-rabbit holes we want. This is not a technical inconvenience---it forces
-us to ask what makes one correspondence better than another.
+% --- (3) Three questions: modelable? unique? does v express connotation? ---
+The three questions of Section~\ref{sec:framework} can now be put
+exactly. First, can a given collection be modeled
+by this geometry at all---does such a bundle exist over the works?
+Second, if it exists, is it unique? Third, if it were made unique,
+could we expect its coordinate $v$ to express connotation?
 
-% --- Figure 3: U×V, X, Φ ---
+% --- (4) Answers: yes / no (bias needed) / not of its own accord ---
+The answers, in order. It exists---too readily: any smooth pairing
+of galaxy with galaxy yields a bundle that fits the data. It is not
+unique, for the same reason: infinitely many such pairings can be
+drawn, and nothing in the data prefers one to another---the
+ill-posedness Section~\ref{subsec:disentanglement} announced, met
+here in geometric form~\cite{Locatello20197247}. Singling one out
+requires a further principle, an \textit{inductive bias}. And the
+bundle will not express connotation of its own accord: the bias must
+be chosen so that it does. Both burdens, uniqueness and meaning,
+thus fall on the bias. The next section shows that, for data in
+which Euclidean distance is locally meaningful, such a bias need not
+be invented: it is already at hand.
+
+% --- Figure 2: U×V, X, Φ (OT-FB の名は 4.3 まで出さない) ---
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.95\linewidth]{fig/fig3.pdf}
+    \includegraphics[width=0.95\linewidth]{fig/fig2.pdf}
     \caption{
-        \textbf{An optimal-transport fiber bundle (OT-FB).}
+        \textbf{The library as a fiber bundle.}
         The embedding map $\Phi: \mathcal{U} \times \mathcal{V} \to
-            \mathcal{X}$ maps the disentangled multi-floor library (left)
-        to the entangled multi-galaxy universe (right). Fibers---the
-        warped rabbit holes---traverse all galaxies, pairing items
-        that share atmospheric character across genres.
+            \mathcal{X}$ carries the multi-floor library (left) into the
+        body-data universe (right): each floor $\Phi(u_c, \cdot)$
+        becomes a galaxy, and each rabbit hole $\Phi(\cdot, v)$ a
+        curve threading the galaxies, joining works that share a
+        connotative coordinate across genres.
         ($\mathcal{U}$ is depicted as one-dimensional like a real
         library's floors; both $\mathcal{U}$ and $\mathcal{V}$ may be
         two-dimensional or higher.)
@@ -88,7 +107,7 @@ them (Figure~\ref{fig:two_category_ot}).
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=0.6\linewidth]{fig/fig4.pdf}
+    \includegraphics[width=0.6\linewidth]{fig/fig3.pdf}
     \caption{
         \textbf{Resolving the \textit{distant yet close} paradox through optimal transport.}
         Miles Davis's piece (orange) and Debussy's piece (red) lie far apart in body-data space $\mathbb{R}^D$, yet the optimal transport map (gray lines) reveals their implicit closeness: they occupy corresponding positions within their respective genre distributions (jazz, upper; classical, lower). The red line marks the \textbf{rabbit hole} connecting these pieces.
