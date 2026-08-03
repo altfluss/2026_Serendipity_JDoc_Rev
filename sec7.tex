@@ -1,66 +1,54 @@
-%%%%% Section 8. Discussion %%%%%
+%%%%% Section 7. Discussion %%%%%
+% 2026-08-03 全面差し替え。旧稿(Ver.2 コピー)は破棄。
+% §7.1 のみ執筆済み。残る subsections(図書館への含意/予期される反論/
+% 表現とインターフェース 等)は未執筆(instructions.md §4 参照)。
 \section{Discussion}\label{sec:discussion}
 
-Our point of departure was the \textit{distant-yet-close paradox} of
-serendipity. The pursuit led us to the need for a well-formed
-information representation space---one in which an \textbf{atmospheric
-axis}, swept with a genre held fixed, and a \textbf{genre-ness axis},
-swept with an atmosphere held fixed, are disentangled. We modeled such
-a space as the multi-floor library.
+%%% Subsection 7.1 Where Connotation Lives %%%%%
+% 見出しは仮(2026-08-03)
+\subsection{Where Connotation Lives}\label{subsec:where_connotation}
 
-Learning such a representation from data confronts a hard problem:
-straightening the galaxies of a curved universe with no
-\textit{a priori} knowledge of how a star in one galaxy relates to a
-star in another. This is nothing other than the task of defining, in
-mathematical form, an inductive bias that matches what we want.
+% --- P1: sec2 の record の非対称 → 単位の非対称へ ---
+Section~\ref{subsec:naming} located the difference between the two
+kinds of attribute at the record: denotation arrives with it,
+connotation is written in no field. The bundle locates the
+difference more deeply---at the unit. A name is attached to one
+work at a time; what the OT-FB expresses is not a property of one
+work at all.
 
-We therefore asked ourselves what kind of information representation
-space we wanted, and put the answer in well-defined form. The answer
-was the OT hypothesis. Under it, the disentangled representation we
-sought---the multi-floor library---took the form of an OT-FB.
+% --- P2: 三段の認識論(pairwise で不可視 → ドメイン内で構造 → ドメイン間で independence)---
+Consider a collection of two works. Between them there is a
+distance, and nothing more---nothing to say how much of it is
+genre and how much runs across genre. Connotation is not hidden
+in such a world; it has nowhere to exist. Within a genre, among
+many works, it takes shape: each work shares some connotations
+with some works and not with others, and this web of shared and
+unshared gives every work a relative position among its own kind.
+And it is only across genres that the last question can be put:
+which part of this shape is independent of the genre itself?
+Where the ensembles correspond as wholes, galaxy laid onto
+galaxy, what the correspondence preserves is shared across
+domains---and being shared across domains is what
+\emph{independent of denotation} means. Such a whole-to-whole
+correspondence is what transport computes, and what no pairwise
+comparison can.
 
-Computing an OT-FB from data was itself no small undertaking; we
-developed a method that does so. With it, we built a web application
-in which the representation itself serves as the interface---a virtual
-library with rabbit holes---requiring no special UI craft.
+% --- P3: だから single word にならない(語彙ではなく単位の不一致)---
+This is why connotation was never going to be carried whole by a
+name. A name attaches to the individual work; connotation, as the
+bundle draws it, lives in the relations among domains. The
+consistent failure of connotative naming that
+Section~\ref{subsec:naming} recorded is, on this reading, not a
+poverty of vocabulary but a mismatch of unit---and a coordinate
+does not enrich the vocabulary; it changes the unit.
 
-We then observed how users behaved and what they experienced inside
-this library. They paused at places that resonated with what they
-were seeking, moved between floors through the rabbit holes, and
-found what they were looking for. Along the way, they discovered not
-only items they liked, but a sense of what their preferences were.
-
-Through all of this, what is it that we have come to understand?
-
-\paragraph{The space had to be disentangled.}
-In an entangled space, distance and closeness fold into each other:
-items may be far in one sense and near in another, but the sense in
-which they are far or near is not separately readable. The paradox of
-\textit{distant yet close} cannot even be stated there. The
-disentangled space is not one design choice among others; it is the
-precondition for the paradox to be addressable at all.
-
-\paragraph{An inductive bias was needed, and OT was a fitting one.}
-Statistical independence alone does not pin down what is independent
-from what; the same data admit many disentanglings. The real task is
-to ask what unnamed commonality we tacitly expect across genres, and
-to give it a definite mathematical form. The OT hypothesis is one such
-form, simple and domain-agnostic: along the rabbit holes, the mass of
-one genre is transported to another at minimum cost. Other forms are
-possible, none can be shown superior to another---yet a form this
-general and reasonable is not easy to find.
-
-\paragraph{What this hypothesis still allows.}
-The hypothesis admits more than one axis. On the descriptor side,
-attributes beyond genre---artist, era, and the like---each layer in
-their own descriptor-ness axis. On the body side, an item may be
-embedded through several views, each carving out its own universe with
-its own rabbit hole. Our children's
-literature instantiation does exactly this: from the same books, the
-noun tags and the adjective tags give two descriptions, hence two body
-data, carrying a \textbf{thematic atmosphere} and a \textbf{tonal
-atmosphere} respectively, disentangled through the same
-shelves.\footnote{Available at
-    \url{https://serendipity-books-demo.vercel.app/?lang=en}.} However
-many axes are added, they remain disentangled as far as the OT
-hypothesis allows.
+% --- P4: principal connotation =道しるべ(切り捨ては設計判断)---
+Nor does the bundle keep every connotation. The principal
+connotation analysis of Section~\ref{subsec:bundle_reach} retains
+what is independent of denotation, present in the body data, and
+principal among what remains; whatever depends on the genre is
+left with the genre. This is a design decision, not a shortfall.
+An axis whose meaning shifted from floor to floor could not guide
+a leap; what can serve the explorer as a signpost is exactly what
+keeps its meaning on every floor. The rabbit hole is dependable
+for the same reason it is partial.
