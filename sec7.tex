@@ -139,48 +139,73 @@ name adds something no coordinate carries---a person, met only
 through the works, whose way of hearing resonates with their own.
 
 %%% Subsection 7.z(仮)What the Record Should Carry %%%%%
-% 2026-08-08 下書き。内容メモ(コメント)+暫定散文(Claude 叩き台)。
-% 見出し仮(せんせーのメモの表題は「record に何を付け加えるべきなのか?
-% —— connotative coordinate の客観性・普遍性について」。疑問文の見出し
-% "What Should Be Added to the Record?" も候補)。
+% 2026-08-08 下書き、同日改訂(せんせーメモ第2版に基づく)。
+% 内容メモ(コメント)+暫定散文(Claude 叩き台)。見出し仮。
 \subsection{What the Record Should Carry}\label{subsec:what_record_carries}
 
-% --- 内容メモ: connotative coordinate の客観性・普遍性 ---
-% * 問いかけ: connotative coordinate を図書館の record に付け加えるべきか?
-%   その座標はどれくらい客観的で、他館と共有可能か?
-% * 答え:「客観的な基準が生じた瞬間に、connotation は denotation になる」。
-% * 書誌情報に加えるべきは content data とそのメトリック。この2つが与えられれば
-%   connotative coordinate は一意に再現できる。普遍的な coordinate を定義したいなら、
-%   content data(たとえば概要)とベクトル化法(LLM のモデル)を同一にする必要がある。
-% * 図書館に限らず、音楽配信サイトやオンラインブックストアなど様々な場面がある。
-%   各サイトは「入手可能な content data を用い、サイトの目的に合ったメトリックを
-%   定義すべき」。目的は運営ポリシーで決まり、どの connotation が有用かは
-%   サイトごとに異なるだろう。
-% * 言い換え: connotation の空間は無限次元で、どの軸も意味を持ちうるし、その全構造を
-%   知る者はいない。どれを "principal" な connotation にするかはサイトの運営目的で
-%   決まる——よりメタな意味での inductive bias。これは運営者自身にしか決められない。
+% --- 内容メモ(2026-08-08 改訂版)---
+% * 「すべての connotation を集めた space」があるなら、おそらく無限次元。
+%   connotation とは、人びとが生きて経験しているその瞬間ごとに、常に新しく
+%   立ち上がるものだから(★要引用: connotation とはそういうものだと述べた論文。
+%   おそらく LIS ではなく認知言語学の領域)。
+% * 本論文が提供するのは、その一部を切り出した "principal connotation space"。
+%   個々の work はこの部分空間の座標として位置づけられる。
+%   → では、この座標系はどれだけ客観的か?
+% * それは「何をもって principal な connotation とみなしたいか」という、
+%   その図書館・情報アーカイブの運用目的が定める。あるいは音楽配信サイトや
+%   電子ブックショップの経営方針が定める。各組織は入手可能な content data を用い、
+%   目的に合ったメトリックを用いる——いわばメタレベルでの inductive bias。
+% * 目的を共有する組織同士なら、互いに互換性のある connotation coordinate を
+%   採用できる。それは record に次の項目を追加することに相当する:
+%   「局所ユークリッド距離、あるいは標準内積が有効な content data そのもの」。
+% * (前版メモからの継承、散文に残すかは要判断: 「客観的な基準が生じた瞬間に、
+%   connotation は denotation になる」——暫定散文では客観性の問いへの入り口として
+%   1文だけ残した。)
 
-% --- 以下、メモを実現する暫定散文(2026-08-08、Claude 叩き台)---
-Should the connotative coordinate itself, then, be written into the
-record? The wish behind the question is for an objective, shared
-standard, and it undoes itself on arrival: the moment an objective
-criterion for a connotation exists, that connotation has become
-denotation. What the record can carry instead is what reproduces
-the coordinate---the content data and the metric. Fix these two,
-and the coordinate follows uniquely
-(Section~\ref{subsec:two_genres}); a library that records them has
-recorded the coordinate in the only form that survives sharing,
-for another library holding the same summaries and the same
-embedding computes the same space. Universality is available
-exactly to that extent, and no further.
+% --- 以下、メモを実現する暫定散文(2026-08-08 改訂、Claude 叩き台)---
+If there were a space of all connotations, it would have no finite
+dimension. Connotation is not a stock of properties awaiting their
+index; it rises anew in every moment of lived experience, as often
+as someone hears, reads, remembers.
+%%% TODO 引用。「意味・概念は固定された在庫ではなく、使用・経験の瞬間ごとに
+%%% 新しく構築される」を述べる文献の候補(2026-08-08 Web 検索で実在確認済み。
+%%% どれを実際に引くかの判定と一次ソース検証は sec7 執筆時に行う):
+%%% (a) Casasanto & Lupyan (2015) "All Concepts Are Ad Hoc Concepts," in Margolis &
+%%%     Laurence (eds.), The Conceptual Mind, MIT Press. 主張が最も直截——概念は
+%%%     使用のたびにその場で新しく構築される。
+%%% (b) Croft & Cruse (2004) Cognitive Linguistics, Cambridge UP, Part II の
+%%%     dynamic construal approach——語の意味は固定的でなく、使用ごとに on-line で
+%%%     construal される。認知言語学の教科書的典拠として最も安全。
+%%% (c) Barsalou (1987) "The instability of graded structure," in Neisser (ed.),
+%%%     Concepts and Conceptual Development, Cambridge UP. 実験的基盤——同一人物でも
+%%%     機会ごとに概念構造が変動する。前段に Barsalou (1983) "Ad hoc categories,"
+%%%     Memory & Cognition 11.
+%%% (d) Langacker (2008) Cognitive Grammar: A Basic Introduction, Oxford UP.
+%%%     meaning is conceptualization——意味は処理時間の中で展開する動的な概念化。
+%%% (e) 語用論側(記憶ベース・Web 未確認): Carston (2002) Thoughts and Utterances,
+%%%     relevance theory の ad hoc concepts——語義は発話ごとに調整・構築される。
+%%% (f) 記号論・LIS 側: Barthes(connotation の語の出所。ref.bib に Barthes1977
+%%%     あり・一次未検証)/ Eco (1976) A Theory of Semiotics の unlimited semiosis
+%%%     (記憶ベース・Web 未確認)/ §2.2 で引用済みの Mai 2001。
+%%% "connotation" の語で立てるなら (f)、「経験の瞬間ごとに立ち上がる」の実質で
+%%% 立てるなら (a)-(c) が近い。
+What this paper offers is a part cut from that inexhaustible
+whole---a \emph{principal connotation space}
+(Section~\ref{subsec:bundle_reach})---and a place for each work
+within it.
 
-Nor is the library the only keeper of records. A music service, an
-online bookstore, an archive: each holds content data of its own
-and purposes of its own, and each should build its bundle from the
-data it can gather, under a metric suited to what it is for.
-Connotation space is inexhaustible---axes without end, each meaning
-something to someone, its whole structure known to no one. Which
-axes become principal (Section~\ref{subsec:bundle_reach}) is not
-one more fact in the data; it is a decision about purpose---an
-inductive bias of a higher order, and one that only the keeper of
-the collection can supply.
+How objective, then, is this coordinate system? No criterion fixes
+it from outside---had connotation an objective standard, it would
+be denotation already. What fixes the cut is purpose: what a
+library or an archive wants \emph{principal} to mean, what a music
+service or a bookshop is run for. Each organization builds from
+the content data it can gather, under a metric suited to its own
+ends---an inductive bias at the meta level, standing before the
+one of Section~\ref{subsec:two_genres}. And purpose shared is
+compatibility gained: organizations that mean the same thing by
+\emph{principal} can hold mutually compatible coordinates.
+
+What this asks of the record is, in the end, one item: the content
+data itself, kept in a form on which a locally Euclidean
+metric---a standard inner product---is valid. Whoever holds that,
+and shares the purpose, reproduces the space.
