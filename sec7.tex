@@ -2,6 +2,8 @@
 % 2026-08-03 全面差し替え。旧稿(Ver.2 コピー)は破棄。
 % §7.1 のみ執筆済み。残る subsections(図書館への含意/予期される反論/
 % 表現とインターフェース 等)は未執筆(instructions.md §4 参照)。
+% 2026-08-08: 応用システム/rating-as-content/record への追記(客観性・普遍性)の
+% 3 subsections を末尾に追加(見出し仮)。内容メモ(コメント)+暫定散文(Claude 叩き台)。
 \section{Discussion}\label{sec:discussion}
 
 %%% Subsection 7.1 Where Connotation Lives %%%%%
@@ -52,3 +54,133 @@ An axis whose meaning shifted from floor to floor could not guide
 a leap; what can serve the explorer as a signpost is exactly what
 keeps its meaning on every floor. The rabbit hole is dependable
 for the same reason it is partial.
+
+%%% Subsection 7.x(仮)From Representation to Systems %%%%%
+% 2026-08-08 下書き。内容メモ(コメント)+暫定散文(Claude 叩き台)。
+% 見出し・位置・順序はすべて仮。既定の残り subsections
+% (図書館への含意/予期される反論/表現とインターフェース)との統合・分割は
+% 執筆時に判断する。とくに「表現とインターフェース」(v9 §9)とは対句の関係:
+% v9 §9 =「interface ではなく representation を」(貢献の位置づけ)、
+% 本節=「representation が得られたいま、その上に interfaces は増殖する」(展望)。
+\subsection{From Representation to Systems}\label{subsec:representation_to_systems}
+
+% --- 内容メモ: disentangled representation からどんな情報システムが作れるか ---
+% (1) ウサギ穴付き図書館: representation をそのまま探索空間にする。
+%     従来型の denotative なシステムにウサギ穴を「追加」する形式も可能だし、
+%     denotative space ごと探索可能な空間にすることもできる。
+% (2) 関連作品による connotation 検索: 該当しそうな works を利用者が例示して
+%     (例: Miles Davis の "Kind of Blue")、「connotation が共通する他の作品」を
+%     検索・探索する。
+% (3) Fuzzy description 検索: 「静かで、色彩的で、しかもそれらが溶け合ったような……」
+%     という自然言語的表現や、関連しそうな単語列から connotation 検索・探索する。
+% (4) 典型的タグによるスライダー検索(2026-08-08 追加): connotative axis と
+%     相互情報量の高いタグへのマッチ度をスライダー(0/1 の二値も可)で指定して
+%     検索・探索する。これを備えると Book House(アイコン入力)も取り込める。
+
+% --- 以下、メモを実現する暫定散文(2026-08-08、Claude 叩き台)---
+Section~\ref{sec:introduction} argued that representation must come
+first, because no interface can surface what the space beneath it
+does not encode. The converse deserves a word: once the space
+exists, interfaces multiply. The most direct is the library of
+Section~\ref{sec:framework} itself---rabbit holes added to an
+otherwise conventional denotative catalog, or a space in which the
+floors themselves are open to walking. A second is query by works:
+a seeker offers what can be named---\emph{Kind of Blue}---and asks
+for works that share its connotation, wherever their genres lie. A
+third is query by description: a groping, natural-language
+gesture---``quiet, and full of color, and the colors run into one
+another''---lands somewhere in the connotation space, and the
+neighborhood does the rest. A fourth returns an earlier idea to
+service. Tags that share high mutual information with a connotative
+axis can stand for that axis, and a seeker can set, slider by
+slider, how much of each they want---continuously, or simply on and
+off. This is recognizably the Book House~\cite{Pejtersen1983230},
+its icons refounded: what once lived in the session can now read
+from a space that outlives it. Different entrances, one space; what
+varies is only how the seeker points.
+
+%%% Subsection 7.y(仮)Rating Data as Content Data %%%%%
+% 2026-08-08 下書き。内容メモ(コメント)+暫定散文(Claude 叩き台)。
+\subsection{Rating Data as Content Data}\label{subsec:rating_as_content}
+
+% --- 内容メモ: collaborative filtering の user-item rating data を content data と
+%     みなして disentangled representation を作る ---
+% * ウサギ穴(disentangle された axis)との相互情報量が高い curator には、
+%   その名前をウサギ穴に付けることができる——「○○さんのウサギ穴」。
+%   curator 全員ではなく、axis との関連度(相互情報量)の高さで基準となる
+%   curator を見つける、という選び方。
+% * ユーザー側から見れば、「自分の中にある何か」と resonate する curator を
+%   探索的に見つけられる、という読み替えにもなる。
+% * "curator" という語が適切かどうかは要検討(暫定散文では curator を仮使用)。
+% * 既決との接続(2026-08-04 整理): rating data は content data と同等に扱える。
+%   recsys との本質差は data source ではなく「ユーザーをモデル化するか」——
+%   ここでは同じ rating data から works をモデル化する。§2.3 の書き方と揃える。
+
+% --- 以下、メモを実現する暫定散文(2026-08-08、Claude 叩き台)---
+Nothing in the construction requires that the content data be sound
+or text. A work is described by those who attend to it as well as
+by what it contains: the ratings a work gathers across many
+listeners are themselves data about the work, and from such data
+the same bundle can be built. This is the data of collaborative
+filtering; but the difference between the two, as
+Section~\ref{subsec:systems} drew it, lies not in the data source
+but in what is modeled. Collaborative filtering models the user,
+and searches on their behalf. The bundle built from rating data
+still models the works, and leaves the walking to the seeker.
+
+One consequence is worth drawing out. Among those whose choices
+enter such data are curators---makers of playlists, keepers of
+small collections. Where one curator's selections share high mutual
+information with a connotative axis, the axis can carry the
+curator's name: so-and-so's rabbit hole. The name does not define
+the hole; the geometry has already drawn it, and naming, as ever,
+presupposes representation. But for the seeker who descends it, the
+name adds something no coordinate carries---a person, met only
+through the works, whose way of hearing resonates with their own.
+
+%%% Subsection 7.z(仮)What the Record Should Carry %%%%%
+% 2026-08-08 下書き。内容メモ(コメント)+暫定散文(Claude 叩き台)。
+% 見出し仮(せんせーのメモの表題は「record に何を付け加えるべきなのか?
+% —— connotative coordinate の客観性・普遍性について」。疑問文の見出し
+% "What Should Be Added to the Record?" も候補)。
+\subsection{What the Record Should Carry}\label{subsec:what_record_carries}
+
+% --- 内容メモ: connotative coordinate の客観性・普遍性 ---
+% * 問いかけ: connotative coordinate を図書館の record に付け加えるべきか?
+%   その座標はどれくらい客観的で、他館と共有可能か?
+% * 答え:「客観的な基準が生じた瞬間に、connotation は denotation になる」。
+% * 書誌情報に加えるべきは content data とそのメトリック。この2つが与えられれば
+%   connotative coordinate は一意に再現できる。普遍的な coordinate を定義したいなら、
+%   content data(たとえば概要)とベクトル化法(LLM のモデル)を同一にする必要がある。
+% * 図書館に限らず、音楽配信サイトやオンラインブックストアなど様々な場面がある。
+%   各サイトは「入手可能な content data を用い、サイトの目的に合ったメトリックを
+%   定義すべき」。目的は運営ポリシーで決まり、どの connotation が有用かは
+%   サイトごとに異なるだろう。
+% * 言い換え: connotation の空間は無限次元で、どの軸も意味を持ちうるし、その全構造を
+%   知る者はいない。どれを "principal" な connotation にするかはサイトの運営目的で
+%   決まる——よりメタな意味での inductive bias。これは運営者自身にしか決められない。
+
+% --- 以下、メモを実現する暫定散文(2026-08-08、Claude 叩き台)---
+Should the connotative coordinate itself, then, be written into the
+record? The wish behind the question is for an objective, shared
+standard, and it undoes itself on arrival: the moment an objective
+criterion for a connotation exists, that connotation has become
+denotation. What the record can carry instead is what reproduces
+the coordinate---the content data and the metric. Fix these two,
+and the coordinate follows uniquely
+(Section~\ref{subsec:two_genres}); a library that records them has
+recorded the coordinate in the only form that survives sharing,
+for another library holding the same summaries and the same
+embedding computes the same space. Universality is available
+exactly to that extent, and no further.
+
+Nor is the library the only keeper of records. A music service, an
+online bookstore, an archive: each holds content data of its own
+and purposes of its own, and each should build its bundle from the
+data it can gather, under a metric suited to what it is for.
+Connotation space is inexhaustible---axes without end, each meaning
+something to someone, its whole structure known to no one. Which
+axes become principal (Section~\ref{subsec:bundle_reach}) is not
+one more fact in the data; it is a decision about purpose---an
+inductive bias of a higher order, and one that only the keeper of
+the collection can supply.
