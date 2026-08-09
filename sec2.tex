@@ -123,70 +123,91 @@ section.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Serendipity in Information Systems}\label{subsec:systems}
 
-Where does the connotative seeker stand in today's systems?
-Table~\ref{tab:quadrants} gives the map: the two kinds of
-attribute, crossed with three modes of encounter---searching for what one
-can specify, receiving what a system selects, and exploring on one's own.
+Table~\ref{tab:quadrants} gives the field's answer in outline: the
+two kinds of attribute, crossed with the two active modes of
+encounter---searching for what one can specify, and exploring on
+one's own. The left column the visitor has already exhausted: its
+lower cell is nearly empty, and where denotation ends, search ends
+with it.
 
 \begin{table}[t]
     \centering\small
-    \caption{Two kinds of attribute crossed with three modes of encounter.}
+    \caption{Two kinds of attribute crossed with the two active modes
+        of encounter.}
     \label{tab:quadrants}
-    \begin{tabular}{l|ll|l}
+    \begin{tabular}{@{}lll@{}}
         \toprule
-
-        System type & Search                & Exploration        & Recommendation                      \\
-        User agency & active                & active             & passive                             \\
+                    & Search                     & Exploration                        \\
         \midrule
-        Denotative  & bibliographic search, & faced navigation   & content-based filtering             \\
-                    & OPAC                  &                    &                                     \\
+        Denotative  & bibliographic search, OPAC & faceted navigation                 \\
         \midrule
-        Connotative & (nearly empty)        & reader's advisory, & collaborative filtering,            \\
-                    &                       & Book House         & serendipity-oriented recommendation \\
+        Connotative & (nearly empty)             & Book House~\cite{Pejtersen198940}, \\
+                    &                            & mood maps                          \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-The left column the visitor has already exhausted. Recommendation-based
-serendipity research occupies the middle one: the system models the user
-and selects, computationally, the items worth surprising them
-with~\cite{Kotkov2016180,Ziarani2021375,Shrivastava20231,Kunaver2017,Hasan2023933,Chen2019}.
-Collaborative filtering even reaches the connotative row: its latent
-factors are proxies for unnamed affinity, derived from the listening of
-other users---a fertile path, whose limits are instructive. What it
-delivers is an item, selected \emph{for} the user rather than found
-\emph{by} them; and the coordinates it derives are free up to rotation---the same data
-admit infinitely many equivalent systems---shift as the user population
-shifts, and can be written into no bibliographic record.
-
-\textbf{Exploration-based} approaches instead give the user a structured
-space to navigate, and the agency reverses: the user moves, and the system
-provides the
-terrain~\cite{McCayPeet20181,Marchionini200641,Thudt20121461,Beale2007ambient}.
-This is where our visitor belongs---serendipity, we saw, is insight met by
-a mind in motion---and this is the column in which the physical library
-has always excelled. Bj\"orneborn, studying serendipity in physical
+The right column is where our visitor belongs. Exploration-based
+approaches give the user a structured space to navigate: the user
+moves, and the system provides the
+terrain~\cite{McCayPeet20181,Marchionini200641,Thudt20121461,Beale2007ambient}---and
+serendipity, we saw, is insight met by a mind in motion. It is the
+column in which the physical library has always excelled. Bj\"orneborn, studying serendipity in physical
 libraries, named the affordances that make it so:
 \emph{diversifiability}, \emph{traversability}, and
 \emph{sensoriability}~\cite{Bjorneborn20171053}---many directions to
 differ along, freedom to move among them, and qualities one can sense in
-place. The bottom-right cell holds the practices closest to our aim,
-readers' advisory and Pejtersen's icon-based Book
-House~\cite{Pejtersen1983230}; yet both live at the interface---in the
-conversation, the session, the librarian's skill. What the connotative row
-still lacks is what Section~\ref{sec:introduction} argued must come first:
-a representation---a space beneath any interface whose directions afford
-for connotation what Bj\"orneborn's library affords in its aisles.
+place.
+
+Two lineages of systems have taken up the column. The first builds a
+\emph{virtual library}. Pejtersen's Book House furnished the screen
+as a house filled with books, and gave each work an artificial
+texture to sense: icons evoking what it holds, its feel skimmed
+without opening it~\cite{Pejtersen198940,Pejtersen1983230}; its heirs
+now walk the aisles in virtual reality~\cite{Lemos201930}. Each work
+can be felt in place; the space between works stays unmapped.
+
+The second lineage draws the map. Works are laid out on a plane,
+kinship readable as distance, the seeker free to
+wander~\cite{Pampalk2002570,Knees2020165}; even mood can be charted so---the works
+annotated with mood words by experts, the vectors handed to an
+existing visualization
+method~\cite{Oliveira2011105,Andjelkovic2019142}. The recipe, so far,
+never varies: a denotation made for the purpose, and a layout that
+already existed.
+
+Beside searching and exploring stands a third mode of encounter,
+recommendation, and it stays off the map by design. There the system
+models the user and selects, computationally,
+the items worth surprising them
+with~\cite{Kotkov2016180,Ziarani2021375,Shrivastava20231,Kunaver2017,Hasan2023933,Chen2019}---a
+rich line of research, set aside for one reason: the works arrive, and
+our seeker moves. One of its instruments, collaborative filtering,
+reaches connotation through no descriptor at all, deriving unnamed
+affinity from the listening of many users; what that implies for the
+record, we weigh in Section~\ref{sec:discussion}.
+
+What remains, then, is no longer a question of interface. It is the
+question Section~\ref{sec:introduction} argued must come first: the
+representation---what the space is made of, before anything is laid
+out on a screen.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Representation Learning and the Disentanglement
     Challenge}\label{subsec:disentanglement}
 
-The requirement can now be stated in the vocabulary of
-\textit{representation learning}~\cite{Bengio20131798}: mapping
-observations---the content data---into a space whose distances,
-neighborhoods, and paths carry meaning~\cite{Bronstein201718}. What
-serendipity research states as \textit{unexpected and
+The need has now taken shape: a space, real or virtual, in which
+works are arranged for exploration---and arranged so that, beside the
+denotative order, works of different denotation but common
+connotation come to lie near one another. What must be found is not
+on the screen but in the data: axes of connotation, shared across
+denotations, drawn out of the content data in which connotation
+resides. This is the business of \textit{representation
+learning}~\cite{Bengio20131798}: mapping observations into a space
+whose distances, neighborhoods, and paths carry
+meaning~\cite{Bronstein201718}.
+
+What serendipity research states as \textit{unexpected and
     relevant}---denotatively unexpected, connotatively relevant
 (Section~\ref{subsec:serendipity_process})---representation learning
 states as a
