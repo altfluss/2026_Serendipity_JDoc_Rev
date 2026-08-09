@@ -51,7 +51,10 @@ need merely felt to a question finally asked~\cite{Taylor1968178}. The
 visitor's need never travelled it: such a need cannot, in principle, be
 specified by the one who has it~\cite{Belkin198261}. His search could therefore run on denotation,
 and only there; where denotation ended, what remained was chance---the
-street piano he had not gone to hear. Denotation can be actively explored.
+street piano he had not gone to hear. The field's pairing thus takes
+an exact form: serendipity is \textit{denotatively unexpected and
+    connotatively relevant}.
+Denotation can be actively explored.
 Connotation, it seems, can only be waited for. But could a seeker's own
 exploration reach one step further, into the connotative? That is the
 question of this paper; before taking it up, let us see how the field has
@@ -196,43 +199,39 @@ out on a screen.
 \subsection{Representation Learning and the Disentanglement
     Challenge}\label{subsec:disentanglement}
 
-The need has now taken shape: a space, real or virtual, in which
-works are arranged for exploration---and arranged so that, beside the
-denotative order, works of different denotation but common
-connotation come to lie near one another. What must be found is not
-on the screen but in the data: axes of connotation, shared across
-denotations, drawn out of the content data in which connotation
-resides. This is the business of \textit{representation
-learning}~\cite{Bengio20131798}: mapping observations into a space
-whose distances, neighborhoods, and paths carry
-meaning~\cite{Bronstein201718}.
+What the seeker needs has been taking shape over the last three
+subsections. What he seeks is connotative, and no denotative term
+will hold it; so the space that serves him must be one he can explore
+by moving. And were the works around him arranged by connotative
+nearness, he could seek what he cannot name---feeling the works as he
+goes, walking toward what resonates.
 
-What serendipity research states as \textit{unexpected and
-    relevant}---denotatively unexpected, connotatively relevant
-(Section~\ref{subsec:serendipity_process})---representation learning
-states as a
-\textit{disentangled representation}~\cite{Higgins2017,Higgins2018}: one
-in which the underlying factors of variation align with separable
-directions of the space. In our setting the factors are the two kinds of
-attribute themselves: one direction is \emph{denotation-fixed}, moving
-through connotation while the genre holds; the other is
-\emph{connotation-fixed}, crossing genres while the connotation holds.
-When the two are separable, a work can be far in one and near in the other
-at once. When they are entangled, the two collapse into a single distance,
-and the closeness between Davis and Debussy is absorbed into their
-categorical separation.
+The problem is now plain: to arrange works by connotative
+kinship. The kinship, moreover, must hold across denotative
+difference---otherwise no leap could carry the seeker from one work
+to its kin in another genre. And what we are given is the content
+data, where connotative information lives; but it lives there
+entangled with the denotative, and left as they are, the two collapse
+into a single distance. They must be pulled apart.
 
-Constructing such a representation is a recognized open challenge. In the
-unsupervised setting it is provably ill-posed: for any disentangled
+In machine learning, this is precisely the problem that representation learning
+names~\cite{Bengio20131798,Bronstein201718}. A representation in which distinct
+factors of variation occupy separable directions is called
+\textit{disentangled}~\cite{Higgins2017,Higgins2018}; what we seek is a
+representation of the content data in which denotation and connotation are
+disentangled. In such a space \textit{denotatively
+    unexpected and connotatively relevant}
+(Section~\ref{subsec:serendipity_process}) acquires
+coordinates---denotatively distant, yet connotatively close---and the
+space itself, told as a library, is the library with rabbit holes of
+Section~\ref{sec:introduction}.
+
+Constructing such a disentangled representation
+is a recognized open challenge. In the unsupervised setting it is provably ill-posed: for any disentangled
 solution, infinitely many entangled ones generate the same
 observations~\cite{Locatello20197247}. Some \textit{inductive bias}---a
-structural assumption about the space---is therefore unavoidable; the
-question is not whether to adopt one, but which one suits the pairing at
-hand: denotatively unexpected, connotatively relevant. That is where the present work places itself. The
-connotation-fixed direction is precisely the rabbit hole of
-Section~\ref{sec:introduction}---among infinitely many candidate
-directions, the one that carries meaning.
-Section~\ref{sec:framework} paints the space that holds such holes;
-Section~\ref{sec:mathematics} shows that, once the scope of the data is
-fixed, an appropriate bias follows naturally, in the form of optimal
-transport.
+structural assumption about the space---is therefore unavoidable; the question
+is not whether to adopt one, but which one suits the pairing at hand.
+Section~\ref{sec:framework} paints the space; Section~\ref{sec:mathematics}
+shows that, once the scope of the data is fixed, an appropriate bias follows
+naturally, in the form of optimal transport.
