@@ -236,6 +236,7 @@
   source              = {Scopus}
 }
 
+%%% McBirnie2008600: Scopus に収録あり(ただし刊年が 2009 と誤記——2026-08-08 に原典で 2008 と確認し手動修正)。Scopus 版を再取得する場合は year の再修正に注意
 @article{McBirnie2008600,
   author  = {McBirnie, Abigail},
   title   = {Seeking serendipity: the paradox of control},
@@ -285,16 +286,6 @@
   type              = {Review},
   publication_stage = {Final},
   source            = {Scopus}
-}
-
-@misc{Corneli2020,
-  title         = {Modelling serendipity in a computational context},
-  author        = {Joseph Corneli and Anna Jordanous and Christian Guckelsberger and Alison Pease and Simon Colton},
-  year          = {2020},
-  eprint        = {1411.0440},
-  archiveprefix = {arXiv},
-  primaryclass  = {cs.AI},
-  url           = {https://arxiv.org/abs/1411.0440}
 }
 
 @article{Makri2012706,
@@ -417,6 +408,7 @@
   source            = {Scopus}
 }
 
+%%% Saracevic1996201: CoLIS 2 proceedings。Scopus 対象外の見込み。PDF 現物あり・内容検証済み(2026-08-09)
 @inproceedings{Saracevic1996201,
   author    = {Saracevic, Tefko},
   title     = {Relevance Reconsidered},
@@ -574,6 +566,20 @@
   year      = {2005}
 }
 
+%%% Pejtersen198940: 2026-08-09 PDF現物で一次検証(copyright 行 1989 ACM 0-89791-321-3/89/0006/0040 = ISBN・開始頁一致)。icon-based Book House の一次文献。DOI は ACM DL 未確認のため記載せず
+@article{Pejtersen198940,
+  author            = {Pejtersen, Annelise Mark},
+  title             = {A library system for information retrieval based on a cognitive task analysis and supported by an icon-based interface},
+  year              = {1989},
+  journal           = {ACM SIGIR Forum},
+  volume            = {23},
+  pages             = {40 - 47},
+  doi               = {10.1145/75335.75340},
+  type              = {Article},
+  publication_stage = {Final},
+  source            = {Scopus}
+}
+
 %%% McCayPeet20181: 2026-08-09 PDF現物で内容検証(Springer 2022 リプリント、original (c) Morgan & Claypool 2018。Springer版 ISBN 978-3-031-01184-9 / DOI 10.1007/978-3-031-02312-5)。実態は書籍(Synthesis Lectures #59)——Scopus は連続刊行物扱いで @article。Harvard 化の際に @book(Morgan & Claypool)へ直すか要判断
 @article{McCayPeet20181,
   author            = {McCay-Peet, Lori and Toms, Elaine G.},
@@ -643,18 +649,6 @@
   source            = {Scopus}
 }
 
-%%% Pejtersen198940: 2026-08-09 PDF現物で一次検証(copyright 行 1989 ACM 0-89791-321-3/89/0006/0040 = ISBN・開始頁一致)。icon-based Book House の一次文献。DOI は ACM DL 未確認のため記載せず
-@inproceedings{Pejtersen198940,
-  author    = {Pejtersen, Annelise Mark},
-  title     = {A Library System for Information Retrieval Based on a Cognitive Task Analysis and Supported by an Icon-Based Interface},
-  booktitle = {Proceedings of the 12th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR '89)},
-  editor    = {Belkin, Nicholas J. and van Rijsbergen, C. J.},
-  publisher = {ACM},
-  address   = {New York},
-  pages     = {40-47},
-  year      = {1989}
-}
-
 @article{Pejtersen1983230,
   author            = {Pejtersen, Annelise Mark and Austin, Jutta},
   title             = {Fiction retrieval: Experimental design and evaluation of a search system based on users’ value criteria (part 1)},
@@ -670,17 +664,17 @@
 }
 
 %%% Lemos201930: 2026-08-09 Springer 公式ページで書誌確認(PDF 未入手)。VR の図書館部屋での書架ブラウジングと本の発見(ASU の1万 MARC レコード、音声検索併用)。serendipitous discovery を明示。virtual library 系譜(Book House の後継)の現代例
-@incollection{Lemos201930,
-  author    = {Lemos, Jonatan and Finn, Ed},
-  title     = {Babel {VR}: Multimodal Virtual Reality Environment for Shelf Browsing and Book Discovery},
-  booktitle = {HCI International 2019 -- Late Breaking Posters},
-  series    = {Communications in Computer and Information Science},
-  volume    = {1088},
-  publisher = {Springer},
-  address   = {Cham},
-  pages     = {30-38},
-  doi       = {10.1007/978-3-030-30712-7_5},
-  year      = {2019}
+@article{Lemos201930,
+  author            = {Lemos, Jonatan and Finn, Ed},
+  title             = {Babel {VR}: Multimodal Virtual Reality Environment for Shelf Browsing and Book Discovery},
+  year              = {2019},
+  journal           = {Communications in Computer and Information Science},
+  volume            = {1088},
+  pages             = {30 - 38},
+  doi               = {10.1007/978-3-030-30712-7_5},
+  type              = {Conference paper},
+  publication_stage = {Final},
+  source            = {Scopus}
 }
 
 %%% Pampalk2002570: 素材庫から登板(2026-08-09)。Islands of Music——音響特徴の SOM による島メタファーの2Dマップ探索。visual map 系譜の代表格。PDF 未入手
@@ -713,25 +707,29 @@
 
 %%% 断定エントリー(2026-08-09。書誌はシロさんDR報告+クロさんWeb検索由来、一次PDF未入手。DOI は一次確認まで記載しない)
 %%% iFelt: 映画への emotional access(Russell の VA 円環+カテゴリ感情のハイブリッド)。EuroITV 2011 Best Paper。sec2 §2.3 の「fixed planes」の学術典拠
-@inproceedings{Oliveira2011105,
-  author    = {Oliveira, Eva and Martins, Pedro and Chambel, Teresa},
-  title     = {iFelt: Accessing Movies Through Our Emotions},
-  booktitle = {Proceedings of the 9th European Conference on Interactive TV and Video (EuroITV '11)},
-  publisher = {ACM},
-  pages     = {105-114},
-  year      = {2011}
+@article{Oliveira2011105,
+  author            = {Oliveira, Eva and Martins, Pedro and Chambel, Teresa},
+  title             = {iFelt: Accessing movies through our emotions},
+  year              = {2011},
+  journal           = {EuroITV'11 - Proceedings of the 9th European Interactive TV Conference},
+  pages             = {105 - 114},
+  doi               = {10.1145/2000119.2000141},
+  type              = {Conference paper},
+  publication_stage = {Final},
+  source            = {Scopus}
 }
 
-%%% Andjelkovic2019142: 2026-08-09 PDF現物で一次検証(柱: Int. J. Human-Computer Studies 121 (2019) 142-159、DOI は誌面に明記)。
-%%% Moodplay: Rovi の専門家キュレート mood 語彙(289語、アーティストあたり5-20語・重み付き)を対応分析で2Dに埋め込み、アバターで探索・推薦。本研究の最近接の隣人。詳細は index.json
 @article{Andjelkovic2019142,
-  author  = {Andjelkovic, Ivana and Parra, Denis and O'Donovan, John},
-  title   = {Moodplay: Interactive music recommendation based on artists' mood similarity},
-  journal = {International Journal of Human-Computer Studies},
-  volume  = {121},
-  pages   = {142-159},
-  doi     = {10.1016/j.ijhcs.2018.04.004},
-  year    = {2019}
+  author            = {Andjelkovic, Ivana and Parra, Denis and O'Donovan, John},
+  title             = {Moodplay: Interactive music recommendation based on Artists’ mood similarity},
+  year              = {2019},
+  journal           = {International Journal of Human Computer Studies},
+  volume            = {121},
+  pages             = {142 - 159},
+  doi               = {10.1016/j.ijhcs.2018.04.004},
+  type              = {Article},
+  publication_stage = {Final},
+  source            = {Scopus}
 }
 
 @article{Shrivastava20231,
@@ -774,20 +772,6 @@
   source            = {Scopus}
 }
 
-@article{Bronstein201718,
-  author            = {Bronstein, Michael M. and Bruna, Joan and Lecun, Yann and Szlam, Arthur and Vandergheynst, Pierre},
-  title             = {Geometric Deep Learning: Going beyond {Euclidean} data},
-  year              = {2017},
-  journal           = {IEEE Signal Processing Magazine},
-  volume            = {34},
-  number            = {4},
-  pages             = {18-42},
-  doi               = {10.1109/MSP.2017.2693418},
-  type              = {Review},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
 @article{Higgins2017,
   author  = {Higgins, Irina and Matthey, Loic and Pal, Arka and Burgess, Christopher and Glorot, Xavier and Botvinick, Matthew and Mohamed, Shakir and Lerchner, Alexander},
   title   = {beta-{VAE}: Learning basic visual concepts with a constrained variational framework},
@@ -795,15 +779,6 @@
   journal = {5th International Conference on Learning Representations, ICLR 2017-Conference Track Proceedings},
   type    = {Conference paper},
   source  = {Scopus}
-}
-
-@misc{Higgins2018,
-  author        = {Higgins, Irina and Amos, David and Pfau, David and Racaniere, Sebastien and Matthey, Loic and Rezende, Danilo and Lerchner, Alexander},
-  title         = {Towards a Definition of Disentangled Representations},
-  year          = {2018},
-  eprint        = {1812.02230},
-  archiveprefix = {arXiv},
-  primaryclass  = {cs.LG}
 }
 
 @article{Locatello20197247,
@@ -1929,4 +1904,42 @@
   publication_stage = {Final},
   source            = {Scopus},
   note              = {Cited by: 2}
+}
+
+%%% Corneli2020: 【未引用・素材庫】2026-08-09 引用から外した。arXiv のみ(出版版なし、Scopus 未収録をせんせー確認 2026-08-09)。§2.1 process 束から除外——束は査読誌4本で立つ
+%%% Corneli2020: arXiv 版(1411.0440)。出版版が Scopus にあるか要確認(2026-08-09 メモ)
+@misc{Corneli2020,
+  title         = {Modelling serendipity in a computational context},
+  author        = {Joseph Corneli and Anna Jordanous and Christian Guckelsberger and Alison Pease and Simon Colton},
+  year          = {2020},
+  eprint        = {1411.0440},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.AI},
+  url           = {https://arxiv.org/abs/1411.0440}
+}
+
+%%% Higgins2018: 【未引用・素材庫】2026-08-09 引用から外した。arXiv のみ。§2.4 の定義 cite から除外——定義は Higgins2017(ICLR)で立つ(Higgins2017 自身が定義を Bengio 2013 に帰属)
+%%% Higgins2018: arXiv preprint のみ(1812.02230)。Scopus 対象外の見込み(2026-08-09 メモ)
+@misc{Higgins2018,
+  author        = {Higgins, Irina and Amos, David and Pfau, David and Racaniere, Sebastien and Matthey, Loic and Rezende, Danilo and Lerchner, Alexander},
+  title         = {Towards a Definition of Disentangled Representations},
+  year          = {2018},
+  eprint        = {1812.02230},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.LG}
+}
+
+%%% Bronstein201718: 【未引用・素材庫】2026-08-09 引用から外した。§2.4 書き換えで cite の係り先(空間の幾何の定義句)が消えたため除外。geometric DL サーベイであり "representation learning names" の典拠としては不適。sec4/5 で幾何の cite が要る場合の候補として保持
+@article{Bronstein201718,
+  author            = {Bronstein, Michael M. and Bruna, Joan and Lecun, Yann and Szlam, Arthur and Vandergheynst, Pierre},
+  title             = {Geometric Deep Learning: Going beyond {Euclidean} data},
+  year              = {2017},
+  journal           = {IEEE Signal Processing Magazine},
+  volume            = {34},
+  number            = {4},
+  pages             = {18-42},
+  doi               = {10.1109/MSP.2017.2693418},
+  type              = {Review},
+  publication_stage = {Final},
+  source            = {Scopus}
 }

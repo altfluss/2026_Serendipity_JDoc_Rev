@@ -1,6 +1,7 @@
 # ==== ターゲットファイル ====
 # 'latexmk' コマンドで両方ビルドする
-@default_files = ('main.tex', 'supplements.tex', "supplements2.tex");
+# @default_files = ('main.tex', 'supplements.tex', "supplements2.tex");
+@default_files = ('main.tex');
 
 # ==== pdflatex モード用 ====
 $latex     = 'pdflatex -synctex=1 -interaction=nonstopmode -file-line-error -output-directory=build';
