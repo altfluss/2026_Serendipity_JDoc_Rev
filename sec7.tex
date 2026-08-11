@@ -55,6 +55,126 @@ a leap; what can serve the explorer as a signpost is exactly what
 keeps its meaning on every floor. The rabbit hole is dependable
 for the same reason it is partial.
 
+%%% Subsection 7.2(仮)Reading Connotation from Language %%%%%
+% 2026-08-11 新設。内容メモ(コメント)+暫定散文(Claude 叩き台)。見出し・位置仮。
+% 位置の根拠: §7.1 が「connotation はどこに宿るか」(関係・単位)を言い、本節が
+% 「その関係をどのデータから、誰が読むのか」を引き受け、§7.x(From Representation
+% to Systems)の query by description へ渡す。したがって §7.1 の直後・§7.x の直前。
+%
+% --- 内容メモ(2026-08-11 せんせーとの対話で確定)---
+% (0) 本節が回収する伏線: §2.2 の `An information system cannot rely on such
+%     background implicitly`(shared background = language, culture, embodied
+%     experience。Clark1996 / Langacker2008 / Hjorland1995400)。
+%     回答は「背景に頼らない」ではなく「背景の痕跡から読む読み手をシステムが所有する」。
+% (1) **成立条件としての generic feature vector**(せんせー 2026-08-11)。
+%     かつて feature vector は用途ごとに設計するものだった——何を特徴とするかを
+%     設計者が事前に決める。それは名前を事前に選ぶことであり、§2.2 の Osgood の
+%     `the scales themselves must still be chosen in advance` と同じ構造。
+%     すなわち denotative manner で connotation を作ることと五十歩百歩だった。
+%     generic embedding は用途に先立って存在し、設計者は次元の意味を選ばない。
+%     だから初めて「データが軸を決める」余地が生じた。**これが本手法の背景**。
+% (2) LLM は言語化装置ではなく**読者**。タグ列は言語(denotative なラベル列)だが、
+%     connotation は列そのものではなく「列を読んだときに立ち上がるもの」に宿る。
+%     ベクトルはその読みの残したもの。
+% (3) 主張の限定——存在論ではなく操作論(せんせー 2026-08-11 確定)。
+%     ×「LLM は embodiment を備える」/ ×「meaning を再現する」
+%     ○「間接的かつ部分的ではあれ、connotative な情報が内部のベクトル表現から
+%        引き出せる」。検証可能な主張の形に置き直すことで、決着しない存在論を通らない。
+%     「部分的」は新たな譲歩ではなく §4.3 principal への三つの限定と同じもの
+%     (→ §7.1 末尾 `dependable for the same reason it is partial` と韻を踏む)。
+% (4) seeker 側と work 側は同じ読み手。LLM は現にプロンプトから connotation を
+%     読む(読者自身の日常経験)。同じ読み手が works の側も読むから、query と work が
+%     同じ空間に落ちる——§7.x の query by description の**機構がここで与えられる**
+%     (現行の暫定散文 `lands somewhere in the connotation space` は機構を語っていない)。
+%     ただし「現に読み解いている」は振る舞いの証拠であって表現の幾何の証拠ではない。
+%     ゆえに順序は「幾何を測った研究(P3)→ 日常経験(P4)」とし、逆にしない。
+% (5) 反対側への態度: form から meaning へ到達するとは主張しない。得るのは works の
+%     **配置**であり、座標は何も名指さない(sec3)。BenderKoller2020 / Bisk2020 の
+%     否定命題を認めたまま本論文の主張は無傷で通る。敬意を持って引く。
+%
+%%% TODO 引用(2026-08-11 Web 検索で実在確認済み。bibkey は仮・**ページ未確認**——
+%%% ref.bib 追加時に一次ソースで巻号ページを検証すること。命名は既存則(著者+年+開始頁)に揃える):
+%%%  (i)  Louwerse & Zwaan (2009) "Language Encodes Geographical Information,"
+%%%       Cognitive Science 33(1). 都市名の共起統計のみから緯度経度が復元できる。
+%%%       「言語には誰も書かなかったものが刻まれている」の最も直截な実証。→ 主柱1
+%%%  (ii) Louwerse (2011) "Symbol Interdependency in Symbolic and Embodied Cognition,"
+%%%       Topics in Cognitive Science 3(2). symbol interdependency hypothesis——
+%%%       言語のシンボル体系は身体的・知覚的経験の痕跡を符号化している。
+%%%       せんせーの「間接的に身体性を備えている」に認知科学側で付いている名前。→ 主柱2
+%%%       (関連: Louwerse (2018) "Knowing the Meaning of a Word by the Linguistic
+%%%        and Perceptual Company It Keeps," Topics in Cognitive Science 10(3).)
+%%% (iii) Grand, Blank, Pereira & Fedorenko (2022) "Semantic projection recovers rich
+%%%       human knowledge of multiple object features from word embeddings,"
+%%%       Nature Human Behaviour 6(7). word embedding から**軸への射影**で人間の
+%%%       特徴知識(size/danger/intelligence 等)を復元。§4.3 principal connotation
+%%%       analysis と操作が同型。掲載誌の格も JDoc 読者に効く。→ 主柱3(最重要)
+%%%  (iv) Marjieh et al. (2024) "Large language models predict human sensory judgments
+%%%       across six modalities," Scientific Reports 14(arXiv:2302.01308). 補強。
+%%%  (v)  Abdou et al. (2021) "Can Language Models Encode Perceptual Structure Without
+%%%       Grounding? A Case Study in Color," CoNLL. 色の知覚構造。補強。
+%%%  (vi) 反対側(敬意を持って引く): Bender & Koller (2020) "Climbing towards NLU,"
+%%%       ACL / Bisk et al. (2020) "Experience Grounds Language," EMNLP.
+%%% 既に ref.bib にあり本節で再出させうるもの: Clark1996, Langacker2008,
+%%% Hjorland1995400(§2.2 で既出), Deerwester(LSA, 未使用)。
+\subsection{Reading Connotation from Language}\label{subsec:reading_connotation}
+
+% --- 以下、メモを実現する暫定散文(2026-08-11、Claude 叩き台)---
+% --- P1: 成立条件(generic feature vector)= 本手法の背景 ---
+The method has a precondition, and it is recent. Feature vectors were
+once built for a purpose: whoever built them decided beforehand what
+would count as a feature, and that decision was a choice of names.
+Osgood's scales had to be settled before the rating began
+(Section~\ref{subsec:naming}); a hand-built feature set makes the same
+choice, in numbers rather than in words, and arrives at connotation by
+denotative means. Generic embeddings come before any purpose. Nobody
+has decided, for this collection, what the dimensions are to mean---
+nothing in them has been named. Only under that condition is there room
+left for the data to decide where the axes lie.
+
+% --- P2: LLM は読者である(§2.2 の伏線回収)---
+What such an embedding reads is language, and yet connotation is not in
+the language it reads. A list of tags---genre, mood, era,
+instrument---is a string of denotative labels; read them together, and
+something rises that no one of them holds. This is the work the language
+model is put to. It is not asked to name, but to read, and the vector is
+what its reading leaves behind. Section~\ref{subsec:naming} observed
+that between people connotation travels unnamed, on a shared background
+of language, culture, and embodied
+experience~\cite{Clark1996,Langacker2008,Hjorland1995400}, and that a
+system cannot lean on that background implicitly. It need not. It can
+hold a reader who has come by that background at second hand.
+
+% --- P3: 主張の限定 + 認知科学の足場(測られていること)---
+How much of the background such a reader has is a fair question, and the
+claim we make is narrow. Not that a language model has embodied
+experience; not that it recovers meaning. Only that connotative
+information is present in its internal vectors and can be drawn out of
+them---indirectly, and in part. That much has been measured rather than
+assumed. Language carries the trace of perceptual experience: from the
+co-occurrence statistics of city names alone, latitude and longitude can
+be recovered~\cite{LouwerseZwaan2009}---a regularity Louwerse names
+symbol interdependency~\cite{Louwerse2011}. Human judgments of object
+features are recovered from word embeddings by projection onto an
+axis~\cite{Grand2022}, which is the operation of
+Section~\ref{subsec:bundle_reach} performed on other data. Language
+models predict human sensory judgments across
+modalities~\cite{Marjieh2024}, the structure of color among
+them~\cite{Abdou2021}. Whether form can suffice for meaning remains
+contested~\cite{BenderKoller2020,Bisk2020}, and this construction does
+not need it to: what it claims to obtain is an arrangement of works, not
+their meaning, and the coordinate marks a place while naming nothing
+(Section~\ref{sec:framework}).
+
+% --- P4: 一人の読み手が両側を読む → §7.x の query by description へ渡す ---
+One reader serves both sides. A language model reads connotation from a
+prompt as readily as from a list of tags---which is the ordinary
+experience of anyone who has used one. The groping description of
+Section~\ref{subsec:representation_to_systems}, then, and the works it
+gropes for are read by the same reader, and fall into the same space.
+The seeker's few words and the collection's many are commensurable
+because of who reads them.
+
+
 %%% Subsection 7.x(仮)From Representation to Systems %%%%%
 % 2026-08-08 下書き。内容メモ(コメント)+暫定散文(Claude 叩き台)。
 % 見出し・位置・順序はすべて仮。既定の残り subsections
