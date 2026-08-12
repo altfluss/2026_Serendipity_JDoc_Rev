@@ -2,12 +2,12 @@
 \section{A Library with Rabbit Holes}\label{sec:framework}
 
 Recall the visitor introduced in Section~\ref{sec:introduction}. Part of what he
-wants he can clearly name---a performer (Miles Davis), a work (\textit{Kind of
-    Blue}), and with them a genre (jazz)---and for that part, any catalogue serves.
-The rest he could only circle with words: quiet, with feeling in it, colors
-melting into one another. That part is connotative, and it belongs not to search
-but to exploration. What exploration space, then, does such a visitor need? That
-question is the subject of this section.
+wants he can clearly name---a performer (Miles Davis), and with them a genre
+(jazz)---and for that part, any catalogue serves. The rest he could only circle
+with words: quiet, with feeling in it, colors melting into one another. That
+part is connotative, and it belongs not to search but to exploration. What
+exploration space, then, does such a visitor need? That question is the subject
+of this section.
 
 Throughout this paper, a collection is taken to give us two kinds of data:
 \emph{descriptors}, the structured names carried on the bibliographic record,
@@ -127,7 +127,7 @@ $\mathcal{U}$. Each work receives its pair: a \emph{denotative
 (where on it). That is, the pairing of
 Section~\ref{subsec:serendipity_process}, \textit{denotatively
     unexpected and connotatively relevant}, now has an exact expression:
-distant in $\mathcal{U}$, yet close in $\mathcal{V}$. A representation
+distant in $\mathcal{U}$, and close in $\mathcal{V}$. A representation
 that separates two aspects into two coordinates in this way is what
 machine learning calls \emph{disentangled}
 (Section~\ref{subsec:disentanglement}); the multi-floor library is the
@@ -143,55 +143,26 @@ can stand on a floor between them. Connotation has no such start. It
 never had a label; Section~\ref{subsec:naming} found it written in no
 field. Its coordinate $v$ must come from elsewhere.
 
-There are two ways to obtain it. The first is to name the features by
-hand: an expert who holds that Miles Davis and Debussy belong at the
-same position designs descriptors independent of genre, and the floors
-are arranged by them. This is the way taken by the systems of
-Section~\ref{subsec:systems}, and it reaches as far as the expert's
-knowledge reaches. The second is to find, in the content data itself, a coordinate system
-under which the floors already agree---separating what varies with genre
-from what varies within it. That is disentanglement, and it is the way
-this paper takes.
+There are two ways to obtain it. The first is to name the features by hand: an
+expert who holds that Miles Davis and Debussy belong at the same position
+designs descriptors independent of genre, and the floors are arranged by them.
+This is the way taken by the systems of Section~\ref{subsec:systems}, and it
+reaches as far as the expert's knowledge reaches. The second is to find, in the
+content data itself, a coordinate system under which the floors already
+agree---separating what varies with genre from what varies within it. That is
+disentanglement, and it is the way this paper takes.
 
 
-%%% Subsection 3.2 The Multi-Galaxy Curved Universe %%%%%
-\subsection{The Multi-Galaxy Curved Universe: The Same Works in Their
-    Native Form}\label{subsec:multi_galaxy}
-
-The library is the form we seek; the works do not arrive in it. They
-arrive as content data---the track or the
-text, dense and whole, embedded by preprocessing into vectors of
-hundreds or thousands of dimensions. Section~\ref{sec:introduction} has
-already shown this space: works as stars, genres as loose galaxies, the
-whole a multi-galaxy curved universe (Figure~\ref{fig:two_views}b).
-What it could not yet say is why this universe cannot simply be walked.
-
-The reason is not dimensionality alone. This universe has coordinates
-but no coordinate \emph{system}: the axes, artifacts of preprocessing,
-are aligned with nothing a visitor feels; no direction tells him what
-would change and what would stay (R2); and even moving straight means
-nothing, for the space is curved. The rabbit holes are there---the one
-from Miles Davis to Debussy among them---but only as curved
-trajectories that nothing singles out: real, but not navigable.
-
-The universe and the library are thus two views of one structure---the
-same works, threaded by the same holes: curved in the entangled
-universe, straight in the disentangled library. All that separates the
-two views is whether a consistent coordinate system has been laid over
-the space; to pass from one to the other is to find that system. What
-the passage buys, we show now by letting him walk it.
-
-
-%%% Subsection 3.3 Seeking Serendipity in the Library %%%%%
+%%% Subsection 3.2 Seeking Serendipity in the Library %%%%%a
 \subsection{Seeking Serendipity in the Library}\label{subsec:seeking}
 
 Let the visitor into this space, seeking as ever ``something like
 Miles Davis.'' What he carries, the coordinates let us finally write
 down: somewhere within him is a connotative coordinate of his
-own---call it $v^*$. He cannot state it;
+own---call it $v_\text{seeker}$. He cannot state it;
 Section~\ref{subsec:serendipity_process} told us why: a need of this
 kind is visceral before it is verbalized, and cannot be specified by
-its owner. He does not, in fact, know that $v^*$ exists. What he can
+its owner. He does not, in fact, know that $v_\text{seeker}$ exists. What he can
 do is stand before a work and feel whether it resonates---whether the
 work's coordinate lies near his own. That sense of affinity is his;
 the library has no access to it.
@@ -200,12 +171,12 @@ He begins where anyone begins: with what he can name. The jazz floor
 he can ask for, and once there, he walks. Under his feet the
 connotative coordinate varies continuously; near Miles Davis the
 resonance strengthens, and he slows, and stops. Call the place where
-he stands $\tilde{v}$. Everything so far he could have foreseen (R2):
+he stands $v_\text{work}$. Everything so far he could have foreseen (R4):
 within a floor, one moves toward more of what one already feels. So
 far this is seeking, and the space serves it.
 
-Then he steps into the hole at $\tilde{v}$. The leap holds
-$\tilde{v}$ fixed and lets the genre change entirely; he surfaces on
+Then he steps into the hole at $v_\text{work}$. The leap holds
+$v_\text{work}$ fixed and lets the genre change entirely; he surfaces on
 the classical floor, where nothing nameable survived the
 passage---genre, instrument, period, all different---and yet, before
 Debussy, the resonance holds. The field's oldest pairing,
@@ -217,26 +188,60 @@ And what he finds is more than a piano piece. On the jazz floor the
 resonance might still have been jazz-ness, or Miles-ness; the leap
 stripped those accounts away, and what still resonates can only be
 the coordinate the hole held. At that moment the visitor discovers
-that the place he had been circling answers to something in
-himself---that $v^*$ exists. ``\textit{So this is what I was looking
-    for}'': this is the moment of serendipity---\textit{a mix of unexpectedness
-    and insight}, as Makri and Blandford heard
-it~\cite{Makri2012684}, the unexpectedness of the instant before,
-the insight of the instant after, when his own criterion first has a
-place.
+that what he had been circling answers to something in himself---that
+$v_\text{seeker}$ exists. ``\textit{So this is what I was looking for}'':
+the moment of serendipity, \textit{a mix of unexpectedness and
+    insight}, as Makri and Blandford heard it~\cite{Makri2012684}---the
+unexpectedness of the instant before, the insight of the instant
+after.
 
-And the moment is not the end of the walk. He can act on the
-encounter---ride the same hole to a third floor, turn back, walk a
-little and leap again---Merton's ``unanticipated, anomalous and
-strategic datum''~\cite{Merton1948505}: strategic, because the space
-lets a finding become a plan. And here the division of labor is
-exact. The library measures affinity only between works; that is its
-geometry. The affinity between the $v$ of a work and the $v^*$ of the
-visitor no library can measure, for it lives in him. The space does not contain
-serendipity; it gives serendipity somewhere to happen.
+And the moment is not the end of the walk. He can act on the encounter---ride
+the same hole to a third floor, turn back, walk a little and leap
+again---Merton's ``unanticipated, anomalous and strategic
+datum''~\cite{Merton1948505}: strategic, because here a finding becomes a plan.
+The first leap told him that $v_\text{seeker}$ exists; the next tell him what it
+is---not a work in another genre, but a structure, unnamed, running across them
+all.
 
-Whether such a space can actually be built is now a threefold
-question. Can a coordinate system of this kind be laid over a given
-collection at all? If it can, is it the only one? And if so, do its
-coordinates truly express connotation? The next section answers all
-three.
+The division of labor is exact. The library measures affinity only
+between works; that is its geometry. The affinity between $v_\text{work}$
+and the visitor's own $v_\text{seeker}$ no library can measure, for it
+lives in him. The space does not contain serendipity; it gives
+serendipity somewhere to happen.
+
+
+%%% Subsection 3.3 The Multi-Galaxy Curved Universe %%%%%
+\subsection{The Multi-Galaxy Curved Universe: The Same Works in Their
+    Native Form}\label{subsec:multi_galaxy}
+
+The library is the form we seek; the works do not arrive in it. They arrive as
+collection data---descriptors and content data, paired work by work. The
+descriptors give the genre, and with it the floor. The content data comes
+embedded by preprocessing into a vector, often, of hundreds or thousands of
+dimensions. Section~\ref{sec:introduction} has already shown that space: works
+as stars, genres as loose galaxies, the whole a multi-galaxy curved universe
+(Figure~\ref{fig:two_views}b). What it could not yet say is why this universe
+cannot simply be walked.
+
+This universe cannot be walked because it has no meaningful axes---not merely
+because it has too many. Hundreds of dimensions do offer more directions than a
+visitor could hold in mind, but thinning them would not help: the axes are
+artifacts of preprocessing, aligned with nothing a visitor feels. Moving along
+one, he cannot tell what would change and what would stay (R4). Connotation is
+present here---the passage from Miles Davis to Debussy runs through this
+space---but as a curved trajectory that no axis follows: real, but not
+navigable.
+
+The universe and the library are two views of one structure, separated only by a
+coordinate system. The works are the same, threaded by the same holes; what
+differs is whether the coordinates carry meaning. In the library they do: hold
+one fixed, and what it names holds still, and the passage from floor to floor
+runs straight. In the universe that meaning is spread across every axis at once,
+and the same passage curves across the dark between galaxies. Straight in the
+disentangled view, curved in the entangled one. To pass from the one view to the
+other is to find that system.
+
+Whether it can be found is a threefold question. Can a coordinate system
+of this kind be laid over a given collection at all? If it can, is it
+the only one? And if so, do its coordinates truly express connotation?
+The next section answers all three.
