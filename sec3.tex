@@ -23,17 +23,17 @@ subject of this section.
     \end{subfigure}
     \caption{
         \textbf{Two views of one representation.}
-        (a) The works as floors of a children's library: each floor
-        holds one genre, works within a floor are arranged by
-        connotative closeness, and \textit{rabbit holes} run
-        vertically as elevators that open at every point, connecting
-        works that share a connotative coordinate across genres.
-        (b) The same works as their native high-dimensional
-        content data: each genre scatters into a loose \textit{galaxy} of
-        its own, which can be modeled as a curved surface sharing no
-        axes with the others; works sharing one connotation trace
-        curved trajectories from galaxy to galaxy---rabbit holes in
-        their entangled form.
+        (a) The multi-floor library: each floor holds one genre, works
+        within a floor are arranged by connotative closeness, and
+        \textit{rabbit holes} run vertically, opening at the same
+        connotative position on every floor. Each point is a work,
+        labelled by its artist for legibility; two holes are drawn.
+        (b) The same works as their native high-dimensional content
+        data: each genre scatters into a loose \textit{galaxy} of its
+        own, which can be modeled as a curved surface sharing no axes
+        with the others; works sharing one connotation trace curved
+        trajectories from galaxy to galaxy---rabbit holes in their
+        entangled form.
     }
     \label{fig:two_views}
 \end{figure}
@@ -43,21 +43,35 @@ subject of this section.
 \subsection{The Multi-Floor Library: The Disentangled
     Form}\label{subsec:multi_floor_library}
 
-Recall the visitor introduced in Section~\ref{sec:introduction}. Part of what he
-wants he can clearly name---a performer (Miles Davis), and with him a
-genre (jazz) and a period (the 1950s and 60s)---and for that part, any
-catalogue serves. The rest he could only
-circle with words: that atmosphere he could not quite name---quiet, with feeling
-in it, colors melting into one another. A library that would let him seek this
-part cannot rely on names; it must let him move. What, then, must the space he
-moves in afford?
+Throughout, we keep to the simplest case, in which the only descriptors
+given are genre and title.
 
-Bj\"orneborn's three affordances (Section~\ref{subsec:systems})
-describe what the physical library already gives its
-explorers~\cite{Bjorneborn20171053}: qualities one can sense in place,
-many directions to differ along, freedom to move among them. Translated
-into requirements on a representation---and asked to hold for
-connotation, not only for denotation---they become three conditions.
+Consider first what descriptors alone can build: works gathered by
+genre, one floor to each, and within a floor shelved in title order.
+The visitor asks for the jazz floor and finds \textit{Kind of Blue},
+and there his intention runs out. Title order says nothing about what a
+work is like, so even along the jazz floor he cannot move toward what he
+is after; on the classical floor he can only take works down at random.
+Past \textit{Kind of Blue}, everything is left to chance.
+
+Suppose now that content data is available---acoustic features,
+say---and that each floor is arranged by acoustic similarity. The
+arrangement rewards him at once: near \textit{Kind of Blue} stand other
+Miles Davis recordings, and other trumpet-led works besides. It works
+because the genre is fixed for everyone on the floor, so what acoustic
+distance measures there is what the genre leaves open---something of
+connotation. Off the floor it measures something else. Looking among the
+classics for what sounds like jazz, he may turn up Gershwin; Debussy he
+will not, for a solo piano work and a jazz quintet share almost nothing
+acoustically. Across floors, acoustic distance is dominated by genre
+itself, and carries him not to what he means but to whichever genre
+sounds nearest.
+
+Bj\"orneborn's three affordances (Section~\ref{subsec:systems}) name
+what the physical library already gives its
+explorers~\cite{Bjorneborn20171053}. Restated as requirements on a
+representation---and asked to hold for connotation, not only for
+denotation---they become three conditions.
 
 \begin{itemize}
     \item \textbf{(R1) Sensible in place:} standing anywhere in the
@@ -65,54 +79,60 @@ connotation, not only for denotation---they become three conditions.
           him and sense where he is.
     \item \textbf{(R2) Foreseeable in direction:} he can tell what each
           direction holds: moving this way, what changes and what
-          stays.
+          stays.\footnote{Bj\"orneborn's diversifiability covers
+              difference along dimensions of many kinds, including facets a
+              system may offer; we take it here in its spatial sense alone.}
     \item \textbf{(R3) Traversable at will:} he can choose his own
           direction and move through the space as he pleases.
 \end{itemize}
-The second condition asks more than diversifiability, and it is where
-disentanglement earns its name. Many directions to differ along do
-not, by themselves, tell an explorer which way to go; a direction
-guides only when one knows what it changes and what it keeps. That is
-what a \emph{disentangled} representation supplies
-(Section~\ref{subsec:disentanglement}): its directions hold one kind
-of attribute and vary the other---denotation-fixed or
-connotation-fixed.
 
-Figure~\ref{fig:two_views}a shows a structure that meets all three.
-Imagine a children's library built across many floors, a floor for each
-genre---fantasy on one, realistic fiction on another---with floors of
-kindred feeling near one another. Within each floor, works are arranged
-by the closeness one feels but cannot name: \textit{The Lord of the
-    Rings} and \textit{The Chronicles of Narnia} together among sweeping
-mythological landscapes; \textit{Kiki's Delivery Service} and
-\textit{The Worst Witch} nearby, both young witches on journeys of
-growth. Standing among them, the visitor feels where he is (R1) and can
-see what a step along the floor would bring (R2).
+The two libraries fall short in different ways. The descriptor-based one
+affords R1 alone: no direction along a shelf holds anything the visitor
+could foresee (R2), and freedom to walk without foresight is wandering
+rather than exploration (R3). Arranging floors by acoustic similarity
+gains R2 and R3, but within a floor only; across genres, no direction
+tells him what will change and what will stay.
 
-What joins the floors into one space is the rabbit hole. At every
-point on every floor one lies underfoot, and it runs vertically through
-the whole building, opening onto every floor: step in, and one comes
-out at the corresponding position---the same connotation, however
-distant the genre.\footnote{For clarity we depict each rabbit hole as
-    one-dimensional; in general it may be two- or higher-dimensional.} From
-\textit{Kiki's Delivery Service} on the fantasy floor, a hole leads to
-\textit{Anne of Green Gables} on the realistic floor: two quietly
-luminous coming-of-age stories, generically far apart. And because the
-holes lie everywhere, the leap is available from wherever the visitor
-happens to stand (R3).
+That is where disentanglement earns its name. What R2 asks for across
+floors is a direction that holds one aspect and varies the other---genre
+fixed and connotation moving, or connotation fixed and genre moving. A
+space offers such directions only if the two have been pulled apart
+within it: only, that is, if the representation is \emph{disentangled}
+(Section~\ref{subsec:disentanglement}).
+
+The multi-floor library with rabbit holes is our conceptualization of a
+space meeting all three (Figure~\ref{fig:two_views}a). Each floor holds
+one genre---jazz on one, classical on another---with floors of kindred
+feeling near one another. Within each floor, works are arranged by the
+closeness one feels but cannot name: beside Miles Davis stands Bill
+Evans; beside Debussy, Ravel. Standing among them, the visitor feels
+where he is (R1) and can see what a step along the floor would bring
+(R2).
+
+What joins the floors into one space is the rabbit hole. At every point
+on every floor one lies underfoot, and it runs vertically through the
+whole building, opening onto every floor: step in, and one comes out at
+the corresponding position---the same connotation, however distant the
+genre.\footnote{For clarity we depict each rabbit hole as
+    one-dimensional; in general it may be two- or higher-dimensional.}
+From Charlie Parker on the jazz floor, one hole passes Frank Zappa on
+the rock/pops floor and opens beside Stravinsky among the classics:
+three restless, angular, rhythmically intricate bodies of work,
+generically far apart. And because the holes lie everywhere, the leap is
+available from wherever the visitor happens to stand (R3).
 
 What the library gives each work, Section~\ref{sec:introduction} said,
 is not one more label but a \emph{place}. Now we can say it precisely:
 not only each work having coordinates, but a \emph{coordinate system}
 pervading the whole library. Every point where a visitor may stand has
-coordinates of its own. Two
-axes are shared by the whole building. The within-floor axis, on which
-the same coordinate means the same connotation on every floor, spans
-the \textbf{connotation space} $\mathcal{V}$; the vertical axis, on
-which the same coordinate means the same genre-ness through every hole,
-the \textbf{denotation space} $\mathcal{U}$. Each work receives its
-pair: a \emph{denotative coordinate} $u$ (which floor) and a
-\emph{connotative coordinate} $v$ (where on it). That is, the pairing of
+coordinates of its own. Two axes are shared by the whole building. The
+within-floor axis, on which the same coordinate means the same
+connotation on every floor, spans the \textbf{connotation space}
+$\mathcal{V}$; the vertical axis, on which the same coordinate means the
+same genre-ness through every hole, the \textbf{denotation space}
+$\mathcal{U}$. Each work receives its pair: a \emph{denotative
+    coordinate} $u$ (which floor) and a \emph{connotative coordinate} $v$
+(where on it). That is, the pairing of
 Section~\ref{subsec:serendipity_process}, \textit{denotatively
     unexpected and connotatively relevant}, now has an exact expression:
 distant in $\mathcal{U}$, yet close in $\mathcal{V}$.
@@ -125,9 +145,8 @@ discrete, one floor per name. The coordinate $u$ is
 continuous: the pop floor stands next to the rock floor, and a work
 that claims both genres can stand on a floor between them. Connotation
 is simpler. It never had a label; Section~\ref{subsec:naming} found it
-written in no field. Its coordinate $v$ is read
-from the content data: the works themselves, and the words that circle
-them.
+written in no field. Its coordinate $v$ is read from the content data:
+the works themselves, and the words that circle them.
 
 
 %%% Subsection 3.2 The Multi-Galaxy Curved Universe %%%%%
