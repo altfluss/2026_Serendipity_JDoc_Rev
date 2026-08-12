@@ -17,14 +17,14 @@ measured. We call the pair \emph{collection data}; it is all we have to build
 from. We keep, unless otherwise stated, to the simplest case, in which the only
 descriptors given are genre and title.
 
-\begin{figure}[t]
+\begin{figure}[p]
     \centering
     \begin{subfigure}{0.51\linewidth}
         \includegraphics[width=1.0\linewidth]{fig/fig1a.pdf}
         \caption{The multi-floor library with rabbit holes (disentangled view).}
     \end{subfigure}
     \vspace{3mm}
-    \begin{subfigure}{0.48\linewidth}
+    \begin{subfigure}{0.46\linewidth}
         \includegraphics[width=1.0\linewidth]{fig/fig1b.pdf}
         \caption{The multi-galaxy curved universe (entangled view).}
     \end{subfigure}
@@ -40,10 +40,31 @@ descriptors given are genre and title.
         own, which can be modeled as a curved surface sharing no axes
         with the others; works sharing one connotation trace curved
         trajectories from galaxy to galaxy---rabbit holes in their
-        entangled form.
+        entangled form. (In both views, each floor is drawn
+        two-dimensional and each rabbit hole one-dimensional; either may
+        be of higher dimension.)
     }
     \label{fig:two_views}
 \end{figure}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.95\linewidth]{fig/fig2.pdf}
+    \caption{
+        \textbf{The library as a fiber bundle.}
+        The library is the product of the denotation space $\mathcal{U}$ and
+        the connotation space $\mathcal{V}$, with coordinate $(u,v)$. The
+        embedding map $\Phi: \mathcal{U} \times \mathcal{V} \to \mathcal{X}$
+        carries the multi-floor library with rabbit holes (left) into the
+        multi-galaxy curved universe (right): each floor $\Phi(u, \cdot)$
+        becomes a galaxy, and each rabbit hole $\Phi(\cdot, v)$ a curve
+        threading the galaxies, joining works that share a connotative
+        coordinate across genres. (Here $\mathcal{U}$ is drawn
+        one-dimensional and $\mathcal{V}$ two-dimensional; either may be of
+        higher dimension.)
+    }
+    \label{fig:OT-FB}
+\end{figure}
+
 
 
 %%% Subsection 3.1 The Multi-Floor Library %%%%%
@@ -101,35 +122,30 @@ Evans; beside Debussy, Ravel. Standing among them, the visitor feels
 where he is (R1) and can see what a step along the floor would bring
 (R4).
 
-What joins the floors into one space is the rabbit hole. One lies
-underfoot at every point, running vertically through the whole building:
-step in, and one comes out at the corresponding position---the same
-connotation, however distant the genre.\footnote{For clarity we depict
-    each rabbit hole as one-dimensional; in general it may be two- or
-    higher-dimensional.} From Charlie Parker on the jazz floor, one hole
-passes Frank Zappa on the rock/pops floor and opens beside Stravinsky
-among the classics: three restless, angular, rhythmically intricate
-bodies of work, generically far apart. The hole is a direction the
-floors by themselves did not have (R2), open wherever the visitor stands
-(R3), and legible before he takes it (R4).
+What joins the floors into one space is the rabbit hole. One lies underfoot at
+every point, running vertically through the whole building: step in, and one
+comes out at the corresponding position---the same connotation, however distant
+the genre. From Charlie Parker on the jazz floor, one hole passes Frank Zappa on
+the rock/pops floor and opens beside Stravinsky among the classics: three
+restless, angular, rhythmically intricate bodies of work, generically far apart.
+The hole is a direction the floors by themselves did not have (R2), open
+wherever the visitor stands (R3), and legible before he takes it (R4).
 
-What the library gives each work, Section~\ref{sec:introduction} said,
-is not one more label but a \emph{place}. Now we can say it precisely:
-not only each work having coordinates, but a \emph{coordinate system}
-pervading the whole library. Every point where a visitor may stand has
-coordinates of its own. Two axes are shared by the whole building. The
-within-floor axis, on which the same coordinate means the same
-connotation on every floor, spans the \textbf{connotation space}
-$\mathcal{V}$; the vertical axis, on which the same coordinate means the
-same genre-ness through every hole, the \textbf{denotation space}
-$\mathcal{U}$. Each work receives its pair: a \emph{denotative
-    coordinate} $u$ (which floor) and a \emph{connotative coordinate} $v$
-(where on it). That is, the pairing of
-Section~\ref{subsec:serendipity_process}, \textit{denotatively
-    unexpected and connotatively relevant}, now has an exact expression:
-distant in $\mathcal{U}$, and close in $\mathcal{V}$. A representation
-that separates two aspects into two coordinates in this way is what
-machine learning calls \emph{disentangled}
+What the library gives each work, Section~\ref{sec:introduction} said, is not
+one more label but a \emph{place}. Now we can say it precisely: not only each
+work having coordinates, but a \emph{coordinate system} pervading the whole
+library. Every point where a visitor may stand has coordinates of its own. Two
+axes are shared by the whole building. The within-floor axis, on which the same
+coordinate means the same connotation on every floor, spans the
+\textbf{connotation space} $\mathcal{V}$; the vertical axis, on which the same
+coordinate means the same genre-ness through every hole, the \textbf{denotation
+    space} $\mathcal{U}$ (Figure~\ref{fig:OT-FB} left). Each work receives its pair:
+a \emph{denotative coordinate} $u$ (which floor) and a \emph{connotative
+    coordinate} $v$ (where on it). That is, the pairing of
+Section~\ref{subsec:serendipity_process}, \textit{denotatively unexpected and
+    connotatively relevant}, now has an exact expression: distant in $\mathcal{U}$,
+and close in $\mathcal{V}$. A representation that separates two aspects into two
+coordinates in this way is what machine learning calls \emph{disentangled}
 (Section~\ref{subsec:disentanglement}); the multi-floor library is the
 disentangled form of the collection data.
 
@@ -153,7 +169,7 @@ agree---separating what varies with genre from what varies within it. That is
 disentanglement, and it is the way this paper takes.
 
 
-%%% Subsection 3.2 Seeking Serendipity in the Library %%%%%a
+%%% Subsection 3.2 Seeking Serendipity in the Library %%%%%
 \subsection{Seeking Serendipity in the Library}\label{subsec:seeking}
 
 Let the visitor into this space, seeking as ever ``something like
@@ -233,13 +249,13 @@ space---but as a curved trajectory that no axis follows: real, but not
 navigable.
 
 The universe and the library are two views of one structure, separated only by a
-coordinate system. The works are the same, threaded by the same holes; what
-differs is whether the coordinates carry meaning. In the library they do: hold
-one fixed, and what it names holds still, and the passage from floor to floor
-runs straight. In the universe that meaning is spread across every axis at once,
-and the same passage curves across the dark between galaxies. Straight in the
-disentangled view, curved in the entangled one. To pass from the one view to the
-other is to find that system.
+coordinate system (Figure~\ref{fig:OT-FB}). The works are the same, threaded by
+the same holes; what differs is whether the coordinates carry meaning. In the
+library they do: hold one fixed, and what it names holds still, and the passage
+from floor to floor runs straight. In the universe that meaning is spread across
+every axis at once, and the same passage curves across the dark between
+galaxies. Straight in the disentangled view, curved in the entangled one. To
+pass from the one view to the other is to find that system.
 
 Whether it can be found is a threefold question. Can a coordinate system
 of this kind be laid over a given collection at all? If it can, is it
