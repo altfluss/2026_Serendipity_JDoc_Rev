@@ -17,13 +17,14 @@ themselves, which fixes what the bundle expresses and what it does not.
     Bundle}\label{subsec:library_as_bundle}
 
 % --- (1) Setup: content data + genre label → coordinate pair ---
-Let us restate what Section~\ref{sec:framework} drew. The works arrive as content
-data: each work $n$ is a point $\mathbf{x}_n \in \mathcal{X} = \mathbb{R}^D$ in
-the universe of Section~\ref{subsec:multi_galaxy}, with its genre label $c_n$ as
-descriptor. What the library gives each work $n$ is a pair of coordinates $(u_n,
-    v_n)$: a denotative coordinate $u_n \in \mathcal{U}$---which floor, its
-genre-ness---and a connotative coordinate $v_n \in \mathcal{V}$---where on the
-floor.
+Let us restate what Section~\ref{sec:framework} drew. The works arrive as
+content data: each work $n$ is a point $\mathbf{x}_n \in \mathcal{X} =
+    \mathbb{R}^D$ in the universe of Section~\ref{subsec:multi_galaxy}, with its
+genre label $c_n$ as descriptor. What the library gives each work $n$ is a pair
+of coordinates $(u_n, v_n)$: a denotative coordinate $u_n \in
+    \mathcal{U}=\mathbb{R}^{L_\mathcal{U}}$---which floor, its genre-ness---and a
+connotative coordinate $v_n \in \mathcal{V}=\mathbb{R}^{L_\mathcal{V}}$---where
+on the floor.
 
 % --- (2) Φ: floors and rabbit holes as two ways of walking; naming: fiber bundle ---
 The library and the universe are joined by an embedding map
@@ -61,52 +62,94 @@ could we expect its coordinate $v$ to express connotation?
 %%% Subsection 4.2 The Optimal Transport Fiber Bundle %%%%%
 \subsection{The Optimal Transport Fiber Bundle}\label{subsec:two_genres}
 
-\begin{figure}[t]
+% 2026-08-13 fig3.pdf を廃止し fig3a--fig3d.png の 2x2 に差し替え。
+% trim は各図の余白の実測値。(a)--(c) は 1800px 正方 @300dpi (= 432bp)、
+% (d) のみ 1440px 正方 @229dpi (= 452.7bp) なので bp 値が異なる。
+% トリム後の 4 枚は同一寸法・同一縮尺になる。余白をそのまま出したい場合は
+% trim=... , clip を外す。
+\begin{figure}[p]
     \centering
-    \includegraphics[width=0.6\linewidth]{fig/fig3.pdf}
+    \begin{subfigure}[t]{0.44\linewidth}
+        \centering
+        \includegraphics[trim=89 86 77 29, clip,
+            width=1.0\linewidth]{fig/fig3a.png}
+        \caption{Two genres, two galaxies.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.44\linewidth}
+        \centering
+        \includegraphics[trim=89 86 77 29, clip,
+            width=1.0\linewidth]{fig/fig3b.png}
+        \caption{A single exploration space.}
+    \end{subfigure}
+
+    \vspace{2mm}
+
+    \begin{subfigure}[t]{0.44\linewidth}
+        \centering
+        \includegraphics[trim=89 86 77 29, clip,
+            width=1.0\linewidth]{fig/fig3c.png}
+        \caption{An exploration space per genre.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.44\linewidth}
+        \centering
+        \includegraphics[trim=93 90 81 30, clip,
+            width=1.0\linewidth]{fig/fig3d.png}
+        \caption{A shared exploration space.}
+    \end{subfigure}
     \caption{
         \textbf{The two-genre case.}
-        Jazz (blue) and classical (gray) as two galaxies in the
-        data space, each modeled as a manifold. The gray lines show
-        the correspondence singled out by optimal transport---the
-        pairing of the two galaxies with least total squared
-        distance. Under it, Miles Davis's piece (orange) is paired
-        with Debussy's (red): the red line is the rabbit hole
-        between the two genres.
-    }
+        Content data of world music (blue) and rock (orange) from the Million
+        Song Dataset~\cite{Bertin-Mahieux2011}
+        (Section~\ref{sec:demonstration}), in their first three principal
+        components. (a) Data distributions (galaxies) of two genres. (b) A
+        single manifold expresses only the division between the genres. (c) One
+        manifold per genre. The gray lines join the same coordinate on the two,
+        but the correspondence is arbitrary. (d) The result we seek. Each mesh
+        is the connotation space $\mathcal{V}$, and the gray lines joining the
+        same coordinate $v$ are the rabbit holes in the curved universe. Two
+        works A and B are denotatively distant and connotatively close.}
     \label{fig:two_category_ot}
 \end{figure}
 
 % --- P1: Fig.3 で問題の難しさを直感的に(JDoc/LIS 読者向け)---
 \paragraph{The two-genre case.}
-Consider the simplest library: two genres only. Figure~\ref{fig:two_category_ot}
-shows jazz and classical as the data give them---two galaxies far apart in
-$\mathcal{X}$, each modeled as a manifold. On one sits Miles Davis's piece; on
-the other, Debussy's. Even as content data, the two are nowhere near each other.
-The problem we must solve is to find the lines that join the two
-galaxies---not this one line, but all of them.
+\paragraph{The two-genre case.}
+As the simplest case, consider a library with two genres only. In the content
+space, the two are distributed in distinct regions, forming two galaxies
+(Figure~\ref{fig:two_category_ot}a). To define an exploration space is to
+specify a manifold, a curved surface in that space, with coordinates on it. If
+the whole collection were covered by a single exploration space, that space
+would express chiefly the difference between the genres
+(Figure~\ref{fig:two_category_ot}b). If instead each genre is given an
+exploration space of its own, each carries its own coordinate system, and the
+correspondence between the two genres cannot be expressed
+(Figure~\ref{fig:two_category_ot}c). What we seek is the case where each genre
+has its own exploration space, yet the coordinate systems share something that
+transcends genre (Figure~\ref{fig:two_category_ot}d)---and we want that shared
+something to be connotation. This joining of two manifolds through one
+coordinate system is the rabbit hole, or fiber.
 
-Drawn together, the lines form a correspondence: a rule laying one galaxy onto
-the other. Finding such a correspondence is known to be severely ill-posed
-(Section~\ref{subsec:disentanglement}): infinitely many solutions exist, all
-fitting the data equally well~\cite{Locatello20197247}. To resolve
-it, we must state which solution we count as good---the inductive bias
-Section~\ref{subsec:library_as_bundle} called for. In other words, we must
-define what we want the connotation coordinate $v$ to express. Fortunately, two
-assumptions suggest themselves naturally.
+Such a shared coordinate system is a correspondence: a rule laying one galaxy
+onto the other. Finding it is known to be severely ill-posed
+(Section~\ref{subsec:disentanglement}): infinitely many correspondences fit
+the data equally well~\cite{Locatello20197247}. To settle on one, we must
+state which we count as good---the inductive bias
+Section~\ref{subsec:disentanglement} called for. In other words, we must
+define what we want the connotation coordinate $v$ to express. Fortunately,
+two assumptions suggest themselves naturally.
 
 \begin{itemize}
     \item \textbf{(A1) Independence:} the connotation we want is
           information independent of the denotation---the
           rabbit hole as the library drew it, a passage running
           perpendicular to the floors.
-    \item \textbf{(A2) Proximity:} works sharing a connotation lie
-          closer in the data space than works that do not---Miles
-          Davis's piece lies nearer to Debussy's than to a
-          Beethoven symphony.
+    \item \textbf{(A2) Proximity:} works sharing a connotation lie close in
+          the data space---works A and B in Figure~\ref{fig:two_category_ot}d,
+          joined by one $v$, should stand as near to each other as they can.
 \end{itemize}
 
-% --- P3: (A1)+(A2) → OT への帰着(一度だけ)---
 Together, the two assumptions turn the search for rabbit holes
 into a well-posed problem mathematics already knows: lay one galaxy onto the
 other as closely as possible (A2) while keeping the match
@@ -119,33 +162,27 @@ For this cost, the correspondence exists and, under mild
 regularity conditions, is essentially unique---a classical result
 known as Brenier's theorem~\cite{Brenier1991375,villani2009optimal}.
 
-% --- P4: 知見(最近傍では A1 が破れる → 相同性)---
 This reformulation offers an insight. Miles Davis and Debussy are not
 matched because each is the other's nearest work---matching
 nearest works, pair by pair, would not even guarantee (A1). They
 are matched because the relative position each occupies within
 its own galaxy is homologous
-(Figure~\ref{fig:two_category_ot}). A rabbit hole is decided not
+(Figure~\ref{fig:two_category_ot}d). A rabbit hole is decided not
 by the pairwise relation of two works but by how one genre stands
 to another as a whole.
 
-% --- Bridge: 2ジャンル → K ジャンル ---
-This settles the library with two floors. A real collection has
-many, and correspondences drawn pair by pair need not agree with
-one another.
 
-% --- MMOT への拡張(一つの問題に束ねる)---
 \paragraph{The $K$-genre case.}\label{subsec:OTFB-model}
-The extension is direct. Optimal transport generalizes from two
-distributions to $K$ as \textit{multi-marginal optimal
-    transport}~\cite{pass2015multi}: a single correspondence threads
-all $K$ galaxies at once, picking one point from each and
-minimizing the total squared distance among them. Because all
-genres now enter one problem, the threads cannot disagree with one
-another; and existence and essential uniqueness carry over under
-the same kind of regularity conditions~\cite{pass2015multi}.
+A real collection has many floors, and correspondences drawn pair by pair
+need not agree with one another. The extension, however, is direct. Optimal
+transport generalizes from two distributions to $K$ as
+\textit{multi-marginal optimal transport}~\cite{pass2015multi}: a single
+correspondence threads all $K$ galaxies at once, picking one point from each
+and minimizing the total squared distance among them. Because all genres now
+enter one problem, the threads cannot disagree with one another; and
+existence and essential uniqueness carry over under the same kind of
+regularity conditions~\cite{pass2015multi}.
 
-% --- P2: OT-FB の命名 → Figure 2 に帰結して終わり ---
 What this builds is the object
 Section~\ref{subsec:library_as_bundle} described. Works on one
 thread share one connotative coordinate $v$; with genre-ness
@@ -159,35 +196,34 @@ structure the \textbf{optimal transport fiber bundle
 Figure~\ref{fig:OT-FB} has been showing all along.
 
 
-%%% Subsection 4.3 What the Bundle Can Express %%%%%
-% 見出しは仮(2026-08-02)
-\subsection{What the Bundle Can Express}\label{subsec:bundle_reach}
+%%% Subsection 4.3 The Principal Connotation Space %%%%%
+\subsection{The Principal Connotation Space}\label{subsec:bundle_reach}
 
-% --- P1: 三つの限定(A1 由来・A2=データ計量由来・V の次元)→ PCA の比喩(一度だけ)---
-The OT-FB does not express every connotation. What it expresses is
-what the two assumptions define---no more. By (A1), it holds only
-connotations independent of denotation: whatever in a work depends
-on its genre is left with the genre. By (A2), it depends on the
-content data and their metric: a connotation the data do not contain
-cannot be found. And the dimension of
-$\mathcal{V}$ bounds how much is held at once: a low-dimensional
-$\mathcal{V}$ keeps only the principal share of what remains.
-What the bundle performs might, as it were, be called a
-\textit{principal connotation analysis}: like principal
-component analysis, it does not express everything; it returns
-coordinates, not names; and it inherits the metric the data carry.
+The connotation space the OT-FB provides does not cover every connotation. What,
+then, is this space---and how far can it be relied on? Four properties define
+it. (i) It runs independent of denotation: what a work owes to its genre stays
+with the genre, and this space holds the rest. (ii) It keeps the closeness the
+content data report: works those data place near one another are placed near
+here too. (iii) Of all that remains once denotation is set aside, it holds the
+principal $L_\mathcal{V}$ components, in the sense of least error. (iv) And it
+is not chosen by hand: the content data determine it, essentially uniquely.
+These four properties are equivalent to the orthogonal complement of the
+descriptors, reduced in dimension by nonlinear PCA; that is, what should be
+called the \textbf{principal connotation space}.
 
-% --- P3: multi-view の開口(限定を肯定形で閉じる)---
-It is worth noting that the connotation coordinate is determined
-by the content data: another content dataset yields another connotation
-coordinate. If music is given in two views, as audio and as
-lyrics, the two views open two kinds of rabbit holes---an audio
-connotation and a lyrics connotation---and each work receives the
-coordinates $(u, v_{\mathrm{audio}}, v_{\mathrm{lyrics}})$. The
-library has more holes than any one bundle draws.
 
-% --- P4: sec4 の締め → sec5 へ(短く)---
-The OT-FB, then, exists and is essentially unique---in theory.
-Whether it can be learned from an actual collection is the
-subject of Section~\ref{sec:computation}.
+Theoretically, these four come from two assumptions and one constant. The first
+two are (A1) and (A2) themselves; the fourth follows from them, through the
+optimal transport of Section~\ref{subsec:two_genres}. The third rests on
+$L_\mathcal{V}$, the dimension of $\mathcal{V}$, which we fix in advance: with
+enough data it may be set large, though two dimensions are convenient enough
+for exploration. And \textit{principal} carries its usual sense---as PCA
+returns principal components under least squared error, the OT-FB returns them
+under least 2-Wasserstein error.
 
+One remark before we close. The connotation coordinate is determined by the
+content data, so another content dataset yields another coordinate. Give music
+in two views, as audio and as lyrics, and two bundles are built: two kinds of
+rabbit hole open underfoot, and each work receives the coordinates $(u,
+    v_{\mathrm{audio}}, v_{\mathrm{lyrics}})$. The visitor is no longer asked
+whether to leap; he is asked which hole to take.
