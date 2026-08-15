@@ -183,13 +183,13 @@ method. Even mood can be mapped: experts annotate the works with mood words, and
 the layout follows~\cite{Oliveira2011105,Andjelkovic2019142}.
 
 In both lineages there is a common pattern: the space for connotative
-exploration is structured by hand, typically through domain knowledge
-made explicit for the system to carry---often as verbal tags or
-labels. Generic content features are not used for this; in them,
-denotative and connotative aspects remain mixed. Here our question
-arises: can a space for connotative exploration be drawn out of the
-collection itself, without relying on denotative descriptions?
-
+exploration is structured by hand, typically through domain knowledge made
+explicit for the system to carry---often as verbal tags or labels. Generic
+content features are not used for this; in them, denotative and connotative
+aspects remain mixed. Here our question arises: can a space for connotative
+exploration be drawn from the collection data as they arrive---no new names
+coined for connotation, and the names already carried serving only to mark what
+it is not?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Representation Learning and the Disentanglement
@@ -197,9 +197,11 @@ collection itself, without relying on denotative descriptions?
 
 The question just posed can be restated as a problem about the data.
 What we are given is the content data of the works themselves, and it
-carries both aspects: the denotative, which descriptors already name,
-and the connotative, which they do not. But in the data the two lie
-mixed, and left as they are, they collapse into a single distance. They
+carries both aspects: the denotative, which descriptors already name, and the connotative, which they do not. That content can carry
+what no descriptor does, the scene of
+Section~\ref{sec:introduction} has already shown: what stopped the
+visitor in the station was sound alone, with no record in sight.
+But in the data the two lie mixed, and left as they are, they collapse into a single distance. They
 must be pulled apart.
 
 In machine learning, this is precisely the problem that representation learning
@@ -214,12 +216,12 @@ coordinates---denotatively distant, yet connotatively close---and the
 space itself, told as a library, is the library with rabbit holes of
 Section~\ref{sec:introduction}.
 
-Constructing such a disentangled representation
-is a recognized open challenge. In the unsupervised setting it is provably ill-posed: for any disentangled
+Constructing such a disentangled representation is a recognized open challenge.
+In the unsupervised setting it is provably ill-posed: for any disentangled
 solution, infinitely many entangled ones generate the same
 observations~\cite{Locatello20197247}. Some \textit{inductive bias}---a
 structural assumption about the space---is therefore unavoidable; the question
 is not whether to adopt one, but which one suits the pairing at hand.
 Section~\ref{sec:framework} paints the space; Section~\ref{sec:mathematics}
-shows that, once the scope of the data is fixed, an appropriate bias follows
-naturally, in the form of optimal transport.
+shows that, once we state what the connotation coordinate should express, an
+appropriate bias follows naturally, in the form of optimal transport.
