@@ -24,7 +24,8 @@ by
     \mathcal{N}(x \mid \Phi(u, v), \beta^{-1}I)\, q(u)\, q(v)\, du\, dv,
 \end{align*}
 where $\beta^{-1}$ is the observation noise variance, $k(n)$ is the
-genre of work $n$, and $N_k$ is the number of works in genre $k$.
+genre of work $n$, and $N_k$ is the number of works in genre $k$ and
+$q(u)$, $q(v)$ are the prior distributions placed on the two spaces.
 Besides $\Phi$, we estimate the coordinates of the $N$ works:
 $U = (u_1, \dots, u_N)$ in the denotation space and
 $V = (v_1, \dots, v_N)$ in the connotation space.
@@ -124,13 +125,15 @@ With $\Phi$ given by \eqref{eq:kernel_smoothing}, the objective
 \eqref{eq:main_objective} under the marginal constraint
 $p \rightarrow q$ becomes an objective over $(U, V)$:
 \begin{equation}\label{eq:E-UV}
-    E[U, V] = \sum_{n=1}^N p(n)
+    E[U, V] = \frac{\beta}{2}\sum_{n=1}^N p(n)
     \iint p(u, v \mid n)\,
-    \frac{\beta}{2}\bigl\|\mathbf{x}_n - \Phi(u, v \mid U, V)\bigr\|^2
+    \bigl\|\mathbf{x}_n - \Phi(u, v \mid U, V)\bigr\|^2
     \, du\, dv
     + \lambda R(U, V),
 \end{equation}
-where $R$ is the regularization term
+where $p(u, v \mid n)=\mathcal{N}(u\mid u_n,\alpha^{-1} I)\,\mathcal{N}(v\mid v_n,
+    \alpha^{-1} I)$ is the distribution over $(u, v)$ that the transport plan assigns to
+work $n$, and $R$ is the regularization term
 \begin{equation*}
     R(U, V) \equiv - \sum_{n=1}^N p(n)\,
     \bigl(\log q(u_n) + \log q(v_n)\bigr),
