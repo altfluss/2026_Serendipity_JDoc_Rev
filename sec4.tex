@@ -1,5 +1,4 @@
 %%%%% Section 4. The Definite Form: From Fiber Bundles to Optimal Transport %%%%%
-% 見出しは提案(2026-08-02。"definite form" は sec1/sec2 の motif の回収)。討論で確定させる
 \section{The Definite Form: From Fiber Bundles to Optimal
   Transport}\label{sec:mathematics}
 
@@ -20,7 +19,7 @@ themselves, which fixes what the bundle expresses and what it does not.
 Let us restate what Section~\ref{sec:framework} drew. The works arrive as
 content data: each work $n$ is a point $\mathbf{x}_n \in \mathcal{X} =
     \mathbb{R}^D$ in the universe of Section~\ref{subsec:multi_galaxy}, with its
-genre label $c_n$ as descriptor. What the library gives each work $n$ is a pair
+genre label $k(n)$ as descriptor. What the library gives each work $n$ is a pair
 of coordinates $(u_n, v_n)$: a denotative coordinate $u_n \in
     \mathcal{U}=\mathbb{R}^{L_\mathcal{U}}$---which floor, its genre-ness---and a
 connotative coordinate $v_n \in \mathcal{V}=\mathbb{R}^{L_\mathcal{V}}$---where
@@ -104,17 +103,15 @@ could we expect its coordinate $v$ to express connotation?
         Song Dataset~\cite{Bertin-Mahieux2011}
         (Section~\ref{sec:demonstration}), in their first three principal
         components. (a) Data distributions (galaxies) of two genres. (b) A
-        single manifold expresses only the division between the genres. (c) One
-        manifold per genre. The gray lines join the same coordinate on the two,
-        but the correspondence is arbitrary. (d) The result we seek. Each mesh
-        is the connotation space $\mathcal{V}$, and the gray lines joining the
-        same coordinate $v$ are the rabbit holes in the curved universe. Two
+        single manifold expresses chiefly the difference between the genres. (c)
+        One manifold per genre. The gray lines join the same coordinate on the
+        two, but the correspondence is arbitrary. (d) The result we seek. Each
+        mesh is the connotation space $\mathcal{V}$, and the gray lines joining
+        the same coordinate $v$ are the rabbit holes in the curved universe. Two
         works A and B are denotatively distant and connotatively close.}
     \label{fig:two_category_ot}
 \end{figure}
 
-% --- P1: Fig.3 で問題の難しさを直感的に(JDoc/LIS 読者向け)---
-\paragraph{The two-genre case.}
 \paragraph{The two-genre case.}
 As the simplest case, consider a library with two genres only. In the content
 space, the two are distributed in distinct regions, forming two galaxies
@@ -133,12 +130,11 @@ coordinate system is the rabbit hole, or fiber.
 
 Such a shared coordinate system is a correspondence: a rule laying one galaxy
 onto the other. Finding it is known to be severely ill-posed
-(Section~\ref{subsec:disentanglement}): infinitely many correspondences fit
-the data equally well~\cite{Locatello20197247}. To settle on one, we must
-state which we count as good---the inductive bias
-Section~\ref{subsec:disentanglement} called for. In other words, we must
-define what we want the connotation coordinate $v$ to express. Fortunately,
-two assumptions suggest themselves naturally.
+(Section~\ref{subsec:disentanglement}): infinitely many correspondences fit the
+data equally well~\cite{Locatello20197247}. To settle on one, we must state
+which we count as good---the inductive bias Section~\ref{subsec:disentanglement}
+called for. In other words, we must define what we want the connotation
+coordinate $v$ to express. Two assumptions suggest themselves naturally.
 
 \begin{itemize}
     \item \textbf{(A1) Independence:} the connotation we want is
@@ -199,18 +195,22 @@ Figure~\ref{fig:OT-FB} has been showing all along.
 %%% Subsection 4.3 The Principal Connotation Space %%%%%
 \subsection{The Principal Connotation Space}\label{subsec:bundle_reach}
 
-The connotation space the OT-FB provides does not cover every connotation. What,
-then, is this space---and how far can it be relied on? Four properties define
-it. (i) It runs independent of denotation: what a work owes to its genre stays
-with the genre, and this space holds the rest. (ii) It keeps the closeness the
-content data report: works those data place near one another are placed near
-here too. (iii) Of all that remains once denotation is set aside, it holds the
-principal $L_\mathcal{V}$ components, in the sense of least error. (iv) And it
-is not chosen by hand: the content data determine it, essentially uniquely.
-These four properties are equivalent to the orthogonal complement of the
-descriptors, reduced in dimension by nonlinear PCA; that is, what should be
-called the \textbf{principal connotation space}.
-
+Of the three questions of Section~\ref{subsec:library_as_bundle},
+optimal transport has answered two: the bundle exists, and it is
+essentially unique. The third remains: does its coordinate $v$
+express connotation? The answer has two parts---what this space is,
+and what it is not. What it is, four properties state. (i) It runs
+independent of denotation: what a work owes to its genre stays with
+the genre, and this space holds the rest. (ii) It keeps the closeness
+the content data report: works those data place near one another are
+placed near here too. (iii) Of all that remains once denotation is
+set aside, it holds the principal $L_\mathcal{V}$ components, in the
+sense of least error. (iv) And it is not chosen by hand: the content
+data determine it, essentially uniquely. Together, the four
+properties characterize a single space: the orthogonal complement of
+denotation, reduced to its principal $L_\mathcal{V}$ components by
+nonlinear PCA---what should be called the \textbf{principal
+    connotation space}.
 
 Theoretically, these four come from two assumptions and one constant. The first
 two are (A1) and (A2) themselves; the fourth follows from them, through the
