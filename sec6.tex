@@ -47,7 +47,7 @@ embedding plays the same role. The words need not come from a
 controlled vocabulary: a ready-made description---an abstract, a
 synopsis---serves as it stands, and where none exists, one is
 composed from the tags users have freely given---``\textit{this work
-carries the following tags: $t_1, t_2, \ldots$}''---and embedded
+    carries the following tags: $t_1, t_2, \ldots$}''---and embedded
 whole. Nor is a word any longer a label:
 \textit{chill} and \textit{relaxed} lie close together in the
 embedding, as they do in use. This is, in the end, the visitor's own
@@ -61,16 +61,280 @@ atmosphere enters the content space; embed the nouns, and its themes
 do. Section~\ref{subsec:book_library} uses exactly this freedom to
 give one collection two kinds of rabbit holes.
 
+\begin{figure}[p]
+    \centering
+    \begin{subfigure}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{fig/fig4a.png}
+        \caption{Independent manifolds in $\mathcal{X}$.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{fig/fig4b.png}
+        \caption{The OT-FB in $\mathcal{X}$.}
+    \end{subfigure}
+
+    \vspace{2mm}
+
+    \begin{subfigure}[t]{0.38\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{fig/fig4c.png}
+        \caption{Independent manifolds, stacked.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.38\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{fig/fig4d.png}
+        \caption{The OT-FB, stacked.}
+    \end{subfigure}
+    \caption{
+        \textbf{The five-genre OT-FB learned from MTG-Jamendo.}
+        Content data of five genres (CLAP embeddings of the audio, in
+        their first three principal components), with the genre
+        manifolds. (a) Manifolds fitted independently, one per genre.
+        (b) The manifolds learned jointly as one OT-FB. (c) The
+        manifolds of (a), translated apart and stacked as floors.
+        (d) The floors of the OT-FB. In (c) and (d), each line joins
+        the same coordinate $v$ through all five floors.}
+    \label{fig:mtg_otfb}
+\end{figure}
 
 %%% Subsection 6.2 %%%
 \subsection{A Music Library Built from Sound
     Alone}\label{subsec:music_library}
 
-% MTG-Jamendo (5 genres, exclusive tagging) + LAION-CLAP.
-% Content data: audio only; norm normalization + PCA -> X.
-% Genre only is given for training; mood/theme tags are held out
-% and meet V afterward.
-% TODO: 実験結果待ち。パラグラフ設計は結果より先に行う。
+\paragraph{Setup.}
+We build the first library from MTG-Jamendo~\cite{Bogdanov2019}, an openly
+licensed music collection. Five genres---classical, jazz, rock, electronic, and
+folk---enter the library, with one thousand tracks from each, and every track
+carries exactly one of the five genre tags. The content data consist of sound
+alone: each track is embedded in its entirety by CLAP, normalized to unit norm,
+and reduced by PCA to ten dimensions. Only these ten-dimensional embeddings and
+the genre labels are used for modeling. The collection also carries tags of
+another kind---instruments, moods, and themes, freely supplied by the
+community---but these are held out: none enters the modeling. They return
+afterward, to be read against the space the sound itself has built.
+
+\paragraph{The learned bundle.}
+Figure~\ref{fig:mtg_otfb} shows what the optimal transport adds. The
+five galaxies separate cleanly in the content space $\mathcal{X}$:
+sound alone, embedded, already organizes the collection by genre. In
+(a), a manifold is fitted to each galaxy independently: each fits
+its own galaxy well, and each curls in a direction of its own. In
+(b), the five manifolds are learned jointly as one OT-FB: the fit is
+comparable, but the five are now homologous---one sheet, deforming
+as it travels from galaxy to galaxy. The difference is not in how
+well each floor fits its works; it is in whether the floors agree on
+a coordinate. Fitting alone leaves the correspondence arbitrary; the
+transport cost chooses one.
+
+The choice becomes visible when the manifolds are stacked as floors.
+In (c), the lines cross and tangle; in (d), the same lines, now the
+rabbit holes, descend in order from floor to floor. The two stacks
+show what each assumption does. Both fit their galaxies, and in both
+the coordinate $v$ runs independently of the genre: (A1) alone gives
+this much. But under (A1) alone, no information about the coordinate
+passes between the floors, so a shared coordinate cannot arise: each
+$v$ answers to its own galaxy, and the same $v$ on two floors names
+no common place. The proximity (A2) supplies the exchange. Through
+the transport cost, the five manifolds are smoothed into the single
+map $\Phi$ (Section~\ref{sec:computation}), and in the smoothing they
+become homologous: the floors align with the least total movement,
+each genre matched to the others as a whole, not work by nearest work
+(Section~\ref{subsec:two_genres}).
+
+
+\begin{figure}[p]
+    \centering\small
+    \begin{minipage}{0.24\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{fig/fig5a.pdf}\\
+        (a) piano
+    \end{minipage}
+    \begin{minipage}{0.24\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{fig/fig5b.pdf}\\
+        (b) drums
+    \end{minipage}
+    \begin{minipage}{0.24\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{fig/fig5c.pdf}\\
+        (c) acoustic guitar
+    \end{minipage}
+    \begin{minipage}{0.24\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{fig/fig5d.pdf}\\
+        (d) happy
+    \end{minipage}
+    \caption{
+        Distributions of works carrying four representative tags:
+        (a) \textit{piano}, (b) \textit{drums},
+        (c) \textit{acoustic guitar}, and (d) \textit{happy}.
+        Markers show individual works; each heatmap shows the
+        probability density $p(v \mid \textit{tag})$ estimated by
+        kernel density estimation. Points A--D mark the positions
+        whose representative tags are listed in
+        Table~\ref{tab:point_tags}.
+    }
+    \label{fig:tag_density}
+\end{figure}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig/fig6.pdf}
+    \caption{
+        The top-40 tags by mutual information with the connotative
+        coordinate $v$, each placed at the peak of its probability
+        density $p(v \mid \textit{tag})$. Points A--D are those in
+        Table~\ref{tab:point_tags}. Note that each peak marks where
+        works carrying the tag concentrate in $\mathcal{V}$; the
+        layout is not a clustering of the tags themselves.
+    }
+    \label{fig:tag_peaks}
+\end{figure}
+\begin{table}[p]
+    \centering\small
+    \caption{Top 20 tags by mutual information (MI) with the
+        connotative coordinate $v$. MI values are in units of
+        $10^{-3}$ bit.}
+    \label{tab:tag_mi}
+    \begin{tabular}{@{}clc c clc@{}}
+        \cmidrule[\heavyrulewidth]{1-3}
+        \cmidrule[\heavyrulewidth]{5-7}
+        \textbf{Rank} & \textbf{Tag}    & \textbf{MI} &  &
+        \textbf{Rank} & \textbf{Tag}    & \textbf{MI}                               \\
+        \cmidrule{1-3} \cmidrule{5-7}
+        1             & acoustic guitar & 10.99       &  & 11 & trumpet      & 2.05 \\
+        2             & piano           & 8.67        &  & 12 & saxophone    & 2.03 \\
+        3             & drums           & 6.63        &  & 13 & computer     & 1.79 \\
+        4             & bass            & 4.77        &  & 14 & sad          & 1.51 \\
+        5             & voice           & 4.45        &  & 15 & emotional    & 1.45 \\
+        6             & electric guitar & 4.11        &  & 16 & drum machine & 1.45 \\
+        7             & synthesizer     & 3.60        &  & 17 & love         & 1.44 \\
+        8             & ukulele         & 2.59        &  & 18 & violin       & 1.42 \\
+        9             & relaxing        & 2.36        &  & 19 & romantic     & 1.41 \\
+        10            & happy           & 2.17        &  & 20 & dream        & 1.38 \\
+        \cmidrule[\heavyrulewidth]{1-3}
+        \cmidrule[\heavyrulewidth]{5-7}
+    \end{tabular}
+\end{table}
+
+
+\begin{table}[t]
+    \centering\small
+    \caption{Representative tags at four points A--D in the
+        connotation space: the top five instrument and mood/theme
+        tags by pointwise mutual information (PMI), with PMI values
+        in bits in parentheses. Tags with negative PMI are omitted;
+        tags with PMI of at least 1 bit are in bold.}
+    \label{tab:point_tags}
+    \begin{tabular}{@{}c p{0.42\linewidth} p{0.42\linewidth}@{}}
+        \toprule
+        \textbf{Point} & \textbf{Instrument tags}                               &
+        \textbf{Mood/theme tags}                                                  \\
+        \midrule
+        A              & \textbf{brass (1.18)}, \textbf{bongo (1.12)},
+        \textbf{trombone (1.08)}, \textbf{rhodes (1.02)},
+        electric guitar (0.96)
+                       & fast (0.93), sport (0.84), party (0.78),
+        energetic (0.32), powerful (0.30)                                         \\
+        \addlinespace
+        B              & \textbf{acoustic guitar (1.60)},
+        \textbf{harmonica (1.57)}, \textbf{voice (1.21)},
+        acousticbassguitar (0.90), percussion (0.82)
+                       & \textbf{ballad (1.15)}, \textbf{love (1.04)},
+        \textbf{hopeful (1.02)}, mellow (0.98), soft (0.95)                       \\
+        \addlinespace
+        C              & \textbf{accordion (1.63)}, \textbf{ukulele (1.41)},
+        \textbf{double bass (1.29)}, \textbf{trombone (1.15)},
+        \textbf{saxophone (1.10)}
+                       & \textbf{funny (1.64)}, commercial (0.94), sexy (0.91),
+        retro (0.89), summer (0.88)                                               \\
+        \addlinespace
+        D              & \textbf{piano (1.68)}, pad (0.47)
+                       & \textbf{relaxing (1.97)}, \textbf{romantic (1.97)},
+        \textbf{sad (1.78)}, \textbf{emotional (1.62)},
+        \textbf{calm (1.57)}                                                      \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\paragraph{Reading the space through the tags.}
+What, then, does the connotation space $\mathcal{V}$ express? We
+examine this through the tags held out of the modeling---the
+instruments, moods, and themes the community gave the tracks. Each
+tag defines a density over the space: the distribution
+$p(v \mid \textit{tag})$ of the works that carry the tag. Where
+these works fall evenly, $\mathcal{V}$ carries nothing of the tag;
+where they concentrate, the tag tells us what that region holds.
+
+Figure~\ref{fig:tag_density} shows the distributions of four
+representative tags: piano, drums, acoustic guitar, and happy. Each
+concentrates in a region of its own---piano in the lower left, drums
+in the upper right, acoustic guitar in the lower right, happy in the
+upper left. And each spreads beyond its region, overlapping the
+others: the works are arranged not in discrete islands, one per tag,
+but along a continuous spectrum, over which the tags shade into one
+another.
+
+\paragraph{The landscape of $\mathcal{V}$.}
+Figure~\ref{fig:tag_peaks} widens the reading to forty
+representative tags, each placed at the peak of its distribution
+$p(v \mid \textit{tag})$. Around every peak the distribution
+spreads, as in Figure~\ref{fig:tag_density}; the connotation space
+$\mathcal{V}$ is the spectrum into which these overlapping
+distributions blend.
+
+The landscape divides in two. The upper half is where the music is
+lively: to the right, drums, bass, electric guitar, and
+brass---powerful music; to the left, happy and uplifting music. The
+lower half is where the music is quiet: to the right, acoustic
+guitar, with love and dream---ballads; to the left, piano, with
+emotional, relaxing, sad, and romantic. The two coordinates of
+$\mathcal{V}$ carry no names, no more than a principal component
+does; yet the landscape they span is legible from end to end.
+
+In this landscape, some tags are strongly expressed and others
+hardly at all. How much of a tag $\mathcal{V}$ expresses is measured
+by the mutual information $\mathrm{MI}[v; \textit{tag}]$: large when
+the works carrying the tag fall unevenly over the space, zero when
+they fall evenly. Table~\ref{tab:tag_mi} lists the top twenty tags.
+Instruments occupy the upper ranks, and moods follow. This is what
+the principal connotation space of this collection means: the
+spectrum of music that these tags describe in combination.
+
+\paragraph{What a $v$ holds.}
+What connotation, then, does a single point $v$ hold? We read four
+points---the corners A--D of the map, each of them a rabbit
+hole---through the tags concentrated there, listed in
+Table~\ref{tab:point_tags}. Point A holds a spectrum of works played
+by powerful instruments---brass, bongo, trombone---with the moods
+fast and energetic and the themes sport and party. In contrast,
+point D holds a spectrum of piano works that are relaxing, romantic,
+sad, and emotional. Likewise, B is a spectrum of ballads and love
+songs by acoustic guitar and voice, and C a spectrum of funny works
+by accordion and ukulele. No point is described by a single word;
+yet from the tags together, the reader can imagine what connotation
+each point expresses.
+
+\paragraph{What the connotation space represents.}
+The space $\mathcal{V}$ was built from the sound and the genre
+labels alone; none of these tags took part in the modeling. The tags
+then read what the sound had built: a continuous spectrum of music,
+legible as a landscape in the large, and at every point as a
+spectrum of works. The names arrived afterward, and found their
+places already prepared. This is the unnamed vocabulary of
+Section~\ref{subsec:bundle_reach}, now seen at work: the space does
+not say \textit{emotional} or \textit{hopeful}, but it holds a place
+where each can be said.
+
+And this is one space, shared by the five genres: each point of
+$\mathcal{V}$ is a rabbit hole, opening at the same $v$ on every
+floor. At point A, rock is energetic music driven by drums; leap
+through the hole to the classical floor, and there is brass playing
+with the same force. At point D, emotional piano jazz leads through
+the hole to romantic classical piano---no trumpet, but close to what
+the visitor of Section~\ref{sec:introduction} was seeking.
 
 
 %%% Subsection 6.3 %%%

@@ -154,11 +154,15 @@ This reduction to a single objective over the coordinates $(U, V)$
 enables efficient gradient-based optimization.
 
 \paragraph{Extensions.}
-The method admits two extensions. First, when a work carries a soft
-genre distribution---Gershwin's works as jazz and classical---the hard
-label $k(n)$ is replaced by that distribution: $u_n$ departs from
-$u_{k(n)}$ and becomes a per-work coordinate, and $\rho_{kn}$ becomes a
-fuzzy membership. Genre-ness is thus made continuous, work by work.
+\paragraph{Extensions.}
+The method admits two extensions. First, the genre descriptor need not
+be a hard label. A work may carry a soft genre distribution---Gershwin's
+works as jazz and classical---or a genre feature vector. Then $\rho_{kn}$
+ceases to be binary: it becomes the similarity between the $k$-th genre
+cluster and work $n$. The denotation coordinate follows, given work by
+work: $u_n$ expresses the genre-ness of work $n$. The denotation space is
+then no longer $K$ fixed points but a continuous space to search---
+genre-ness made continuous, work by work.
 
 Second, when richer descriptors are available---artist, era, and
 others---the denotation space $\mathcal{U}$ can itself be further
