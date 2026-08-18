@@ -1,331 +1,134 @@
 %%%%% Section 7. Discussion %%%%%
-% 2026-08-03 全面差し替え。旧稿(Ver.2 コピー)は破棄。
-% §7.1 のみ執筆済み。残る subsections(図書館への含意/予期される反論/
-% 表現とインターフェース 等)は未執筆(instructions.md §4 参照)。
-% 2026-08-08: 応用システム/rating-as-content/record への追記(客観性・普遍性)の
-% 3 subsections を末尾に追加(見出し仮)。内容メモ(コメント)+暫定散文(Claude 叩き台)。
+
 \section{Discussion}\label{sec:discussion}
 
-%%% Subsection 7.1 Where Connotation Lives %%%%%
-% 見出しは仮(2026-08-03)
-\subsection{Where Connotation Lives}\label{subsec:where_connotation}
+\subsection{What the Principal Connotation Space Tells
+    Us}\label{subsec:what_pcs_tells}
 
-% --- P1: sec2 の record の非対称 → 単位の非対称へ ---
-Section~\ref{subsec:naming} located the difference between the two
-kinds of attribute at the record: denotation arrives with it,
-connotation is written in no field. The bundle locates the
-difference more deeply---at the unit. A name is attached to one
-work at a time; what the OT-FB expresses is not a property of one
-work at all.
+\paragraph{Connotation lives in relations.}
+The first thing the space tells us is where the \emph{principal
+    connotation} exists: in the relations among works. Miles Davis and
+Debussy are joined by one connotation, yet not by any affinity the
+pair holds on its own---neither in their descriptors nor in their
+sound. They are joined because the position Miles Davis occupies
+within jazz is homologous to the position Debussy occupies within
+classical music. This homology of standing is what the transport
+means by connotation, and it is a conclusion deduced from
+independence (A1) and proximity (A2) alone
+(Section~\ref{subsec:two_genres}). A name is attached to one work
+at a time; connotation is a relation among many. Some things are
+defined through naming; others exist beyond naming, defined only
+through relations. Connotation is of the second kind.
 
-% --- P2: 三段の認識論(pairwise で不可視 → ドメイン内で構造 → ドメイン間で independence)---
-Consider a collection of two works. Between them there is a
-distance, and nothing more---nothing to say how much of it is
-genre and how much runs across genre. Connotation is not hidden
-in such a world; it has nowhere to exist. Within a genre, among
-many works, it takes shape: each work shares some connotations
-with some works and not with others, and this web of shared and
-unshared gives every work a relative position among its own kind.
-And it is only across genres that the last question can be put:
-which part of this shape is independent of the genre itself?
-Where the ensembles correspond as wholes, galaxy laid onto
-galaxy, what the correspondence preserves is shared across
-domains---and being shared across domains is what
-\emph{independent of denotation} means. Such a whole-to-whole
-correspondence is what transport computes, and what no pairwise
-comparison can.
+\paragraph{The boundary of naming is itself the foundation.}
+The second thing the space tells us is how the connotation space
+was built: on the boundary of naming. Whatever descriptors a record
+carries, there always remains a residue---something of the work
+beyond them. That boundary served as the foundation: the residue is
+given a definite place, the orthogonal complement of what the
+denotation accounts for, and from it the principal connotation
+space is carved (Section~\ref{subsec:bundle_reach}). The
+construction repeats what the bundle drew: fibers standing on a
+base. Here too, both kinds are affirmed. There are things naming
+attains; and precisely because naming has its limits, a foothold
+exists toward the rest. The path beyond naming begins exactly
+where naming ends.
 
-% --- P3: だから single word にならない(語彙ではなく単位の不一致)---
-This is why connotation was never going to be carried whole by a
-name. A name attaches to the individual work; connotation, as the
-bundle draws it, lives in the relations among domains. The
-consistent failure of connotative naming that
-Section~\ref{subsec:naming} recorded is, on this reading, not a
-poverty of vocabulary but a mismatch of unit---and a coordinate
-does not enrich the vocabulary; it changes the unit.
+\paragraph{Generic representation and descriptors, together.}
+The third thing the space tells us is what the construction needed:
+a general-purpose metric on the content data. A large language
+model can serve any purpose because it holds a generic encoding
+within; and the arrival of such encodings---CLAP for sound likewise
+(Section~\ref{subsec:content_data})---means that a general-purpose
+metric became available: the similarity of two works, measurable as
+an inner product. Such a representation arrives entangled: genre
+and everything else are woven into one geometry, and separating
+them requires a criterion (Section~\ref{subsec:disentanglement}).
+That is the role the descriptors play. Naming returns here in its
+full strength: it is the criterion by which the cut is made. It
+takes both---a generic representation to measure with, and
+descriptors to cut by---for the principal connotation space to
+stand as an orthogonal subspace.
 
-% --- P4: principal connotation =道しるべ(切り捨ては設計判断)---
-Nor does the bundle keep every connotation. The principal
-connotation analysis of Section~\ref{subsec:bundle_reach} retains
-what is independent of denotation, present in the content data, and
-principal among what remains; whatever depends on the genre is
-left with the genre. This is a design decision, not a shortfall.
-An axis whose meaning shifted from floor to floor could not guide
-a leap; what can serve the explorer as a signpost is exactly what
-keeps its meaning on every floor. The rabbit hole is dependable
-for the same reason it is partial.
-
-%%% Subsection 7.2(仮)Reading Connotation from Language %%%%%
-% 2026-08-11 新設。内容メモ(コメント)+暫定散文(Claude 叩き台)。見出し・位置仮。
-% 位置の根拠: §7.1 が「connotation はどこに宿るか」(関係・単位)を言い、本節が
-% 「その関係をどのデータから、誰が読むのか」を引き受け、§7.x(From Representation
-% to Systems)の query by description へ渡す。したがって §7.1 の直後・§7.x の直前。
-%
-% --- 内容メモ(2026-08-11 せんせーとの対話で確定)---
-% (0) 本節が回収する伏線: §2.2 の `An information system cannot rely on such
-%     background implicitly`(shared background = language, culture, embodied
-%     experience。Clark1996 / Langacker2008 / Hjorland1995400)。
-%     回答は「背景に頼らない」ではなく「背景の痕跡から読む読み手をシステムが所有する」。
-% (1) **成立条件としての generic feature vector**(せんせー 2026-08-11)。
-%     かつて feature vector は用途ごとに設計するものだった——何を特徴とするかを
-%     設計者が事前に決める。それは名前を事前に選ぶことであり、§2.2 の Osgood の
-%     `the scales themselves must still be chosen in advance` と同じ構造。
-%     すなわち denotative manner で connotation を作ることと五十歩百歩だった。
-%     generic embedding は用途に先立って存在し、設計者は次元の意味を選ばない。
-%     だから初めて「データが軸を決める」余地が生じた。**これが本手法の背景**。
-% (2) LLM は言語化装置ではなく**読者**。タグ列は言語(denotative なラベル列)だが、
-%     connotation は列そのものではなく「列を読んだときに立ち上がるもの」に宿る。
-%     ベクトルはその読みの残したもの。
-% (3) 主張の限定——存在論ではなく操作論(せんせー 2026-08-11 確定)。
-%     ×「LLM は embodiment を備える」/ ×「meaning を再現する」
-%     ○「間接的かつ部分的ではあれ、connotative な情報が内部のベクトル表現から
-%        引き出せる」。検証可能な主張の形に置き直すことで、決着しない存在論を通らない。
-%     「部分的」は新たな譲歩ではなく §4.3 principal への三つの限定と同じもの
-%     (→ §7.1 末尾 `dependable for the same reason it is partial` と韻を踏む)。
-% (4) seeker 側と work 側は同じ読み手。LLM は現にプロンプトから connotation を
-%     読む(読者自身の日常経験)。同じ読み手が works の側も読むから、query と work が
-%     同じ空間に落ちる——§7.x の query by description の**機構がここで与えられる**
-%     (現行の暫定散文 `lands somewhere in the connotation space` は機構を語っていない)。
-%     ただし「現に読み解いている」は振る舞いの証拠であって表現の幾何の証拠ではない。
-%     ゆえに順序は「幾何を測った研究(P3)→ 日常経験(P4)」とし、逆にしない。
-% (5) 反対側への態度: form から meaning へ到達するとは主張しない。得るのは works の
-%     **配置**であり、座標は何も名指さない(sec3)。BenderKoller2020 / Bisk2020 の
-%     否定命題を認めたまま本論文の主張は無傷で通る。敬意を持って引く。
-%
-%%% TODO 引用(2026-08-11 Web 検索で実在確認済み。bibkey は仮・**ページ未確認**——
-%%% ref.bib 追加時に一次ソースで巻号ページを検証すること。命名は既存則(著者+年+開始頁)に揃える):
-%%%  (i)  Louwerse & Zwaan (2009) "Language Encodes Geographical Information,"
-%%%       Cognitive Science 33(1). 都市名の共起統計のみから緯度経度が復元できる。
-%%%       「言語には誰も書かなかったものが刻まれている」の最も直截な実証。→ 主柱1
-%%%  (ii) Louwerse (2011) "Symbol Interdependency in Symbolic and Embodied Cognition,"
-%%%       Topics in Cognitive Science 3(2). symbol interdependency hypothesis——
-%%%       言語のシンボル体系は身体的・知覚的経験の痕跡を符号化している。
-%%%       せんせーの「間接的に身体性を備えている」に認知科学側で付いている名前。→ 主柱2
-%%%       (関連: Louwerse (2018) "Knowing the Meaning of a Word by the Linguistic
-%%%        and Perceptual Company It Keeps," Topics in Cognitive Science 10(3).)
-%%% (iii) Grand, Blank, Pereira & Fedorenko (2022) "Semantic projection recovers rich
-%%%       human knowledge of multiple object features from word embeddings,"
-%%%       Nature Human Behaviour 6(7). word embedding から**軸への射影**で人間の
-%%%       特徴知識(size/danger/intelligence 等)を復元。§4.3 principal connotation
-%%%       analysis と操作が同型。掲載誌の格も JDoc 読者に効く。→ 主柱3(最重要)
-%%%  (iv) Marjieh et al. (2024) "Large language models predict human sensory judgments
-%%%       across six modalities," Scientific Reports 14(arXiv:2302.01308). 補強。
-%%%  (v)  Abdou et al. (2021) "Can Language Models Encode Perceptual Structure Without
-%%%       Grounding? A Case Study in Color," CoNLL. 色の知覚構造。補強。
-%%%  (vi) 反対側(敬意を持って引く): Bender & Koller (2020) "Climbing towards NLU,"
-%%%       ACL / Bisk et al. (2020) "Experience Grounds Language," EMNLP.
-%%% 既に ref.bib にあり本節で再出させうるもの: Clark1996, Langacker2008,
-%%% Hjorland1995400(§2.2 で既出), Deerwester(LSA, 未使用)。
-\subsection{Reading Connotation from Language}\label{subsec:reading_connotation}
-
-% --- 以下、メモを実現する暫定散文(2026-08-11、Claude 叩き台)---
-% --- P1: 成立条件(generic feature vector)= 本手法の背景 ---
-The method has a precondition, and it is recent. Feature vectors were
-once built for a purpose: whoever built them decided beforehand what
-would count as a feature, and that decision was a choice of names.
-Osgood's scales had to be settled before the rating began
-(Section~\ref{subsec:naming}); a hand-built feature set makes the same
-choice, in numbers rather than in words, and arrives at connotation by
-denotative means. Generic embeddings come before any purpose. Nobody
-has decided, for this collection, what the dimensions are to mean---
-nothing in them has been named. Only under that condition is there room
-left for the data to decide where the axes lie.
-
-% --- P2: LLM は読者である(§2.2 の伏線回収)---
-What such an embedding reads is language, and yet connotation is not in
-the language it reads. A list of tags---genre, mood, era,
-instrument---is a string of denotative labels; read them together, and
-something rises that no one of them holds. This is the work the language
-model is put to. It is not asked to name, but to read, and the vector is
-what its reading leaves behind. Section~\ref{subsec:naming} observed
-that between people connotation travels unnamed, on a shared background
-of language, culture, and embodied
-experience~\cite{Clark1996,Langacker2008,Hjorland1995400}, and that a
-system cannot lean on that background implicitly. It need not. It can
-hold a reader who has come by that background at second hand.
-
-% --- P3: 主張の限定 + 認知科学の足場(測られていること)---
-How much of the background such a reader has is a fair question, and the
-claim we make is narrow. Not that a language model has embodied
-experience; not that it recovers meaning. Only that connotative
-information is present in its internal vectors and can be drawn out of
-them---indirectly, and in part. That much has been measured rather than
-assumed. Language carries the trace of perceptual experience: from the
-co-occurrence statistics of city names alone, latitude and longitude can
-be recovered~\cite{LouwerseZwaan2009}---a regularity Louwerse names
-symbol interdependency~\cite{Louwerse2011}. Human judgments of object
-features are recovered from word embeddings by projection onto an
-axis~\cite{Grand2022}, which is the operation of
-Section~\ref{subsec:bundle_reach} performed on other data. Language
-models predict human sensory judgments across
-modalities~\cite{Marjieh2024}, the structure of color among
-them~\cite{Abdou2021}. Whether form can suffice for meaning remains
-contested~\cite{BenderKoller2020,Bisk2020}, and this construction does
-not need it to: what it claims to obtain is an arrangement of works, not
-their meaning, and the coordinate marks a place while naming nothing
-(Section~\ref{sec:framework}).
-
-% --- P4: 一人の読み手が両側を読む → §7.x の query by description へ渡す ---
-One reader serves both sides. A language model reads connotation from a
-prompt as readily as from a list of tags---which is the ordinary
-experience of anyone who has used one. The groping description of
-Section~\ref{subsec:representation_to_systems}, then, and the works it
-gropes for are read by the same reader, and fall into the same space.
-The seeker's few words and the collection's many are commensurable
-because of who reads them.
+\bigskip
+\noindent
+Three statements, one space. Naming gives the foundation and the
+criterion, content data gives the metric---and together, for the
+first time, they reach beyond naming.
 
 
-%%% Subsection 7.x(仮)From Representation to Systems %%%%%
-% 2026-08-08 下書き。内容メモ(コメント)+暫定散文(Claude 叩き台)。
-% 見出し・位置・順序はすべて仮。既定の残り subsections
-% (図書館への含意/予期される反論/表現とインターフェース)との統合・分割は
-% 執筆時に判断する。とくに「表現とインターフェース」(v9 §9)とは対句の関係:
-% v9 §9 =「interface ではなく representation を」(貢献の位置づけ)、
-% 本節=「representation が得られたいま、その上に interfaces は増殖する」(展望)。
-\subsection{From Representation to Systems}\label{subsec:representation_to_systems}
+%%% Subsection 7.2 Reading Connotation from Preference %%%%%
 
-% --- 内容メモ: disentangled representation からどんな情報システムが作れるか ---
-% (1) ウサギ穴付き図書館: representation をそのまま探索空間にする。
-%     従来型の denotative なシステムにウサギ穴を「追加」する形式も可能だし、
-%     denotative space ごと探索可能な空間にすることもできる。
-% (2) 関連作品による connotation 検索: 該当しそうな works を利用者が例示して
-%     (例: Miles Davis の "Kind of Blue")、「connotation が共通する他の作品」を
-%     検索・探索する。
-% (3) Fuzzy description 検索: 「静かで、色彩的で、しかもそれらが溶け合ったような……」
-%     という自然言語的表現や、関連しそうな単語列から connotation 検索・探索する。
-% (4) 典型的タグによるスライダー検索(2026-08-08 追加): connotative axis と
-%     相互情報量の高いタグへのマッチ度をスライダー(0/1 の二値も可)で指定して
-%     検索・探索する。これを備えると Book House(アイコン入力)も取り込める。
+\subsection{Reading Connotation from
+    Preference}\label{subsec:reading_preference}
 
-% --- 以下、メモを実現する暫定散文(2026-08-08、Claude 叩き台)---
-Section~\ref{sec:introduction} argued that representation must come
-first, because no interface can surface what the space beneath it
-does not encode. The converse deserves a word: once the space
-exists, interfaces multiply. The most direct is the library of
-Section~\ref{sec:framework} itself---rabbit holes added to an
-otherwise conventional denotative catalog, or a space in which the
-floors themselves are open to walking. A second is query by works:
-a seeker offers what can be named---\textit{Kind of Blue}---and asks
-for works that share its connotation, wherever their genres lie. A
-third is query by description: a groping, natural-language
-gesture---``quiet, and full of color, and the colors run into one
-another''---lands somewhere in the connotation space, and the
-neighborhood does the rest. A fourth returns an earlier idea to
-service. Tags that share high mutual information with a connotative
-axis can stand for that axis, and a seeker can set, slider by
-slider, how much of each they want---continuously, or simply on and
-off. This is recognizably the Book House~\cite{Pejtersen1983230},
-its icons refounded: what once lived in the session can now read
-from a space that outlives it. Different entrances, one space; what
-varies is only how the seeker points.
+\paragraph{Connotation found in relations with people.}
+So far the content data have been the work itself or a description
+of it, but nothing requires this. What the OT-FB asks of content
+data is one thing: that the proximity between works be measurable
+(Section~\ref{subsec:content_data}). Preference data gathered from
+enough people meet the condition, and can serve, in principle, just
+as well~\cite{Koren200930,Oord20132643}. The reading changes
+accordingly. In Section~\ref{subsec:music_library} each region of
+the connotation space was read through words---which tags gather
+there; with preference data, the reading is through people---who
+gathers there. And the accounting stays the same: tags shared
+across genres carried high mutual information with $v$, tags bound
+to one genre little; likewise, a user who finds favorites across
+genres informs the estimate of $v$, and one who stays within a
+single genre informs it little. Either way, connotation is found in
+relations: among works, or between works and people.
 
-%%% Subsection 7.y(仮)Rating Data as Content Data %%%%%
-% 2026-08-08 下書き。内容メモ(コメント)+暫定散文(Claude 叩き台)。
-\subsection{Rating Data as Content Data}\label{subsec:rating_as_content}
+\paragraph{The rabbit hole as anthologist.}
+Users who find their favorites sensitively across genres were
+counted, above, as highly informative for the estimate of $v$. The
+world has such people---anthologists, who wander across genres and
+gather works by a criterion of their
+own~\cite{Lee20001106,Riva2017}. A rabbit hole plays
+their very role, and $v$ can be read as a measure of
+\emph{anthologist-ness}~\cite{Bowker1999}. Anthologists themselves---on the web, in
+the world of criticism---have often carried the role of joining
+different fields: living rabbit holes. A library with rabbit holes,
+then, is a library with librarians and anthologists.
 
-% --- 内容メモ: collaborative filtering の user-item rating data を content data と
-%     みなして disentangled representation を作る ---
-% * ウサギ穴(disentangle された axis)との相互情報量が高い curator には、
-%   その名前をウサギ穴に付けることができる——「○○さんのウサギ穴」。
-%   curator 全員ではなく、axis との関連度(相互情報量)の高さで基準となる
-%   curator を見つける、という選び方。
-% * ユーザー側から見れば、「自分の中にある何か」と resonate する curator を
-%   探索的に見つけられる、という読み替えにもなる。
-% * "curator" という語が適切かどうかは要検討(暫定散文では curator を仮使用)。
-% * 既決との接続(2026-08-04 整理): rating data は content data と同等に扱える。
-%   recsys との本質差は data source ではなく「ユーザーをモデル化するか」——
-%   ここでは同じ rating data から works をモデル化する。§2.3 の書き方と揃える。
+Return, then, to the reference desk of
+Section~\ref{sec:introduction}. The visitor asks for ``something
+like Miles Davis''; the librarian serves everything a name can
+reach---the recordings, the genre, the trumpeters---and where names
+end, she does not stop: she calls the anthologists. Who among them
+holds Miles Davis dear? One steps forward, one whose gatherings run
+through jazz and far beyond it, and takes the visitor walking. What
+once waited weeks for a street pianist now stands at the end of a
+corridor.
 
-% --- 以下、メモを実現する暫定散文(2026-08-08、Claude 叩き台)---
-Nothing in the construction requires that the content data be sound
-or text. A work is described by those who attend to it as well as
-by what it contains: the ratings a work gathers across many
-listeners are themselves data about the work, and from such data
-the same bundle can be built. This is the data of collaborative
-filtering; but the difference between the two, as
-Section~\ref{subsec:systems} drew it, lies not in the data source
-but in what is modeled. Collaborative filtering models the user,
-and searches on their behalf. The bundle built from rating data
-still models the works, and leaves the walking to the seeker.
 
-One consequence is worth drawing out. Among those whose choices
-enter such data are curators---makers of playlists, keepers of
-small collections. Where one curator's selections share high mutual
-information with a connotative axis, the axis can carry the
-curator's name: so-and-so's rabbit hole. The name does not define
-the hole; the geometry has already drawn it, and naming, as ever,
-presupposes representation. But for the seeker who descends it, the
-name adds something no coordinate carries---a person, met only
-through the works, whose way of hearing resonates with their own.
+%%% Subsection 7.3 From Representation to Systems %%%%%
 
-%%% Subsection 7.z(仮)What the Record Should Carry %%%%%
-% 2026-08-08 下書き、同日改訂(せんせーメモ第2版に基づく)。
-% 内容メモ(コメント)+暫定散文(Claude 叩き台)。見出し仮。
-\subsection{What the Record Should Carry}\label{subsec:what_record_carries}
+\subsection{From Representation to
+    Systems}\label{subsec:representation_to_systems}
 
-% --- 内容メモ(2026-08-08 改訂版)---
-% * 「すべての connotation を集めた space」があるなら、おそらく無限次元。
-%   connotation とは、人びとが生きて経験しているその瞬間ごとに、常に新しく
-%   立ち上がるものだから(★要引用: connotation とはそういうものだと述べた論文。
-%   おそらく LIS ではなく認知言語学の領域)。
-% * 本論文が提供するのは、その一部を切り出した "principal connotation space"。
-%   個々の work はこの部分空間の座標として位置づけられる。
-%   → では、この座標系はどれだけ客観的か?
-% * それは「何をもって principal な connotation とみなしたいか」という、
-%   その図書館・情報アーカイブの運用目的が定める。あるいは音楽配信サイトや
-%   電子ブックショップの経営方針が定める。各組織は入手可能な content data を用い、
-%   目的に合ったメトリックを用いる——いわばメタレベルでの inductive bias。
-% * 目的を共有する組織同士なら、互いに互換性のある connotation coordinate を
-%   採用できる。それは record に次の項目を追加することに相当する:
-%   「局所ユークリッド距離、あるいは標準内積が有効な content data そのもの」。
-% * (前版メモからの継承、散文に残すかは要判断: 「客観的な基準が生じた瞬間に、
-%   connotation は denotation になる」——暫定散文では客観性の問いへの入り口として
-%   1文だけ残した。)
+Section~\ref{sec:introduction} said it at the outset: representation
+precedes any interface, for no interface can surface what the space
+beneath it does not encode. The OT-FB now hands the representation
+over, and the question turns around: what interfaces does it open?
 
-% --- 以下、メモを実現する暫定散文(2026-08-08 改訂、Claude 叩き台)---
-If there were a space of all connotations, it would have no finite
-dimension. Connotation is not a stock of properties awaiting their
-index; it rises anew in every moment of lived experience, as often
-as someone hears, reads, remembers.
-%%% TODO 引用。「意味・概念は固定された在庫ではなく、使用・経験の瞬間ごとに
-%%% 新しく構築される」を述べる文献の候補(2026-08-08 Web 検索で実在確認済み。
-%%% どれを実際に引くかの判定と一次ソース検証は sec7 執筆時に行う):
-%%% (a) Casasanto & Lupyan (2015) "All Concepts Are Ad Hoc Concepts," in Margolis &
-%%%     Laurence (eds.), The Conceptual Mind, MIT Press. 主張が最も直截——概念は
-%%%     使用のたびにその場で新しく構築される。
-%%% (b) Croft & Cruse (2004) Cognitive Linguistics, Cambridge UP, Part II の
-%%%     dynamic construal approach——語の意味は固定的でなく、使用ごとに on-line で
-%%%     construal される。認知言語学の教科書的典拠として最も安全。
-%%% (c) Barsalou (1987) "The instability of graded structure," in Neisser (ed.),
-%%%     Concepts and Conceptual Development, Cambridge UP. 実験的基盤——同一人物でも
-%%%     機会ごとに概念構造が変動する。前段に Barsalou (1983) "Ad hoc categories,"
-%%%     Memory & Cognition 11.
-%%% (d) Langacker (2008) Cognitive Grammar: A Basic Introduction, Oxford UP.
-%%%     meaning is conceptualization——意味は処理時間の中で展開する動的な概念化。
-%%% (e) 語用論側(記憶ベース・Web 未確認): Carston (2002) Thoughts and Utterances,
-%%%     relevance theory の ad hoc concepts——語義は発話ごとに調整・構築される。
-%%% (f) 記号論・LIS 側: Barthes(connotation の語の出所。ref.bib に Barthes1977
-%%%     あり・一次未検証)/ Eco (1976) A Theory of Semiotics の unlimited semiosis
-%%%     (記憶ベース・Web 未確認)/ §2.2 で引用済みの Mai 2001。
-%%% "connotation" の語で立てるなら (f)、「経験の瞬間ごとに立ち上がる」の実質で
-%%% 立てるなら (a)-(c) が近い。
-What this paper offers is a part cut from that inexhaustible
-whole---a \emph{principal connotation space}
-(Section~\ref{subsec:bundle_reach})---and a place for each work
-within it.
+The possibilities are many. The most direct realizes the image
+itself: the multi-floor library with rabbit holes, offered as a
+space to walk. A seeker can also point with a work---\textit{Kind
+    of Blue}---and be shown the floor it stands on and the rabbit hole
+that opens beneath it. And a third reads the seeker's own words as
+content data. The groping description of
+Section~\ref{sec:introduction}---``quiet, but with feeling in it;
+colors that seem to melt into one another''---is a description like
+any other, and the encoder that placed the works
+(Section~\ref{subsec:book_library}) gives it, too, a place in the
+same space. From there, an AI librarian can point to the nearest
+floor, an AI anthologist to the nearest rabbit hole, and both can
+say: try walking from here. With a language model at hand, such
+staff are readily built.\footnote{We have built such a
+    library---AI librarian included---as a web application;
+    screenshots are included in the supplementary material.}
 
-How objective, then, is this coordinate system? No criterion fixes
-it from outside---had connotation an objective standard, it would
-be denotation already. What fixes the cut is purpose: what a
-library or an archive wants \emph{principal} to mean, what a music
-service or a bookshop is run for. Each organization builds from
-the content data it can gather, under a metric suited to its own
-ends---an inductive bias at the meta level, standing before the
-one of Section~\ref{subsec:two_genres}. And purpose shared is
-compatibility gained: organizations that mean the same thing by
-\emph{principal} can hold mutually compatible coordinates.
-
-What this asks of the record is, in the end, one item: the content
-data itself, kept in a form on which a locally Euclidean
-metric---a standard inner product---is valid. Whoever holds that,
-and shares the purpose, reproduces the space.
+How its visitors will walk, and whether serendipity will meet them
+on the way, is a question of real interest---and it must wait for
+the next work. The library is built; the walking is to come.

@@ -914,6 +914,7 @@
   doi       = {10.1109/ICASSP49357.2023.10095969}
 }
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Section 7 以降で引用中(未改稿節。順序・帰属は暫定)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1012,6 +1013,132 @@
   pages     = {8718-8735},
   doi       = {10.18653/v1/2020.emnlp-main.703}
 }
+
+%%%%% ref.bib への追記分(2026-08-18、§7.2 Reading Connotation from Preference 用)
+%%%%% 追記先: 「%%%%% Section 7 以降で引用中」内の「%%%%% --- sec7.tex ---」ブロック末尾
+
+%%% 断定エントリー(2026-08-18 追加)。要 Scopus 取得。
+%%% DOI は Web 検索で確定(10.1109/MC.2009.263)。42(8):30-37 は複数ソースで確認済み
+%%% (42(6):42-49 とする誤記サイトあり、注意)。
+%%% 用途: §7.2 Para1。ratings のみから works の latent 表現が立つことの標準文献。
+@article{Koren200930,
+  author  = {Koren, Yehuda and Bell, Robert and Volinsky, Chris},
+  title   = {Matrix Factorization Techniques for Recommender Systems},
+  year    = {2009},
+  journal = {Computer},
+  volume  = {42},
+  number  = {8},
+  pages   = {30-37},
+  doi     = {10.1109/MC.2009.263}
+}
+
+%%% 断定エントリー(2026-08-18 追加)。要一次確認(NeurIPS proceedings、DOI なし)。
+%%% pages 2643-2651 は ACM DL / proceedings.neurips.cc で確認済み。
+%%% 用途: §7.2 Para1。audio content から CF latent factors を予測——content 表現と
+%%% preference 表現が works について通約可能な言葉で語ることの実証(music)。
+@inproceedings{Oord20132643,
+  author    = {van den Oord, A{\"a}ron and Dieleman, Sander and Schrauwen, Benjamin},
+  title     = {Deep Content-Based Music Recommendation},
+  year      = {2013},
+  booktitle = {Advances in Neural Information Processing Systems 26},
+  pages     = {2643-2651}
+}
+
+%%% 断定エントリー(2026-08-18 追加)。要 Scopus 取得。
+%%% DOI・巻号ページは tandfonline で確認済み(50(5-7):456-472)。
+%%% 用途: §7.2 Para2。anthology = aggregate の LIS(目録理論)側の学術文献。
+@article{Zumer2012456,
+  author  = {{\v{Z}}umer, Maja and O'Neill, Edward T.},
+  title   = {Modeling Aggregates in {FRBR}},
+  year    = {2012},
+  journal = {Cataloging \& Classification Quarterly},
+  volume  = {50},
+  number  = {5-7},
+  pages   = {456-472},
+  doi     = {10.1080/01639374.2012.679547}
+}
+
+%%% 断定エントリー(2026-08-18 追加)。書誌詳細(出版地・ISBN・版)は未検証——
+%%% ref.bib 整理時に IFLA 公式(repository.ifla.org)で確認すること。
+%%% 用途: §7.2 Para2。aggregating work の正式典拠——「選択・配列という行為自体が
+%%% work である」をモデル化。every aggregate manifestation also embodies an
+%%% expression of the aggregating work.
+@book{Riva2017,
+  author    = {Riva, Pat and Le B{\oe}uf, Patrick and {\v{Z}}umer, Maja},
+  title     = {{IFLA} Library Reference Model: A Conceptual Model for
+               Bibliographic Information},
+  year      = {2017},
+  publisher = {International Federation of Library Associations and
+               Institutions},
+  address   = {The Hague}
+}
+
+%%% 任意・代替(2026-08-18)。aggregating work の一次ソース。Riva2017 の代わりに
+%%% 引く場合はこちら。「選択自体が知的創造であり work の要件を満たす」の原文。
+%%% URL: https://www.ifla.org/wp-content/uploads/2019/05/assets/cataloguing/frbrrg/AggregatesFinalReport.pdf
+@techreport{IFLAWGAggregates2011,
+  author      = {{IFLA FRBR Review Group, Working Group on Aggregates}},
+  title       = {Final Report of the Working Group on Aggregates},
+  institution = {International Federation of Library Associations and
+                 Institutions},
+  year        = {2011}
+}
+
+%%% 任意・色(2026-08-18)。「蔵書の 20% 超が aggregates」の推計。使う場合のみ追加。
+%%% 巻号ページ未検証(LRTS 59 と見込み)——bibkey の開始頁も未確定のため仮名。
+@article{ONeill2015frbr,
+  author  = {O'Neill, Edward T. and {\v{Z}}umer, Maja and Mixter, Jeffrey},
+  title   = {{FRBR} Aggregates: Their Types and Frequency in Library
+             Collections},
+  year    = {2015},
+  journal = {Library Resources \& Technical Services},
+  volume  = {59}
+}
+
+%%% 断定エントリー(2026-08-18 追加、Deep Research 由来)。JDoc・DOI 検証済み。
+%%% 用途: §7.2 Para2。情報システム(分類・コレクション)は対象領域の特定の解釈を
+%%% 主張する rhetorical な装置である。選択=意味の担い手、の LIS 内理論。投稿先と同誌。
+@article{Feinberg2010491,
+  author  = {Feinberg, Melanie},
+  title   = {Two Kinds of Evidence: How Information Systems Form
+             Rhetorical Arguments},
+  year    = {2010},
+  journal = {Journal of Documentation},
+  volume  = {66},
+  number  = {4},
+  pages   = {491-512},
+  doi     = {10.1108/00220411011052920}
+}
+ 
+%%% 断定エントリー(2026-08-18 追加、Deep Research 由来)。DOI 未発見——
+%%% ref.bib 整理時に KO (ISKO) 側で要確認。巻号ページは調査で確認済み。
+%%% 用途: §7.2 Para2。expressive bibliography——コレクションは選者の sensibility を
+%%% 表現する communication である。「選集そのものが意味を運ぶ」の LIS 内最近接。
+@article{Feinberg2011123,
+  author  = {Feinberg, Melanie},
+  title   = {Expressive Bibliography: Personal Collections in Public Space},
+  year    = {2011},
+  journal = {Knowledge Organization},
+  volume  = {38},
+  number  = {2},
+  pages   = {123-134}
+}
+
+%%% 断定エントリー(2026-08-18 追加、シロさん Deep Research 由来)。DOI 検証済み。
+%%% 用途: §7.2 Para2。collection は members ではなく developer の intent が構成する。
+%%% 「編む基準はその人固有のもの」の LIS 側の裏書き。著者名は Hur-Li Lee(要注意:
+%%% Hyuk-Jin Lee ではない)。
+@article{Lee20001106,
+  author  = {Lee, Hur-Li},
+  title   = {What is a Collection?},
+  year    = {2000},
+  journal = {Journal of the American Society for Information Science},
+  volume  = {51},
+  number  = {12},
+  pages   = {1106-1113},
+  doi     = {10.1002/1097-4571(2000)9999:9999<::AID-ASI1018>3.0.CO;2-T}
+}
+ 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% 素材庫(引用未定。削除しない)
