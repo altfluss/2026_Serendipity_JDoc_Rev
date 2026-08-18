@@ -57,11 +57,11 @@ the visitor's own method---``\textit{quiet, but with feeling in it}''
 was already a description, offered in whatever words came; an LLM
 embedding receives such words and returns a place.
 
-Here one further choice opens: which words are embedded decides what
-the bundle carries. Embed the adjectives given to a work, and its
-atmosphere enters the content space; embed the nouns, and its themes
-do. Section~\ref{subsec:book_library} uses exactly this freedom to
-give one collection two kinds of rabbit holes.
+Here one further choice opens: which words are embedded decides what the bundle
+carries. Embed the nouns given to a work, and its themes enter the content
+space; embed the adjectives, and the impression it leaves does.
+Section~\ref{subsec:book_library} uses exactly this freedom to give one
+collection two kinds of rabbit holes.
 
 \begin{figure}[p]
     \centering
@@ -343,7 +343,7 @@ the visitor of Section~\ref{sec:introduction} was seeking.
 \subsection{A Book Library with Two Kinds of Rabbit
     Holes}\label{subsec:book_library}
 
-\begin{figure}[t]
+\begin{figure}[p]
     \centering
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
@@ -360,7 +360,7 @@ the visitor of Section~\ref{sec:introduction} was seeking.
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
         \includegraphics[width=1.0\linewidth]{fig/fig7c.pdf}
-        \caption{The atmosphere space $\mathcal{V}_{\mathrm{atm}}$.}
+        \caption{The impression space $\mathcal{V}_{\mathrm{imp}}$.}
     \end{subfigure}
     \caption{
         \textbf{The book library with two kinds of rabbit holes.}
@@ -383,18 +383,18 @@ The second library is built from a collection of 409 well-known
 children's books. Each book carries two kinds of tags, assigned by
 an LLM annotator: noun tags for its themes---\textit{friendship},
 \textit{courage}, \textit{loss}---from a vocabulary of 74, and
-adjective tags for its atmosphere---\textit{humorous},
+adjective tags for the impression it leaves---\textit{humorous},
 \textit{poignant}, \textit{cozy}---from a vocabulary of 79, six to
 eight of each per book. Following the recipe of
 Section~\ref{subsec:content_data}, each kind is composed into a
 description of its own---``\textit{This is a children's book. The
-    themes are friendship, courage, and family}''---and the two
+    impressions are humorous, warm, and adventurous}''---and the two
 descriptions are embedded separately by an LLM text
 % TODO: text-embedding-3-small の言及方法（本文/脚注/引用）を決める。
 encoder (OpenAI \texttt{text-embedding-3-small}), normalized to unit
 norm, and reduced by PCA to ten dimensions. One collection thus
 yields two content spaces: a theme space from the nouns and an
-atmosphere space from the adjectives. The descriptors are genres,
+impression space from the adjectives. The descriptors are genres,
 fifteen in all, and they arrive fuzzy: each book names a primary and
 a secondary genre, sometimes a third, each with a strength---fantasy
 above all, adventure next. This is the case the first extension of
@@ -410,9 +410,9 @@ Figure~\ref{fig:book_otfb}(a) shows the learned genre map: the two
 dramas side by side, the two fantasies adjoining legends, myths, and
 folktales, adventure beside science fiction and horror. Then, over
 this one base, the two bundles are learned: one from the theme
-space and one from the atmosphere space. Every book now holds one
+space and one from the impression space. Every book now holds one
 denotative address and two connotative addresses,
-$(u, v_{\mathrm{thm}}, v_{\mathrm{atm}})$---and under every book,
+$(u, v_{\mathrm{thm}}, v_{\mathrm{imp}})$---and under every book,
 two rabbit holes open.
 
 \paragraph{The two landscapes.}
@@ -427,19 +427,26 @@ loss, healing; struggle in the upper right---war, courage, hope,
 oppression, perseverance; the moral order below it---justice,
 good-and-evil, magic, greed; and the play of the mind in the lower
 left---imagination, curiosity, discovery, learning, problem-solving.
-The atmosphere landscape divides along other lines: sorrow
+The impression landscape divides along other lines: sorrow
 above---melancholic, poignant, bittersweet, haunting; tension
 below---mysterious, suspenseful, thrilling; warmth in the upper
 right---gentle, cozy, heartwarming, nostalgic; play in the lower
 right---whimsical, playful, humorous. The same 409 books are
-arranged twice: once by what they are about, once by how they feel.
+arranged twice: once by what they are about, once by the impression
+they leave.
 
-
+% Table 4: 3冊の hop-on 本（すべて Drama-Daily、impression が最大限異なる
+% 3冊: Anne=pastoral / Flanders=melancholic / Pippi=whimsical。
+% W 空間の相互距離: Anne–Flanders 1.30, Anne–Pippi 1.48, Flanders–Pippi 2.01）。
+% データ: v2 run2。hop-off の選定条件（優先順）: (1) カーネル半径 σ=0.2 以内
+% 【必須】、(2) primary genre がシード本と異なる【必須】、(3) 穴の代表8タグ
+% との一致数が多い、(4) 同程度なら有名作。距離順ではない。
+% representative tags は穴に最も近い grid 点の KDE 上位8タグ。
 \begin{table}[p]
     \centering\small
     \caption{Leaping through the two kinds of rabbit holes. Three
         books, all on the Drama-Daily floor, each with its theme
-        hole and its atmosphere hole. The middle column names the
+        hole and its impression hole. The middle column names the
         hole and lists the tags most concentrated there. The books
         met inside a hole are many; the last column shows
         representative and typical ones from other floors.}
@@ -463,7 +470,7 @@ arranged twice: once by what they are about, once by how they feel.
         \textit{Kiki's Delivery Service}
         (Fantasy-Real-World)                                                  \\
         \cmidrule(l){2-3}
-                        & \textbf{Atmosphere}\newline
+                        & \textbf{Impression}\newline
         \textit{pastoral, gentle, warm, innocent, nostalgic,
             sentimental, comforting, cozy}
                         & \textit{Little Men} (Drama-School)\newline
@@ -488,7 +495,7 @@ arranged twice: once by what they are about, once by how they feel.
         \textit{Mio, My Son} (Fantasy-Other-World)\newline
         \textit{Treasure Island} (Adventure/Action)                           \\
         \cmidrule(l){2-3}
-                        & \textbf{Atmosphere}\newline
+                        & \textbf{Impression}\newline
         \textit{melancholic, poignant, haunting, moving,
             tragic, bittersweet, lyrical, dreamlike}
                         & \textit{Tarka the Otter} (Nature/Animals)\newline
@@ -515,7 +522,7 @@ arranged twice: once by what they are about, once by how they feel.
         \textit{Around the World in Eighty Days}
         (Adventure/Action)                                                    \\
         \cmidrule(l){2-3}
-                        & \textbf{Atmosphere}\newline
+                        & \textbf{Impression}\newline
         \textit{whimsical, humorous, playful, satirical,
             anthropomorphic, eccentric, curious, charming}
                         & \textit{The Sneetches and Other Stories}
@@ -531,26 +538,21 @@ arranged twice: once by what they are about, once by how they feel.
 \end{table}
 
 \paragraph{Which hole to take.}
-Table~\ref{tab:book_holes} takes the leap. In each row the visitor
-hops on at a book he knows and hops off on other floors of the genre
-map; the middle column lists the tags concentrated at the hole, read
-as in Table~\ref{tab:point_tags}.
-% TODO: 実データ到着後、以下の2文を具体的なタイトルで書き直す。
-% 例文の骨格: Hop on at <title>, a <genre> book, through its theme
-% hole, and the books met on the other floors share its subject:
-% <title> (<genre>), <title> (<genre>). Hop on at the same book
-% through its atmosphere hole, and the encounters change: books of
-% the same air, about something else entirely.
-Through a theme hole, the books met on the other floors share the
-subject of the book left behind; through an atmosphere hole, they
-share its air. The same book, two holes, two sets of encounters.
+Table~\ref{tab:book_holes} takes the leap. Three books stand on the
+same floor, Drama-Daily, and under each of them the two holes open;
+the middle column lists the tags concentrated at each hole. Through
+a theme hole, the books met on the other floors share the subject of
+the book left behind; through an impression hole, they share the
+impression it leaves. The same book, two holes, two sets of
+encounters.
 
 \paragraph{The visitor's choice.}
 The remark that closed Section~\ref{subsec:bundle_reach} is now an
 actual library. The connotation coordinate is determined by the
 content data, and this collection carries two: describe the books by
 what they are about, and one bundle of holes is dug; describe them
-by how they feel, and another. Neither is \emph{the} connotation
-space of the collection---each is the principal connotation space of
-one way of speaking about the works. The visitor is no longer asked
-whether to leap; he is asked which hole to take.
+by the impression they leave, and another. Neither is \emph{the}
+connotation space of the collection---each is the principal
+connotation space of one way of speaking about the works. The
+visitor is no longer asked whether to leap; he is asked which hole
+to take.
