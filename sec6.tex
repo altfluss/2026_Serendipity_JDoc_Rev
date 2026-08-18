@@ -364,18 +364,18 @@ the visitor of Section~\ref{sec:introduction} was seeking.
     \end{subfigure}
     \caption{
         \textbf{The book library with two kinds of rabbit holes.}
-        % TODO: (a) の円の位置の定義（各ジャンルの平均座標？代表点？）を確認して
-        % キャプションの文言を確定する。
         (a) The denotation space learned from the fuzzy genre
         descriptors; each circle marks one of the fifteen genres.
         (b) The connotation space built from the theme descriptions,
-        read as in Figure~\ref{fig:tag_peaks}: each word is placed
-        at the peak of its density
+        read as in Figure~\ref{fig:tag_peaks}: the top-30 words by
+        mutual information with $v_{\mathrm{thm}}$, each placed at
+        the peak of its density
         $p(v_{\mathrm{thm}} \mid \textit{word})$.
         (c) The connotation space built from the impression
-        descriptions, read likewise: each word is placed at the peak
-        of $p(v_{\mathrm{imp}} \mid \textit{word})$. The three
-        panels show the same 409 books, given one denotative and two
+        descriptions, read likewise: the top-30 words by mutual
+        information with $v_{\mathrm{imp}}$, each at the peak of
+        $p(v_{\mathrm{imp}} \mid \textit{word})$. The three panels
+        show the same 409 books, given one denotative and two
         connotative addresses.}
     \label{fig:book_otfb}
 \end{figure}
@@ -419,42 +419,36 @@ $(u, v_{\mathrm{thm}}, v_{\mathrm{imp}})$---and under every book,
 two rabbit holes open.
 
 \paragraph{The two landscapes.}
-Figures~\ref{fig:book_otfb}(b) and (c) read the two connotation
-spaces as in Figure~\ref{fig:tag_peaks}: each word used in the
-descriptions is placed at the peak of its density
-$p(v \mid \textit{word})$. The theme landscape is legible from end
-to end: bonds and inner life in the upper left---family,
-friendship, empathy, loss, healing; struggle in the upper
-right---war, courage, hope, oppression, perseverance; the moral
-order below it---justice, good-and-evil, magic, greed; and the play
-of the mind in the lower left---imagination, curiosity, discovery,
-learning, problem-solving. The impression landscape divides along
-other lines: sorrow above---melancholic, poignant, bittersweet,
-haunting; tension below---mysterious, suspenseful, thrilling;
-warmth in the upper right---gentle, cozy, heartwarming, nostalgic;
-play in the lower right---whimsical, playful, humorous. The same
-409 books are arranged twice: once by what they are about, once by
-the impression they leave.
+Let us see what connotation spaces are organized. Figures~\ref{fig:book_otfb}(b)
+and (c) read the two spaces as in Figure~\ref{fig:tag_peaks}: of the words used
+in the descriptions, the thirty that carry the most information about $v$---the
+highest in mutual information---are placed where the books carrying each word
+appear most. The connotation at a point of $\mathcal{V}_{\mathrm{thm}}$ or
+$\mathcal{V}_{\mathrm{imp}}$ is understood as the spectrum of the words
+spreading around it.
 
-These layouts are not a clustering of the words, and no word is a
-connotation. What a point $v$ holds is a spectrum: the mixture of
-the word distributions spreading over it, peak upon peak. The words
-are how the spectrum can be read; the spectrum is what the point
-expresses.
+The theme landscape is legible from end to end:
+bonds and inner life in the upper left---family, friendship,
+empathy, loss, healing; struggle in the upper right---war, courage,
+hope, oppression, perseverance; the moral order below it---justice,
+good-and-evil, magic, greed; and the play of the mind in the lower
+left---imagination, curiosity, discovery, learning,
+problem-solving. The impression landscape divides along other
+lines: sorrow above---melancholic, poignant, bittersweet, haunting;
+tension below---mysterious, suspenseful, thrilling; warmth in the
+upper right---gentle, cozy, heartwarming, nostalgic; play in the
+lower right---whimsical, playful, humorous. The same 409 books are
+arranged twice: once by what they are about, once by the impression
+they leave.
 
-% Table 4: 3冊の hop-on 本（すべて primary genre = Drama-Daily、impression が
-% 最大限異なる3冊: Anne=pastoral / Flanders=melancholic / Pippi=whimsical。
-% impression 空間の相互距離: Anne–Flanders 1.30, Anne–Pippi 1.48,
-% Flanders–Pippi 2.01。同一フロア内でも theme / impression で全く別の穴に
-% 潜れることを示す構成）。
-% データ: v2 run2 (U.csv, V.csv, W.csv)。
-% hop-off の選定条件（優先順。距離順ではない）:
-%   (1) シード本からカーネル半径 σ=0.2 以内【必須】
-%   (2) primary genre がシード本と異なる【必須】
-%   (3) 穴の代表8ワードとの一致数が多い
-%   (4) 同程度なら有名で分かりやすい作品
-% representative words: シード本の座標に最も近い grid 点の KDE 上位8ワード。
-% 詳細な選定記録（除外作と距離・一致数を含む）は Table4.md を参照。
+The transport stands behind these landscapes. The OT-FB extracts a connotation
+shared across the genres: the coordinate $u$ carries what belongs to a genre,
+and $v$ retains what the genres have in common
+(Section~\ref{subsec:bundle_reach}). The words that rank high in mutual
+information are therefore the words whose nuance travels across the genres;
+words specific to a genre are less informative in these spaces. This is the
+optimal transport at work.
+
 \begin{table}[p]
     \centering\small
     \caption{Leaping through the two kinds of rabbit holes. Three
