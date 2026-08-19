@@ -79,13 +79,13 @@ collection two kinds of rabbit holes.
     \end{subfigure}
     \caption{
         \textbf{The five-genre OT-FB learned from MTG-Jamendo.}
-        Content data of five genres (CLAP embeddings of the audio, in
-        their first three principal components), with the genre
-        manifolds. (a) Manifolds fitted independently, one per genre.
-        (b) The manifolds learned jointly as one OT-FB. (c) The
-        manifolds of (a), translated apart and stacked as floors.
-        (d) The floors of the OT-FB. In (c) and (d), each line joins
-        the same coordinate $v$ through all five floors.}
+        The content data (CLAP embeddings of the audio, first three
+        principal components) with the genre manifolds.
+        (a) Manifolds fitted independently, one per genre.
+        (b) The same five learned jointly as one OT-FB.
+        (c, d) The manifolds of (a) and of (b), translated apart and
+        stacked as floors; each line joins the same coordinate $v$
+        through all five.}
     \label{fig:mtg_otfb}
 \end{figure}
 
@@ -151,28 +151,22 @@ connections between the manifolds
         (d) happy
     \end{minipage}
     \caption{
-        Distributions of works carrying four representative tags:
-        (a) \textit{piano}, (b) \textit{drums},
-        (c) \textit{acoustic guitar}, and (d) \textit{happy}.
-        Markers show individual works; each heatmap shows the
-        probability density $p(v \mid \textit{tag})$ estimated by
-        kernel density estimation. Points A--D mark the positions
-        whose representative tags are listed in
-        Table~\ref{tab:point_tags}.
-    }
+        \textbf{Where four tags gather in $\mathcal{V}$.}
+        Markers show the works carrying the tag; the heatmap is their
+        density $p(v \mid \textit{tag})$, by kernel density estimation.
+        Points A--D are those of Table~\ref{tab:point_tags}.}
     \label{fig:tag_density}
 \end{figure}
 \begin{figure}[p]
     \centering
     \includegraphics[width=0.5\textwidth]{fig/fig6.pdf}
     \caption{
-        The top-40 tags by mutual information with the connotative
-        coordinate $v$, each placed at the peak of its probability
-        density $p(v \mid \textit{tag})$. Points A--D are those in
-        Table~\ref{tab:point_tags}. Note that each peak marks where
-        works carrying the tag concentrate in $\mathcal{V}$; the
-        layout is not a clustering of the tags themselves.
-    }
+        \textbf{The landscape of $\mathcal{V}$.}
+        The top-40 tags by mutual information with $v$, each placed at
+        the peak of its density $p(v \mid \textit{tag})$. A peak marks
+        where the works carrying the tag concentrate; the layout is not
+        a clustering of the tags themselves.
+        Points A--D are those of Table~\ref{tab:point_tags}.}
     \label{fig:tag_peaks}
 \end{figure}
 \begin{table}[p]
@@ -204,11 +198,11 @@ connections between the manifolds
 
 \begin{table}[t]
     \centering\small
-    \caption{Representative tags at four points A--D in the
-        connotation space: the top five instrument and mood/theme
-        tags by pointwise mutual information (PMI), with PMI values
-        in bits in parentheses. Tags with negative PMI are omitted;
-        tags with PMI of at least 1 bit are in bold.}
+    \caption{Representative tags at the four points A--D of
+        $\mathcal{V}$: the top five instrument tags and the top five
+        mood/theme tags by pointwise mutual information (PMI, in bits,
+        in parentheses). Negative PMI is omitted; PMI of at least 1 bit
+        is in bold.}
     \label{tab:point_tags}
     \begin{tabular}{@{}c p{0.42\linewidth} p{0.42\linewidth}@{}}
         \toprule
@@ -332,12 +326,13 @@ the visitor of Section~\ref{sec:introduction} was seeking.
     \caption{
         \textbf{The book library with two kinds of rabbit holes.}
         The same 409 books, given one denotative and two connotative
-        addresses. The denotation space (a) is learned from the fuzzy
-        genre descriptors; each circle marks one of the fifteen genres.
-        The two connotation spaces are built from the theme descriptions
-        (b) and from the impression descriptions (c), and both are read
-        as in Figure~\ref{fig:tag_peaks}: the top-30 words by mutual
-        information with $v$, each placed at the peak of its density
+        addresses.
+        (a) The denotation space, learned from the fuzzy genre
+        descriptors; each circle marks one of the fifteen genres.
+        (b, c) The connotation spaces built from the theme and the
+        impression descriptions, read as in
+        Figure~\ref{fig:tag_peaks}: the top-30 words by mutual
+        information with $v$, each at the peak of its density
         $p(v \mid \textit{word})$.}
     \label{fig:book_otfb}
 \end{figure}
@@ -397,8 +392,8 @@ about, and the impression it leaves.
     \caption{Leaping through the two kinds of rabbit holes. Three books
         on the Drama-Daily floor, each with its theme hole and its
         impression hole. The middle column lists the words most
-        concentrated at that hole. Each hole holds many books; the last
-        column names five met on other floors.}
+        concentrated at the hole; the last column names five of the many
+        books met on other floors.}
     \label{tab:book_holes}
     \begin{tabular}{@{}p{0.15\linewidth} p{0.30\linewidth}
         p{0.44\linewidth}@{}}
