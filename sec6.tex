@@ -128,48 +128,53 @@ connections between the manifolds
 (Section~\ref{subsec:two_genres}).
 
 
-\begin{figure}[p]
-    \centering\small
-    \begin{minipage}{0.24\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{fig/fig5a.pdf}\\
-        (a) piano
-    \end{minipage}
-    \begin{minipage}{0.24\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{fig/fig5b.pdf}\\
-        (b) drums
-    \end{minipage}
-    \begin{minipage}{0.24\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{fig/fig5c.pdf}\\
-        (c) acoustic guitar
-    \end{minipage}
-    \begin{minipage}{0.24\textwidth}
-        \centering
-        \includegraphics[width=1.0\textwidth]{fig/fig5d.pdf}\\
-        (d) happy
-    \end{minipage}
-    \caption{
-        \textbf{Where four tags gather in $\mathcal{V}$.}
-        Markers show the works carrying the tag; the heatmap is their
-        density $p(v \mid \textit{tag})$, by kernel density estimation.
-        Points A--D are those of Table~\ref{tab:point_tags}.}
-    \label{fig:tag_density}
-\end{figure}
-\begin{figure}[p]
+\begin{figure}[t]
     \centering
-    \includegraphics[width=0.5\textwidth]{fig/fig6.pdf}
+    \begin{minipage}[b]{0.47\textwidth}
+        \centering
+        \begin{subfigure}[b]{0.48\linewidth}
+            \includegraphics[width=\linewidth]{fig/fig5a.pdf}
+            \caption{\textit{piano}}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.48\linewidth}
+            \includegraphics[width=\linewidth]{fig/fig5b.pdf}
+            \caption{\textit{drums}}
+        \end{subfigure}
+
+        \vspace{2mm}
+
+        \begin{subfigure}[b]{0.48\linewidth}
+            \includegraphics[width=\linewidth]{fig/fig5c.pdf}
+            \caption{\textit{acoustic guitar}}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.48\linewidth}
+            \includegraphics[width=\linewidth]{fig/fig5d.pdf}
+            \caption{\textit{happy}}
+        \end{subfigure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.51\textwidth}
+        \centering
+        \begin{subfigure}[b]{\linewidth}
+            \includegraphics[width=\linewidth]{fig/fig5e.pdf}
+            \caption{The landscape of $\mathcal{V}$}
+        \end{subfigure}
+    \end{minipage}
     \caption{
-        \textbf{The landscape of $\mathcal{V}$.}
-        The top-40 tags by mutual information with $v$, each placed at
-        the peak of its density $p(v \mid \textit{tag})$. A peak marks
-        where the works carrying the tag concentrate; the layout is not
-        a clustering of the tags themselves.
-        Points A--D are those of Table~\ref{tab:point_tags}.}
-    \label{fig:tag_peaks}
+        \textbf{Reading $\mathcal{V}$ through the tags.}
+        (a--d) Where four tags gather: markers show the works
+        carrying the tag, and the heatmap is their density
+        $p(v \mid \textit{tag})$ by kernel density estimation.
+        (e) The top-40 tags by mutual information with $v$, each
+        placed at the peak of its density. A peak marks where the
+        works carrying the tag concentrate; the layout is not a
+        clustering of the tags themselves. Points A--D are those of
+        Table~\ref{tab:point_tags}.}
+    \label{fig:v_tags}
 \end{figure}
-\begin{table}[p]
+\begin{table}[t]
     \centering\small
     \caption{Top 20 tags by mutual information (MI) in units of
         $10^{-3}$ bit.}
@@ -240,7 +245,7 @@ What does the connotation space $\mathcal{V}$ hold? The tags held out
 of the modeling---instruments, moods, and themes---give the reading.
 Each tag defines a density over $\mathcal{V}$: the distribution
 $p(v \mid \textit{tag})$ of the works that carry it.
-Figure~\ref{fig:tag_density} shows four of them---\textit{piano},
+Figure~\ref{fig:v_tags}(a--d) shows four of them---\textit{piano},
 \textit{drums}, \textit{acoustic guitar}, and \textit{happy}. Each
 peaks at a place of its own, yet the four densities
 overlap---connotation runs as a continuous spectrum, not as discrete
@@ -253,10 +258,10 @@ lists the top twenty. Instruments occupy the upper ranks, and moods
 follow.
 
 \paragraph{The landscape of $\mathcal{V}$.}
-Figure~\ref{fig:tag_peaks} widens the reading to the top forty tags,
+Figure~\ref{fig:v_tags}(e) widens the reading to the top forty tags,
 each placed at the peak of its density $p(v \mid \textit{tag})$. Each
-tag still spreads around its peak, as in
-Figure~\ref{fig:tag_density}; the map marks where it gathers most.
+tag still spreads around its peak, as (a--d) show; the map marks
+where it gathers most.
 
 The landscape divides in two. The upper half is lively: to the right,
 drums, bass, electric guitar, and brass---powerful music; to the
@@ -308,19 +313,19 @@ the visitor of Section~\ref{sec:introduction} was seeking.
     \centering
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig7a.pdf}
+        \includegraphics[width=1.0\linewidth]{fig/fig6a.pdf}
         \caption{The genre map $\mathcal{U}$.}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig7b.pdf}
+        \includegraphics[width=1.0\linewidth]{fig/fig6b.pdf}
         \caption{The theme space $\mathcal{V}_{\mathrm{thm}}$.}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig7c.pdf}
+        \includegraphics[width=1.0\linewidth]{fig/fig6c.pdf}
         \caption{The impression space $\mathcal{V}_{\mathrm{imp}}$.}
     \end{subfigure}
     \caption{
@@ -331,7 +336,7 @@ the visitor of Section~\ref{sec:introduction} was seeking.
         descriptors; each circle marks one of the fifteen genres.
         (b, c) The connotation spaces built from the theme and the
         impression descriptions, read as in
-        Figure~\ref{fig:tag_peaks}: the top-30 words by mutual
+        Figure~\ref{fig:v_tags}: the top-30 words by mutual
         information with $v$, each at the peak of its density
         $p(v \mid \textit{word})$.}
     \label{fig:book_otfb}
