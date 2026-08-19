@@ -1,14 +1,13 @@
 %%%%% Section 6. Demonstration with real data %%%%%
 \section{Demonstration}\label{sec:demonstration}
 
-Sections~\ref{sec:framework}--\ref{sec:computation} built the library
-in concept, in mathematics, and in computation. What remains is to
-build one. This section constructs the OT-FB from two actual
-collections: a music collection, whose content data come from sound
-alone, and a collection of children's books, which carries two kinds
-of content data and so receives two bundles of rabbit holes at once.
-We first state what the construction asks of the content data, then
-build the two libraries in turn.
+Sections~\ref{sec:framework}--\ref{sec:computation} designed the
+library in concept, in mathematics, and in computation. This section
+builds two. The first, a music collection, takes its content data
+from sound alone. The second, a collection of children's books, takes
+two kinds of content data, and so opens two bundles of rabbit holes
+over one base. We first state what the construction asks of the
+content data, then build the two libraries in turn.
 
 
 %%% Subsection 6.1 %%%
@@ -16,46 +15,40 @@ build the two libraries in turn.
     Data}\label{subsec:content_data}
 
 \paragraph{Unfolded content data.}
-The OT-FB inherits its geometry from the content space. Both the
-assumption (A2) and the transport cost are stated in the Euclidean
-distance of $\mathcal{X}$, so which works a rabbit hole joins is
-decided by what counts as close there. The content data must
-therefore carry an inner product, or a distance that is Euclidean at
-least locally---and it must be generic, made for no specific purpose.
+The construction asks one thing of the content data: that closeness
+in $\mathcal{X}$ mean kinship between works. Both the proximity (A2)
+and the transport cost are stated in the Euclidean distance of
+$\mathcal{X}$, so what counts as close there decides which works a
+rabbit hole joins. Two requirements follow.
 
-The condition means that the content data must be \emph{unfolded}. In
-a space of raw signals, kindred works do not necessarily lie close:
-the space is folded, and local distance tells little about kinship.
-Unfolding is the preprocessing the construction asks for. Deep
-embeddings supply it, and supply it generically: foundation encoders
-are trained on large corpora precisely so that semantic closeness
-becomes geometric closeness. For sound, we use CLAP~\cite{Wu2023}, a
-joint audio--text embedding: the music library of
-Section~\ref{subsec:music_library} is built from sound alone, with no
-words about the works entering the content data.
+The first is Euclidean geometry. The content data must carry an inner
+product, or a distance that is Euclidean at least locally. The second
+is that the space be \emph{unfolded}. A space of raw signals is
+folded: kindred works may lie far apart, and local distance tells
+little about kinship. Unfolding is the preprocessing the construction
+asks for, and it must be generic---made for no particular task. Deep
+embeddings meet both requirements: foundation encoders are trained on
+large corpora so that semantic closeness becomes geometric closeness,
+and trained for no single purpose.
 
 \paragraph{Description as content data.}
-A description of a work serves as content data too, embedded by a
-large language model (LLM). A ready-made description---an abstract, a
-synopsis---serves as it stands, and where none exists, one is composed
-from the tags users have freely given---``\textit{this work is
-    described by the following words: $t_1, t_2, \ldots$}''---and
-embedded whole. A description is made of words, yet what the embedding
-returns is no longer a set of words, even if the description was made
-from tags. For example, \textit{chill} and \textit{relaxed} lie close
-in the embedding, as they do in use. Similarly, \textit{beautiful and
-    sad} is not two independent labels; the LLM represents the nuance
-of the combination. And no vocabulary collected by experts is needed:
-whatever words come will do. This is the visitor's own method.
-``\textit{Quiet, but with feeling in it}'' was already a description,
-offered in the words that came to him; an LLM embedding receives such
-words and returns a place.
+A description of a work, embedded by a large language model (LLM),
+meets both requirements. An abstract or a synopsis serves as it
+stands. What the embedding returns is no longer a set of words but a
+place, and the place keeps the nuance: \textit{chill} and
+\textit{relaxed} land close, as they do in use, and \textit{beautiful
+    and sad} is read as one impression rather than two labels.
 
-One further choice then opens: which words are embedded decides what
-the bundle carries. Embed the nouns given to a work, and its themes
-enter the content space; embed the adjectives, and the impression it
-leaves does. Section~\ref{subsec:book_library} uses this freedom to
-give one collection two kinds of rabbit holes.
+Where no description exists, one can be composed from the tags users
+have freely given---``\textit{this work is described by the following
+    words: $t_1, t_2, \ldots$}''---and embedded whole. No controlled
+vocabulary is needed; whatever words come will do.
+
+Which words are embedded then decides what the bundle carries. Embed
+the nouns given to a work, and its themes enter the content space;
+embed the adjectives, and the impression it leaves does.
+Section~\ref{subsec:book_library} uses this freedom to give one
+collection two kinds of rabbit holes.
 
 \begin{figure}[p]
     \centering
@@ -101,36 +94,36 @@ give one collection two kinds of rabbit holes.
     Alone}\label{subsec:music_library}
 
 \paragraph{Setup.}
-We build the first library from MTG-Jamendo~\cite{Bogdanov2019}, an openly
-licensed music collection. Five genres---classical, jazz, rock, electronic, and
-folk---enter the library, with one thousand tracks from each, and every track
-carries exactly one of the five genre tags. The content data consist of sound
-alone: each track is embedded by CLAP, averaged over excerpts drawn from across
-it, normalized to unit norm, and reduced by PCA to ten dimensions. These
-embeddings and the genre labels are all the modeling uses. The collection also
-carries tags of another kind---instruments, moods, and themes, freely supplied
-by the community---and they are held out. They return afterward, to be read
-against the space the sound itself has built.
+The first library is built from MTG-Jamendo~\cite{Bogdanov2019}, an
+openly licensed music collection. Five genres---classical, jazz, rock,
+electronic, and folk---enter the library, one thousand tracks each, and
+every track carries exactly one genre tag. The content data come from
+sound alone: each track is embedded by CLAP~\cite{Wu2023}, a joint
+audio--text encoder, over excerpts drawn from across it, then averaged,
+normalized to unit norm, and reduced by PCA to ten dimensions. These
+embeddings and the genre labels are all the modeling uses. The
+collection also carries community tags---instruments, moods, and
+themes---and they are held out, to be read afterward against the space
+the sound itself has built.
 
 \paragraph{The learned bundle.}
-Figure~\ref{fig:mtg_otfb} shows how the works are modeled by the
-OT-FB. The five galaxies separate cleanly in the content space
-$\mathcal{X}$: sound alone, embedded, already organizes the
-collection by genre. In (a), a manifold is fitted to each galaxy
-independently, while in (b), the five galaxies are learned by a
-single OT-FB. The fit is comparable, but the five manifolds are now
-homologous floors of one bundle.
+Figure~\ref{fig:mtg_otfb} shows the collection modeled by the OT-FB.
+The five galaxies separate cleanly in the content space
+$\mathcal{X}$: sound alone, embedded, already tells the genres apart.
+In (a) a manifold is fitted to each galaxy independently; in (b) the
+five are learned together as one OT-FB. The fit is much the same, but
+the manifolds of (b) are floors of one bundle.
 
-The correspondence between the manifolds is visible in (c) and (d),
-where they are stacked as floors. In (c), the lines cross and tangle.
-In (d), the same lines, now the rabbit holes, descend in order from
-floor to floor. The OT-FB has found a homologous correspondence
-between genres that lie apart in the content space.
+Panels (c) and (d) stack the manifolds apart as floors, each line
+joining the same $v$ through all five. In (c) the lines cross and
+tangle: every manifold carries a coordinate of its own. In (d) the
+same lines descend in order. Five galaxies that lie apart in
+$\mathcal{X}$ now share one coordinate system, and each line is a
+rabbit hole: five works, one per genre, standing at the same $v$.
 
-It should be noted that both results satisfy the independence (A1):
-in (c) as in (d), the coordinate $v$ runs independently of the genre.
-To find the desired correspondence between different genres, the
-proximity (A2) is required; it minimizes the total length of the
+Both results satisfy the independence (A1): in (c) as in (d), $v$ runs
+independently of the genre. (A1) alone leaves the floors unaligned.
+The proximity (A2) aligns them, minimizing the total length of the
 connections between the manifolds
 (Section~\ref{subsec:two_genres}).
 
@@ -249,75 +242,68 @@ connections between the manifolds
 \end{table}
 
 \paragraph{Reading $\mathcal{V}$ through the tags.}
-What, then, does the connotation space $\mathcal{V}$ express? We
-examine this through the tags held out of the modeling---the
-instruments, moods, and themes. Each tag defines a density over
-$\mathcal{V}$: the distribution $p(v \mid \textit{tag})$ of the
-works that carry the tag. Figure~\ref{fig:tag_density} shows four of
-them: \textit{piano}, \textit{drums}, \textit{acoustic guitar}, and
-\textit{happy}. Each peaks at a different corner, but their
-distributions overlap one another---suggesting a continuous spectrum
-of connotations, rather than discrete regions.
+What does the connotation space $\mathcal{V}$ hold? The tags held out
+of the modeling---instruments, moods, and themes---give the reading.
+Each tag defines a density over $\mathcal{V}$: the distribution
+$p(v \mid \textit{tag})$ of the works that carry it.
+Figure~\ref{fig:tag_density} shows four of them---\textit{piano},
+\textit{drums}, \textit{acoustic guitar}, and \textit{happy}. Each
+peaks at a place of its own, yet the four densities
+overlap---connotation runs as a continuous spectrum, not as discrete
+regions.
 
-How much a tag tells about $v$ differs from tag to tag. The mutual
-information $\mathrm{MI}[v; \textit{tag}]$ measures it: how unevenly
-the works carrying the tag fall over $\mathcal{V}$.
-Table~\ref{tab:tag_mi} lists the top twenty tags. Instruments occupy
-the upper ranks, and moods follow.
+Tags differ in how much they tell about $v$. The mutual information
+$\mathrm{MI}[v; \textit{tag}]$ measures it: how unevenly the works
+carrying the tag fall over $\mathcal{V}$. Table~\ref{tab:tag_mi}
+lists the top twenty. Instruments occupy the upper ranks, and moods
+follow.
 
 \paragraph{The landscape of $\mathcal{V}$.}
 Figure~\ref{fig:tag_peaks} widens the reading to the top forty tags,
-each placed at the peak of its distribution
-$p(v \mid \textit{tag})$. Around every peak the distribution
-spreads, as in Figure~\ref{fig:tag_density}, and the spectrum
-becomes clearer.
+each placed at the peak of its density $p(v \mid \textit{tag})$. Each
+tag still spreads around its peak, as in
+Figure~\ref{fig:tag_density}; the map marks where it gathers most.
 
-The landscape divides in two. The upper half is where the music is
-lively: to the right, drums, bass, electric guitar, and
-brass---powerful music; to the left, happy and uplifting music. The
-lower half is where the music is quiet: to the right, acoustic
-guitar, with love and dream---ballads; to the left, piano, with
-emotional, relaxing, sad, and romantic. The two coordinates of
+The landscape divides in two. The upper half is lively: to the right,
+drums, bass, electric guitar, and brass---powerful music; to the
+left, happy and uplifting. The lower half is quiet: to the right,
+acoustic guitar, with love and dream---ballads; to the left, piano,
+with emotional, relaxing, sad, and romantic. The two coordinates of
 $\mathcal{V}$ carry no names, no more than a principal component
 does; yet the landscape they span is legible from end to end.
 
-We read four points of the map more closely---the corners A--D, each
-a rabbit hole---through the tags concentrated there
-(Table~\ref{tab:point_tags}). At A the music is fast and energetic,
-played by brass and bongo; at B, love ballads on acoustic guitar; at
-C, funny songs on accordion and ukulele; at D, piano, relaxing and
-sad. No single tag names a point, yet the tags gathered there tell
-what it holds.
+Table~\ref{tab:point_tags} reads four points more closely: the
+corners A--D, each a rabbit hole, seen through the tags concentrated
+there. At A the music is fast and energetic, played by brass and
+bongo; at B, love ballads on acoustic guitar; at C, funny songs on
+accordion and ukulele; at D, piano, relaxing and sad. No single tag
+names a point; the tags gathered there do.
 
 \paragraph{What $\mathcal{V}$ represents.}
-We have read $\mathcal{V}$ by tracing the tag distributions, and
-they form a continuous spectrum. Actual connotation is what we know
-by hearing; it is not what one work tells us, but what the works
-gathered at a point have in common. No word expresses it, yet the
-spectrum of tags lets the seeker guess, and so helps his
-exploration.
+The tags have read $\mathcal{V}$ as a continuous spectrum.
+Connotation itself, though, is known by hearing rather than by words.
+It lies in what the works gathered at one point have in common, and no
+single word holds it. The tags cannot name it; they let the seeker
+guess what a point holds, and a guess is enough to start walking.
 
-It is worth stressing that $\mathcal{V}$ does not express every
-connotation---only the principal ones. Here $\mathcal{V}$ is built
-from the sound and the genre labels alone: genre gave the
-denotation, and all else was left to connotation. Of that remainder
-$\mathcal{V}$ keeps the principal components, in the sense of least
-error (Section~\ref{subsec:bundle_reach}). Those components read as
+$\mathcal{V}$ does not hold every connotation---only the principal
+ones. Here it is built from the sound and the genre labels alone:
+genre gave the denotation, and all else was left to connotation. Of
+that remainder $\mathcal{V}$ keeps the principal components, in the
+sense of least error (Section~\ref{subsec:bundle_reach}). They read as
 instruments first, and the moods that go with them
-(Table~\ref{tab:tag_mi}). \textit{Principal} claims no more than
-this: many connotations run through the music, and $\mathcal{V}$
-holds the ones that account for it best.
+(Table~\ref{tab:tag_mi}). \textit{Principal} claims no more than this:
+many connotations run through the music, and $\mathcal{V}$ holds those
+that account for it best.
 
-One more thing deserves notice: a single point of $\mathcal{V}$ does
-not hold a single kind of music. The works gathered there are alike
-in connotation, but they run from genre to genre. This is one space,
-shared by the five: each point of $\mathcal{V}$ is a rabbit hole,
-opening at the same $v$ on every floor. At point A, rock is
-energetic music driven by drums; leap through the hole to the
-classical floor, and there is brass playing with the same force. At
-point D, emotional piano jazz leads through the hole to romantic
-classical piano---no trumpet, but close to what the visitor of
-Section~\ref{sec:introduction} was seeking.
+A single point of $\mathcal{V}$ does not hold a single kind of music.
+The works gathered there are alike in connotation, yet they run from
+genre to genre; the space is one, shared by the five. Each point is a
+rabbit hole, opening at the same $v$ on every floor. At point A, rock
+is energetic music driven by drums; through the hole, on the classical
+floor, brass plays with the same force. At point D, emotional piano
+jazz leads to romantic classical piano---no trumpet, but close to what
+the visitor of Section~\ref{sec:introduction} was seeking.
 
 
 %%% Subsection 6.3 %%%
@@ -408,12 +394,11 @@ about, and the impression it leaves.
 
 \begin{table}[p]
     \centering\small
-    \caption{Leaping through the two kinds of rabbit holes. Three
-        books, all on the Drama-Daily floor, each with its theme
-        hole and its impression hole. The middle column names the
-        hole and lists the words most concentrated there. The books
-        met inside a hole are many; the last column shows
-        representative and typical ones from other floors.}
+    \caption{Leaping through the two kinds of rabbit holes. Three books
+        on the Drama-Daily floor, each with its theme hole and its
+        impression hole. The middle column lists the words most
+        concentrated at that hole. Each hole holds many books; the last
+        column names five met on other floors.}
     \label{tab:book_holes}
     \begin{tabular}{@{}p{0.15\linewidth} p{0.30\linewidth}
         p{0.44\linewidth}@{}}
