@@ -345,88 +345,66 @@ Section~\ref{sec:introduction} was seeking.
     \end{subfigure}
     \caption{
         \textbf{The book library with two kinds of rabbit holes.}
-        (a) The denotation space learned from the fuzzy genre
-        descriptors; each circle marks one of the fifteen genres.
-        (b) The connotation space built from the theme descriptions,
-        read as in Figure~\ref{fig:tag_peaks}: the top-30 words by
-        mutual information with $v_{\mathrm{thm}}$, each placed at
-        the peak of its density
-        $p(v_{\mathrm{thm}} \mid \textit{word})$.
-        (c) The connotation space built from the impression
-        descriptions, read likewise: the top-30 words by mutual
-        information with $v_{\mathrm{imp}}$, each at the peak of
-        $p(v_{\mathrm{imp}} \mid \textit{word})$. The three panels
-        show the same 409 books, given one denotative and two
-        connotative addresses.}
+        The same 409 books, given one denotative and two connotative
+        addresses. The denotation space (a) is learned from the fuzzy
+        genre descriptors; each circle marks one of the fifteen genres.
+        The two connotation spaces are built from the theme descriptions
+        (b) and from the impression descriptions (c), and both are read
+        as in Figure~\ref{fig:tag_peaks}: the top-30 words by mutual
+        information with $v$, each placed at the peak of its density
+        $p(v \mid \textit{word})$.}
     \label{fig:book_otfb}
 \end{figure}
 
 \paragraph{Setup.}
-The second library is built from a collection of 409 well-known
-children's books. The content data are two descriptions of each book:
-one of nouns, for its themes, and one of adjectives, for the
-impression it leaves---six to eight words each. The words are chosen
-by an LLM annotator (OpenAI GPT-4); across the collection, 74 nouns
-(\textit{friendship}, \textit{courage}, \textit{loss}) and 79
-adjectives (\textit{humorous}, \textit{poignant}, \textit{cozy}) are
-used. The words are then joined into a description in the manner of
-Section~\ref{subsec:content_data}: ``\textit{This is a children's
-    book. The impressions are humorous, warm, and adventurous}.'' The
-two descriptions are embedded separately by an LLM text encoder
-(OpenAI \texttt{text-embedding-3-small}), normalized to unit norm,
-and reduced by PCA to ten dimensions. One collection thus yields two
-content datasets: theme data and impression data. The descriptors are
-genres, fifteen in all, assigned likewise by the annotator, and they
-arrive fuzzy: each book names a primary and a secondary genre,
-sometimes a third, each with a strength---fantasy above all,
-adventure next. This is the case the first extension of
+The second library is built from 409 well-known children's books. Each
+book carries two descriptions written by an LLM annotator (OpenAI
+GPT-4): six to eight nouns for its themes, and six to eight adjectives
+for the impression it leaves. Across the collection, 74 nouns and 79
+adjectives are used. Each set of words is joined into a description as
+in Section~\ref{subsec:content_data}---``\textit{This is a children's
+    book. The impressions are humorous, warm, and adventurous}''---then
+embedded by an LLM text encoder (OpenAI
+\texttt{text-embedding-3-small}), normalized, and reduced by PCA to ten
+dimensions. One collection thus yields two content datasets: theme data
+and impression data.
+
+The descriptors are fifteen genres, assigned by the same annotator, and
+they arrive fuzzy: each book names a primary genre, a secondary,
+sometimes a third, each with a strength---fantasy above all, adventure
+next. This is the case the first extension of
 Section~\ref{sec:computation} anticipated: genre-ness becomes
 continuous, and the floor coordinate becomes a per-work coordinate
 $u_n$.
 
 \paragraph{One base, two bundles.}
-The library is built in two stages. First the base: the genre
-descriptors, verbalized with their strengths and embedded in the
-same way, determine the denotation coordinates $u_n$.
+The two bundles rest on one base, and the base is built first. The
+genre descriptors, verbalized with their strengths and embedded
+likewise, give each book its denotation coordinate $u_n$.
 Figure~\ref{fig:book_otfb}(a) shows the learned genre map: the two
 dramas side by side, the two fantasies adjoining legends, myths, and
-folktales, adventure beside science fiction and horror. Then, over
-this one base, the two bundles are learned: one from the theme
-space and one from the impression space. Every book now holds one
-denotative address and two connotative addresses,
-$(u, v_{\mathrm{thm}}, v_{\mathrm{imp}})$---and under every book,
-two rabbit holes open.
+folktales, adventure beside science fiction and horror. Two bundles are
+then learned over this one base, one from the theme data and one from
+the impression data. Every book now holds one denotative address and
+two connotative ones, $(u, v_{\mathrm{thm}}, v_{\mathrm{imp}})$: under
+every book, two rabbit holes open.
 
 \paragraph{The two landscapes.}
-Let us see what connotation spaces are organized. Figures~\ref{fig:book_otfb}(b)
-and (c) read the two spaces as in Figure~\ref{fig:tag_peaks}: of the words used
-in the descriptions, the thirty that carry the most information about $v$---the
-highest in mutual information---are placed where the books carrying each word
-appear most. The connotation at a point of $\mathcal{V}_{\mathrm{thm}}$ or
-$\mathcal{V}_{\mathrm{imp}}$ is understood as the spectrum of the words
-spreading around it.
-
-The theme landscape is legible from end to end:
-bonds and inner life in the upper left---family, friendship,
-empathy, loss, healing; struggle in the upper right---war, courage,
-hope, oppression, perseverance; the moral order below it---justice,
-good-and-evil, magic, greed; and the play of the mind in the lower
-left---imagination, curiosity, discovery, learning,
-problem-solving. The impression landscape divides along other
-lines: sorrow above---melancholic, poignant, bittersweet, haunting;
-tension below---mysterious, suspenseful, thrilling; warmth in the
-upper right---gentle, cozy, heartwarming, nostalgic; play in the
-lower right---whimsical, playful, humorous. The same 409 books are
-arranged twice: once by what they are about, once by the impression
-they leave.
-
-The transport stands behind these landscapes. The OT-FB extracts a connotation
-shared across the genres: the coordinate $u$ carries what belongs to a genre,
-and $v$ retains what the genres have in common
-(Section~\ref{subsec:bundle_reach}). The words that rank high in mutual
-information are therefore the words whose nuance travels across the genres;
-words specific to a genre are less informative in these spaces. This is the
-optimal transport at work.
+Figures~\ref{fig:book_otfb}(b) and (c) are read as $\mathcal{V}$ was
+in Section~\ref{subsec:music_library}. The theme landscape is legible
+from end to end: bonds and inner life in the upper
+left---\textit{family}, \textit{friendship}, \textit{loss}; struggle
+in the upper right---\textit{war}, \textit{courage},
+\textit{oppression}; the play of the mind in the lower
+left---\textit{imagination}, \textit{curiosity}, \textit{discovery}.
+The impression landscape divides along other lines: sorrow
+above---\textit{melancholic}, \textit{poignant}, \textit{haunting};
+warmth in the upper right---\textit{gentle}, \textit{cozy},
+\textit{nostalgic}; play in the lower right---\textit{whimsical},
+\textit{playful}, \textit{humorous}. The same 409 books are arranged
+twice: $u$ carries the genre, while $v_{\mathrm{thm}}$ and
+$v_{\mathrm{imp}}$ carry two kinds of connotation---what a book is
+about, and the impression it leaves.
 
 \begin{table}[p]
     \centering\small
@@ -525,22 +503,15 @@ optimal transport at work.
 
 \paragraph{Which hole to take.}
 Table~\ref{tab:book_holes} takes the leap. Three books stand on the
-same floor, Drama-Daily, and under each of them the two holes open;
-the middle column lists the words concentrated at each hole. Through
-a theme hole, the books met on the other floors share the subject of
-the book left behind; through an impression hole, they share the
-impression it leaves. And a leap is not the end of the exploration:
-hopping off on a floor, the visitor walks it as before, among the
-books arranged around the hole. The same book, two holes, two
-journeys.
+same floor, Drama-Daily, and under each of them the two holes open.
+Through a theme hole, the books met on the other floors share the
+subject of the book left behind; through an impression hole, they
+share the impression it leaves. And a leap is not the end of the
+exploration: hopping off, the visitor walks the new floor as before,
+among the books arranged around the hole. The same book, two holes,
+two journeys.
 
-\paragraph{The visitor's choice.}
+\bigskip\noindent
 The remark that closed Section~\ref{subsec:bundle_reach} is now an
-actual library. The connotation coordinate is determined by the
-content data, and this collection carries two: describe the books by
-what they are about, and one bundle of holes is dug; describe them
-by the impression they leave, and another. Neither is \emph{the}
-connotation space of the collection---each is the principal
-connotation space of one way of speaking about the works. The
-visitor is no longer asked whether to leap; he is asked which hole
-to take.
+actual library. The visitor is no longer asked whether to leap; he
+is asked which hole to take.
