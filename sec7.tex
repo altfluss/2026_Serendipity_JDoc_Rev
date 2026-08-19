@@ -1,5 +1,17 @@
 \section{Discussion}\label{sec:discussion}
 
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.6\textwidth]{fig/fig8.pdf}
+    \caption{The principal connotation space $\mathcal{V}$ is the principal
+        subspace orthogonal to the denotation space $\mathcal{U}$---what the
+        descriptors express. It gives the perpendicular direction in which we
+        seek connotation. Orthogonality here rests on two things: statistical
+        independence from the descriptors (A1), and the local metric of the
+        content data (A2).}
+    \label{fig:PCS}
+\end{figure}
+
 \subsection{What the Principal Connotation Space Tells
     Us}\label{subsec:what_pcs_tells}
 
@@ -18,35 +30,32 @@ at a time; connotation is a relation among many. Some things are
 defined through naming; others exist beyond naming, defined only
 through relations. Connotation is of the second kind.
 
-\paragraph{The boundary of naming is itself the foundation.}
-The second thing the space tells us is how the connotation space
-was built: on the boundary of naming. Whatever descriptors a record
-carries, there always remains a residue---something of the work
-beyond them. That boundary served as the foundation: the residue is
-given a definite place, the orthogonal complement of what the
-denotation accounts for, and from it the principal connotation
-space is carved (Section~\ref{subsec:bundle_reach}). The
-construction repeats what the bundle drew: fibers standing on a
-base. Here too, both kinds are affirmed. There are things naming
-attains; and precisely because naming has its limits, a foothold
-exists toward the rest. The path beyond naming begins exactly
-where naming ends.
+\paragraph{The connotation space stands on the boundary of naming.}
+The second thing the space tells us is how the connotation space was built: on
+the boundary of naming. Whatever descriptors a record carries, there always
+remains a residue---something of the work beyond them. That boundary served as
+the foundation: the residue is given a definite place, the orthogonal complement
+of what the denotation accounts for, and from it the principal connotation space
+is carved (Figure~\ref{fig:PCS}). The construction repeats what the bundle drew:
+fibers standing on a base. Here too, both kinds are affirmed. There are things
+naming attains; and where naming ends, the path beyond it begins.
 
-\paragraph{Generic representation and descriptors, together.}
+\paragraph{A metric to measure with, names to cut by.}
 The third thing the space tells us is what the construction needed:
 a general-purpose metric on the content data. A large language
-model can serve any purpose because it holds a generic encoding
-within; and the arrival of such encodings---CLAP for sound likewise
-(Section~\ref{subsec:content_data})---means that a general-purpose
-metric became available: the similarity of two works, measurable as
-an inner product. Such a representation arrives entangled: genre
-and everything else are woven into one geometry, and separating
-them requires a criterion (Section~\ref{subsec:disentanglement}).
-That is the role the descriptors play. Naming returns here in its
-full strength: it is the criterion by which the cut is made. It
-takes both---a generic representation to measure with, and
-descriptors to cut by---for the principal connotation space to
-stand as an orthogonal subspace.
+model serves any purpose because it holds a generic encoding
+within, and CLAP does the same for sound
+(Section~\ref{subsec:content_data}). With such encodings, a
+general-purpose metric arrived: the similarity of two works,
+measurable as an inner product. Such a representation arrives
+entangled: genre and everything else are woven into one geometry,
+and separating them requires a criterion
+(Section~\ref{subsec:disentanglement}). That is the role the
+descriptors play. Naming returns here in its full strength: it is
+the criterion by which the cut is made. It takes both---a generic
+representation to measure with, and descriptors to cut by---for
+the principal connotation space to stand as an orthogonal
+subspace.
 
 \bigskip
 \noindent
@@ -54,33 +63,37 @@ Three statements, one space. Naming gives the foundation and the
 criterion, content data gives the metric---and together, for the
 first time, they reach beyond naming.
 
+
+
 \subsection{Reading Connotation from
     Preference}\label{subsec:reading_preference}
 
 \paragraph{Connotation found in relations with people.}
-So far the content data have been the work itself or a description
-of it, but nothing requires this. What the OT-FB asks of content
-data is one thing: that the proximity between works be measurable
+The content data are not limited to the work itself or a
+description of it. The OT-FB asks one thing of content data: that
+proximity between works be measurable
 (Section~\ref{subsec:content_data}). Preference data gathered from
-enough people meet the condition, and can serve, in principle, just
-as well~\cite{Koren200930,Oord20132643}. The reading changes
-accordingly. In Section~\ref{subsec:music_library} each region of
-the connotation space was read through words---which tags gather
-there; with preference data, the reading is through people---who
-gathers there. And the accounting stays the same: tags shared
-across genres carried high mutual information with $v$, tags bound
-to one genre little; likewise, a user who finds favorites across
-genres informs the estimate of $v$, and one who stays within a
-single genre informs it little. Either way, connotation is found in
-relations: among works, or between works and people.
+enough people meet this condition; recommender systems rest on
+exactly such data~\cite{Koren200930,Oord20132643}. They are not
+bibliographic data, and they describe no work directly. Yet where
+the similarity they give between two works agrees with the
+similarity the content data give, the principal connotation space
+that follows is the same space. In this sense, principal
+connotation lies in the relations among works, and equally in the
+relations between works and users.
+
+Preference data also let each user be weighed. How much a user
+tells about the principal connotation is measured by
+$\mathrm{MI}[v; \textit{user}]$, the same measure that read the
+tags in Section~\ref{subsec:music_library}. Generally, a user
+whose favorites run across genres is more informative about $v$; a
+user who stays within one genre is less informative.
 
 \paragraph{The rabbit hole as anthologist.}
-Users who find their favorites sensitively across genres were
-counted, above, as highly informative for the estimate of $v$. The
-world has such people---anthologists, who wander across genres and
-gather works by a criterion of their
-own~\cite{Lee20001106,Riva2017}. A rabbit hole plays
-their very role, and $v$ can be read as a measure of
+Users highly informative about connotation have a name in the
+world: anthologists, who wander across genres and gather works by
+a criterion of their own~\cite{Lee20001106,Riva2017}. A rabbit
+hole plays their very role, and $v$ can be read as a measure of
 \emph{anthologist-ness}~\cite{Bowker1999}. Anthologists
 themselves---on the web, in the world of criticism---have often
 carried the role of joining different fields: living rabbit holes.
