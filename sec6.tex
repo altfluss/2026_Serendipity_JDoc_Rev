@@ -338,54 +338,52 @@ the visitor of Section~\ref{sec:introduction} was seeking.
 \end{figure}
 
 \paragraph{Setup.}
-The second library is built from 409 well-known children's books. Each
-book carries two descriptions written by an LLM annotator (OpenAI
-GPT-4): six to eight nouns for its themes, and six to eight adjectives
-for the impression it leaves. Across the collection, 74 nouns and 79
-adjectives are used. Each set of words is joined into a description as
-in Section~\ref{subsec:content_data}---``\textit{This is a children's
+The second library is built from 409 well-known children's books. An
+LLM annotator (OpenAI GPT-4) gives each book two descriptions: six to
+eight nouns for its themes, and six to eight adjectives for the
+impression it leaves. Across the collection, 74 nouns and 79
+adjectives are used. Each set is joined into a description as in
+Section~\ref{subsec:content_data}---``\textit{This is a children's
     book. The impressions are humorous, warm, and adventurous}''---then
 embedded by an LLM text encoder (OpenAI
-\texttt{text-embedding-3-small}), normalized, and reduced by PCA to ten
-dimensions. One collection thus yields two content datasets: theme data
-and impression data.
+\texttt{text-embedding-3-small}) and prepared as in
+Section~\ref{subsec:music_library}. One collection thus yields two
+content datasets: theme data and impression data.
 
-The descriptors are fifteen genres, assigned by the same annotator, and
-they arrive fuzzy: each book names a primary genre, a secondary,
+The descriptors are fifteen genres, assigned by the same annotator.
+They arrive fuzzy: each book names a primary genre, a secondary,
 sometimes a third, each with a strength---fantasy above all, adventure
-next. This is the case the first extension of
-Section~\ref{sec:computation} anticipated: genre-ness becomes
-continuous, and the floor coordinate becomes a per-work coordinate
-$u_n$.
+next. Genre-ness is thus continuous, and the floor coordinate becomes
+a per-work coordinate $u_n$: the case the first extension of
+Section~\ref{sec:computation} anticipated.
 
 \paragraph{One base, two bundles.}
-The two bundles rest on one base, and the base is built first. The
-genre descriptors, verbalized with their strengths and embedded
-likewise, give each book its denotation coordinate $u_n$.
-Figure~\ref{fig:book_otfb}(a) shows the learned genre map: the two
+The base is built first, and both bundles rest on it. The genre
+descriptors, verbalized with their strengths and embedded likewise,
+give each book its denotation coordinate $u_n$.
+Figure~\ref{fig:book_otfb}(a) shows the resulting genre map: the two
 dramas side by side, the two fantasies adjoining legends, myths, and
-folktales, adventure beside science fiction and horror. Two bundles are
-then learned over this one base, one from the theme data and one from
+folktales, adventure beside science fiction and horror. Two bundles
+are then learned over this one base, one from the theme data, one from
 the impression data. Every book now holds one denotative address and
 two connotative ones, $(u, v_{\mathrm{thm}}, v_{\mathrm{imp}})$: under
 every book, two rabbit holes open.
 
 \paragraph{The two landscapes.}
 Figures~\ref{fig:book_otfb}(b) and (c) are read as $\mathcal{V}$ was
-in Section~\ref{subsec:music_library}. The theme landscape is legible
-from end to end: bonds and inner life in the upper
-left---\textit{family}, \textit{friendship}, \textit{loss}; struggle
-in the upper right---\textit{war}, \textit{courage},
-\textit{oppression}; the play of the mind in the lower
-left---\textit{imagination}, \textit{curiosity}, \textit{discovery}.
-The impression landscape divides along other lines: sorrow
-above---\textit{melancholic}, \textit{poignant}, \textit{haunting};
-warmth in the upper right---\textit{gentle}, \textit{cozy},
-\textit{nostalgic}; play in the lower right---\textit{whimsical},
-\textit{playful}, \textit{humorous}. The same 409 books are arranged
-twice: $u$ carries the genre, while $v_{\mathrm{thm}}$ and
-$v_{\mathrm{imp}}$ carry two kinds of connotation---what a book is
-about, and the impression it leaves.
+in Section~\ref{subsec:music_library}. The theme landscape divides
+into bonds and inner life in the upper left---\textit{family},
+\textit{friendship}, \textit{loss}; struggle in the upper
+right---\textit{war}, \textit{courage}, \textit{oppression}; the play
+of the mind in the lower left---\textit{imagination},
+\textit{curiosity}, \textit{discovery}. The impression landscape
+divides along other lines: sorrow above---\textit{melancholic},
+\textit{poignant}, \textit{haunting}; warmth in the upper
+right---\textit{gentle}, \textit{cozy}, \textit{nostalgic}; play in
+the lower right---\textit{whimsical}, \textit{playful},
+\textit{humorous}. The same 409 books are arranged twice: $u$ carries
+the genre; $v_{\mathrm{thm}}$ and $v_{\mathrm{imp}}$ carry two
+connotations---what a book is about, and the impression it leaves.
 
 \begin{table}[p]
     \centering\small
@@ -483,13 +481,12 @@ about, and the impression it leaves.
 
 \paragraph{Which hole to take.}
 Table~\ref{tab:book_holes} takes the leap. Three books stand on the
-same floor, Drama-Daily, and under each of them the two holes open.
-Through a theme hole, the books met on the other floors share the
-subject of the book left behind; through an impression hole, they
-share the impression it leaves. And a leap is not the end of the
-exploration: hopping off, the visitor walks the new floor as before,
-among the books arranged around the hole. The same book, two holes,
-two journeys.
+same floor, Drama-Daily, and under each the two holes open. Through a
+theme hole, the books met on other floors share the subject of the
+book left behind; through an impression hole, they share the
+impression it leaves. A leap is not the end: hopping off, the visitor
+walks the new floor as before, among the books gathered around the
+hole. The same book, two holes, two journeys.
 
 \bigskip\noindent
 The remark that closed Section~\ref{subsec:bundle_reach} is now an
