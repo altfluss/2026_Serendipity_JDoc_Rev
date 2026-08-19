@@ -184,8 +184,7 @@ connections between the manifolds
 \end{figure}
 \begin{table}[p]
     \centering\small
-    \caption{Top 20 tags by mutual information (MI) with the
-        connotative coordinate $v$. MI values are in units of
+    \caption{Top 20 tags by mutual information (MI) in units of
         $10^{-3}$ bit.}
     \label{tab:tag_mi}
     \begin{tabular}{@{}clc c clc@{}}
@@ -249,31 +248,27 @@ connections between the manifolds
     \end{tabular}
 \end{table}
 
-\paragraph{Reading the space through the tags.}
+\paragraph{Reading $\mathcal{V}$ through the tags.}
 What, then, does the connotation space $\mathcal{V}$ express? We
 examine this through the tags held out of the modeling---the
-instruments, moods, and themes the community gave the tracks. Each
-tag defines a density over the space: the distribution
-$p(v \mid \textit{tag})$ of the works that carry the tag. Where
-these works fall evenly, $\mathcal{V}$ carries nothing of the tag;
-where they concentrate, the tag tells us what that region holds.
+instruments, moods, and themes. Each tag defines a density over
+$\mathcal{V}$: the distribution $p(v \mid \textit{tag})$ of the
+works that carry the tag. Figure~\ref{fig:tag_density} shows four of
+them: \textit{piano}, \textit{drums}, \textit{acoustic guitar}, and
+\textit{happy}. Each peaks at a different corner, but their
+distributions overlap one another---suggesting a continuous spectrum
+of connotations, rather than discrete regions.
 
-Figure~\ref{fig:tag_density} shows the distributions of four
-representative tags: piano, drums, acoustic guitar, and happy. Each
-concentrates in a region of its own---piano in the lower left, drums
-in the upper right, acoustic guitar in the lower right, happy in the
-upper left. And each spreads beyond its region, overlapping the
-others: the works are arranged not in discrete islands, one per tag,
-but along a continuous spectrum, over which the tags shade into one
-another.
+How much a tag tells about $v$ differs from tag to tag. The mutual
+information $\mathrm{MI}[v; \textit{tag}]$ measures it: how unevenly
+the works carrying the tag fall over $\mathcal{V}$.
+Table~\ref{tab:tag_mi} lists the top twenty tags. Instruments occupy
+the upper ranks, and moods follow.
 
-\paragraph{The landscape of $\mathcal{V}$.}
-Figure~\ref{fig:tag_peaks} widens the reading to forty
-representative tags, each placed at the peak of its distribution
-$p(v \mid \textit{tag})$. Around every peak the distribution
-spreads, as in Figure~\ref{fig:tag_density}; the connotation space
-$\mathcal{V}$ is the spectrum into which these overlapping
-distributions blend.
+\paragraph{The landscape of $\mathcal{V}$.} Figure~\ref{fig:tag_peaks} widens
+the reading to the top forty tags, each placed at the peak of its distribution
+$p(v \mid \textit{tag})$. Around every peak the distribution spreads, as in
+Figure~\ref{fig:tag_density}. Forty tags now shade into one spectrum.
 
 The landscape divides in two. The upper half is where the music is
 lively: to the right, drums, bass, electric guitar, and
@@ -284,47 +279,43 @@ emotional, relaxing, sad, and romantic. The two coordinates of
 $\mathcal{V}$ carry no names, no more than a principal component
 does; yet the landscape they span is legible from end to end.
 
-In this landscape, some tags are strongly expressed and others
-hardly at all. How much of a tag $\mathcal{V}$ expresses is measured
-by the mutual information $\mathrm{MI}[v; \textit{tag}]$: large when
-the works carrying the tag fall unevenly over the space, zero when
-they fall evenly. Table~\ref{tab:tag_mi} lists the top twenty tags.
-Instruments occupy the upper ranks, and moods follow. This is what
-the principal connotation space of this collection means: the
-spectrum of music that these tags describe in combination.
+We read four points of the map more closely---the corners A--D, each
+a rabbit hole---through the tags concentrated there
+(Table~\ref{tab:point_tags}). At A the music is fast and energetic,
+played by brass and bongo; at B, love ballads on acoustic guitar; at
+C, funny songs on accordion and ukulele; at D, piano, relaxing and
+sad. No single tag names a point, yet the tags gathered there tell
+what it holds.
 
-\paragraph{What a $v$ holds.}
-What connotation, then, does a single point $v$ hold? We read four
-points---the corners A--D of the map, each of them a rabbit
-hole---through the tags concentrated there, listed in
-Table~\ref{tab:point_tags}. Point A holds a spectrum of works played
-by powerful instruments---brass, bongo, trombone---with the moods
-fast and energetic and the themes sport and party. In contrast,
-point D holds a spectrum of piano works that are relaxing, romantic,
-sad, and emotional. Likewise, B is a spectrum of ballads and love
-songs by acoustic guitar and voice, and C a spectrum of funny works
-by accordion and ukulele. No point is described by a single word;
-yet from the tags together, the reader can imagine what connotation
-each point expresses.
+\paragraph{What $\mathcal{V}$ represents.}
+We have read the connotation in $\mathcal{V}$ by tracing the tag
+distributions, and they form a continuous spectrum. Actual
+connotation is what we know by hearing; it is not what one work
+tells us, but what the works gathered at a point have in common. No
+word expresses it, yet the spectrum of tags lets the seeker guess,
+and so helps his exploration.
 
-\paragraph{What the connotation space represents.}
-The space $\mathcal{V}$ was built from the sound and the genre
-labels alone; none of these tags took part in the modeling. The tags
-then read what the sound had built: a continuous spectrum of music,
-legible as a landscape in the large, and at every point as a
-spectrum of works. The names arrived afterward, and found their
-places already prepared. This is the unnamed vocabulary of
-Section~\ref{subsec:bundle_reach}, now seen at work: the space does
-not say \textit{emotional} or \textit{hopeful}, but it holds a place
-where each can be said.
+It is worth stressing that $\mathcal{V}$ does not express every
+connotation---only the principal ones. Here $\mathcal{V}$ is built
+from the sound and the genre labels alone: genre gave the
+denotation, and all else was left to connotation. Of that remainder
+$\mathcal{V}$ keeps the principal components, in the sense of least
+error (Section~\ref{subsec:bundle_reach}). Those components read as
+instruments first, and the moods that go with them
+(Table~\ref{tab:tag_mi}). \textit{Principal} claims no more than
+this: many connotations run through the music, and $\mathcal{V}$
+holds the ones that account for it best.
 
-And this is one space, shared by the five genres: each point of
-$\mathcal{V}$ is a rabbit hole, opening at the same $v$ on every
-floor. At point A, rock is energetic music driven by drums; leap
-through the hole to the classical floor, and there is brass playing
-with the same force. At point D, emotional piano jazz leads through
-the hole to romantic classical piano---no trumpet, but close to what
-the visitor of Section~\ref{sec:introduction} was seeking.
+One more thing deserves notice: a single point of $\mathcal{V}$ does
+not hold a single kind of music. The works gathered there are alike
+in connotation, but they run from genre to genre. This is one space,
+shared by the five: each point of $\mathcal{V}$ is a rabbit hole,
+opening at the same $v$ on every floor. At point A, rock is
+energetic music driven by drums; leap through the hole to the
+classical floor, and there is brass playing with the same force. At
+point D, emotional piano jazz leads through the hole to romantic
+classical piano---no trumpet, but close to what the visitor of
+Section~\ref{sec:introduction} was seeking.
 
 
 %%% Subsection 6.3 %%%
