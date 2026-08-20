@@ -1,12 +1,10 @@
-%%%%% Section 2 Serendipity in Information Systems %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Serendipity in Information Systems: Prior Work and Research
   Challenge}\label{sec:serendipity}
 
 Research has long known the scene of Section~\ref{sec:introduction}. It has
 studied serendipity, asked what a record can hold, and built systems for the
-encounter. This section follows that work to where its reach ends, and names
-the step beyond.
-
+encounter. This section follows that work to where its reach ends.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{What Serendipity Is}\label{subsec:serendipity_process}
@@ -53,7 +51,6 @@ can only be waited for. But could exploration reach one step further, into the
 connotative? That is this paper's question. First, how far has the field
 carried denotation and connotation?
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Denotation and Connotation}\label{subsec:naming}
 
@@ -95,116 +92,57 @@ The line runs where the collection draws it: where a collection records mood,
 mood is denotation; where it records genre alone, mood is connotation. A
 collection carries finitely many names, and they can be listed; what no name
 gathers is past counting. A system can therefore cover denotation, while
-connotation it can only reach into. How far has it reached? That is the
-question of the next section.
+connotation it can only reach into---and every reach so far has been made with
+words.
 
-
-% NOTE: Taylor1968178 を 2.1 から移設。
-% Connotative x Search が空である理由づけに使う:
-% search は question を要求し、Taylor はそこに至る道のりを示した。
-% connotation はその代価を払えない。ゆえに構造上空である。
-% NOTE: Bates1989407 を 2.2 から移設。
-% 2.3 の exploration 段落へ: 探索は進みながら形を変える(berrypicking)。
-% NOTE: Ross1999783, Clark1996, Langacker2008, Hjorland1995400 は削除。
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Serendipity in Information Systems}\label{subsec:systems}
 
-Table~\ref{tab:quadrants} sets the two kinds of attribute against the two active
-modes of encounter. \textit{Search} requires the seeker to specify what is
-sought; \textit{exploration} lets the seeker move through a structured space
-without specifying it in advance. Beside these stands a third mode,
-\textit{recommendation}. It has a rich literature of its own on
-serendipity~\cite{Kotkov2016180,Ziarani2021375,Shrivastava20231,Kunaver2017,Hasan2023933,Chen2019},
-but it is left out of the table: there, works are given to the user rather than
-sought. (We take up its relation to this paper in Section~\ref{sec:discussion}.)
-In the left column the visitor of Section~\ref{sec:introduction} has already
-exhausted what search can give him: where denotation ends, search ends with it.
-The lower right is where he belongs.
+A seeker can act in two modes. \textit{Search} asks him to say what he seeks:
+Taylor traced the path from a need merely felt to a question finally
+asked~\cite{Taylor1968178}, and the system waits at the end of it. The visitor
+of Section~\ref{sec:introduction} never reaches that end, and where his names
+run out, search runs out with them. \textit{Exploration} asks nothing of the
+kind. It hands him a structured space and lets him move. (Beside these stands
+recommendation, with a rich serendipity literature of its
+own~\cite{Kotkov2016180,Ziarani2021375,Shrivastava20231,Kunaver2017,Hasan2023933,Chen2019};
+there works are given rather than sought. Its data return in
+Section~\ref{subsec:reading_preference}, where preferences gathered from many
+people serve as content data.)
 
-\begin{table}[t]
-    \centering\small
-    \caption{Two kinds of attribute crossed with the two active modes
-        of encounter.}
-    \label{tab:quadrants}
-    \begin{tabular}{@{}lll@{}}
-        \toprule
-                             & \textbf{Search}            & \textbf{Exploration}               \\
-        \midrule
-        \textbf{Denotative}  & bibliographic search, OPAC & faceted navigation                 \\
-        \midrule
-        \textbf{Connotative} & (nearly empty)             & Book House~\cite{Pejtersen198940}, \\
-                             &                            & mood maps                          \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-Exploration gives the user a structured space instead of a query: the
-user moves, and the system provides the
-terrain~\cite{McCayPeet20181,Marchionini200641,Thudt20121461,Beale2007ambient}---and
-serendipity, we saw, is insight met by a mind in motion. The physical
-library has always excelled here. Bj\"orneborn, studying serendipity in
-physical libraries, named the affordances that make it so:
+Exploration gives terrain instead of a query: the user moves, and the system
+provides the
+ground~\cite{McCayPeet20181,Marchionini200641,Thudt20121461,Beale2007ambient}.
+The seeking itself moves with what it finds~\cite{Bates1989407}, and
+serendipity, we saw, is insight met by a mind in motion. The physical library
+has always excelled here. Bj\"orneborn named the affordances that make it so:
 \emph{diversifiability}, \emph{traversability}, and
-\emph{sensoriability}~\cite{Bjorneborn20171053}---many directions to
-differ along, freedom to move among them, and qualities one can sense in
-place.
+\emph{sensoriability}~\cite{Bjorneborn20171053}---many directions to differ
+along, freedom to move among them, and qualities one can sense in place.
 
-Two lineages of systems have taken up the lower-right cell. The first builds a
-\emph{virtual library}---an interface that brings the physical library's
+Two lineages have taken up connotative exploration. The first builds a
+\emph{virtual library}: an interface that brings the physical library's
 explorability onto the screen. Pejtersen's Book House furnished the screen as a
-house filled with books, and gave each work a texture to sense: icons evoking
+house filled with books and gave each work a texture to sense---icons evoking
 what a book holds, so that its feel could be caught without opening
 it~\cite{Pejtersen198940,Pejtersen1983230}; its heirs now walk the aisles in
 virtual reality~\cite{Lemos201930}. Each work can be felt in place; the space
 between works stays unmapped.
 
-The second lineage maps that space. Works are laid out on a plane, similar works
-placed nearer, and the seeker wanders freely, touching
-works~\cite{Pampalk2002570,Knees2020165}. The procedure is largely shared:
-prepare the data the layout needs and hand it to an existing visualization
-method. Even mood can be mapped: experts annotate the works with mood words, and
-the layout follows~\cite{Oliveira2011105,Andjelkovic2019142}.
+The second lineage maps that space. Works are laid out on a plane, similar
+works placed nearer, and the seeker wanders freely among
+them~\cite{Pampalk2002570,Knees2020165}. The layout method is taken off the
+shelf; the work goes into preparing the data it needs. Even mood can be mapped:
+experts annotate the works with mood words, and the layout
+follows~\cite{Oliveira2011105,Andjelkovic2019142}.
 
-In both lineages there is a common pattern: the space for connotative
-exploration is structured by hand, typically through domain knowledge made
-explicit for the system to carry---often as verbal tags or labels. Generic
-content features are not used for this; in them, denotative and connotative
-aspects remain mixed. Here our question arises: can a space for connotative
-exploration be drawn from the collection data as they arrive---no new names
-coined for connotation, and the names already carried serving only to mark what
-it is not?
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Representation Learning and the Disentanglement
-    Challenge}\label{subsec:disentanglement}
-
-The question just posed can be restated as a problem about the data.
-What we are given is the content data of the works themselves, and it
-carries both aspects: the denotative, which descriptors already name, and the connotative, which they do not. That content can carry
-what no descriptor does, the scene of
-Section~\ref{sec:introduction} has already shown: what stopped the
-visitor in the station was sound alone, with no record in sight.
-But in the data the two lie mixed, and left as they are, they collapse into a single distance. They
-must be pulled apart.
-
-In machine learning, this is precisely the problem that representation learning
-names~\cite{Bengio20131798}. A representation in which distinct
-factors of variation occupy separable directions is called
-\textit{disentangled}~\cite{Higgins2017}; what we seek is a
-representation of the content data in which denotation and connotation are
-disentangled. In such a space \textit{denotatively
-    unexpected and connotatively relevant}
-(Section~\ref{subsec:serendipity_process}) acquires
-coordinates---denotatively distant, yet connotatively close---and the
-space itself, told as a library, is the library with rabbit holes of
-Section~\ref{sec:introduction}.
-
-Constructing such a disentangled representation is a recognized open challenge.
-In the unsupervised setting it is provably ill-posed: for any disentangled
-solution, infinitely many entangled ones generate the same
-observations~\cite{Locatello20197247}. Some \textit{inductive bias}---a
-structural assumption about the space---is therefore unavoidable; the question
-is not whether to adopt one, but which one suits the pairing at hand.
-Section~\ref{sec:framework} paints the space; Section~\ref{sec:mathematics}
-shows that, once we state what the connotation coordinate should express, an
-appropriate bias follows naturally, in the form of optimal transport.
+Both lineages answer with words. The space for connotative exploration is
+structured by hand, through domain knowledge made explicit for the system to
+carry---often as verbal tags or labels. Exploration freed the seeker from
+naming what he wants; it left the system its names. The words changed hands,
+from the seeker to the expert who builds the space. Generic content features
+carry no such structure: in them, denotative and connotative aspects remain
+mixed. Here our question arises: how can exploration set foot beyond where
+words end---in a space drawn from the collection data as they arrive, with no
+new names coined for connotation, and the names already carried serving only to
+mark what it is not?

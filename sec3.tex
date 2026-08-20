@@ -296,3 +296,38 @@ Whether it can be found is a threefold question. Can a coordinate system
 of this kind be laid over a given collection at all? If it can, is it
 the only one? And if so, do its coordinates truly express connotation?
 The next section answers all three.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Representation Learning and the Disentanglement
+    Challenge}\label{subsec:disentanglement}
+
+The question just posed can be restated as a problem about the data.
+What we are given is the content data of the works themselves, and it
+carries both aspects: the denotative, which descriptors already name, and the connotative, which they do not. That content can carry
+what no descriptor does, the scene of
+Section~\ref{sec:introduction} has already shown: what stopped the
+visitor in the station was sound alone, with no record in sight.
+But in the data the two lie mixed, and left as they are, they collapse into a single distance. They
+must be pulled apart.
+
+In machine learning, this is precisely the problem that representation learning
+names~\cite{Bengio20131798}. A representation in which distinct
+factors of variation occupy separable directions is called
+\textit{disentangled}~\cite{Higgins2017}; what we seek is a
+representation of the content data in which denotation and connotation are
+disentangled. In such a space \textit{denotatively
+    unexpected and connotatively relevant}
+(Section~\ref{subsec:serendipity_process}) acquires
+coordinates---denotatively distant, yet connotatively close---and the
+space itself, told as a library, is the library with rabbit holes of
+Section~\ref{sec:introduction}.
+
+Constructing such a disentangled representation is a recognized open challenge.
+In the unsupervised setting it is provably ill-posed: for any disentangled
+solution, infinitely many entangled ones generate the same
+observations~\cite{Locatello20197247}. Some \textit{inductive bias}---a
+structural assumption about the space---is therefore unavoidable; the question
+is not whether to adopt one, but which one suits the pairing at hand.
+Section~\ref{sec:framework} paints the space; Section~\ref{sec:mathematics}
+shows that, once we state what the connotation coordinate should express, an
+appropriate bias follows naturally, in the form of optimal transport.
