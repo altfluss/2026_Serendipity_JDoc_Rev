@@ -54,6 +54,13 @@
   source                 = {Scopus}
 }
 
+%%% Ziarani2021375: 2026-08-20 著者名を一次確認。誌面表記は「Reza Jafari Ziarani」。
+%%% Springer の Cite this article は「Ziarani, R.J., Ravanmehr, R.」、Scopus・JCST 公式ページも
+%%% Ziarani を姓として扱う。よって現行の author = {Ziarani, Reza Jafari and ...} は出版社の推奨形と
+%%% 一致しており、変更しない。ただし Persian 名として「Jafari Ziarani」が複合姓である可能性は残る
+%%% (00_Notes/文献 に同一 PDF が「Jafari2021」名で保管されているのは、その読みを採った跡)。
+%%% Harvard(著者-年)へ変換すると本文に「Ziarani and Ravanmehr (2021)」と出る。現行の IEEEtran
+%%% 番号引用では姓が表に出ないため、JDoc 形式へ変換した時点で一度だけ目視すること
 @article{Ziarani2021375,
   author            = {Ziarani, Reza Jafari and Ravanmehr, Reza},
   title             = {Serendipity in Recommender Systems: A Systematic Literature Review},
