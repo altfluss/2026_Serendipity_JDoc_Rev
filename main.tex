@@ -48,7 +48,28 @@
 \maketitle
 
 \begin{abstract}\noindent
-    Serendipity cannot be searched for: no one can name in advance what would count as finding it. What one can do is explore, as visitors to a library do. This paper asks what an information space must provide if serendipity is to be sought, and answers with a concept: a multi-floor library with rabbit holes. In this library, \textit{denotation}, such as genre, determines the floor to which a work belongs, while \textit{connotation}, which cannot be captured by a single word, arranges works within each floor. A \textit{rabbit hole} is a vertical line through the same connotative position on every floor. Users may leap through a hole onto another floor, venturing into new worlds; whether they have serendipitous encounters there is left to them. Constructing such a space is not a matter of interface design, but of information \textit{representation}: it requires a \textit{disentangled} representation separating denotative and connotative aspects. We show that optimal transport provides a natural inductive bias for this disentanglement, and that the resulting library space forms an optimal transport fiber bundle (OT-FB), a ``bundle of rabbit holes,'' determined essentially uniquely by the collection data. The OT-FB provides users not only with a denotative exploration space but also with what we call the \textit{principal connotation space}, whose points correspond to the rabbit holes. Each work thus receives denotative and connotative coordinates locating it within the whole arrangement of works. Such signposts are what users need: in this space, what cannot be searched for can be sought.
+    Serendipity cannot be searched for: no one can name in advance what would
+    count as finding it. What one can do is explore, as library visitors do.
+    This paper asks what an information space must provide if serendipity is to
+    be sought, and answers with a concept: a multi-floor library with rabbit
+    holes. In this library, denotative attributes, such as genre, decide a
+    work's floor, while connotative ones, which no name gathers, arrange the
+    works on it. A \textit{rabbit hole} then runs vertically through the same
+    connotative position on every floor, so that users may leap from a work that
+    resonates into another genre, and there seek serendipity. Such a library, we
+    show, can be realized as a \textit{fiber bundle} whose correspondence is
+    fixed by optimal transport. This amounts to a decomposition: from the
+    generic representation space, a \textit{denotative space} is separated out,
+    and beside it stands the \textit{principal connotative space}, a subspace of
+    the orthogonal complement supplying what the denotative space cannot. The
+    resulting \textit{optimal transport fiber bundle} (OT-FB), determined
+    essentially uniquely by the data, gives every work a denotative and a
+    connotative coordinate. In this geometry, serendipity would be understood as
+    an encounter with a work denotatively distant and connotatively close, and
+    the insight that visits the user as the rabbit hole itself. What the paper
+    offers, therefore, is twofold: a library with rabbit holes, realized as a
+    geometry; and a formulation of connotation and serendipity, which no name
+    reaches, as the geometry of an information representation space.
 \end{abstract}
 
 \begin{quote}\parindent=0pt\parskip=.5em\noindent
@@ -56,22 +77,41 @@
         \textbf{Structured Abstract}
     \end{center}
     \textbf{Purpose.}
-    Serendipity cannot be searched for: what would count as finding it cannot be named in advance. What remains is exploration. This paper asks what an information space must provide if serendipity is to be sought, and frames the problem as one of information \textit{representation} rather than interface design.
+    Serendipity cannot be searched for---what would count as finding it cannot
+    be named in advance---so what remains is exploration. This paper asks what
+    an information space must provide if serendipity is to be sought, and frames
+    it as a problem of representation, not interface design.
 
     \textbf{Design/methodology/approach.}
-    We model the exploration space as a multi-floor library with \textit{rabbit holes}, built from a \textit{disentangled representation} of collection data. Denotation, such as genre, determines the floor to which a work belongs, while connotation arranges works within each floor. A rabbit hole connects the same connotative position across floors, allowing users to move deliberately between denotatively different regions.
+    We model the exploration space as a multi-floor library with \textit{rabbit
+        holes}, built from a \textit{disentangled representation} of collection
+    data. Denotative attributes, such as genre, decide the floor; connotative
+    ones arrange the works on it. A rabbit hole joins the same connotative
+    position across floors, letting users leap from a work that resonates into
+    another genre.
 
     \textbf{Findings.}
-    We show that optimal transport provides a natural inductive bias for this representation. The resulting \textit{optimal transport fiber bundle (OT-FB)}, determined essentially uniquely by the collection data, yields both a denotative exploration space and a \textit{principal connotation space}, whose points correspond to rabbit holes. Principal connotation is determined not by pairwise similarity alone, but by how denotative groups relate to one another as wholes.
+    Such a library is realized as a \textit{fiber bundle}, its correspondence
+    fixed by optimal transport. This decomposes the generic representation space
+    into a \textit{denotative space} and the \textit{principal connotative
+        space}, a subspace of the orthogonal complement supplying what the
+    denotative space cannot. The resulting \textit{optimal transport fiber
+        bundle} (OT-FB), essentially unique given the data, gives every work a
+    denotative and a connotative coordinate. Connotative position follows not
+    from pairwise similarity, but from how denotative groups stand as wholes.
 
     \textbf{Originality/value.}
-    The paper shifts the design of serendipitous exploration from interface to representation, gives the required disentangled representation a definite mathematical form, and derives a connotation space from the collection itself. The result is an information space in which users can intentionally enter new worlds without predetermining what they will find: what cannot be searched for can be sought.
+    The paper recasts connotation and serendipity as geometry. A connotation is
+    an aspect of quality shared by works on a manifold that no name gathers; its
+    coordinate stands in for the name. Serendipity would then be understood as
+    an encounter with a work denotatively distant and connotatively close, and
+    the insight that visits the user as the rabbit hole itself. An exploration
+    space for the unnamed thus becomes definable and buildable.
 \end{quote}
 
 \noindent\textbf{Keywords:}
-serendipity, exploratory search, information representation,
-disentangled representation, optimal transport, fiber bundle
-
+serendipity, connotation, exploratory search, information representation,
+disentangled representation, fiber bundle representation, optimal transport
 
 \input{sec1.tex}
 \input{sec2.tex}
