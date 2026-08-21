@@ -6,6 +6,11 @@
 %%%%% ### も %%% も付いていないエントリーが「クリーン」。Note: は付いていてよい
 %%%%% A: 絶対必要 / B: 必要 / C: 重要 / D: 参考程度 / E: なくても困らない。A-C を掲載する
 %%%%%
+%%%%% ===== 頁の付け方(2026-08-21 確定) =====
+%%%%% 本文で `` '' の引用符を使って逐語引用したときだけ、\citep[p.~NN]{key} で頁を載せる。
+%%%%% イタリック(\textit / \emph)で分野の語句を名指す場合は頁を載せない。
+%%%%% 現状の sec1 / sec2 は引用符を場面の声にのみ使い、借用語句はイタリックなので、頁を載せる箇所はない。
+%%%%%
 %%%%% ===== エントリーの規則 =====
 %%%%% 1. できる限り Scopus からエントリーを取得する(source = {Scopus} が目印)
 %%%%% 2. Scopus 非収録の場合は、代替ルートで確認し、その旨をコメントに残す
@@ -120,20 +125,6 @@ Note: [判定 C] Bayesian surprise による serendipity の定式化(RecSys 202
   type                = {Conference paper},
   publication_stage   = {Final},
   source              = {Scopus}
-}
-
-Note: [判定 E] science 領域の serendipity を大規模計量で扱う working paper。ただし定義は Fine and Deegan
-Note: (1996, p.434) の "the interactive outcome of unique and contingent 'mixes' of insight coupled with
-Note: chance"(現物 p.2)で、unexpected / relevant の対を用いていない ——本文が引いている「varied wordings」の
-Note: 例としては系統が違う。2026-08-20 時点で未公刊(Russell Funk の CV で arXiv working paper のまま)
-@misc{Nahm2023,
-  title         = {Serendipity in Science},
-  author        = {Pyung Nahm and Raviv Murciano-Goroff and Michael Park and Russell J. Funk},
-  year          = {2023},
-  eprint        = {2308.07519},
-  archiveprefix = {arXiv},
-  primaryclass  = {econ.EM},
-  url           = {https://arxiv.org/abs/2308.07519}
 }
 
 Note: [判定 A] serendipity の process model(Part 1)。誌面 p.684 "involves a mix of unexpectedness and insight" ——本文の逐語引用の出所
@@ -328,22 +319,15 @@ Note: [判定 C] serendipity の systematic review と概念化。組織文脈�
   source            = {Scopus}
 }
 
-Note: [判定 C] Part 2 の classification framework。process 束(Part 1 と対)。現物は author draft(published 版は未入手)
-@article{Makri2012706,
-  author            = {Makri, Stephann and Blandford, Ann},
-  title             = {Coming across information serendipitously - Part 2: A classification framework},
-  year              = {2012},
-  journal           = {Journal of Documentation},
-  volume            = {68},
-  number            = {5},
-  pages             = {706-724},
-  doi               = {10.1108/00220411211256049},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: [判定 B] self-fulfilling prophecy の原典。逐語引用は p.506(2026-08-06 確認)。sec2「what matters takes place in the finder」
+Note: [判定 A] serendipity を学術語として立てた論文。p.506 に "It might be termed the 'serendipity'
+Note: component of research, i.e., the discovery, by chance or sagacity, of valid results which were not
+Note: sought for." および "The serendipity pattern refers to the fairly common experience of observing an
+Note: unanticipated, anomalous and strategic datum which **becomes the occasion for** developing a new theory
+Note: or for extending an existing theory."
+Note: 引用理由: sec2「The find, then, is the occasion; what matters takes place in the finder」は Merton の
+Note: "becomes the occasion for" をそのまま受けている。本文の語そのものの出所なので判定 A。
+Note: (2026-08-21 訂正: 以前このエントリーを self-fulfilling prophecy の論文と記していたのは誤り。
+Note: それは同年の別論文。本エントリーは American Sociological Review 13(5), 505-515 で正しい)
 @article{Merton1948505,
   author  = {Merton, Robert K.},
   title   = {The bearing of empirical research upon the development of social theory},
@@ -1030,6 +1014,38 @@ Note: [判定 C] MoodPlay ——artists の mood 類似で2次元空間を作る
 %%%%% 倉庫(未使用。削除しない)
 %%%%% 本文から引用されていないエントリー。引用を再開するときはここから戻す
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Note: 2026-08-21 §2.1 P3 から引用を外したため倉庫へ。本文の「process として理解されている」の
+Note: 典拠は Part 1 (Makri2012684) が担う。Part 2 は classification framework で的が違う(判定 D)。
+Note: [判定 C] Part 2 の classification framework。process 束(Part 1 と対)。現物は author draft(published 版は未入手)
+@article{Makri2012706,
+  author            = {Makri, Stephann and Blandford, Ann},
+  title             = {Coming across information serendipitously - Part 2: A classification framework},
+  year              = {2012},
+  journal           = {Journal of Documentation},
+  volume            = {68},
+  number            = {5},
+  pages             = {706-724},
+  doi               = {10.1108/00220411211256049},
+  type              = {Article},
+  publication_stage = {Final},
+  source            = {Scopus}
+}
+
+Note: 2026-08-21 §1 と §2.1 の両方から引用を外したため倉庫へ(判定 E)。
+Note: [判定 E] science 領域の serendipity を大規模計量で扱う working paper。ただし定義は Fine and Deegan
+Note: (1996, p.434) の "the interactive outcome of unique and contingent 'mixes' of insight coupled with
+Note: chance"(現物 p.2)で、unexpected / relevant の対を用いていない ——本文が引いている「varied wordings」の
+Note: 例としては系統が違う。2026-08-20 時点で未公刊(Russell Funk の CV で arXiv working paper のまま)
+@misc{Nahm2023,
+  title         = {Serendipity in Science},
+  author        = {Pyung Nahm and Raviv Murciano-Goroff and Michael Park and Russell J. Funk},
+  year          = {2023},
+  eprint        = {2308.07519},
+  archiveprefix = {arXiv},
+  primaryclass  = {econ.EM},
+  url           = {https://arxiv.org/abs/2308.07519}
+}
+
 
 @book{Mawer20141,
   author            = {Mawer, Deborah},
