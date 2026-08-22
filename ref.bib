@@ -37,6 +37,8 @@
 %%%%%   これは 2026-08-06 に確定した方針。「名前と中身が違う」として直さないこと
 %%%%% - McBirnie2008600: Scopus は刊年を 2009 と誤記している。誌面(Received/Accepted 2008)で 2008 を確認済み。
 %%%%%   Scopus から再取得したら year を 2008 に戻すこと
+%%%%% - Locatello20197247: Scopus は著者名を Lucie, Mario と誤記している。正しくは Lucic, Mario。
+%%%%%   arXiv:1811.12359 の著者表示で確認済み(2026-08-22 に修正)。Scopus から再取得したら Lucic に直すこと
 %%%%% - Ziarani2021375: author = {Ziarani, Reza Jafari and ...} は出版社の推奨形。Harvard では
 %%%%%   「Ziarani and Ravanmehr (2021)」と出る。これで正しいので変更しない
 %%%%% - Cutter1876: 1876 / 1875 の揺れは 1876 で確定(HathiTrust, WorldCat, Google Books)
@@ -133,34 +135,33 @@ Note: [判定 A] serendipity の process model(Part 1)。誌面 p.684 "involves 
   source            = {Scopus}
 }
 
-Note: [判定 B] STAIRS の再現率調査。誌面 p.289 "not ... a critique of STAIRS alone, but rather a critique of the principles on which it and other full-text document-retrieval systems are based" ——sec1「欠損はインタフェースの下にある」の主柱
-@article{Blair1985289,
-  author            = {Blair, David C. and Maron, M.E.},
-  title             = {An evaluation of retrieval effectiveness for a full-text document-retrieval system},
-  year              = {1985},
-  journal           = {Communications of the ACM},
-  volume            = {28},
-  number            = {3},
-  pages             = {289-299},
-  doi               = {10.1145/3166.3197},
+### Munzner2009921: Scopus からエントリーを取得して差し替える(TVCG 2009 は Scopus 収録)。
+### 下は IEEE Xplore と著者業績リストで確認した手書きの暫定エントリー。
+### 現物は CitedPapers/candidates/NestedModel.pdf(著者版 TR)。慣例どおり Munzner2009921.pdf に改名して直下へ移す。
+%%% sec1 l.73-79 の書き換え待ち。まだ本文から引用されていないので、検証スクリプトが「未引用」と報告する
+Note: [判定 B] 可視化の設計と検証の四層入れ子モデル。abstract "The output from a level above is input to
+Note: the level below, bringing attention to the design challenge that an upstream error inevitably
+Note: cascades to all downstream levels"。sec1「interface は下層が符号化したものしか surface できない」の主柱。
+Note: 四層は domain problem characterization / data-operation abstraction design /
+Note: encoding-interaction technique design / algorithm design。第3層の名に interaction が入るので、
+Note: representation と interface design の対比が原典の層構造にそのまま対応する。
+Note: 最も近い逐語は誌面 §3.5 "the threat is that the chosen design is not effective at communicating
+Note: the desired abstraction to the person using the system" —— interface の仕事は abstraction を伝えること。
+Note: 注意: §3.2 が「四段階が厳密な時間順で行われることは稀」と明言している。引けるのは依存関係のみで、
+Note: 時系列の規範としては引かないこと。
+Note: 書誌の注意: dblp は題を "A Nested Process Model for ..." と表示するが、IEEE Xplore と著者業績リストは
+Note: Process 無しが正。頁は誌面 921-928(著者版 TR の独自ノンブルとは一致しない)
+@article{Munzner2009921,
+  author            = {Munzner, Tamara},
+  title             = {A nested model for visualization design and validation},
+  year              = {2009},
+  journal           = {IEEE Transactions on Visualization and Computer Graphics},
+  volume            = {15},
+  number            = {6},
+  pages             = {921-928},
+  doi               = {10.1109/TVCG.2009.111},
   type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: [判定 C] vocabulary problem(2人が同じ語を選ぶ確率 < 0.20)。誌面 p.964 "limits the success of various design methodologies for vocabulary-driven interaction" ——sec1 同文の補強。Blair 単独でも文は立つ
-@article{Furnas1987964,
-  author            = {Furnas, G.W. and Landauer, T.K. and Gomez, L.M. and Dumais, S.T.},
-  title             = {The Vocabulary Problem in Human-System Communication},
-  year              = {1987},
-  journal           = {Communications of the ACM},
-  volume            = {30},
-  number            = {11},
-  pages             = {964-971},
-  doi               = {10.1145/32206.32212},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
+  publication_stage = {Final}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -277,19 +278,6 @@ Note: [判定 B] serendipity の過程モデル: Trigger / Connection / Follow-u
   number            = {7},
   pages             = {1463-1476},
   doi               = {10.1002/asi.23273},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: [判定 C] blog 記述の grounded theory から serendipity の facets を抽出し、find が全 facet を束ねるモデルを立てる。process 束
-@article{Rubin2011,
-  author            = {Rubin, Victoria L. and Burkell, Jacquelyn and Quan-Haase, Anabel},
-  title             = {Facets of serendipity in everyday chance encounters: A grounded theory approach to blog analysis},
-  year              = {2011},
-  journal           = {Information Research},
-  volume            = {16},
-  number            = {3},
   type              = {Article},
   publication_stage = {Final},
   source            = {Scopus}
@@ -573,21 +561,6 @@ Note: interface 層の起点
   source            = {Scopus}
 }
 
-Note: [判定 C] デジタル情報環境における serendipity 研究の総説(Synthesis Lectures)。sec2「exploration gives terrain」の束
-@article{McCayPeet20181,
-  author            = {McCay-Peet, Lori and Toms, Elaine G.},
-  title             = {Researching serendipity in digital information environments},
-  year              = {2018},
-  journal           = {Synthesis Lectures on Information Concepts, Retrieval, and Services},
-  volume            = {9},
-  number            = {6},
-  pages             = {1-109},
-  doi               = {10.2200/S00790ED1V01Y201707ICR059},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
 Note: [判定 B] exploratory search を lookup / learn / investigate に分ける原典。同束の中核
 @article{Marchionini200641,
   author            = {Marchionini, Gary},
@@ -599,34 +572,6 @@ Note: [判定 B] exploratory search を lookup / learn / investigate に分け�
   pages             = {41-46},
   doi               = {10.1145/1121949.1121979},
   type              = {Review},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: [判定 C] Bohemian Bookshelf(CHI 2012)。"serendipity can be facilitated through visualization"。同束
-@article{Thudt20121461,
-  author            = {Thudt, Alice and Hinrichs, Uta and Carpendale, Sheelagh},
-  title             = {The {B}ohemian {B}ookshelf: Supporting serendipitous book discoveries through information visualization},
-  year              = {2012},
-  journal           = {Conference on Human Factors in Computing Systems-Proceedings},
-  pages             = {1461-1470},
-  doi               = {10.1145/2207676.2208607},
-  type              = {Conference paper},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: [判定 C] ambient intelligence による探索支援。"components that support serendipitous discovery"。同束
-@article{Beale2007ambient,
-  author            = {Beale, Russell},
-  title             = {Supporting serendipity: Using ambient intelligence to augment user exploration for data mining and web browsing},
-  year              = {2007},
-  journal           = {International Journal of Human Computer Studies},
-  volume            = {65},
-  number            = {5},
-  pages             = {421-433},
-  doi               = {10.1016/j.ijhcs.2006.11.012},
-  type              = {Article},
   publication_stage = {Final},
   source            = {Scopus}
 }
@@ -776,7 +721,7 @@ Note: (2) §2.3 P4「the space has been built from labels」。どちらも語�
 }
 
 @article{Locatello20197247,
-  author            = {Locatello, Francesco and Bauer, Stefan and Lucie, Mario and Rätsch, Gunnar and Gelly, Sylvain and Schölkopf, Bernhard and Bachem, Olivier},
+  author            = {Locatello, Francesco and Bauer, Stefan and Lucic, Mario and Rätsch, Gunnar and Gelly, Sylvain and Schölkopf, Bernhard and Bachem, Olivier},
   title             = {Challenging common assumptions in the unsupervised learning of disentangled representations},
   year              = {2019},
   journal           = {36th International Conference on Machine Learning, ICML 2019},
@@ -992,6 +937,109 @@ Note: (2) §2.3 P4「the space has been built from labels」。どちらも語�
 %%%%% 倉庫(未使用。削除しない)
 %%%%% 本文から引用されていないエントリー。引用を再開するときはここから戻す
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Note: 2026-08-22 sec1 / sec2 の書き換えで引用がゼロになったため倉庫へ。判定 C なので呼び戻せる
+Note: [判定 C] STAIRS の再現率調査。full-text 検索の再現率は約2割(誌面 p.293)で、著者は原因を検索者ではなく
+Note: 「the principles on which it and other full-text document-retrieval systems are based」に置く(p.289)。
+Note: 処方は手作業索引語の追加(p.298 の WESTLAW)。sec2 §2.2「第一の道」の起点として使える。
+Note: representation / interface の対比は原典に無い(representation・interface・encode が全文で0件)
+@article{Blair1985289,
+  author            = {Blair, David C. and Maron, M.E.},
+  title             = {An evaluation of retrieval effectiveness for a full-text document-retrieval system},
+  year              = {1985},
+  journal           = {Communications of the ACM},
+  volume            = {28},
+  number            = {3},
+  pages             = {289-299},
+  doi               = {10.1145/3166.3197},
+  type              = {Article},
+  publication_stage = {Final},
+  source            = {Scopus}
+}
+
+Note: 2026-08-22 sec1 / sec2 の書き換えで引用がゼロになったため倉庫へ。判定 C なので呼び戻せる
+Note: [判定 C] vocabulary problem。2人が同じ語を選ぶ確率は 0.20 未満。誌面 p.967「there is no one good
+Note: access term for most objects. The idea of an 'obvious,' 'self-evident,' or 'natural' term is a myth!」。
+Note: 処方は unlimited aliasing で、対象集合を固定したまま命名写像を太らせる(p.968)。Blair1985289 と対で
+Note: sec2 §2.2「第一の道」の起点になる。主張は未習熟者の初回試行に限定(p.964)なので一般化して引かないこと
+@article{Furnas1987964,
+  author            = {Furnas, G.W. and Landauer, T.K. and Gomez, L.M. and Dumais, S.T.},
+  title             = {The Vocabulary Problem in Human-System Communication},
+  year              = {1987},
+  journal           = {Communications of the ACM},
+  volume            = {30},
+  number            = {11},
+  pages             = {964-971},
+  doi               = {10.1145/32206.32212},
+  type              = {Article},
+  publication_stage = {Final},
+  source            = {Scopus}
+}
+
+Note: 2026-08-22 §2.3 の exploration 束が Marchionini200641 一本に絞られたため倉庫へ。判定 C なので呼び戻せる
+Note: [判定 C] デジタル情報環境における serendipity 研究の総説(Synthesis Lectures)。sec2「exploration gives terrain」の束
+@article{McCayPeet20181,
+  author            = {McCay-Peet, Lori and Toms, Elaine G.},
+  title             = {Researching serendipity in digital information environments},
+  year              = {2018},
+  journal           = {Synthesis Lectures on Information Concepts, Retrieval, and Services},
+  volume            = {9},
+  number            = {6},
+  pages             = {1-109},
+  doi               = {10.2200/S00790ED1V01Y201707ICR059},
+  type              = {Article},
+  publication_stage = {Final},
+  source            = {Scopus}
+}
+
+Note: 2026-08-22 §2.3 の exploration 束が Marchionini200641 一本に絞られたため倉庫へ。判定 C なので呼び戻せる
+Note: [判定 C] Bohemian Bookshelf(CHI 2012)。"serendipity can be facilitated through visualization"。同束
+@article{Thudt20121461,
+  author            = {Thudt, Alice and Hinrichs, Uta and Carpendale, Sheelagh},
+  title             = {The {B}ohemian {B}ookshelf: Supporting serendipitous book discoveries through information visualization},
+  year              = {2012},
+  journal           = {Conference on Human Factors in Computing Systems-Proceedings},
+  pages             = {1461-1470},
+  doi               = {10.1145/2207676.2208607},
+  type              = {Conference paper},
+  publication_stage = {Final},
+  source            = {Scopus}
+}
+
+Note: 2026-08-22 §2.3 の exploration 束が Marchionini200641 一本に絞られたため倉庫へ。判定 C なので呼び戻せる
+Note: [判定 C] ambient intelligence による探索支援。"components that support serendipitous discovery"。同束
+@article{Beale2007ambient,
+  author            = {Beale, Russell},
+  title             = {Supporting serendipity: Using ambient intelligence to augment user exploration for data mining and web browsing},
+  year              = {2007},
+  journal           = {International Journal of Human Computer Studies},
+  volume            = {65},
+  number            = {5},
+  pages             = {421-433},
+  doi               = {10.1016/j.ijhcs.2006.11.012},
+  type              = {Article},
+  publication_stage = {Final},
+  source            = {Scopus}
+}
+
+
+Note: 2026-08-22 §2.1 の process 文の書き換えで引用がゼロになったため倉庫へ。束は
+Note: McCayPeet20151463 + Busch20241110 の2件で立つ。判定 C なので呼び戻せる。
+Note: なお本文の *the unexpected yet sought-for* との緊張は、Rubin を外したことで解消している
+Note: (Rubin は "With respect to chance," に支配された文脈で unsought finding 寄りに読まれる)。
+Note: [判定 C] blog 記述の grounded theory から serendipity の facets を抽出し、find が全 facet を束ねるモデルを立てる。process 束
+@article{Rubin2011,
+  author            = {Rubin, Victoria L. and Burkell, Jacquelyn and Quan-Haase, Anabel},
+  title             = {Facets of serendipity in everyday chance encounters: A grounded theory approach to blog analysis},
+  year              = {2011},
+  journal           = {Information Research},
+  volume            = {16},
+  number            = {3},
+  type              = {Article},
+  publication_stage = {Final},
+  source            = {Scopus}
+}
+
 Note: 2026-08-21 §2.2 の書き換えで引用がゼロになったため倉庫へ。書誌は現物の扉で確認済み
 Note: (JPSP 39(6), 1161-1178)。circumplex model が必要になれば呼び戻せる(判定 B)。
 Note: [判定 B] circumplex model of affect。誌面 JPSP 39(6), 1161-1178 を現物で確認。abstract に pleasure(0°) / arousal(90°) の円環 ——sec2「a plane of valence and arousal in its best-known descendant」
