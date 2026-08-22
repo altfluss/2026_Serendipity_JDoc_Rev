@@ -35,21 +35,22 @@
 %%%%% Section 3 A Library with Rabbit Holes %%%%%
 \section{A Library with Rabbit Holes}\label{sec:framework}
 
-Recall the visitor introduced in Section~\ref{sec:introduction}. Part of what he
-wants he can clearly name---a record (\textit{Kind of Blue}), its performer (Miles
-Davis), and with them a genre (jazz)---and for that part, any catalogue serves.
-The rest he could only circle with words: quiet, with feeling in it, colors
-melting into one another. That part is connotative, and it belongs not to search
-but to exploration. What exploration space, then, does such a visitor need? That
-question is the subject of this section.
+Return to the visitor of Section~\ref{sec:introduction}. What he could name
+was little: a title (\textit{Kind of Blue}), its performer (Miles Davis), its
+genre (jazz). Each of these fits a field on a record, and each is denotation.
+The rest of what he carried fits no field: the sound of the instruments, the
+mood, the atmosphere---quiet, with feeling in it, colors melting into one
+another. That rest is connotation.
 
-Throughout this paper, a collection is taken to give us two kinds of data:
-\emph{descriptors}, the structured names carried on the bibliographic record,
-and \emph{content data}, vectorial data representing the work itself, equipped
-with a general-purpose inner product by which the closeness of two works is
-measured. We call the pair \emph{collection data}; it is all we have to build
-from. We keep, unless otherwise stated, to the simplest case, in which the only
-descriptors given are genre and title.
+From here we simplify: let the library carry these three descriptors and no
+others. To look for works beyond Miles Davis, then, he has no descriptor but
+genre. What exploration space must the library give him, so that he can seek
+what he is after? That question is the subject of this section.
+
+He can also reach the contents themselves---to listen and see for himself. So
+the \emph{content data} drawn from those contents is available to us as well.
+Descriptors and content data together we call the \emph{collection data}. Our
+aim is then to build the exploration space from the collection data.
 
 \begin{figure}[p]
     \centering
@@ -106,103 +107,54 @@ descriptors given are genre and title.
     Form}\label{subsec:multi_floor_library}
 
 Consider first what descriptors alone can build: works gathered by genre, one
-floor to each in a library, and within a floor shelved in title order. The
-visitor asks for the jazz floor, finds Miles Davis's \textit{Kind of Blue}, and
-there his intention runs out. Title order tells him nothing of what a work is
-like, so he cannot move even along the jazz floor toward what he is after; on
-the classical floor he can only take works down at random.
+floor to each in a library, and within a floor shelved in performer and title
+order. The visitor asks for the jazz floor and finds \textit{Kind of Blue} and
+the other works of Miles Davis. There his intention runs out. Shelf order
+tells him nothing of what a work is like, so he cannot move even along the
+jazz floor toward what he is after; on the classical floor he can only take
+works down at random.
 
-Suppose now that content data is available---acoustic features, or
-whatever else can measure how near two works stand---and that each floor
-is arranged by that closeness. Standing at \textit{Kind of Blue}, he
-finds other Miles Davis recordings at hand, and walking on, other jazz
-works of kindred sound. Along a floor, then, he can move. The same
-closeness can be measured across genres too, but there it reports only
-that the two stand far apart: what Miles Davis shares with Debussy is
-far subtler than what separates jazz from classical. Each floor is
-therefore arranged on its own lines, and no two floors agree; arriving
-on the classical floor, he cannot tell where to begin.
+Suppose now that each floor can arrange its works by connotative closeness:
+beside any work stand the works that feel like it. Near \textit{Kind of Blue}
+he then finds other works of similar mood, and walking away from it he finds
+the mood changing gradually.
 
-Neither library, then, gives the visitor what he needs. Before designing
-one that does, let us state what is wanted of it. Our requirements are
-Bj\"orneborn's three affordances
-(Section~\ref{subsec:systems})~\cite{Bjorneborn20171053}, restated as
-conditions on a representation, joined by a fourth of our own.
-%
-\begin{itemize}
-    \item \textbf{(R1) Sensible in place:} standing anywhere in the
-          space, the visitor can feel the texture of the works around
-          him and sense where he is.
-    \item \textbf{(R2) Diverse in direction:} the space offers him many
-          directions to differ along.
-    \item \textbf{(R3) Traversable at will:} he can choose his own
-          direction and move through the space as he pleases.
-    \item \textbf{(R4) Foreseeable in direction:} he can tell what each
-          direction holds: moving this way, what changes and what
-          stays.
-\end{itemize}
-%
-(R4) is required because willed exploration moves toward something. To
-choose a direction is to expect something of it---not to know what waits
-there, but what the way will change and what it will keep. Without that,
-exploration is wandering, and what he finds is left to chance again.
+We do not ask the floor to hold every connotation. We ask for the principal
+ones---those that stand next after the denotation of genre, and that most
+visitors feel in common: instruments, mood, and their like. We call such a
+floor a \textbf{principal connotative space}. For now we postulate that we
+have one. We do not ask whether it exists, or whether collection data can
+give it. We assume only that every work carries a unique coordinate in it.
+That much already lets him explore the jazz floor.
 
-As an exploration space meeting all four, we present the multi-floor
-library with rabbit holes (Figure~\ref{fig:two_views}a). Each floor holds
-one genre---jazz on one, classical on another---with floors of kindred
-feeling near one another. Within each floor, works are arranged by the
-closeness one feels but cannot name: beside Miles Davis stands Bill
-Evans; beside Debussy, Ravel. Standing among them, the visitor feels
-where he is (R1) and can see what a step along the floor would bring
-(R4).
+Assume further that this coordinate system is shared by every genre. From the
+coordinate of \textit{Kind of Blue} on the jazz floor, moving to the same
+coordinate on the classical floor brings him a work of the same principal
+connotation (Figure~\ref{fig:two_views}).
 
-What joins the floors into one space is the rabbit hole. One lies underfoot at
-every point, running vertically through the whole building: step in, and one
-comes out at the corresponding position---the same connotative position, however
-distant the genre. From Charlie Parker on the jazz floor, one hole passes Frank
-Zappa on the rock/pops floor and opens beside Stravinsky among the classics:
-three restless, angular, rhythmically intricate bodies of work, generically far
-apart. The hole is a direction the floors by themselves did not have (R2), open
-wherever the visitor stands (R3), and legible before he takes it (R4).
+His reach now runs past genre to the whole library. He set out holding nothing
+but \textit{Kind of Blue}, Miles Davis, and jazz, and with no words to help him
+further, and yet the whole building is open to him.
 
-What the library gives each work, Section~\ref{sec:introduction} said, is not
-one more label but a \emph{place}. Now we can say it precisely: not only each
-work having coordinates, but a \emph{coordinate system} pervading the whole
-library. Every point where a visitor may stand has coordinates of its own. Two
-axes are shared by the whole building. The within-floor axis spans the
-\textbf{connotation space} $\mathcal{V}$: the same coordinate marks, on every
-floor, the same place in what the names leave unsaid. The vertical axis spans
-the \textbf{denotation space} $\mathcal{U}$: the same coordinate means the same
-genre-ness through every hole. Each work receives its pair: a \emph{denotative
-    coordinate} $u$ (which floor) and a \emph{connotative coordinate} $v$ (where on
-it). That is, the pairing of Section~\ref{subsec:serendipity_process},
-\textit{denotatively unexpected and connotatively relevant}, now has an exact
-expression: distant in $\mathcal{U}$, and close in $\mathcal{V}$. A
-representation that separates two aspects into two coordinates in this way is
-what machine learning calls \emph{disentangled}
-(Section~\ref{subsec:disentanglement}); the multi-floor library is the
-disentangled form of the collection data. (In what sense $\mathcal{V}$ signifies
-a connotation is the question of Section~\ref{subsec:bundle_reach}.)
+This is the \textbf{multi-floor library with rabbit holes} that we propose.
+Genre puts each work on its floor; the principal connotative space puts it in
+its place on that floor. A rabbit hole is a vertical elevator, leaping to the
+same coordinate on another floor. So he can open his own way from Miles Davis
+to Debussy.
 
-The two coordinates are not born equal. Genre arrives as a label:
-descriptor data, given with the record
-(Section~\ref{subsec:naming}). Labels alone would make the stack
-discrete, one floor per name. The coordinate $u$ is \emph{genre-ness},
-position rather than name, and it makes the stack continuous: the pop
-floor stands next to the rock floor, and a work that claims both genres
-can stand on a floor between them. Connotation has no such start. It
-never had a label; Section~\ref{subsec:naming} found it written in no
-field. Its coordinate $v$ must come from elsewhere.
+This library meets Bj\"orneborn's three affordances
+(Section~\ref{subsec:systems})~\citep{Bjorneborn20171053}.
+\textbf{Diversifiability}: beyond what the descriptors carry, the whole
+library opens to him as a multi-dimensional space.
+\textbf{Traversability}: he can traverse that space with intent, choosing what
+to hold fixed and what to vary. Walking a floor holds the genre and crosses
+connotation; entering a rabbit hole holds the connotation and crosses genre.
+\textbf{Sensoriability}: he can play a work, listen, and feel what connotation
+its position carries---and, before he listens, foresee what the other works
+there will be like.
 
-There are two ways to obtain it. The first is to name the features by hand: an
-expert who holds that Miles Davis and Debussy belong at the same position
-designs descriptors independent of genre, and the floors are arranged by them.
-This is the way taken by the systems of Section~\ref{subsec:systems}, and it
-reaches as far as the expert's knowledge reaches. The second is to find, in the
-content data itself, a coordinate system under which the floors already
-agree---separating what varies with genre from what varies within it. That is
-disentanglement, and it is the way this paper takes.
-
+Foreseeing is what affords his exploration. It lets him set out with a clear
+intent and an expectation of what lies ahead.
 
 %%% Subsection 3.2 Seeking Serendipity in the Library %%%%%
 \subsection{Seeking Serendipity in the Library}\label{subsec:seeking}
