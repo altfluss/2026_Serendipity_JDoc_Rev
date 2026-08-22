@@ -1,0 +1,172 @@
+%%%%% Section 5. Learning the Bundle from Data %%%%%
+\section{Computing Principal Connotative Space and OT-FB}\label{sec:computation}
+
+In this section, we show that the OT-FB is determined essentially
+uniquely by the collection data---that is, the pairs of descriptors and
+content data---and describe how to compute it from an actual
+collection. Readers willing to take the computation on trust may skip
+to Section~\ref{sec:demonstration}.
+
+
+%%% Subsection 5.1 Objective function %%%
+\subsection{Derivation of the Objective Function and Uniqueness of
+    Solutions}
+
+Estimating the OT-FB means determining the model distribution
+$q_\Phi(x)$, defined by the embedding map $\Phi$, from the distribution
+$p_\text{data}(x)$ of the content data. The two distributions are given
+by
+\begin{align*}
+    p_{\text{data}}(x) & = \sum_{n=1}^N p(n)\,
+    \mathcal{N}(x \mid \mathbf{x}_n, \beta^{-1}I), \quad
+    p(n) = \frac{1}{K N_{k(n)}},                                \\
+    q_\Phi(x)          & = \iint_{\mathcal{U}\times\mathcal{V}}
+    \mathcal{N}(x \mid \Phi(u, v), \beta^{-1}I)\, q(u)\, q(v)\, du\, dv,
+\end{align*}
+where $\beta^{-1}$ is the observation noise variance, $k(n)$ is the
+genre of work $n$, and $N_k$ is the number of works in genre $k$ and
+$q(u)$, $q(v)$ are the prior distributions placed on the two spaces.
+Besides $\Phi$, we estimate the coordinates of the $N$ works:
+$U = (u_1, \dots, u_N)$ in the denotation space and
+$V = (v_1, \dots, v_N)$ in the connotation space.
+
+Our goal is to establish the correspondence across all $K$ genres
+through optimal transport---the multi-marginal problem of
+Section~\ref{subsec:OTFB-model}. The learning objective is to find the
+map $\Phi^*$ that best aligns the $K$ genre distributions, formalized
+as minimizing the 2-Wasserstein distance:
+\begin{align}\label{eq:main_objective}
+    W^2_2(p_\text{data}, q_\Phi)
+           & = \inf_{\gamma\in\Pi(p_{\text{data}},\, q_\Phi)}
+    \iint \|x - x'\|^2\, \gamma(x, x')\, dx\, dx',            \\
+    \Phi^* & = \argmin_{\Phi} W^2_2(p_\text{data}, q_\Phi),
+\end{align}
+where $\gamma \in \Pi$ is a transport plan satisfying the marginal
+constraints $p_{\text{data}}(x) = \int \gamma(x,x')\,dx'$ (the
+constraint $p \rightarrow q$) and $q_\Phi(x') = \int \gamma(x,x')\,dx$
+(the constraint $q \rightarrow p$). Because $\Phi$ is constrained to
+share one connotative coordinate $v$ across all genres, minimizing this
+objective fits each galaxy and optimizes the correspondence between the
+galaxies at once. That this correspondence is uniquely determined is
+the content of the following proposition.
+
+\begin{proposition}\label{prop:OT-FB}
+    Let each genre distribution $p_k$ be smoothed by the noise model
+    $\mathcal{N}(x \mid \mathbf{x}_n, \beta^{-1}I)$, so that it is
+    absolutely continuous with finite second moment. Then:
+    (a) the multi-marginal optimal transport problem over
+    $p_1, \dots, p_K$ with pairwise squared-distance cost has a unique
+    solution, given by Monge maps; the OT-FB is therefore uniquely
+    determined by the collection data.
+    (b) The map $\Phi$ realizing this correspondence is unique up to a
+    relabeling of the coordinates of $\mathcal{U}$ and $\mathcal{V}$;
+    the arrangement of works is not affected.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+    (a) Each $p_k$ is a finite Gaussian mixture, hence absolutely
+    continuous with finite second moment. For such marginals, the
+    multi-marginal optimal transport problem with pairwise
+    squared-distance cost has a unique solution, and this solution is
+    given by Monge maps~\cite{GangboSwiech199823,pass2015multi}; for
+    $K=2$ this is Brenier's theorem~\cite{Brenier1991375}. The optimal
+    correspondence across the $K$ distributions is therefore unique,
+    and the OT-FB inherits this uniqueness.
+    (b) Let $g_\mathcal{U}$ and $g_\mathcal{V}$ be measure-preserving
+    maps of $\mathcal{U}$ and $\mathcal{V}$, i.e., maps leaving $q(u)$
+    and $q(v)$ invariant. Then $\Phi \circ (g_\mathcal{U} \times
+        g_\mathcal{V})$ induces the same model distribution $q_\Phi$ and
+    the same transport cost, and realizes the same correspondence.
+    Conversely, any two maps realizing the optimal correspondence of
+    (a) differ only by such a reparametrization.
+\end{proof}
+
+This is the exact sense of \emph{essentially unique}: what the
+collection data determine is the arrangement of works itself, not the
+names of the axes---which were never meant to carry names
+(Section~\ref{sec:introduction}).
+
+%%% Subsection 5.2 Computing OT-FB from data
+\subsection{Optimization of the Objective Function}
+
+Our task is now to find the map $\Phi$ minimizing
+\eqref{eq:main_objective}, together with the coordinates $(u_n, v_n)$
+of every work $n$. The optimization is subject to the two marginal
+constraints, and we handle them alternately: each step enforces one
+constraint under one-sided (unbalanced) transport.
+
+\paragraph{Transport optimization $q_\Phi \rightarrow p_\text{data}$.}
+With $(U, V)$ fixed and the marginal constraint $q \rightarrow p$
+satisfied, we optimize the map $\Phi$. The minimizer is
+\begin{equation}
+    \Phi(u, v \mid U, V) =
+    \frac{\sum_k \mathcal{N}(u \mid u_k, \alpha^{-1} I)\, \varphi_k(v)}
+    {\sum_{k'} \mathcal{N}(u \mid u_{k'}, \alpha^{-1} I)},
+    \label{eq:kernel_smoothing}
+\end{equation}
+where $u_k$ is the floor coordinate shared by the works of genre $k$
+(that is, $u_n \equiv u_{k(n)}$ under hard genre labels), and
+$\varphi_k$ is the manifold model of the $k$-th genre:
+\begin{equation}\label{eq:varphi}
+    \varphi_k(v) =
+    \frac{\sum_{n:\rho_{kn}=1} \mathcal{N}(v \mid v_n, \alpha^{-1} I)\,
+        \mathbf{x}_n}
+    {\sum_{n':\rho_{kn'}=1} \mathcal{N}(v \mid v_{n'}, \alpha^{-1} I)}.
+\end{equation}
+Here $\rho_{kn} = 1$ when work $n$ belongs to genre $k$ and $0$
+otherwise, and $\alpha$ controls the kernel width. Crucially,
+\eqref{eq:kernel_smoothing} takes the form of \textit{hierarchical
+    kernel smoothing}---the algorithm of the SOM of
+SOMs~\cite{Furukawa2009463}---arising here not as a modeling assumption
+but as a consequence of optimal transport.
+
+\paragraph{Transport optimization $p_\text{data} \rightarrow q_\Phi$.}
+With $\Phi$ given by \eqref{eq:kernel_smoothing}, the objective
+\eqref{eq:main_objective} under the marginal constraint
+$p \rightarrow q$ becomes an objective over $(U, V)$:
+\begin{equation}\label{eq:E-UV}
+    E[U, V] = \frac{\beta}{2}\sum_{n=1}^N p(n)
+    \iint p(u, v \mid n)\,
+    \bigl\|\mathbf{x}_n - \Phi(u, v \mid U, V)\bigr\|^2
+    \, du\, dv
+    + \lambda R(U, V),
+\end{equation}
+where $p(u, v \mid n)=\mathcal{N}(u\mid u_n,\alpha^{-1} I)\,\mathcal{N}(v\mid v_n,
+    \alpha^{-1} I)$ is the distribution over $(u, v)$ that the transport plan assigns to
+work $n$, and $R$ is the regularization term
+\begin{equation*}
+    R(U, V) \equiv - \sum_{n=1}^N p(n)\,
+    \bigl(\log q(u_n) + \log q(v_n)\bigr),
+\end{equation*}
+and $\lambda$ is its strength.
+
+\paragraph{Final objective.}
+Applying the Laplace approximation, we obtain
+\begin{equation}\label{eq:reduced_objective}
+    E[U, V] \simeq \sum_{n=1}^N p(n) \left\{
+    \frac{\beta}{2}\bigl\| \mathbf{x}_n - \Phi(u_n, v_n \mid U, V)
+    \bigr\|^2
+    - \lambda \log q(u_n)
+    - \lambda \log q(v_n)
+    \right\}.
+\end{equation}
+This reduction to a single objective over the coordinates $(U, V)$
+enables efficient gradient-based optimization.
+
+\paragraph{Extensions.}
+The method admits two extensions. First, the genre descriptor need not
+be a hard label. A work may carry a soft genre distribution---Gershwin's
+works as jazz and classical---or a genre feature vector. Then $\rho_{kn}$
+ceases to be binary: it becomes the similarity between the $k$-th genre
+cluster and work $n$. The denotation coordinate follows, given work by
+work: $u_n$ expresses the genre-ness of work $n$. The denotation space is
+then no longer $K$ fixed points but a continuous space to search---
+genre-ness made continuous, work by work.
+
+Second, when richer descriptors are available---artist, era, and
+others---the denotation space $\mathcal{U}$ can itself be further
+disentangled into independent axes: genre-ness, artist-ness, era-ness,
+and so on---a catalogue's facets, made continuous. The connotation
+space remains the remainder of them all.
+
+

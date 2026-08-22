@@ -1,172 +1,499 @@
-%%%%% Section 5. Learning the Bundle from Data %%%%%
-\section{Computing the OT-FB}\label{sec:computation}
+%%%%% Section 6. Demonstration with real data %%%%%
+\section{Demonstration}\label{sec:demonstration}
 
-In this section, we show that the OT-FB is determined essentially
-uniquely by the collection data---that is, the pairs of descriptors and
-content data---and describe how to compute it from an actual
-collection. Readers willing to take the computation on trust may skip
-to Section~\ref{sec:demonstration}.
-
-
-%%% Subsection 5.1 Objective function %%%
-\subsection{Derivation of the Objective Function and Uniqueness of
-    Solutions}
-
-Estimating the OT-FB means determining the model distribution
-$q_\Phi(x)$, defined by the embedding map $\Phi$, from the distribution
-$p_\text{data}(x)$ of the content data. The two distributions are given
-by
-\begin{align*}
-    p_{\text{data}}(x) & = \sum_{n=1}^N p(n)\,
-    \mathcal{N}(x \mid \mathbf{x}_n, \beta^{-1}I), \quad
-    p(n) = \frac{1}{K N_{k(n)}},                                \\
-    q_\Phi(x)          & = \iint_{\mathcal{U}\times\mathcal{V}}
-    \mathcal{N}(x \mid \Phi(u, v), \beta^{-1}I)\, q(u)\, q(v)\, du\, dv,
-\end{align*}
-where $\beta^{-1}$ is the observation noise variance, $k(n)$ is the
-genre of work $n$, and $N_k$ is the number of works in genre $k$ and
-$q(u)$, $q(v)$ are the prior distributions placed on the two spaces.
-Besides $\Phi$, we estimate the coordinates of the $N$ works:
-$U = (u_1, \dots, u_N)$ in the denotation space and
-$V = (v_1, \dots, v_N)$ in the connotation space.
-
-Our goal is to establish the correspondence across all $K$ genres
-through optimal transport---the multi-marginal problem of
-Section~\ref{subsec:OTFB-model}. The learning objective is to find the
-map $\Phi^*$ that best aligns the $K$ genre distributions, formalized
-as minimizing the 2-Wasserstein distance:
-\begin{align}\label{eq:main_objective}
-    W^2_2(p_\text{data}, q_\Phi)
-           & = \inf_{\gamma\in\Pi(p_{\text{data}},\, q_\Phi)}
-    \iint \|x - x'\|^2\, \gamma(x, x')\, dx\, dx',            \\
-    \Phi^* & = \argmin_{\Phi} W^2_2(p_\text{data}, q_\Phi),
-\end{align}
-where $\gamma \in \Pi$ is a transport plan satisfying the marginal
-constraints $p_{\text{data}}(x) = \int \gamma(x,x')\,dx'$ (the
-constraint $p \rightarrow q$) and $q_\Phi(x') = \int \gamma(x,x')\,dx$
-(the constraint $q \rightarrow p$). Because $\Phi$ is constrained to
-share one connotative coordinate $v$ across all genres, minimizing this
-objective fits each galaxy and optimizes the correspondence between the
-galaxies at once. That this correspondence is uniquely determined is
-the content of the following proposition.
-
-\begin{proposition}\label{prop:OT-FB}
-    Let each genre distribution $p_k$ be smoothed by the noise model
-    $\mathcal{N}(x \mid \mathbf{x}_n, \beta^{-1}I)$, so that it is
-    absolutely continuous with finite second moment. Then:
-    (a) the multi-marginal optimal transport problem over
-    $p_1, \dots, p_K$ with pairwise squared-distance cost has a unique
-    solution, given by Monge maps; the OT-FB is therefore uniquely
-    determined by the collection data.
-    (b) The map $\Phi$ realizing this correspondence is unique up to a
-    relabeling of the coordinates of $\mathcal{U}$ and $\mathcal{V}$;
-    the arrangement of works is not affected.
-\end{proposition}
-
-\begin{proof}[Proof sketch]
-    (a) Each $p_k$ is a finite Gaussian mixture, hence absolutely
-    continuous with finite second moment. For such marginals, the
-    multi-marginal optimal transport problem with pairwise
-    squared-distance cost has a unique solution, and this solution is
-    given by Monge maps~\cite{GangboSwiech199823,pass2015multi}; for
-    $K=2$ this is Brenier's theorem~\cite{Brenier1991375}. The optimal
-    correspondence across the $K$ distributions is therefore unique,
-    and the OT-FB inherits this uniqueness.
-    (b) Let $g_\mathcal{U}$ and $g_\mathcal{V}$ be measure-preserving
-    maps of $\mathcal{U}$ and $\mathcal{V}$, i.e., maps leaving $q(u)$
-    and $q(v)$ invariant. Then $\Phi \circ (g_\mathcal{U} \times
-        g_\mathcal{V})$ induces the same model distribution $q_\Phi$ and
-    the same transport cost, and realizes the same correspondence.
-    Conversely, any two maps realizing the optimal correspondence of
-    (a) differ only by such a reparametrization.
-\end{proof}
-
-This is the exact sense of \emph{essentially unique}: what the
-collection data determine is the arrangement of works itself, not the
-names of the axes---which were never meant to carry names
-(Section~\ref{sec:introduction}).
-
-%%% Subsection 5.2 Computing OT-FB from data
-\subsection{Optimization of the Objective Function}
-
-Our task is now to find the map $\Phi$ minimizing
-\eqref{eq:main_objective}, together with the coordinates $(u_n, v_n)$
-of every work $n$. The optimization is subject to the two marginal
-constraints, and we handle them alternately: each step enforces one
-constraint under one-sided (unbalanced) transport.
-
-\paragraph{Transport optimization $q_\Phi \rightarrow p_\text{data}$.}
-With $(U, V)$ fixed and the marginal constraint $q \rightarrow p$
-satisfied, we optimize the map $\Phi$. The minimizer is
-\begin{equation}
-    \Phi(u, v \mid U, V) =
-    \frac{\sum_k \mathcal{N}(u \mid u_k, \alpha^{-1} I)\, \varphi_k(v)}
-    {\sum_{k'} \mathcal{N}(u \mid u_{k'}, \alpha^{-1} I)},
-    \label{eq:kernel_smoothing}
-\end{equation}
-where $u_k$ is the floor coordinate shared by the works of genre $k$
-(that is, $u_n \equiv u_{k(n)}$ under hard genre labels), and
-$\varphi_k$ is the manifold model of the $k$-th genre:
-\begin{equation}\label{eq:varphi}
-    \varphi_k(v) =
-    \frac{\sum_{n:\rho_{kn}=1} \mathcal{N}(v \mid v_n, \alpha^{-1} I)\,
-        \mathbf{x}_n}
-    {\sum_{n':\rho_{kn'}=1} \mathcal{N}(v \mid v_{n'}, \alpha^{-1} I)}.
-\end{equation}
-Here $\rho_{kn} = 1$ when work $n$ belongs to genre $k$ and $0$
-otherwise, and $\alpha$ controls the kernel width. Crucially,
-\eqref{eq:kernel_smoothing} takes the form of \textit{hierarchical
-    kernel smoothing}---the algorithm of the SOM of
-SOMs~\cite{Furukawa2009463}---arising here not as a modeling assumption
-but as a consequence of optimal transport.
-
-\paragraph{Transport optimization $p_\text{data} \rightarrow q_\Phi$.}
-With $\Phi$ given by \eqref{eq:kernel_smoothing}, the objective
-\eqref{eq:main_objective} under the marginal constraint
-$p \rightarrow q$ becomes an objective over $(U, V)$:
-\begin{equation}\label{eq:E-UV}
-    E[U, V] = \frac{\beta}{2}\sum_{n=1}^N p(n)
-    \iint p(u, v \mid n)\,
-    \bigl\|\mathbf{x}_n - \Phi(u, v \mid U, V)\bigr\|^2
-    \, du\, dv
-    + \lambda R(U, V),
-\end{equation}
-where $p(u, v \mid n)=\mathcal{N}(u\mid u_n,\alpha^{-1} I)\,\mathcal{N}(v\mid v_n,
-    \alpha^{-1} I)$ is the distribution over $(u, v)$ that the transport plan assigns to
-work $n$, and $R$ is the regularization term
-\begin{equation*}
-    R(U, V) \equiv - \sum_{n=1}^N p(n)\,
-    \bigl(\log q(u_n) + \log q(v_n)\bigr),
-\end{equation*}
-and $\lambda$ is its strength.
-
-\paragraph{Final objective.}
-Applying the Laplace approximation, we obtain
-\begin{equation}\label{eq:reduced_objective}
-    E[U, V] \simeq \sum_{n=1}^N p(n) \left\{
-    \frac{\beta}{2}\bigl\| \mathbf{x}_n - \Phi(u_n, v_n \mid U, V)
-    \bigr\|^2
-    - \lambda \log q(u_n)
-    - \lambda \log q(v_n)
-    \right\}.
-\end{equation}
-This reduction to a single objective over the coordinates $(U, V)$
-enables efficient gradient-based optimization.
-
-\paragraph{Extensions.}
-The method admits two extensions. First, the genre descriptor need not
-be a hard label. A work may carry a soft genre distribution---Gershwin's
-works as jazz and classical---or a genre feature vector. Then $\rho_{kn}$
-ceases to be binary: it becomes the similarity between the $k$-th genre
-cluster and work $n$. The denotation coordinate follows, given work by
-work: $u_n$ expresses the genre-ness of work $n$. The denotation space is
-then no longer $K$ fixed points but a continuous space to search---
-genre-ness made continuous, work by work.
-
-Second, when richer descriptors are available---artist, era, and
-others---the denotation space $\mathcal{U}$ can itself be further
-disentangled into independent axes: genre-ness, artist-ness, era-ness,
-and so on---a catalogue's facets, made continuous. The connotation
-space remains the remainder of them all.
+Sections~\ref{sec:framework}--\ref{sec:computation} designed the
+library in concept, in mathematics, and in computation. This section
+builds two. The first, a music collection, takes its content data
+from sound alone. The second, a collection of children's books, takes
+two kinds of content data, and so opens two bundles of rabbit holes
+over one base. We first state what the construction asks of the
+content data, then build the two libraries in turn.
 
 
+%%% Subsection 6.1 %%%
+\subsection{What the Construction Asks of the Content
+    Data}\label{subsec:content_data}
+
+\paragraph{Unfolded content data.}
+The construction asks one thing of the content data: that closeness
+in $\mathcal{X}$ mean kinship between works. Both the proximity (A2)
+and the transport cost are stated in the Euclidean distance of
+$\mathcal{X}$, so what counts as close there decides which works a
+rabbit hole joins. Two requirements follow.
+
+The first is Euclidean geometry. The content data must carry an inner
+product, or a distance that is Euclidean at least locally. The second
+is that the space be \emph{unfolded}. A space of raw signals is
+folded: kindred works may lie far apart, and local distance tells
+little about kinship. Unfolding is the preprocessing the construction
+asks for, and it must be generic---made for no particular task. Deep
+embeddings meet both requirements: foundation encoders are trained on
+large corpora so that semantic closeness becomes geometric closeness,
+and trained for no single purpose.
+
+\paragraph{Description as content data.}
+A description of a work, embedded by a large language model (LLM),
+meets both requirements. An abstract or a synopsis serves as it
+stands. What the embedding returns is no longer a set of words but a
+place, and the place keeps the nuance: \textit{chill} and
+\textit{relaxed} land close, as they do in use, and \textit{beautiful
+    and sad} is read as one impression rather than two labels.
+
+Where no description exists, one can be composed from the tags users
+have freely given---``\textit{this work is described by the following
+    words: $t_1, t_2, \ldots$}''---and embedded whole. No controlled
+vocabulary is needed; whatever words come will do.
+
+Which words are embedded then decides what the bundle carries. Embed
+the nouns given to a work, and its themes enter the content space;
+embed the adjectives, and the impression it leaves does.
+Section~\ref{subsec:book_library} uses this freedom to give one
+collection two kinds of rabbit holes.
+
+\begin{figure}[p]
+    \centering
+    \begin{subfigure}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{fig/fig4a.png}
+        \caption{Independent manifolds in $\mathcal{X}$.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{fig/fig4b.png}
+        \caption{The OT-FB in $\mathcal{X}$.}
+    \end{subfigure}
+
+    \vspace{2mm}
+
+    \begin{subfigure}[t]{0.38\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{fig/fig4c.png}
+        \caption{Independent manifolds, stacked.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.38\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{fig/fig4d.png}
+        \caption{The OT-FB, stacked.}
+    \end{subfigure}
+    \caption{
+        \textbf{The five-genre OT-FB learned from MTG-Jamendo.}
+        The content data (CLAP embeddings of the audio, first three
+        principal components) with the genre manifolds.
+        (a) Manifolds fitted independently, one per genre.
+        (b) The same five learned jointly as one OT-FB.
+        (c, d) The manifolds of (a) and of (b), translated apart and
+        stacked as floors; each line joins the same coordinate $v$
+        through all five.}
+    \label{fig:mtg_otfb}
+\end{figure}
+
+%%% Subsection 6.2 %%%
+\subsection{A Music Library Built from Sound
+    Alone}\label{subsec:music_library}
+
+\paragraph{Setup.}
+The first library is built from MTG-Jamendo~\cite{Bogdanov2019}, an
+openly licensed music collection. Five genres---classical, jazz, rock,
+electronic, and folk---enter the library, one thousand tracks each, and
+every track carries exactly one genre tag. The content data come from
+sound alone: each track is embedded by CLAP~\cite{Wu2023}, a joint
+audio--text encoder, over excerpts drawn from across it, then averaged,
+normalized to unit norm, and reduced by PCA to ten dimensions. These
+embeddings and the genre labels are all the modeling uses. The
+collection also carries community tags---instruments, moods, and
+themes---and they are held out, to be read afterward against the space
+the sound itself has built.
+
+\paragraph{The learned bundle.}
+Figure~\ref{fig:mtg_otfb} shows the collection modeled by the OT-FB.
+The five galaxies separate cleanly in the content space
+$\mathcal{X}$: sound alone, embedded, already tells the genres apart.
+In (a) a manifold is fitted to each galaxy independently; in (b) the
+five are learned together as one OT-FB. The fit is much the same, but
+the manifolds of (b) are floors of one bundle.
+
+Panels (c) and (d) stack the manifolds apart as floors, each line
+joining the same $v$ through all five. In (c) the lines cross and
+tangle: every manifold carries a coordinate of its own. In (d) the
+same lines descend in order. Five galaxies that lie apart in
+$\mathcal{X}$ now share one coordinate system, and each line is a
+rabbit hole: five works, one per genre, standing at the same $v$.
+
+Both results satisfy the independence (A1): in (c) as in (d), $v$ runs
+independently of the genre. (A1) alone leaves the floors unaligned.
+The proximity (A2) aligns them, minimizing the total length of the
+connections between the manifolds
+(Section~\ref{subsec:two_genres}).
+
+
+\begin{figure}[t]
+    \centering
+    \begin{minipage}[b]{0.47\textwidth}
+        \centering
+        \begin{subfigure}[b]{0.48\linewidth}
+            \includegraphics[width=\linewidth]{fig/fig5a.pdf}
+            \caption{\textit{piano}}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.48\linewidth}
+            \includegraphics[width=\linewidth]{fig/fig5b.pdf}
+            \caption{\textit{drums}}
+        \end{subfigure}
+
+        \vspace{2mm}
+
+        \begin{subfigure}[b]{0.48\linewidth}
+            \includegraphics[width=\linewidth]{fig/fig5c.pdf}
+            \caption{\textit{acoustic guitar}}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.48\linewidth}
+            \includegraphics[width=\linewidth]{fig/fig5d.pdf}
+            \caption{\textit{happy}}
+        \end{subfigure}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.51\textwidth}
+        \centering
+        \begin{subfigure}[b]{\linewidth}
+            \includegraphics[width=\linewidth]{fig/fig5e.pdf}
+            \caption{The landscape of $\mathcal{V}$}
+        \end{subfigure}
+    \end{minipage}
+    \caption{
+        \textbf{Reading $\mathcal{V}$ through the tags.}
+        (a--d) Where four tags gather: markers show the works
+        carrying the tag, and the heatmap is their density
+        $p(v \mid \textit{tag})$ by kernel density estimation.
+        (e) The top-40 tags by mutual information with $v$, each
+        placed at the peak of its density. A peak marks where the
+        works carrying the tag concentrate; the layout is not a
+        clustering of the tags themselves. Points A--D are those of
+        Table~\ref{tab:point_tags}.}
+    \label{fig:v_tags}
+\end{figure}
+\begin{table}[t]
+    \centering\small
+    \caption{Top 20 tags by mutual information (MI) in units of
+        $10^{-3}$ bit.}
+    \label{tab:tag_mi}
+    \begin{tabular}{@{}clc c clc@{}}
+        \cmidrule[\heavyrulewidth]{1-3}
+        \cmidrule[\heavyrulewidth]{5-7}
+        \textbf{Rank} & \textbf{Tag}    & \textbf{MI} &  &
+        \textbf{Rank} & \textbf{Tag}    & \textbf{MI}                               \\
+        \cmidrule{1-3} \cmidrule{5-7}
+        1             & acoustic guitar & 10.99       &  & 11 & trumpet      & 2.05 \\
+        2             & piano           & 8.67        &  & 12 & saxophone    & 2.03 \\
+        3             & drums           & 6.63        &  & 13 & computer     & 1.79 \\
+        4             & bass            & 4.77        &  & 14 & sad          & 1.51 \\
+        5             & voice           & 4.45        &  & 15 & emotional    & 1.45 \\
+        6             & electric guitar & 4.11        &  & 16 & drum machine & 1.45 \\
+        7             & synthesizer     & 3.60        &  & 17 & love         & 1.44 \\
+        8             & ukulele         & 2.59        &  & 18 & violin       & 1.42 \\
+        9             & relaxing        & 2.36        &  & 19 & romantic     & 1.41 \\
+        10            & happy           & 2.17        &  & 20 & dream        & 1.38 \\
+        \cmidrule[\heavyrulewidth]{1-3}
+        \cmidrule[\heavyrulewidth]{5-7}
+    \end{tabular}
+\end{table}
+
+
+\begin{table}[t]
+    \centering\small
+    \caption{Representative tags at the four points A--D of
+        $\mathcal{V}$: the top five instrument tags and the top five
+        mood/theme tags by pointwise mutual information (PMI, in bits,
+        in parentheses). Negative PMI is omitted; PMI of at least 1 bit
+        is in bold.}
+    \label{tab:point_tags}
+    \begin{tabular}{@{}c p{0.42\linewidth} p{0.42\linewidth}@{}}
+        \toprule
+        \textbf{Point} & \textbf{Instrument tags}                               &
+        \textbf{Mood/theme tags}                                                  \\
+        \midrule
+        A              & \textbf{brass (1.18)}, \textbf{bongo (1.12)},
+        \textbf{trombone (1.08)}, \textbf{rhodes (1.02)},
+        electric guitar (0.96)
+                       & fast (0.93), sport (0.84), party (0.78),
+        energetic (0.32), powerful (0.30)                                         \\
+        \addlinespace
+        B              & \textbf{acoustic guitar (1.60)},
+        \textbf{harmonica (1.57)}, \textbf{voice (1.21)},
+        acousticbassguitar (0.90), percussion (0.82)
+                       & \textbf{ballad (1.15)}, \textbf{love (1.04)},
+        \textbf{hopeful (1.02)}, mellow (0.98), soft (0.95)                       \\
+        \addlinespace
+        C              & \textbf{accordion (1.63)}, \textbf{ukulele (1.41)},
+        \textbf{double bass (1.29)}, \textbf{trombone (1.15)},
+        \textbf{saxophone (1.10)}
+                       & \textbf{funny (1.64)}, commercial (0.94), sexy (0.91),
+        retro (0.89), summer (0.88)                                               \\
+        \addlinespace
+        D              & \textbf{piano (1.68)}, pad (0.47)
+                       & \textbf{relaxing (1.97)}, \textbf{romantic (1.97)},
+        \textbf{sad (1.78)}, \textbf{emotional (1.62)},
+        \textbf{calm (1.57)}                                                      \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\paragraph{Reading $\mathcal{V}$ through the tags.}
+What does the connotation space $\mathcal{V}$ hold? The tags held out
+of the modeling---instruments, moods, and themes---give the reading.
+Each tag defines a density over $\mathcal{V}$: the distribution
+$p(v \mid \textit{tag})$ of the works that carry it.
+Figure~\ref{fig:v_tags}(a--d) shows four of them---\textit{piano},
+\textit{drums}, \textit{acoustic guitar}, and \textit{happy}. Each
+peaks at a place of its own, yet the four densities
+overlap---connotation runs as a continuous spectrum, not as discrete
+regions.
+
+Tags differ in how much they tell about $v$. The mutual information
+$\mathrm{MI}[v; \textit{tag}]$ measures it: how unevenly the works
+carrying the tag fall over $\mathcal{V}$. Table~\ref{tab:tag_mi}
+lists the top twenty. Instruments occupy the upper ranks, and moods
+follow.
+
+\paragraph{The landscape of $\mathcal{V}$.}
+Figure~\ref{fig:v_tags}(e) widens the reading to the top forty tags,
+each placed at the peak of its density $p(v \mid \textit{tag})$. Each
+tag still spreads around its peak, as (a--d) show; the map marks
+where it gathers most.
+
+The landscape divides in two. The upper half is lively: to the right,
+drums, bass, electric guitar, and brass---powerful music; to the
+left, happy and uplifting. The lower half is quiet: to the right,
+acoustic guitar, with love and dream---ballads; to the left, piano,
+with emotional, relaxing, sad, and romantic. The two coordinates of
+$\mathcal{V}$ carry no names, no more than a principal component
+does; yet the landscape they span is legible from end to end.
+
+Table~\ref{tab:point_tags} reads four points more closely: the
+corners A--D, each a rabbit hole, seen through the tags concentrated
+there. At A the music is fast and energetic, played by brass and
+bongo; at B, love ballads on acoustic guitar; at C, funny songs on
+accordion and ukulele; at D, piano, relaxing and sad. No single tag
+names a point; the tags gathered there do.
+
+\paragraph{What $\mathcal{V}$ represents.}
+The tags have read $\mathcal{V}$ as a continuous spectrum.
+Connotation itself, though, is known by hearing rather than by words.
+It lies in what the works gathered at one point have in common, and no
+single word holds it. The tags cannot name it; they let the seeker
+guess what a point holds, and a guess is enough to start walking.
+
+$\mathcal{V}$ does not hold every connotation---only the principal
+ones. Here it is built from the sound and the genre labels alone:
+genre gave the denotation, and all else was left to connotation. Of
+that remainder $\mathcal{V}$ keeps the principal components, in the
+sense of least error (Section~\ref{subsec:bundle_reach}). They read as
+instruments first, and the moods that go with them
+(Table~\ref{tab:tag_mi}). \textit{Principal} claims no more than this:
+many connotations run through the music, and $\mathcal{V}$ holds those
+that account for it best.
+
+A single point of $\mathcal{V}$ does not hold a single kind of music.
+The works gathered there are alike in connotation, yet they run from
+genre to genre; the space is one, shared by the five. Each point is a
+rabbit hole, opening at the same $v$ on every floor. At point A, rock
+is energetic music driven by drums; through the hole, on the classical
+floor, brass plays with the same force. At point D, emotional piano
+jazz leads to romantic classical piano---no trumpet, but close to what
+the visitor of Section~\ref{sec:introduction} was seeking.
+
+
+%%% Subsection 6.3 %%%
+\subsection{A Book Library with Two Kinds of Rabbit
+    Holes}\label{subsec:book_library}
+
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}[t]{0.32\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{fig/fig6a.pdf}
+        \caption{The genre map $\mathcal{U}$.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{fig/fig6b.pdf}
+        \caption{The theme space $\mathcal{V}_{\mathrm{thm}}$.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\linewidth}
+        \centering
+        \includegraphics[width=1.0\linewidth]{fig/fig6c.pdf}
+        \caption{The impression space $\mathcal{V}_{\mathrm{imp}}$.}
+    \end{subfigure}
+    \caption{
+        \textbf{The book library with two kinds of rabbit holes.}
+        The same 409 books, given one denotative and two connotative
+        addresses.
+        (a) The denotation space, learned from the fuzzy genre
+        descriptors; each circle marks one of the fifteen genres.
+        (b, c) The connotation spaces built from the theme and the
+        impression descriptions, read as in
+        Figure~\ref{fig:v_tags}: the top-30 words by mutual
+        information with $v$, each at the peak of its density
+        $p(v \mid \textit{word})$.}
+    \label{fig:book_otfb}
+\end{figure}
+
+\paragraph{Setup.}
+The second library is built from 409 well-known children's books. An
+LLM annotator (OpenAI GPT-4) gives each book two descriptions: six to
+eight nouns for its themes, and six to eight adjectives for the
+impression it leaves. Across the collection, 74 nouns and 79
+adjectives are used. Each set is joined into a description as in
+Section~\ref{subsec:content_data}---``\textit{This is a children's
+    book. The impressions are humorous, warm, and adventurous}''---then
+embedded by an LLM text encoder (OpenAI
+\texttt{text-embedding-3-small}) and prepared as in
+Section~\ref{subsec:music_library}. One collection thus yields two
+content datasets: theme data and impression data.
+
+The descriptors are fifteen genres, assigned by the same annotator.
+They arrive fuzzy: each book names a primary genre, a secondary,
+sometimes a third, each with a strength---fantasy above all, adventure
+next. Genre-ness is thus continuous, and the floor coordinate becomes
+a per-work coordinate $u_n$: the case the first extension of
+Section~\ref{sec:computation} anticipated.
+
+\paragraph{One base, two bundles.}
+The base is built first, and both bundles rest on it. The genre
+descriptors, verbalized with their strengths and embedded likewise,
+give each book its denotation coordinate $u_n$.
+Figure~\ref{fig:book_otfb}(a) shows the resulting genre map: the two
+dramas side by side, the two fantasies adjoining legends, myths, and
+folktales, adventure beside science fiction and horror. Two bundles
+are then learned over this one base, one from the theme data, one from
+the impression data. Every book now holds one denotative address and
+two connotative ones, $(u, v_{\mathrm{thm}}, v_{\mathrm{imp}})$: under
+every book, two rabbit holes open.
+
+\paragraph{The two landscapes.}
+Figures~\ref{fig:book_otfb}(b) and (c) are read as $\mathcal{V}$ was
+in Section~\ref{subsec:music_library}. The theme landscape divides
+into bonds and inner life in the upper left---\textit{family},
+\textit{friendship}, \textit{loss}; struggle in the upper
+right---\textit{war}, \textit{courage}, \textit{oppression}; the play
+of the mind in the lower left---\textit{imagination},
+\textit{curiosity}, \textit{discovery}. The impression landscape
+divides along other lines: sorrow above---\textit{melancholic},
+\textit{poignant}, \textit{haunting}; warmth in the upper
+right---\textit{gentle}, \textit{cozy}, \textit{nostalgic}; play in
+the lower right---\textit{whimsical}, \textit{playful},
+\textit{humorous}. The same 409 books are arranged twice: $u$ carries
+the genre; $v_{\mathrm{thm}}$ and $v_{\mathrm{imp}}$ carry two
+connotations---what a book is about, and the impression it leaves.
+
+\begin{table}[p]
+    \centering\small
+    \caption{Leaping through the two kinds of rabbit holes. Three books
+        on the Drama-Daily floor, each with its theme hole and its
+        impression hole. The middle column lists the words most
+        concentrated at the hole; the last column names five of the many
+        books met on other floors.}
+    \label{tab:book_holes}
+    \begin{tabular}{@{}p{0.15\linewidth} p{0.30\linewidth}
+        p{0.44\linewidth}@{}}
+        \toprule
+        \textbf{Hop on} & \textbf{Hole and representative words}            &
+        \textbf{Hop off}                                                      \\
+        \midrule
+        \multirow{2}{=}{\textit{Anne of Green Gables}
+            (Drama-Daily)}
+                        & \textbf{Theme}\newline
+        \textit{belonging, empathy, self-discovery, growth,
+            nature, loss, resilience, kindness}
+                        & \textit{The Children of the New Forest}
+        (Historical)\newline
+        \textit{Bambi} (Nature/Animals)\newline
+        \textit{Corduroy} (PictureBooks)\newline
+        \textit{Stick Man} (PictureBooks)\newline
+        \textit{Kiki's Delivery Service}
+        (Fantasy-Real-World)                                                  \\
+        \cmidrule(l){2-3}
+                        & \textbf{Impression}\newline
+        \textit{pastoral, gentle, warm, innocent, nostalgic,
+            sentimental, comforting, cozy}
+                        & \textit{Little Men} (Drama-School)\newline
+        \textit{Zlateh the Goat and Other Stories}
+        (Folktales)\newline
+        \textit{Rasmus and the Vagabond}
+        (Adventure/Action)\newline
+        \textit{The Story of Ferdinand}
+        (PictureBooks)\newline
+        \textit{The Merry Adventures of Robin Hood}
+        (Legends/Myths)                                                       \\
+        \midrule
+        \multirow{2}{=}{\textit{A Dog of Flanders}
+            (Drama-Daily)}
+                        & \textbf{Theme}\newline
+        \textit{overcoming-adversity, perseverance, magic,
+            betrayal, good-and-evil, poverty, justice,
+            mentorship}
+                        & \textit{A Little Princess} (Drama-School)\newline
+        \textit{Ragged Dick} (Historical)\newline
+        \textit{Kidnapped} (Adventure/Action)\newline
+        \textit{Mio, My Son} (Fantasy-Other-World)\newline
+        \textit{Treasure Island} (Adventure/Action)                           \\
+        \cmidrule(l){2-3}
+                        & \textbf{Impression}\newline
+        \textit{melancholic, poignant, haunting, moving,
+            tragic, bittersweet, lyrical, dreamlike}
+                        & \textit{Tarka the Otter} (Nature/Animals)\newline
+        \textit{Skellig} (Fantasy-Real-World)\newline
+        \textit{When Marnie Was There}
+        (Horror/Ghost)\newline
+        \textit{At the Back of the North Wind}
+        (Folktales)\newline
+        \textit{The Fox and the Hound}
+        (Nature/Animals)                                                      \\
+        \midrule
+        \multirow{2}{=}{\textit{Pippi Longstocking}
+            (Drama-Daily)}
+                        & \textbf{Theme}\newline
+        \textit{discovery, imagination, adventure,
+            curiosity, responsibility, self-discovery,
+            problem-solving, creativity}
+                        & \textit{The Blue Moonstone}
+        (Fantasy-Real-World)\newline
+        \textit{Jumanji} (Fantasy-Real-World)\newline
+        \textit{Mary Poppins} (Fantasy-Real-World)\newline
+        \textit{Five on a Treasure Island}
+        (Adventure/Action)\newline
+        \textit{Around the World in Eighty Days}
+        (Adventure/Action)                                                    \\
+        \cmidrule(l){2-3}
+                        & \textbf{Impression}\newline
+        \textit{whimsical, humorous, playful, satirical,
+            anthropomorphic, eccentric, curious, charming}
+                        & \textit{The Sneetches and Other Stories}
+        (PictureBooks)\newline
+        \textit{Curious George} (PictureBooks)\newline
+        \textit{Olivia} (PictureBooks)\newline
+        \textit{Tom Sawyer Abroad}
+        (Adventure/Action)\newline
+        \textit{The Surprising Adventures of Baron
+        Munchausen} (Fantasy-Real-World)                                      \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\paragraph{Which hole to take.}
+Table~\ref{tab:book_holes} takes the leap. Three books stand on the
+same floor, Drama-Daily, and under each the two holes open. Through a
+theme hole, the books met on other floors share the subject of the
+book left behind; through an impression hole, they share the
+impression it leaves. A leap is not the end: hopping off, the visitor
+walks the new floor as before, among the books gathered around the
+hole. The same book, two holes, two journeys.
+
+\bigskip\noindent
+The remark that closed Section~\ref{subsec:bundle_reach} is now an
+actual library. The visitor is no longer asked whether to leap; he
+is asked which hole to take.
