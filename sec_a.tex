@@ -1,13 +1,6 @@
 %%%%% Section 5. Learning the Bundle from Data %%%%%
 \section{Computing Principal Connotative Space and OT-FB}\label{sec:computation}
 
-In this section, we show that the OT-FB is determined essentially
-uniquely by the collection data---that is, the pairs of descriptors and
-content data---and describe how to compute it from an actual
-collection. Readers willing to take the computation on trust may skip
-to Section~\ref{sec:demonstration}.
-
-
 %%% Subsection 5.1 Objective function %%%
 \subsection{Derivation of the Objective Function and Uniqueness of
     Solutions}
@@ -153,6 +146,7 @@ Applying the Laplace approximation, we obtain
 This reduction to a single objective over the coordinates $(U, V)$
 enables efficient gradient-based optimization.
 
+\begin{comment}
 \paragraph{Extensions.}
 The method admits two extensions. First, the genre descriptor need not
 be a hard label. A work may carry a soft genre distribution---Gershwin's
@@ -168,5 +162,5 @@ others---the denotation space $\mathcal{U}$ can itself be further
 disentangled into independent axes: genre-ness, artist-ness, era-ness,
 and so on---a catalogue's facets, made continuous. The connotation
 space remains the remainder of them all.
-
+\end{comment}
 
