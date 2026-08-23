@@ -1,37 +1,3 @@
-%%% TODO (Section 1 の改稿を受けて) %%%
-%
-% Section 1 から multi-galaxy / curved universe の比喩を削除した。
-% 旧 P8 (works as stars, genres as galaxies, ...) を丸ごと落とし、
-% かわりに「representation は geometry であり、content data がそれを定める」
-% という段落を置いた。理由:
-%   - 比喩が図なしでは伝わらない (図は本節にしかない)
-%   - 本節 L240 が "What it could not yet say is ..." と自認していた
-%   - Introduction で disentangled (定義は 2.4) を未定義使用していた
-%
-% [1] L234-241 (subsec:multi_galaxy 冒頭) — 要書き直し
-%     "Section~\ref{sec:introduction} has already shown that space: works
-%      as stars, genres as loose galaxies, ..." は前提が消えたので不可。
-%     ここを比喩の【初出】として書く。Figure~\ref{fig:two_views}b が
-%     同じ節にあるので、本来の居場所。
-%     "What it could not yet say is why this universe cannot simply be
-%      walked." も、初出化にあわせて接続を作り直す。
-%
-% [2] Figure caption (L24, L29) — 変更不要。本節内で完結している。
-%
-% [3] L148-150 — 変更不要。Section~2.4 を正しく参照している。
-%
-% [4] Section 1 で確立した語彙。本節でも揃えたい:
-%     - "geometry" が Introduction の軸語になった (P8-P10)
-%     - "principal connotation space" は略記しない (PCS は使わない)
-%     - hold の連鎖: 言葉は hold しない → 幾何が hold する
-%     - Section 1 の問い: "what must a library be, so that he can go
-%       looking for it?"
-%
-% [5] ref.bib: Mawer20141 / Davis1989 が orphan になった
-%     (Section 1 の footnote を削除したため)。全セクション改稿後に整理。
-%
-%%% ここまで %%%
-
 %%%%% Section 3 A Library with Rabbit Holes %%%%%
 \section{A Library with Rabbit Holes}\label{sec:framework}
 
@@ -54,50 +20,45 @@ aim is then to build the exploration space from the collection data.
 
 \begin{figure}[p]
     \centering
-    \begin{subfigure}{0.51\linewidth}
+    \begin{subfigure}{0.52\linewidth}
+        \centering
         \includegraphics[width=1.0\linewidth]{fig/fig1a.pdf}
-        \caption{The multi-floor library with rabbit holes (disentangled view).}
+        \caption{The multi-floor library with rabbit holes.}
+        \label{fig:library}
     \end{subfigure}
-    \vspace{3mm}
-    \begin{subfigure}{0.46\linewidth}
+    \hfill
+    \begin{subfigure}{0.47\linewidth}
+        \centering
         \includegraphics[width=1.0\linewidth]{fig/fig1b.pdf}
-        \caption{The multi-galaxy curved universe (entangled view).}
+        \caption{The multi-galaxy curved universe.}
+        \label{fig:universe}
+    \end{subfigure}
+    \vspace{5mm}
+    \begin{subfigure}{1.0\linewidth}
+        \centering
+        \includegraphics[width=0.9\linewidth]{fig/fig1c.pdf}
+        \caption{The fiber-bundle model joining the two.}
+        \label{fig:bundle}
     \end{subfigure}
     \caption{
         \textbf{Two views of one representation.}
-        (a) The multi-floor library: each floor holds one genre, works
-        within a floor are arranged by connotative closeness, and
-        \textit{rabbit holes} run vertically, opening at the same
-        connotative position on every floor. Each point is a work,
-        labelled by its artist for legibility; two holes are drawn.
-        (b) The same works as their native high-dimensional content
-        data: each genre scatters into a loose \textit{galaxy} of its
-        own, which can be modeled as a curved surface sharing no axes
-        with the others; works sharing one connotation trace curved
-        trajectories from galaxy to galaxy---rabbit holes in their
-        entangled form. (In both views, each floor is drawn
-        two-dimensional and each rabbit hole one-dimensional; either may
-        be of higher dimension.)
+        (a) In the multi-floor library with rabbit holes, each floor holds one
+        genre. Works on a floor are arranged by the principal connotative
+        closeness, and \textit{rabbit holes} run vertically, connecting the same
+        connotative position on every floor. Each point is a work, labelled by
+        its performer.
+        (b) The curved universe shows the same works as their content data. Each
+        genre scatters into a loose cluster, a \textit{galaxy} of its own, and
+        each rabbit hole becomes a curve from galaxy to galaxy.
+        (c) The library is the product of the denotative space $\mathcal{U}$ and
+        the principal connotative space $\mathcal{V}$, and the embedding $\Phi$
+        maps it into the content data space: each floor is $\Phi(u,\cdot)$, each
+        rabbit hole $\Phi(\cdot,v)$.
+        The whole library is thus an optimal-transport fiber bundle (OT-FB).
+        Note: throughout, $\mathcal{U}$ is drawn one-dimensional and
+        $\mathcal{V}$ two-dimensional; either may be higher.
     }
     \label{fig:two_views}
-\end{figure}
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=0.9\linewidth]{fig/fig2.pdf}
-    \caption{
-        \textbf{A fiber-bundle model of the library and the universe.}
-        The library is the product of the denotation space $\mathcal{U}$ and
-        the connotation space $\mathcal{V}$, with coordinate $(u,v)$. The
-        embedding map $\Phi: \mathcal{U} \times \mathcal{V} \to \mathcal{X}$
-        carries the multi-floor library with rabbit holes (left) into the
-        multi-galaxy curved universe (right): each floor $\Phi(u, \cdot)$
-        becomes a galaxy, and each rabbit hole $\Phi(\cdot, v)$ a curve
-        threading the galaxies, joining works that share a connotative
-        coordinate across genres. (Here $\mathcal{U}$ is drawn
-        one-dimensional and $\mathcal{V}$ two-dimensional; either may be of
-        higher dimension.)
-    }
-    \label{fig:OT-FB}
 \end{figure}
 
 
@@ -159,58 +120,49 @@ intent and an expectation of what lies ahead.
 %%% Subsection 3.2 Seeking Serendipity in the Library %%%%%
 \subsection{Seeking Serendipity in the Library}\label{subsec:seeking}
 
-Let the visitor into this space, seeking as ever ``something like
-Miles Davis.'' What he carries, the coordinates let us finally write
-down: somewhere within him is a connotative coordinate of his
-own---call it $v_\text{seeker}$. He cannot state it;
-Section~\ref{subsec:serendipity_process} told us why: a need of this
-kind is visceral before it is verbalized, and cannot be specified by
-its owner. He does not, in fact, know that $v_\text{seeker}$ exists. What he can
-do is stand before a work and feel whether it resonates---whether the
-work's coordinate lies near his own. That sense of affinity is his;
-the library has no access to it.
+Let the visitor into this space, seeking as ever ``something like Miles Davis.''
+What he seeks is connotative, and it lies at $v_\text{seeker}$ in the principal
+connotative space. Of course, he can neither state nor specify what it is. He
+does not, in fact, know that $v_\text{seeker}$ exists. What he can do is stand
+before a work and feel whether it resonates---whether the work's coordinate lies
+near his own. That sense of affinity is his; the library has no access to it.
 
-He begins where anyone begins: with what he can name. The jazz floor
-he can ask for, and once there, he walks. Under his feet the
-connotative coordinate varies continuously; near Miles Davis the
-resonance strengthens, and he slows, and stops. Call the place where
-he stands $v_\text{work}$. Everything so far he could have foreseen (R4):
-within a floor, one moves toward more of what one already feels. So
-far this is seeking, and the space serves it.
+He begins where anyone begins: with what he can name. The jazz floor he can ask
+for, and once there, he walks. Under his feet the principal connotative
+coordinate varies continuously; near Miles Davis the resonance strengthens, and
+he slows, and stops. Call the place where he stands $v_\text{work}$. Everything
+so far he could have foreseen: within a floor, one moves toward more of what one
+already feels. So far this is seeking, and the space serves it.
 
-Then he steps into the hole at $v_\text{work}$. The leap holds
-$v_\text{work}$ fixed and lets the genre change entirely; he surfaces on
-the classical floor, where nothing nameable survived the
-passage---genre, instrument, period, all different---and yet, before
-Debussy, the resonance holds. The field's oldest pairing,
-\textit{unexpected and relevant}~\cite{Kotkov2016180}, becomes readable as
-two coordinates: unexpected with respect to every denotation,
-relevant in the one connotation the hole held fixed.
+Then he steps into the hole at $v_\text{work}$. The leap holds $v_\text{work}$
+fixed and lets the genre change entirely; he surfaces on the classical floor,
+where no descriptor survived the passage, and yet, before Debussy, the resonance
+holds. The field's oldest pairing, \textit{unexpected and
+    relevant}~\cite{Kotkov2016180}, becomes readable as two coordinates:
+unexpected with respect to every denotation, relevant in the one connotation the
+hole held fixed.
 
-And what he finds is more than a piano piece. On the jazz floor the
-resonance might still have been jazz-ness, or Miles-ness; the leap
-stripped those accounts away, and what still resonates can only be
-the coordinate the hole held. At that moment the visitor discovers
-that what he had been circling answers to something in himself---that
-$v_\text{seeker}$ exists. ``\textit{So this is what I was looking for}'':
-the moment of serendipity, \textit{a mix of unexpectedness and
-    insight}, as Makri and Blandford heard it~\cite{Makri2012684}---the
-unexpectedness of the instant before, the insight of the instant
-after.
+And what he finds is more than a piano piece. On the jazz floor the resonance
+might still have been jazz-ness, or Miles-ness; the leap stripped those accounts
+away, and what still resonates can only be the coordinate the hole held. At that
+moment the visitor discovers something in himself---that $v_\text{seeker}$
+exists. ``\textit{So this is what I was looking for}'': the moment of
+serendipity, \textit{a mix of unexpectedness and insight}, as Makri and Blandford
+heard it~\cite{Makri2012684}---the unexpectedness of the instant before, the
+insight of the instant after.
 
-And the moment is not the end of the walk. He can act on the encounter---ride
-the same hole to a third floor, turn back, walk a little and leap
-again---Merton's ``unanticipated, anomalous and strategic
+His exploration goes on, and it is this going on that turns the encounter into
+insight. He can ride the same hole to a third floor, turn back, walk a little
+and leap again---Merton's ``unanticipated, anomalous and strategic
 datum''~\cite{Merton1948505}: strategic, because here a finding becomes a plan.
 The first leap told him that $v_\text{seeker}$ exists; those that follow tell
-him what it is---not a work in another genre, but a structure, unnamed, running
-across them all.
+him what it is---a structure, unnamed, running across every genre. So
+serendipity is not spent in the encounter. It begins there.
 
-The division of labor is exact. The library measures affinity only
-between works; that is its geometry. The affinity between $v_\text{work}$
-and the visitor's own $v_\text{seeker}$ no library can measure, for it
-lives in him. The space does not contain serendipity; it gives
-serendipity somewhere to happen.
+The division of labor is exact. The library measures affinity only between
+works; that is its geometry. The affinity between $v_\text{work}$ and the
+visitor's own $v_\text{seeker}$ no library can measure, for it lives in him. The
+space does not contain serendipity; it gives serendipity somewhere to happen.
 
 
 %%% Subsection 3.3 The Multi-Galaxy Curved Universe %%%%%
@@ -236,7 +188,7 @@ space---but as a curved trajectory that no axis follows: real, but not
 navigable.
 
 The universe and the library are two views of one structure, separated only by a
-coordinate system (Figure~\ref{fig:OT-FB}). The works are the same, threaded by
+coordinate system (Figure~\ref{fig:two_views}). The works are the same, threaded by
 the same holes; what differs is whether the coordinates carry meaning. In the
 library they do: hold one fixed, and what it names holds still, and the passage
 from floor to floor runs straight. In the universe that meaning is spread across
