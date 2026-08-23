@@ -1,10 +1,12 @@
 %%%%% Section 4. Geometrical Form: The Principal Connotative Space %%%%%
 \section{Geometrical Form: The Principal Connotative Space}\label{sec:mathematics}
 
-So far, denotation came first, and connotation was what we extended toward. Now
-we reverse the view: we begin with the nameless world of content data, and watch
-what names do when they enter it. Our aim is to define the unnamed as the
-geometry of a space, not in words.
+So far, denotation came first, and connotation was what we extended toward.
+Now we reverse the view. We begin with the nameless world of content data, and
+watch what names do when they enter it. One name will be enough: a single
+facet, which serves here not to describe a work but to draw out what
+description leaves behind. From it the space of the unnamed follows. We define
+that space as geometry, not in words.
 
 %%% Subsection 4.1 %%%
 \subsection{Content Space, Quale, and Qualia
@@ -13,11 +15,12 @@ geometry of a space, not in words.
 \paragraph{Ideal content space.}
 As thermodynamics builds on the ideal gas, we build on the \textit{ideal
     content space} $\mathcal{X}$: an idealization of the real content data
-space, postulated so that theory can proceed. Every work has a unique position
-$x \in \mathcal{X}$, representing the unique quality of that work---and not
-the works of a collection alone, but every work that could be made.
-$\mathcal{X}$ is continuous and without gaps, so one may move from any work
-toward any other and pass through works all the way.
+space, averaging how people feel a work as the ideal gas averages how
+molecules move. Every work has a unique position $x \in \mathcal{X}$,
+representing the unique quality of that work. And not the works of a
+collection alone: $\mathcal{X}$ holds every work that could be made,
+continuous and without gaps, so one may move from any work toward any other
+and pass through works all the way.
 
 Call a point of this space a \textit{quality}, and call a geometric form in
 it---a curve, a surface---a \textit{quale}. Both are aliases for geometry, and
@@ -26,16 +29,15 @@ its use in philosophy of mind. Three axioms follow.
 
 \begin{description}
     \item[\textbf{(Axiom 1) Sufficiency.}] The quality of a work carries what
-          we feel in it---as far as the connotation we mean to reach.
+          people feel in it---as far as the connotation we mean to reach.
     \item[\textbf{(Axiom 2) Similarity.}] $\mathcal{X}$ carries an inner
           product $\langle x, x' \rangle$, and closeness in it means likeness
           as people judge it, typically
           $\operatorname{Ave}\bigl[\operatorname{Sim}(w, w')\bigr] =
               \exp \langle x, x' \rangle$~\citep{Shepard19871317}.
     \item[\textbf{(Axiom 3) Manifold hypothesis.}] If a set of works share
-          something we can feel, those works are on a manifold, smooth enough
-          to move along\footnote{Lipschitz continuity is all we need.}. That
-          manifold is their quale.
+          something people can feel, those works are on a manifold, smooth
+          enough to move along. That manifold is their quale.
 \end{description}
 
 Taken together, the three axioms assume one thing: that we have a representation
@@ -48,42 +50,38 @@ large language models---take as their aim the very representation these axioms
 describe~\citep{Grand2022}.
 
 
-
-\paragraph{Principal manifold.}
-Postulate (X3) grants a manifold but fixes no dimension. So we fix one. Given
-$d$, take the $d$-dimensional manifold that approximates the distribution with
-least error, and call it the \textit{$d$-principal manifold} of the quale. The
-name follows PCA: where PCA returns the best $d$-dimensional flat
-approximation, the principal manifold returns the best curved
-one~\citep{Hastie1989502}. The choice of $d$ decides how much of the quale is
-kept.
-
 \paragraph{Qualia spectrum.}
-The axioms end here; what follows is construction. A quale can vary
-continuously---violet shades into blue, blue into green, and so on to
-red---and as it varies, its manifold moves with it. We call such a family of
-manifolds a \textit{qualia spectrum}. Its parameter may have any number of
-dimensions: hue and brightness together make the spectrum a surface, and
-further qualities raise it higher.
+A quale can vary continuously---violet shades into blue, blue into green, and
+so on to red---and as it varies, its manifold moves with it. We call such a
+family of manifolds a \textit{qualia spectrum}. Its parameter may have any
+number of dimensions: hue and brightness together make the spectrum a surface,
+and further qualities raise it higher.
 
 We ask two things of a spectrum. It varies smoothly with its parameter, and
-every manifold in it keeps one shape, so that a single coordinate system
-serves them all. A family of this kind sweeps out a \textit{fiber bundle}:
-the spectrum is its base, the quale manifold its fiber.
+every manifold in it keeps a homologous shape. In the language of geometry, a
+qualia spectrum of this kind is a \textit{fiber bundle}: the spectrum is its
+base, each quale manifold its fiber.
 
-One content space admits infinitely many spectra. Violet reaches red by many
-routes, and each route is a spectrum of its own. A spectrum is therefore
-chosen, not found.
+\paragraph{Principal common qualia.}
+Given a qualia spectrum, another qualia spectrum can be induced. Call the
+first the \textit{base spectrum}, since it is the base of a fiber bundle. Give
+every manifold in it one common coordinate system, and join the points that
+share a value. A second spectrum appears, crossing the first: the
+\textit{induced spectrum}, induced by the coordinate system we chose. The two
+run as warp and weft, and the quality set is the cloth they weave. We call
+what the induced spectrum carries the \textit{common qualia} of the base
+spectrum.
 
-\paragraph{Orthogonality of spectra.}
-Let two spectra cover the same works---all of $\mathcal{X}$, or a region of
-it. We call them \textit{orthogonal} when they vary independently of each
-other, in the statistical sense.
-
-Orthogonal spectra decompose the region. Each work lies where one manifold of
-the first crosses one manifold of the second, and that crossing places it
-exactly. Move along one spectrum, and the other holds still. The region is
-thus the product of the two, and a visitor may walk them one at a time.
+The coordinate system can be chosen in infinitely many ways, and most of them
+come out entangled. So we choose by distance. Each quale is $n$-dimensional,
+and in $\mathcal{X}$ we know $n$; real data do not afford us that, for noise
+enters. So fix the coordinate system at $m \le n$ dimensions. Every manifold
+of the base spectrum then reduces to $m$, the induced spectrum reduces with
+it, and what falls outside counts as noise. Among all such choices, take the
+one whose threads run shortest in total: its common qualia are the
+\textit{$m$-principal common qualia}. Coordinates and reduction settle in a
+single stroke, for choosing either first makes the threads longer than they
+need be.
 
 %%% Subsection 4.2 %%%
 \subsection{Content Space Equipped with
