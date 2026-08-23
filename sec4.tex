@@ -1,240 +1,178 @@
-%%%%% Section 4. The Definite Form: From Fiber Bundles to Optimal Transport %%%%%
-\section{The Definite Form: From Fiber Bundles to Optimal
-  Transport}\label{sec:mathematics}
+%%%%% Section 4. Geometrical Form: The Principal Connotative Space %%%%%
+\section{Geometrical Form: The Principal Connotative Space}\label{sec:mathematics}
 
-Section~\ref{sec:framework} proposed the library with rabbit holes: a
-stack of floors, threaded by a bundle of holes. To build it, the
-concept must first be given a mathematical formulation. This section
-presents two objects. The first is the \textbf{optimal transport fiber
-    bundle (OT-FB)}, the bundle of rabbit holes in exact form. The second
-is the \textbf{principal connotation space}, whose points are the holes
-themselves; it fixes what the bundle expresses and what it does not.
+So far, denotation came first, and connotation was what we extended toward. Now
+we reverse the view: we begin with the nameless world of content data, and watch
+what names do when they enter it. Our aim is to define the unnamed as the
+geometry of a space, not in words.
 
+%%% Subsection 4.1 %%%
+\subsection{Content Space, Quale, and Qualia
+    Spectrum}\label{subsec:content_space}
 
-%%% Subsection 4.1 The Library as a Fiber Bundle %%%
-\subsection{The Library as a Fiber
-    Bundle}\label{subsec:library_as_bundle}
-
-% --- (1) Setup: content data + genre label → coordinate pair ---
-Let us restate what Section~\ref{sec:framework} drew. The works arrive as
-content data: each work $n$ is a point $\mathbf{x}_n \in \mathcal{X} =
-    \mathbb{R}^D$ in the universe of Section~\ref{subsec:multi_galaxy}, with its
-genre label $k(n)$ as descriptor. What the library gives each work $n$ is a pair
-of coordinates $(u_n, v_n)$: a denotative coordinate $u_n \in
-    \mathcal{U}=\mathbb{R}^{L_\mathcal{U}}$---which floor, its genre-ness---and a
-connotative coordinate $v_n \in \mathcal{V}=\mathbb{R}^{L_\mathcal{V}}$---where
-on the floor.
-
-% --- (2) Φ: floors and rabbit holes as two ways of walking; naming: fiber bundle ---
-The library and the universe are joined by an embedding map
-\[
-    \Phi: \mathcal{U} \times \mathcal{V} \to \mathcal{X},
-\]
-which carries every point of the library into the universe---not
-only the points where works sit, but every point a visitor may walk
-(Figure~\ref{fig:two_views}). The structures of
-Section~\ref{sec:framework} are now two ways of walking $\Phi$. Hold
-the genre and vary the connotation: $\Phi(u, \cdot)$ traces the
-floor at $u$---its galaxy, which we model, as a working
-assumption, as a smooth low-dimensional manifold. Hold the
-connotation and vary the genre: $\Phi(\cdot, v)$ traces a rabbit
-hole---a curve threading every galaxy through the points that share
-$v$. A structure of exactly this kind---a family of manifolds bound
-together by a bundle of curves---has a ready-made name in
-mathematics: a \textit{fiber bundle}, with the denotation space
-$\mathcal{U}$ as its base and the connotation space $\mathcal{V}$ as
-its fiber. The library and the universe of
-Figure~\ref{fig:two_views} are this one bundle seen twice: flat in
-$\mathcal{U} \times \mathcal{V}$, where floors stack and holes run
-straight; curved in $\mathcal{X}$, where galaxies scatter and holes
-curve.
-
-% --- (3) Three questions: modelable? unique? does v express connotation? ---
-The three questions of Section~\ref{sec:framework} can now be put
-exactly. First, can a given collection be modeled
-by this geometry at all---does such a bundle exist over the works?
-Second, if it exists, is it unique? Third, if it were made unique,
-could we expect its coordinate $v$ to express connotation?
-
-
-
-%%% Subsection 4.2 The Optimal Transport Fiber Bundle %%%%%
-\subsection{The Optimal Transport Fiber Bundle}\label{subsec:two_genres}
-
-% 2026-08-13 fig3.pdf を廃止し fig3a--fig3d.png の 2x2 に差し替え。
-% trim は各図の余白の実測値。(a)--(c) は 1800px 正方 @300dpi (= 432bp)、
-% (d) のみ 1440px 正方 @229dpi (= 452.7bp) なので bp 値が異なる。
-% トリム後の 4 枚は同一寸法・同一縮尺になる。余白をそのまま出したい場合は
-% trim=... , clip を外す。
-\begin{figure}[p]
-    \centering
-    \begin{subfigure}[t]{0.44\linewidth}
-        \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig3a.png}
-        \caption{Two genres, two galaxies.}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.44\linewidth}
-        \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig3b.png}
-        \caption{A single exploration space.}
-    \end{subfigure}
-
-    \vspace{2mm}
-
-    \begin{subfigure}[t]{0.44\linewidth}
-        \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig3c.png}
-        \caption{An exploration space per genre.}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.44\linewidth}
-        \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig3d.png}
-        \caption{A shared exploration space.}
-    \end{subfigure}
-    \caption{
-        \textbf{The two-genre case.}
-        Content data of classical music (blue) and jazz (orange) from
-        MTG-Jamendo~\cite{Bogdanov2019} (Section~\ref{sec:demonstration}), in
-        their first three principal components. (a) Data distributions
-        (galaxies) of two genres. (b) A single manifold expresses chiefly the
-        difference between the genres. (c) One manifold per genre. The lines
-        join the same coordinate on the two, but the correspondence is
-        arbitrary: works A and B, joined by one coordinate, lie far apart. (d)
-        The result we seek. Each mesh is the connotation space $\mathcal{V}$,
-        and the lines joining the same coordinate $v$ are the rabbit holes in
-        the curved universe: A and B are denotatively distant and connotatively
-        close.}
-    \label{fig:two_category_ot}
-\end{figure}
-
-\paragraph{The two-genre case.}
-As the simplest case, consider a library with two genres only. In the content
-space, the two are distributed in distinct regions, forming two galaxies
-(Figure~\ref{fig:two_category_ot}a). To define an exploration space is to
-specify a manifold, a curved surface in that space, with coordinates on it. If
-the whole collection were covered by a single exploration space, that space
-would express chiefly the difference between the genres
-(Figure~\ref{fig:two_category_ot}b). If instead each genre is given an
-exploration space of its own, each carries its own coordinate system, and the
-correspondence between the two genres cannot be expressed
-(Figure~\ref{fig:two_category_ot}c). What we seek is the case where each genre
-has its own exploration space, yet the coordinate systems share something that
-transcends genre (Figure~\ref{fig:two_category_ot}d)---and we want that shared
-something to be connotation. This joining of two manifolds through one
-coordinate system is the rabbit hole, or fiber.
-
-Such a shared coordinate system is a correspondence: a rule laying one galaxy
-onto the other. Finding it is known to be severely ill-posed
-(Section~\ref{subsec:disentanglement}): infinitely many correspondences fit the
-data equally well~\cite{Locatello20197247}. To settle on one, we must state
-which we count as good---the inductive bias Section~\ref{subsec:disentanglement}
-called for. In other words, we must define what we want the connotation
-coordinate $v$ to express. Two assumptions suggest themselves naturally.
+\paragraph{Ideal content space.}
+We must first say what kind of space the content data occupies. We postulate
+an \textit{ideal content space} $\mathcal{X}$ with three properties.
 
 \begin{itemize}
-    \item \textbf{(A1) Independence:} the connotation we want is
-          information independent of the denotation---the
-          rabbit hole as the library drew it, a passage running
-          perpendicular to the floors.
-    \item \textbf{(A2) Proximity:} works sharing a connotation lie close in
-          the data space---works A and B in Figure~\ref{fig:two_category_ot}d,
-          joined by one $v$, should stand as near to each other as they can.
+    \item \textbf{(X1) Generic quality.} Each point of $\mathcal{X}$ is a
+          generic quality that some work carries, and each work $w$ sits at a
+          unique point $x$. \textit{Generic} means the quality serves any use
+          and is tuned to none.
+    \item \textbf{(X2) Similarity.} $\mathcal{X}$ carries an inner product
+          $\langle x, x' \rangle$ by which works can be compared. A typical
+          form relates it to how people judge two works $w, w'$ alike,
+          $\operatorname{Ave}\bigl[\operatorname{Sim}(w, w')\bigr] =
+              \exp \langle x, x' \rangle$, though we require no particular form.
+    \item \textbf{(X3) Smoothness.} Quality varies smoothly over
+          $\mathcal{X}$: nearby points carry nearby qualities, in the sense of
+          Lipschitz continuity.
 \end{itemize}
 
-Together, the two assumptions turn the search for rabbit holes
-into a well-posed problem mathematics already knows: lay one galaxy onto the
-other as closely as possible (A2) while keeping the match
-independent of genre (A1). This is \textit{optimal
-    transport}---carrying all the stars of one galaxy onto the other
-with the least total effort, measured by squared Euclidean
-distance
-(2-Wasserstein)~\cite{villani2009optimal,peyre2019computational}.
-For this cost, the correspondence exists and, under mild
-regularity conditions, is essentially unique---a classical result
-known as Brenier's theorem~\cite{Brenier1991375,villani2009optimal}.
+These three are axioms, not findings. The space they describe, however, is
+within reach: modern embedding methods---Transformers and large language
+models---set out to build representations of exactly this kind, and come a
+long way toward them~\citep{Grand2022}.
 
-This reformulation offers an insight. Miles Davis and Debussy are not
-matched because each is the other's nearest work---matching
-nearest works, pair by pair, would not even guarantee (A1). They
-are matched because the relative position each occupies within
-its own galaxy is homologous
-(Figure~\ref{fig:two_category_ot}d). A rabbit hole is decided not
-by the pairwise relation of two works but by how one genre stands
-to another as a whole.
+\paragraph{Quale manifold.}
+Call a quality that several works share a \textit{quale}.\footnote{We borrow
+    the word for convenience and intend no link to its use in philosophy of
+    mind.} Smoothness (X3) lets us postulate how such works lie in
+$\mathcal{X}$.
+
+\begin{itemize}
+    \item \textbf{(X4) Manifold hypothesis.} The works carrying one quale
+          distribute along a manifold in $\mathcal{X}$---the \textit{quale
+              manifold} of that quale.
+\end{itemize}
+
+This hypothesis is standard in representation
+learning~\citep{Bengio20131798}. What it says here is this. Let $w$ and $w'$
+carry the same quale and lie close together. Then the points between them are
+again works carrying it. A quale is therefore a place one can move within,
+not a point one merely occupies.
+
+Infinitely many manifolds pass through a single point. The quality of a work
+is therefore the meeting of infinitely many qualia at $x$. To say what a work
+is like is to choose among them.
+
+Postulate (X4) grants a manifold but fixes no dimension. So we fix one.
+Given $d$, take the $d$-dimensional manifold that approximates the
+distribution with least error, and call it the \textit{$d$-principal
+    manifold} of the quale. The name follows PCA: where PCA returns the best
+$d$-dimensional flat approximation, the principal manifold returns the best
+curved one~\citep{Hastie1989502}. The choice of $d$ decides how much of the
+quale is kept.
+
+\paragraph{Qualia spectrum.}
+The axioms end here; what follows is construction. A quale can vary
+continuously---violet shades into blue, blue into green, and so on to
+red---and as it varies, its manifold moves with it. We call such a family of
+manifolds a \textit{qualia spectrum}. Its parameter may have any number of
+dimensions: hue and brightness together make the spectrum a surface, and
+further qualities raise it higher.
+
+We ask two things of a spectrum. It varies smoothly with its parameter, and
+every manifold in it keeps one shape, so that a single coordinate system
+serves them all. A family of this kind sweeps out a \textit{fiber bundle}:
+the spectrum is its base, the quale manifold its fiber.
+
+One content space admits infinitely many spectra. Violet reaches red by many
+routes, and each route is a spectrum of its own. A spectrum is therefore
+chosen, not found.
+
+\paragraph{Orthogonality of spectra.}
+Let two spectra cover the same works---all of $\mathcal{X}$, or a region of
+it. We call them \textit{orthogonal} when they vary independently of each
+other, in the statistical sense.
+
+Orthogonal spectra decompose the region. Each work lies where one manifold of
+the first crosses one manifold of the second, and that crossing places it
+exactly. Move along one spectrum, and the other holds still. The region is
+thus the product of the two, and a visitor may walk them one at a time.
+
+%%% Subsection 4.2 %%%
+\subsection{Content Space Equipped with
+    Denotation}\label{subsec:denotation}
+
+\paragraph{Denotation and connotation.}
+Section~\ref{subsec:naming} divided meaning by naming. That division now falls
+on qualia. A quale that has a name is a \textit{denotation}; a quale that has
+none is a \textit{connotation}. Each is a manifold in $\mathcal{X}$: a
+\textit{denotative manifold}, a \textit{connotative manifold}.
+
+Naming leaves the geometry untouched. Jazz-ness and ``quiet, with feeling in
+it'' are manifolds of one kind, and only one of them has a word. The catalogue
+records the first; $\mathcal{X}$ holds both.
+
+\paragraph{Facet.}
+A spectrum that has a name is a \textit{facet}. Genre is one: its manifolds
+are jazz, classical, and the rest, and together they vary with genre-ness.
+Facet analysis has long organized catalogues this
+way~\citep{Cutter1876,Broughton200649}; here the facet becomes continuous, and
+its parameter serves as a coordinate.
 
 
-\paragraph{The $K$-genre case.}\label{subsec:OTFB-model}
-A real collection has many floors, and correspondences drawn pair by pair
-need not agree with one another. The extension, however, is direct. Optimal
-transport generalizes from two distributions to $K$ as
-\textit{multi-marginal optimal transport}~\cite{pass2015multi}: a single
-correspondence threads all $K$ galaxies at once, picking one point from each
-and minimizing the total squared distance among them. Because all genres now
-enter one problem, the threads cannot disagree with one another; and
-existence and essential uniqueness carry over under the same kind of
-regularity conditions~\cite{pass2015multi}.
+%%% Subsection 4.3 %%%
+\subsection{Principal Connotative Space}\label{subsec:principal_connotative}
+\paragraph{Definition of principal connotative space.}
+Let the facet be genre. It gives a fiber bundle: genre-ness as base, the
+manifold of each genre as fiber. Now take a spectrum orthogonal to it. Each
+of its manifolds crosses every genre, one point in each---a section of the
+bundle, and the rabbit hole of Section~\ref{sec:framework}.
 
-What this builds is the object
-Section~\ref{subsec:library_as_bundle} described. Works on one
-thread share one connotative coordinate $v$; with genre-ness
-treated as continuous---unobserved genres filling between the
-observed ones---each thread becomes a smooth curve through every
-galaxy. Galaxies as manifolds, bound by a bundle of such curves:
-the fiber bundle of Section~\ref{subsec:library_as_bundle}, its
-correspondence no longer arbitrary but optimal. We call this
-structure the \textbf{optimal transport fiber bundle
-    (OT-FB)}---and it is exactly what
-Figure~\ref{fig:two_views} has been showing all along.
+By orthogonality the region factors, and every work sits at a pair: its
+genre-ness $u$, and the section $v$ it lies on. Fix a dimension
+$L_\mathcal{V}$ and take the principal manifold of this product. The
+resulting space of sections is the \textbf{principal connotative space}
+$\mathcal{V}$---the space of rabbit holes.
+
+\paragraph{Natural inductive bias.}
+Infinitely many spectra run orthogonal to a facet, and the data alone cannot
+choose among them: the ill-posedness of
+Section~\ref{subsec:disentanglement}~\citep{Locatello20197247}. Two
+requirements settle it, and both are already ours.
+
+\begin{itemize}
+    \item \textbf{(A1) Orthogonality.} The spectrum varies independently of
+          the facet.
+    \item \textbf{(A2) Proximity.} The works on one section lie as close to
+          one another as they can.
+\end{itemize}
+
+Together these state a problem mathematics already knows. Lay each genre
+manifold onto the others as closely as possible, while keeping the match
+independent of genre: this is \textit{multi-marginal optimal
+    transport}~\citep{villani2009optimal,pass2015multi}. Its solution exists
+and, under mild regularity, is essentially unique---Brenier's theorem for two
+genres~\citep{Brenier1991375}, its multi-marginal extension for
+$K$~\citep{GangboSwiech199823}. We call the bundle so fixed the
+\textbf{optimal transport fiber bundle (OT-FB)}, and
+Appendix~\ref{sec:computation} gives the proof and the algorithm.
+
+Note what decides a section. Miles Davis and Debussy are joined not because
+each is the other's nearest work, but because each holds a homologous
+position within its own genre. A rabbit hole follows from how the genres
+stand as wholes.
+
+\paragraph{What $\mathcal{V}$ holds.}
+The construction has already said what $\mathcal{V}$ is: what remains of
+$\mathcal{X}$ once the facet is set aside, reduced to its principal
+$L_\mathcal{V}$ components. \textit{Principal} carries its usual sense, as in
+PCA. And $L_\mathcal{V}$ is ours to fix---two dimensions serve exploration
+well, and more data allow more.
+
+$\mathcal{V}$ is not connotation itself. A connotation moves: it shifts with
+the person, the hour, the occasion. No space can be given to what moves---only
+the space it moves in, and $\mathcal{V}$ is that space. Every unnamed quale of
+the collection lies somewhere in it. So $v$ is not a connotation but a
+vocabulary without words, in which one may say: ``\textit{ah, that is
+    it---that is how I feel today}.''
+
+One remark. The content data decide $\mathcal{V}$, so a second view of the
+same works gives a second $\mathcal{V}$. Take music as sound and as lyrics:
+two bundles rise over one facet, and each work receives $(u,
+    v_\mathrm{audio}, v_\mathrm{lyrics})$. Two kinds of rabbit hole open
+underfoot, and the visitor chooses which to take.
 
 
-%%% Subsection 4.3 The Principal Connotation Space %%%%%
-\subsection{The Principal Connotation Space}\label{subsec:bundle_reach}
-
-Of the three questions of Section~\ref{subsec:library_as_bundle},
-optimal transport has answered two: the bundle exists, and it is
-essentially unique. The third remains: does its coordinate $v$
-express connotation? The answer has two parts---what this space is,
-and what it is not. What it is, four properties state. (i) It runs
-independent of denotation: what a work owes to its genre stays with
-the genre, and this space holds the rest. (ii) It keeps the closeness
-the content data report: works that lie close in the data lie close
-here too. (iii) Of all that remains once denotation is set aside, it
-holds the principal $L_\mathcal{V}$ components, in the sense of least
-error. (iv) And it is not chosen by hand: the content data determine
-it, essentially uniquely. Together, the four properties characterize
-a single space: the orthogonal complement of denotation, reduced to
-its principal $L_\mathcal{V}$ components by nonlinear PCA---what
-should be called the \textbf{principal connotation space}.
-
-Theoretically, these four come from two assumptions and one constant. The first
-two are (A1) and (A2) themselves; the fourth follows from them, through the
-optimal transport of Section~\ref{subsec:two_genres}. The third rests on
-$L_\mathcal{V}$, the dimension of $\mathcal{V}$, which we fix in advance: with
-enough data it may be set large, though two dimensions are convenient enough
-for exploration. And \textit{principal} carries its usual sense---as PCA
-returns principal components under least squared error, the OT-FB returns them
-under least 2-Wasserstein error.
-
-We do not claim that the connotation space $\mathcal{V}$ signifies any
-specific connotation. What it is, precisely, is the residual information
-the descriptors could not carry, expressed as the orthogonal complement of
-denotation and reduced to its principal components---nothing more, nothing
-less. This space and connotation itself are therefore of wholly different
-origin, and are never equal. Connotation has no fixed place: it moves with
-the person, the time, and the context, a particle in motion through
-whatever space of meaning there is. No space can be given to what
-moves---only the space it moves in. Yet for a seeker after what the
-descriptors could not express, this residual space is where what he seeks
-is most likely to be found. In this sense the coordinate $v$ is not a
-connotation itself, but an unnamed vocabulary with which a connotation can
-be spoken: ``\textit{ah, that is it---that is how I feel today}.'' That is
-what the name \textit{principal connotation space} signifies.
-
-One remark before we close. The connotation coordinate is determined by the
-content data, so another content dataset yields another coordinate. Give music
-in two views, as audio and as lyrics, and two bundles are built: two kinds of
-rabbit hole open underfoot, and each work receives the coordinates $(u,
-    v_{\mathrm{audio}}, v_{\mathrm{lyrics}})$. The visitor is no longer asked
-whether to leap; he is asked which hole to take.
