@@ -55,32 +55,44 @@ the very representation these axioms describe~\citep{Grand2022}.
 
 
 \paragraph{Qualia spectrum.}
-A quale can vary continuously---violet shades into blue, blue into green, and so
-on to red---and its quale manifold moves with it. We call such a family of
-manifolds a \textit{qualia spectrum}. Geometry already knows this structure as a
-\textit{fiber bundle}: the base is the parameter---of any dimension---along
-which the quale varies, and each fiber is a quale manifold.
+A quale can vary continuously---violet shades into blue, blue into green, and
+so on to red---and its quale manifold moves with it. We call such a family of
+manifolds a \textit{qualia spectrum}. Geometry already knows this structure as
+a \textit{fiber bundle}, and we call it a \textit{spectrum fiber bundle}: the
+base space $\mathcal{U}$ is the parameter---of any dimension---along which the
+quale varies, and each fiber is a quale manifold.
 
-\paragraph{Principal common qualia.}
-Given a qualia spectrum, another qualia spectrum can be induced. Call the
-first the \textit{base spectrum}, since it is the base of a fiber bundle. Give
-every manifold in it one common coordinate system, and join the points that
-share a value. A second spectrum appears, crossing the first: the
-\textit{induced spectrum}, induced by the coordinate system we chose. The two
-run as warp and weft, and the quality set is the cloth they weave. We call
-what the induced spectrum carries the \textit{common qualia} of the base
-spectrum.
 
-The coordinate system can be chosen in infinitely many ways, and most of them
-come out entangled. So we choose by distance. Each quale is $n$-dimensional,
-and in $\mathcal{X}$ we know $n$; real data do not afford us that, for noise
-enters. So fix the coordinate system at $m \le n$ dimensions. Every manifold
-of the base spectrum then reduces to $m$, the induced spectrum reduces with
-it, and what falls outside counts as noise. Among all such choices, take the
-one whose threads run shortest in total: its common qualia are the
-\textit{$m$-principal common qualia}. Coordinates and reduction settle in a
-single stroke, for choosing either first makes the threads longer than they
-need be.
+\paragraph{Induced qualia spectrum.}
+A spectrum fiber bundle induces a second spectrum. Fibers of one bundle share
+a shape, so a single coordinate system $\mathcal{V}$ fits them all, and every
+point of the bundle gains an address $(u, v)$.
+
+Now hold $v$ fixed and let $u$ run, joining the point at $v$ on every fiber.
+Those points form a manifold of their own, crossing the whole
+bundle---geometry calls it a \textit{section}. Let $v$ vary, and these
+sections sweep out a second spectrum: the \textit{induced qualia spectrum}.
+The fibers are the warp, the sections the weft, and the qualities are the
+cloth they weave.
+
+How we cut $\mathcal{V}$ decides the cloth, and infinitely many cuts fit. To
+choose one, we need an inductive bias. Ours has two parts.
+
+\begin{description}
+    \item[\textbf{(Bias 1) Independence.}] The density over the bundle
+          factorizes: $p(u, v) = p(u)\,p(v)$.
+    \item[\textbf{(Bias 2) Shortest weft.}] Among such coordinate systems,
+          take the one whose sections run shortest in total.
+\end{description}
+
+\noindent
+Bias 1 is what makes a quale common: $v$ says the same thing wherever it sits
+on the base. Bias 2 makes it faithful: by Axiom 2, a short weft joins the
+qualities that feel most alike, so each section is spun from like qualities
+throughout. Together the two leave one bundle---disentangled by Bias 1, taut
+by Bias 2. Shortest total length is the problem of optimal transport, so we
+call it an \textit{optimal transport fiber bundle} (OT-FB), and what its
+induced spectrum carries, the \textit{common qualia} of the base.
 
 %%% Subsection 4.2 %%%
 \subsection{Content Space Equipped with
