@@ -1,12 +1,11 @@
 %%%%% Section 4. Geometrical Form: The Principal Connotative Space %%%%%
 \section{Geometrical Form: The Principal Connotative Space}\label{sec:mathematics}
 
-So far, denotation came first, and connotation was what we extended toward.
-Now we reverse the view. We begin with the nameless world of content data, and
-watch what names do when they enter it. One name will be enough: a single
-facet, which serves here not to describe a work but to draw out what
-description leaves behind. From it the space of the unnamed follows. We define
-that space as geometry, not in words.
+So far, denotation came first, and connotation lay beyond it. Now we reverse
+the view. We begin with the nameless world of content data, and watch what a
+name does there. One name is enough: a single facet. Its task here is to draw
+out what description leaves behind. From it the space of the unnamed follows,
+and we define that space in geometry, not in words.
 
 %%% Subsection 4.1 %%%
 \subsection{Content Space, Quale, and Qualia
@@ -14,18 +13,17 @@ that space as geometry, not in words.
 
 \paragraph{Ideal content space.}
 As thermodynamics builds on the ideal gas, we build on the \textit{ideal
-    content space} $\mathcal{X}$: an idealization of the real content data
-space, averaging how people feel a work as the ideal gas averages how
-molecules move. Every work has a unique position $x \in \mathcal{X}$,
-representing the unique quality of that work. And not the works of a
-collection alone: $\mathcal{X}$ holds every work that could be made,
-continuous and without gaps, so one may move from any work toward any other
-and pass through works all the way.
+    content space} $\mathcal{X}$: an idealization of real content data. The ideal
+gas averages how molecules move; $\mathcal{X}$ averages how people feel a
+work. It is a continuous vector space, and every work that could be made
+holds a unique position $x \in \mathcal{X}$.
 
-Call a point of this space a \textit{quality}, and call a geometric form in
-it---a curve, a surface---a \textit{quale}. Both are aliases for geometry, and
-nothing more; we borrow the second word for convenience and intend no link to
-its use in philosophy of mind. Three axioms follow.
+A point of $\mathcal{X}$ carries the unique quality of one work, so we call a
+point a \textit{quality}. Qualities also share aspects---jazz-ness, or a
+quiet mood. We borrow a word for such a shared aspect: a \textit{quale}. A
+quality is thus the whole of one work; a quale is one aspect running across
+many works. Three axioms follow, and the third tells how a quale lies in
+$\mathcal{X}$.
 
 \begin{description}
     \item[\textbf{(Axiom 1) Sufficiency.}] The quality of a work carries what
@@ -35,32 +33,33 @@ its use in philosophy of mind. Three axioms follow.
           as people judge it, typically
           $\operatorname{Ave}\bigl[\operatorname{Sim}(w, w')\bigr] =
               \exp \langle x, x' \rangle$~\citep{Shepard19871317}.
-    \item[\textbf{(Axiom 3) Manifold hypothesis.}] If a set of works share
-          something people can feel, those works are on a manifold, smooth
-          enough to move along. That manifold is their quale.
+    \item[\textbf{(Axiom 3) Manifold hypothesis.}] A quale is a probability
+          density over $\mathcal{X}$, characterized by a smooth manifold.
 \end{description}
 
-Taken together, the three axioms assume one thing: that we have a representation
-space faithful to what people feel in a work. How that feeling is measured, and
-how such a space is obtained, we leave open. We simply take it as given.
+\noindent
+Axiom 3 turns sharing into a matter of degree. The density peaks on the manifold
+and decays away from it: a work may carry a quale strongly, weakly, or hardly at
+all. The manifold is the geometry of the quale, and we call it the \textit{quale
+    manifold}---an idealized principal manifold, carrying the dominant structure of
+the density and smooth enough to move along.
 
-The assumption is not far-fetched. Axiom 3 has served machine learning for
-years~\citep{Bengio20131798}, and modern embedding methods---Transformers and
-large language models---take as their aim the very representation these axioms
-describe~\citep{Grand2022}.
+The three axioms together ask for one thing: a representation space faithful
+to what people feel in a work. How that feeling is measured, and how such a
+space is obtained, we leave open. We take it as given.
+
+Current practice already reaches for such a space. The manifold hypothesis of
+Axiom 3 has served machine learning for years~\citep{Bengio20131798}, and
+modern embedding methods---Transformers and large language models---aim at
+the very representation these axioms describe~\citep{Grand2022}.
 
 
 \paragraph{Qualia spectrum.}
-A quale can vary continuously---violet shades into blue, blue into green, and
-so on to red---and as it varies, its manifold moves with it. We call such a
-family of manifolds a \textit{qualia spectrum}. Its parameter may have any
-number of dimensions: hue and brightness together make the spectrum a surface,
-and further qualities raise it higher.
-
-We ask two things of a spectrum. It varies smoothly with its parameter, and
-every manifold in it keeps a homologous shape. In the language of geometry, a
-qualia spectrum of this kind is a \textit{fiber bundle}: the spectrum is its
-base, each quale manifold its fiber.
+A quale can vary continuously---violet shades into blue, blue into green, and so
+on to red---and its quale manifold moves with it. We call such a family of
+manifolds a \textit{qualia spectrum}. Geometry already knows this structure as a
+\textit{fiber bundle}: the base is the parameter---of any dimension---along
+which the quale varies, and each fiber is a quale manifold.
 
 \paragraph{Principal common qualia.}
 Given a qualia spectrum, another qualia spectrum can be induced. Call the
