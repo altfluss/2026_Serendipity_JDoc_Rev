@@ -101,81 +101,47 @@ induced spectrum carries, the \textit{common qualia} of the base.
 \paragraph{Denotation and connotation.}
 Section~\ref{subsec:naming} divided meaning by naming. That division now falls
 on qualia. A quale that has a name is a \textit{denotation}; a quale that has
-none is a \textit{connotation}. Each is a manifold in $\mathcal{X}$: a
-\textit{denotative manifold}, a \textit{connotative manifold}.
+none is a \textit{connotation}. Their quale manifolds we call
+\textit{denotative} and \textit{connotative}.
 
 Naming leaves the geometry untouched. Jazz-ness and ``quiet, with feeling in
-it'' are manifolds of one kind, and only one of them has a word. The catalogue
-records the first; $\mathcal{X}$ holds both.
+it'' are manifolds of one kind, and only one of them has a word. The
+catalogue records the first; $\mathcal{X}$ holds both.
 
 \paragraph{Facet.}
-A spectrum that has a name is a \textit{facet}. Genre is one: its manifolds
-are jazz, classical, and the rest, and together they vary with genre-ness.
-Facet analysis has long organized catalogues this
-way~\citep{Cutter1876,Broughton200649}; here the facet becomes continuous, and
-its parameter serves as a coordinate.
+A qualia spectrum that has a name is a \textit{facet}. Genre is one: its
+quale manifolds are jazz, classical, and the rest, and together they vary
+with genre-ness. Facet analysis has long organized catalogues this
+way~\citep{Cutter1876,Broughton200649}; here the facet becomes continuous,
+and its parameter serves as the base coordinate $u$.
+
+A named facet thus gives the base of a spectrum fiber bundle. What the
+induced spectrum carries has no name---and that is where we go next.
 
 
 %%% Subsection 4.3 %%%
-\subsection{Principal Connotative Space}\label{subsec:principal_connotative}
-\paragraph{Definition of principal connotative space.}
-Let the facet be genre. It gives a fiber bundle: genre-ness as base, the
-manifold of each genre as fiber. Now take a spectrum orthogonal to it. Each
-of its manifolds crosses every genre, one point in each---a section of the
-bundle, and the rabbit hole of Section~\ref{sec:framework}.
+\subsection{Facet-Induced Connotation Space}\label{subsec:principal_connotative}
 
-By orthogonality the region factors, and every work sits at a pair: its
-genre-ness $u$, and the section $v$ it lies on. Fix a dimension
-$L_\mathcal{V}$ and take the principal manifold of this product. The
-resulting space of sections is the \textbf{principal connotative space}
-$\mathcal{V}$---the space of rabbit holes.
+\paragraph{Definition.}
+A facet is the base of a spectrum fiber bundle, so the construction of
+Section~\ref{subsec:content_space} applies unchanged. Its fibers are the
+foci---jazz, classical, and the rest. Give them one coordinate system, take
+the shortest weft, and the induced spectrum follows. Every work then sits at
+an address $(u, v)$: $u$ runs across the foci, $v$ picks a section.
 
-\paragraph{Natural inductive bias.}
-Infinitely many spectra run orthogonal to a facet, and the data alone cannot
-choose among them: the ill-posedness of
-Section~\ref{subsec:disentanglement}~\citep{Locatello20197247}. Two
-requirements settle it, and both are already ours.
+What does $v$ carry? A quale common to every focus, and one the facet cannot
+name: genre names jazz and classical, nothing more. A quale without a name is
+a connotation (Section~\ref{subsec:denotation}), so we call $\mathcal{V}$ the
+\textit{facet-induced connotation space}.
 
-\begin{itemize}
-    \item \textbf{(A1) Orthogonality.} The spectrum varies independently of
-          the facet.
-    \item \textbf{(A2) Proximity.} The works on one section lie as close to
-          one another as they can.
-\end{itemize}
+\paragraph{Facet-induced OT-FB.}
+The bundle so built we call the \textit{facet-induced OT-FB}. It is the
+multi-floor library with rabbit holes itself, now in geometry
+(Figure~\ref{fig:two_views}): the foci are its floors, the sections its
+rabbit holes. Section~\ref{sec:framework} postulated such a library; here it
+exists.
 
-Together these state a problem mathematics already knows. Lay each genre
-manifold onto the others as closely as possible, while keeping the match
-independent of genre: this is \textit{multi-marginal optimal
-    transport}~\citep{villani2009optimal,pass2015multi}. Its solution exists
-and, under mild regularity, is essentially unique---Brenier's theorem for two
-genres~\citep{Brenier1991375}, its multi-marginal extension for
-$K$~\citep{GangboSwiech199823}. We call the bundle so fixed the
-\textbf{optimal transport fiber bundle (OT-FB)}, and
-Appendix~\ref{sec:computation} gives the proof and the algorithm.
-
-Note what decides a section. Miles Davis and Debussy are joined not because
-each is the other's nearest work, but because each holds a homologous
-position within its own genre. A rabbit hole follows from how the genres
-stand as wholes.
-
-\paragraph{What $\mathcal{V}$ holds.}
-The construction has already said what $\mathcal{V}$ is: what remains of
-$\mathcal{X}$ once the facet is set aside, reduced to its principal
-$L_\mathcal{V}$ components. \textit{Principal} carries its usual sense, as in
-PCA. And $L_\mathcal{V}$ is ours to fix---two dimensions serve exploration
-well, and more data allow more.
-
-$\mathcal{V}$ is not connotation itself. A connotation moves: it shifts with
-the person, the hour, the occasion. No space can be given to what moves---only
-the space it moves in, and $\mathcal{V}$ is that space. Every unnamed quale of
-the collection lies somewhere in it. So $v$ is not a connotation but a
-vocabulary without words, in which one may say: ``\textit{ah, that is
-    it---that is how I feel today}.''
-
-One remark. The content data decide $\mathcal{V}$, so a second view of the
-same works gives a second $\mathcal{V}$. Take music as sound and as lyrics:
-two bundles rise over one facet, and each work receives $(u,
-    v_\mathrm{audio}, v_\mathrm{lyrics})$. Two kinds of rabbit hole open
-underfoot, and the visitor chooses which to take.
-
-
+And it is unique. Give a collection and one facet, and the two biases leave
+one bundle, essentially unique under mild regularity. Nothing more is asked
+of the analyst. Appendix~\ref{sec:computation} gives the proof and the
+algorithm.
