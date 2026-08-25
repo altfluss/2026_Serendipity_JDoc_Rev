@@ -1,12 +1,12 @@
 %%%%% Section 5. Learning the Bundle from Data %%%%%
-\section{Computing Principal Connotative Space and OT-FB}\label{sec:computation}
+\section{Computing Facet-induced OT-FB}\label{sec:computation}
 
 %%% Subsection 5.1 Objective function %%%
 \subsection{Objective Function and Uniqueness}
 
-We estimate the OT-FB by fitting the model distribution $q_\Phi(x)$,
-defined by the embedding map $\Phi$, to the content data distribution
-$p_\text{data}(x)$:
+We estimate the facet-induced OT-FB by fitting the model distribution
+$q_\Phi(x)$, defined by the embedding map $\Phi$, to the content data
+distribution $p_\text{data}(x)$:
 \begin{align*}
     p_{\text{data}}(x) & = \sum_{n=1}^N p(n)\,
     \mathcal{N}(x \mid \mathbf{x}_n, \beta^{-1}I), \quad
@@ -21,8 +21,7 @@ the work coordinates $U = (u_1, \dots, u_N)$ in $\mathcal{U}$ and
 $V = (v_1, \dots, v_N)$ in $\mathcal{V}$.
 
 The objective aligns the $K$ genre distributions by minimizing the
-2-Wasserstein distance---the multi-marginal problem of
-Section~\ref{subsec:OTFB-model}:
+2-Wasserstein distance---the multi-marginal problem.
 \begin{align}\label{eq:main_objective}
     W^2_2(p_\text{data}, q_\Phi)
            & = \inf_{\gamma\in\Pi(p_{\text{data}},\, q_\Phi)}

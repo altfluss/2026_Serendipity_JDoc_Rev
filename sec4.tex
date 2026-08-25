@@ -129,19 +129,30 @@ foci---jazz, classical, and the rest. Give them one coordinate system, take
 the shortest weft, and the induced spectrum follows. Every work then sits at
 an address $(u, v)$: $u$ runs across the foci, $v$ picks a section.
 
-What does $v$ carry? A quale common to every focus, and one the facet cannot
-name: genre names jazz and classical, nothing more. A quale without a name is
-a connotation (Section~\ref{subsec:denotation}), so we call $\mathcal{V}$ the
-\textit{facet-induced connotation space}.
+What does each coordinate carry? The facet has a name, so $u$ carries a
+denotation: $\mathcal{U}$ is the \textit{denotation space}, holding the one
+denotation this library admits. The other coordinate $v$ carries what the facet
+cannot name. Genre names jazz and classical, nothing more, yet $v$ holds a quale
+common to every focus. A quale without a name is a connotation
+(Section~\ref{subsec:denotation}), so $\mathcal{V}$ is the \textit{facet-induced
+    connotation space}.
 
 \paragraph{Facet-induced OT-FB.}
 The bundle so built we call the \textit{facet-induced OT-FB}. It is the
-multi-floor library with rabbit holes itself, now in geometry
-(Figure~\ref{fig:two_views}): the foci are its floors, the sections its
-rabbit holes. Section~\ref{sec:framework} postulated such a library; here it
-exists.
+multi-floor library with rabbit holes itself, now in geometry.
+Section~\ref{sec:framework} postulated such a library; here it exists.
 
-And it is unique. Give a collection and one facet, and the two biases leave
-one bundle, essentially unique under mild regularity. Nothing more is asked
-of the analyst. Appendix~\ref{sec:computation} gives the proof and the
-algorithm.
+Figure~\ref{fig:two_views}(c) draws it. On the left stands the library. A work
+has an address $(u, v)$: its focus $u$ in $\mathcal{U}$, its connotation $v$ in
+$\mathcal{V}$. The two run apart---which floor, and where on the floor. On the
+right lies the content data, where an embedding $\Phi$ sends the address to a
+point $\mathbf{x} = \Phi(u, v)$. There the two no longer run apart: each floor
+$\Phi(u, \cdot)$ curves into a galaxy, and each rabbit hole $\Phi(\cdot, v)$
+into a thread running from galaxy to galaxy. One representation, two views.
+
+And it is unique. Two things come from us: the facet, and the dimensions
+$D_\mathcal{U}$ and $D_\mathcal{V}$. Fix them, and the two biases leave one
+bundle---the spaces that lose the least, principal in the sense of PCA, and
+essentially unique under mild regularity. We are free in $D_\mathcal{V}$; two
+dimensions serve exploration well, since a floor one can walk is a plane.
+Appendix~\ref{sec:computation} gives the proof and the algorithm.
