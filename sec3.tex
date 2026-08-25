@@ -2,21 +2,21 @@
 \section{A Library with Rabbit Holes}\label{sec:framework}
 
 Return to the visitor of Section~\ref{sec:introduction}. What he could name
-was little: a title (\textit{Kind of Blue}), its performer (Miles Davis), its
-genre (jazz). Each of these fits a field on a record, and each is denotation.
-The rest of what he carried fits no field: the sound of the instruments, the
-mood, the atmosphere---quiet, with feeling in it, colors melting into one
-another. That rest is connotation.
+was little: a title (\textit{Kind of Blue}), its artist (Miles Davis), its
+genre (jazz). Each fills a field on a record, and each is denotation. The
+rest he carried fills no field: the sound of the instruments, the mood, the
+atmosphere---quiet, with feeling in it, colors melting into one another.
+That rest is connotation.
 
-From here we simplify: let the library carry these three descriptors and no
-others. To look for works beyond Miles Davis, then, he has no descriptor but
-genre. What exploration space must the library give him, so that he can seek
-what he is after? That question is the subject of this section.
+From here we simplify. Let the library carry these three descriptors and no
+others, and of the three let genre be our facet: its foci---jazz, classical,
+and the rest---are the floors. Beyond Miles Davis, then, the visitor holds
+genre and nothing more.
 
-He can also reach the contents themselves---to listen and see for himself. So
-the \emph{content data} drawn from those contents is available to us as well.
-Descriptors and content data together we call the \emph{collection data}. Our
-aim is then to build the exploration space from the collection data.
+He can also reach the contents themselves, and listen. So the \emph{content
+    data} is ours as well. The facet and the content data together we call the
+\emph{collection data}. What exploration space can we build from it, so that
+he can seek what he is after? That question is the subject of this section.
 
 \begin{figure}[p]
     \centering
@@ -37,24 +37,28 @@ aim is then to build the exploration space from the collection data.
     \begin{subfigure}{1.0\linewidth}
         \centering
         \includegraphics[width=0.9\linewidth]{fig/fig1c.pdf}
-        \caption{The fiber-bundle model joining the two.}
+        \caption{The fiber-bundle model.}
         \label{fig:bundle}
     \end{subfigure}
     \caption{
         \textbf{Two views of one representation.}
-        (a) In the multi-floor library with rabbit holes, each floor holds one
-        genre. Works on a floor are arranged by principal connotative
-        closeness, and \textit{rabbit holes} run vertically, connecting the same
-        connotative position on every floor. Each point is a work, labelled by
-        its performer.
-        (b) The curved universe shows the same works as their content data. Each
-        genre scatters into a loose cluster, a \textit{galaxy} of its own, and
-        each rabbit hole becomes a curve from galaxy to galaxy.
-        (c) The library is the product of the denotative space $\mathcal{U}$ and
-        the principal connotative space $\mathcal{V}$, and the embedding $\Phi$
-        maps it into the content data space: each floor is $\Phi(u,\cdot)$, each
-        rabbit hole $\Phi(\cdot,v)$.
-        The whole library is thus an optimal-transport fiber bundle (OT-FB).
+        (a) In the multi-floor library with rabbit holes, each floor takes one
+        focus, i.e., one genre. Works on a floor are arranged by connotative
+        closeness, and \textit{rabbit holes} run vertically, joining the same
+        connotative coordinate on every floor. Each point is a work; the label
+        gives its artist.
+        (b) The same works as their content data. Each genre scatters into a
+        loose cluster, a \textit{galaxy} of its own, and each rabbit hole is
+        warped into a curve running from galaxy to galaxy.
+        (c) The fiber bundle joins the two. In the library (left), a work sits
+        at a pair: its genre $u$ in the denotation space $\mathcal{U}$, and its
+        connotative coordinate $v$ in the facet-induced connotation space
+        $\mathcal{V}$. The embedding $\Phi$ carries the pair into the content
+        data space $\mathcal{X}$ (right), where the representation is
+        entangled: each floor becomes a galaxy $\Phi(u,\cdot)$, each rabbit
+        hole a fiber $\Phi(\cdot,v)$. The whole library is thus an
+        optimal-transport fiber bundle (OT-FB), defined in
+        Section~\ref{sec:mathematics}.
         Note: throughout, $\mathcal{U}$ is drawn one-dimensional and
         $\mathcal{V}$ two-dimensional; either may be higher.
     }
@@ -62,101 +66,103 @@ aim is then to build the exploration space from the collection data.
 \end{figure}
 
 
-
 %%% Subsection 3.1 The Multi-Floor Library %%%%%
 \subsection{The Multi-Floor Library with Rabbit
     Holes}\label{subsec:multi_floor_library}
 
-Consider first what descriptors alone can build: works gathered by genre, one
-floor to each in a library, and within a floor shelved in performer and title
-order. The visitor asks for the jazz floor and finds \textit{Kind of Blue} and
-the other works of Miles Davis. There his intention runs out. Shelf order
-tells him nothing of what a work is like, so he cannot move even along the
-jazz floor toward what he is after; on the classical floor he can only take
-works down at random.
+Consider first what the facet alone can build: each floor takes one focus,
+i.e., one genre, and holds its works in artist and title order. The visitor
+asks for the jazz floor and finds \textit{Kind of Blue} and the other works
+of Miles Davis. There his intention runs out. Shelf order tells him nothing
+of what a work is like, so he cannot move even along the jazz floor toward
+what he is after; on the classical floor he can only take works down at
+random.
 
-Suppose now that each floor can arrange its works by connotative closeness:
-beside any work stand the works that feel like it. Near \textit{Kind of Blue}
-he then finds other works of similar mood, and walking away from it he finds
-the mood changing gradually.
+Suppose now that each floor arranges its works by connotative closeness:
+beside any work stand the works that feel like it. The floor then gives each
+work a coordinate, and along its coordinates the connotation varies
+continuously---a spectrum under his feet. Near \textit{Kind of Blue} he finds
+works of similar mood, and walking away he finds the mood changing by degrees.
 
-We do not ask the floor to hold every connotation. We ask for the principal
+We do not ask a floor to hold every connotation. We ask for the principal
 ones---those that stand next after the denotation of genre, and that most
-visitors feel in common: instruments, mood, and their like. We call such a
-floor a \textbf{principal connotative space}. For now we postulate that we
-have one. We do not ask whether it exists, or whether collection data can
-give it. We assume only that every work carries a unique coordinate in it.
-That much already lets him explore the jazz floor.
+visitors feel in common: instruments, mood, and their like. We ask two things
+more: that one spectrum serve every focus, and that it vary independently of the
+facet. One facet fixes such a space, so we call it a \textbf{facet-induced
+    connotation space}. For now we postulate one, and leave its existence to
+Section~\ref{sec:mathematics}. Every work carries a unique coordinate in it, and
+that much already lets him explore the jazz floor.
 
-Assume further that this coordinate system is shared by every genre. From the
-coordinate of \textit{Kind of Blue} on the jazz floor, moving to the same
-coordinate on the classical floor brings him a work of the same principal
-connotation (Figure~\ref{fig:two_views}\,(a)). His reach now runs past genre to
-the whole library. He set out holding nothing but \textit{Kind of Blue}, Miles
-Davis, and jazz, with no words to carry him further; yet the whole building is
+One coordinate system now covers the whole library. One spectrum serves every
+focus, so a coordinate means the same connotation on every floor. From
+\textit{Kind of Blue} on the jazz floor, moving to the same coordinate on the
+classical floor brings him a work of that same connotation
+(Figure~\ref{fig:two_views}\,(a)). His reach therefore runs past genre to the
+whole building. He set out holding nothing but \textit{Kind of Blue}, Miles
+Davis, and jazz, with no words to carry him further; yet the whole library is
 open to him.
 
 This is the \textbf{multi-floor library with rabbit holes} that we propose.
-Genre puts each work on its floor; the principal connotative space puts it in
-its place on that floor. A rabbit hole is a vertical elevator, leaping to the
-same coordinate on another floor. So he can open his own way from Miles Davis
-to Debussy.
+The facet puts each work on its floor; the facet-induced connotation space
+places it there, and by the same rule on every floor. A rabbit hole is
+therefore vertical---an elevator standing at one coordinate, open on every
+floor. So he can open his own way from Miles Davis to Debussy.
 
 This library meets Bj\"orneborn's three affordances
 (Section~\ref{subsec:systems})~\citep{Bjorneborn20171053}.
-\textbf{Diversifiability}: beyond what the descriptors carry, the whole
-library opens to him as a multi-dimensional space.
+\textbf{Diversifiability}: beyond what the facet carries, the whole library
+opens to him as a multi-dimensional space.
 \textbf{Traversability}: he can traverse that space with intent, choosing what
 to hold fixed and what to vary. Walking a floor holds the genre and crosses
 connotation; entering a rabbit hole holds the connotation and crosses genre.
 \textbf{Sensoriability}: he can play a work, listen, and feel what connotation
-its position carries---and, before he listens, foresee what the other works
-there will be like.
+its position carries.
 
-Foreseeing is what affords his exploration. It lets him set out with a clear
-intent and an expectation of what lies ahead.
+Foreseeing is what affords his exploration. Where he stands, he can tell what
+the works around him are like; in the direction he moves, he can tell what
+awaits him. So he sets out with a clear intent.
 
 %%% Subsection 3.2 Seeking Serendipity in the Library %%%%%
 \subsection{Seeking Serendipity in the Library}\label{subsec:seeking}
 
-Let the visitor into this space, seeking as ever ``something like Miles Davis.''
-What he seeks is connotative, and it lies at $v_\text{seeker}$ in the principal
-connotative space. Of course, he can neither state nor specify what it is. He
-does not, in fact, know that $v_\text{seeker}$ exists. What he can do is stand
-before a work and feel whether it resonates---whether the work's coordinate lies
-near his own. That sense of affinity is his; the library has no access to it.
+Let the visitor into this space, seeking as ever ``something like Miles
+Davis.'' Suppose that what he seeks lies at $v_\text{seeker}$ in the
+facet-induced connotation space. He can neither state nor specify it. He does
+not know that $v_\text{seeker}$ exists. What he can do is stand before a work
+and feel whether it resonates---whether the work's coordinate lies near his
+own. That sense of affinity is his; the library has no access to it.
 
-He begins where anyone begins: with what he can name. The jazz floor he can ask
-for, and once there, he walks. Under his feet the principal connotative
-coordinate varies continuously; near Miles Davis the resonance strengthens, and
-he slows, and stops. Call the place where he stands $v_\text{work}$. Everything
-so far he could have foreseen: within a floor, one moves toward more of what one
-already feels. So far this is seeking, and the space serves it.
+He begins where anyone begins: with what he can name. He asks for the jazz
+floor, and there he walks. Under his feet the coordinate varies continuously;
+near Miles Davis the resonance strengthens, and he slows, and stops. Call the
+place where he stands $v_\text{work}$. All of this he could have foreseen: on
+a floor, one moves toward more of what one already feels. So far this is
+seeking, and the space serves it.
 
-Then he steps into the hole at $v_\text{work}$. The leap holds $v_\text{work}$
-fixed and lets the genre change entirely; he surfaces on the classical floor,
-where no descriptor survived the passage, and yet, before Debussy, the resonance
-holds. The field's oldest pairing, \textit{unexpected and
-    relevant}~\citep{Kotkov2016180}, becomes readable as two coordinates:
-unexpected with respect to every denotation, relevant in the one connotation the
-hole held fixed.
+Then he steps into the hole at $v_\text{work}$. The leap holds
+$v_\text{work}$ fixed and lets the genre change entirely; he surfaces on the
+classical floor, and before Debussy the resonance holds. The field's oldest
+pairing, \textit{unexpected and relevant}~\citep{Kotkov2016180}, becomes
+readable as two coordinates: unexpected in every denotation, relevant in the
+one connotation the hole held fixed.
 
 And what he finds is more than a piano piece. On the jazz floor the resonance
-might still have been jazz-ness, or Miles-ness; the leap stripped those accounts
-away, and what still resonates can only be the coordinate the hole held. At that
-moment the visitor discovers something in himself---that $v_\text{seeker}$
-exists. ``\textit{So this is what I was looking for}'': the moment of
-serendipity, \textit{a mix of unexpectedness and insight}, as \citet{Makri2012684}
-heard it---the unexpectedness of the instant before, the
+might still have been jazz-ness, or Miles-ness; the leap stripped those
+accounts away, and what still resonates can only be the coordinate the hole
+held. At that moment he discovers something in himself---that
+$v_\text{seeker}$ exists. ``\textit{So this is what I was looking for}'': the
+moment of serendipity, \textit{a mix of unexpectedness and
+    insight}~\citep{Makri2012684}---the unexpectedness of the instant before, the
 insight of the instant after.
 
-His exploration goes on, and it is this going on that turns the encounter into
-insight. He can ride the same hole to a third floor, turn back, walk a little
-and leap again---the ``unanticipated, anomalous and strategic
-datum'' of \citet{Merton1948505}: strategic, because here a finding becomes a plan.
+His exploration goes on, and it is this going on that turns the encounter
+into insight. He can ride the same hole to a third floor, turn back, walk a
+little and leap again---the ``unanticipated, anomalous and strategic datum''
+of \citet{Merton1948505}: strategic, because here a finding becomes a plan.
 The first leap told him that $v_\text{seeker}$ exists; those that follow tell
-him what it is---a structure, unnamed, running across every genre. So
-serendipity is not spent in the encounter. It begins there.
+him what it is---a structure, unnamed, running across every genre.
+Serendipity is not spent in the encounter; it begins there, and the library
+gives it ground to run on.
 
 The division of labor is exact. The library measures affinity only between
 works; that is its geometry. No library can measure the affinity between $v_\text{work}$ and the
@@ -168,9 +174,8 @@ space does not contain serendipity; it gives serendipity somewhere to happen.
 \subsection{The Content Data Space: A Curved
     Universe}\label{subsec:multi_galaxy}
 
-Our descriptors are genre, title, and performer, and no others. The principal
-connotative space must therefore come from the content data. Let us see how the
-works lie there.
+Genre is our only facet, so the connotation space must come from the content
+data. Let us see how the works lie there.
 
 Content data is high-dimensional, often hundreds of dimensions or more. In that
 space the works gather by genre into loose clusters, like galaxies in a universe
@@ -203,5 +208,5 @@ In the unsupervised setting it is provably ill-posed: for any disentangled
 solution, infinitely many entangled ones generate the same
 observations~\citep{Locatello20197247}. Some \textit{inductive bias}---a
 structural assumption about the space---is therefore unavoidable. Our task is to
-find the one that yields the principal connotative space, and
+find the one that yields the facet-induced connotation space, and
 Section~\ref{sec:mathematics} finds it in optimal transport.
