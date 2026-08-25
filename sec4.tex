@@ -64,19 +64,28 @@ quale varies, and each fiber is a quale manifold.
 
 
 \paragraph{Induced qualia spectrum.}
-A spectrum fiber bundle induces a second spectrum. Fibers of one bundle share
-a shape, so a single coordinate system $\mathcal{V}$ fits them all, and every
-point of the bundle gains an address $(u, v)$.
+A spectrum fiber bundle yields a second spectrum. Call the given one the
+\textit{base qualia spectrum}. Its fibers share a shape, so a single
+coordinate system $\mathcal{V}$ fits them all, and every point of the bundle
+gains an address $(u, v)$.
 
-Now hold $v$ fixed and let $u$ run, joining the point at $v$ on every fiber.
-Those points form a manifold of their own, crossing the whole
-bundle---geometry calls it a \textit{section}. Let $v$ vary, and these
-sections sweep out a second spectrum: the \textit{induced qualia spectrum}.
-The fibers are the warp, the sections the weft, and the qualities are the
-cloth they weave.
+Now fix $v$ and let $u$ run. This joins the points at $v$, one from every
+fiber, into a manifold of its own---a \textit{section} of the bundle. Let $v$
+vary, and the sections form a family. That family is itself a qualia
+spectrum, brought forth by the base: the \textit{induced qualia spectrum}.
+Its base space is $\mathcal{V}$, and each section is a fiber of it.
 
-How we cut $\mathcal{V}$ decides the cloth, and infinitely many cuts fit. To
-choose one, we need an inductive bias. Ours has two parts.
+The two spectra weave one cloth, and the bundle is their product manifold
+$\mathcal{U} \times \mathcal{V}$. The fibers of the base run one way, indexed
+by $u$, and they are the warp: the loom holds them already. The sections run
+across, indexed by $v$, and they are the weft: we thread them one by one. The
+qualities are the cloth.
+
+The warp is given, then, and the weft is ours to choose. Infinitely many
+threadings fit, and the data alone cannot choose among them: the
+ill-posedness of
+Section~\ref{subsec:disentanglement}~\citep{Locatello20197247}. We need an
+inductive bias. Ours has two parts.
 
 \begin{description}
     \item[\textbf{(Bias 1) Independence.}] The density over the bundle
@@ -91,8 +100,9 @@ on the base. Bias 2 makes it faithful: by Axiom 2, a short weft joins the
 qualities that feel most alike, so each section is spun from like qualities
 throughout. Together the two leave one bundle---disentangled by Bias 1, taut
 by Bias 2. Shortest total length is the problem of optimal transport, so we
-call it an \textit{optimal transport fiber bundle} (OT-FB), and what its
-induced spectrum carries, the \textit{common qualia} of the base.
+call this inductive bias the \textit{optimal transport bias} (OT bias). The
+resulting bundle is an \textit{optimal transport fiber bundle} (OT-FB), and
+what its induced spectrum carries is the \textit{common qualia} of the base.
 
 %%% Subsection 4.2 %%%
 \subsection{Content Space Equipped with
@@ -124,10 +134,11 @@ induced spectrum carries has no name---and that is where we go next.
 
 \paragraph{Definition.}
 A facet is the base of a spectrum fiber bundle, so the construction of
-Section~\ref{subsec:content_space} applies unchanged. Its fibers are the
-foci---jazz, classical, and the rest. Give them one coordinate system, take
-the shortest weft, and the induced spectrum follows. Every work then sits at
-an address $(u, v)$: $u$ runs across the foci, $v$ picks a section.
+Section~\ref{subsec:content_space} applies unchanged. The foci are its
+fibers---jazz, classical, and the rest---and they are the warp, already
+strung. Thread the weft by the two biases, and the induced spectrum follows.
+Every work then sits at an address $(u, v)$: $u$ says which focus, $v$ says
+which section.
 
 What does each coordinate carry? The facet has a name, so $u$ carries a
 denotation: $\mathcal{U}$ is the \textit{denotation space}, holding the one
@@ -142,17 +153,58 @@ The bundle so built we call the \textit{facet-induced OT-FB}. It is the
 multi-floor library with rabbit holes itself, now in geometry.
 Section~\ref{sec:framework} postulated such a library; here it exists.
 
-Figure~\ref{fig:two_views}(c) draws it. On the left stands the library. A work
-has an address $(u, v)$: its focus $u$ in $\mathcal{U}$, its connotation $v$ in
-$\mathcal{V}$. The two run apart---which floor, and where on the floor. On the
-right lies the content data, where an embedding $\Phi$ sends the address to a
-point $\mathbf{x} = \Phi(u, v)$. There the two no longer run apart: each floor
-$\Phi(u, \cdot)$ curves into a galaxy, and each rabbit hole $\Phi(\cdot, v)$
-into a thread running from galaxy to galaxy. One representation, two views.
+Figure~\ref{fig:two_views}(c) draws it. On the left stands the library. A
+work has an address $(u, v)$: its genre-ness $u$ in $\mathcal{U}$, its
+connotative coordinate $v$ in $\mathcal{V}$. The two run apart---which floor,
+and where on the floor. On the right lies the content data, where an
+embedding $\Phi$ sends the address to a point $\mathbf{x} = \Phi(u, v)$.
+There the two no longer run apart: each floor $\Phi(u, \cdot)$ curves into a
+galaxy, and each rabbit hole $\Phi(\cdot, v)$ into a curve running from
+galaxy to galaxy. One representation, two views.
 
 And it is unique. Two things come from us: the facet, and the dimensions
 $D_\mathcal{U}$ and $D_\mathcal{V}$. Fix them, and the two biases leave one
-bundle---the spaces that lose the least, principal in the sense of PCA, and
-essentially unique under mild regularity. We are free in $D_\mathcal{V}$; two
-dimensions serve exploration well, since a floor one can walk is a plane.
+bundle, essentially unique under mild regularity.
 Appendix~\ref{sec:computation} gives the proof and the algorithm.
+
+Both dimensions are ours to choose, and two is the usual answer: a space one
+can walk is a plane. Set $D_\mathcal{V}$ to two, and the biases return the
+$D_\mathcal{V}$-principal connotation space---the best two-dimensional
+account of what the foci share. Weaker connotations go unrepresented, exactly
+as in PCA. $D_\mathcal{U}$ answers to the foci, which are usually few: one or
+two dimensions hold ten genres with room to spare. Give the facet many foci,
+though, and $\mathcal{U}$ becomes a space to explore in its own right. Let
+the facet be artist, and $\mathcal{U}$ arranges artists by how near their
+quale manifolds lie in $\mathcal{X}$; the reader may walk from artist to
+artist, as well as from floor to floor.
+
+\paragraph{What $\mathcal{V}$ holds.}
+The coordinate $v$ carries a correspondence among the genres. Suppose each
+genre holds a thousand works. The OT bias then matches every jazz piece to
+one classical piece, one folk piece, and so on through every floor---a
+thousand matched sets, chosen so that the total distance is least. Draw those
+matches in $\mathcal{X}$, and a thousand near-parallel curves appear
+(Figure~\ref{fig:mtg_otfb}(d)). That parallel structure is the unnamed quale
+the genres share, and $v$ is the address of one curve within it.
+
+Say the match sends Miles Davis to Debussy. Nearness in $\mathcal{X}$ is not
+what joins them. Miles Davis holds a position within jazz, Debussy a
+homologous position within classical, and the match follows from that. A
+rabbit hole rises from how the genres stand as wholes, rather than from any
+affinity between two works.
+
+Note what made this possible. The connotation came out of the content data, yet
+the content data alone could not have yielded it. Nor could the facet alone: a
+name gathers only what it names. Both were needed. The name laid a foundation,
+and the foundation points toward what it cannot itself represent. Along that
+direction, we look into the content data, and the library rises there. Naming
+reaches its limit, and there it becomes the ground for what lies beyond.
+
+\begin{comment}
+Were $\mathcal{X}$ a linear space, the matter would be plain. The name spans
+a subspace, the subspace of warps; the OT bias takes the orthogonal
+complement; PCA picks the principal directions within it, and those are the
+wefts. We do the same in a curved universe, where the warp warps, and the
+weft warps with it. Naming reaches its limit, and there it becomes the ground
+for what lies beyond.
+\end{comment}
