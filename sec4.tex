@@ -10,11 +10,11 @@ and we define that space in geometry, not in words.
 
 %%% Subsection 4.1 %%%
 \subsection{Content Space, Quale, and Qualia
-  Spectrum}\label{subsec:content_space}
+    Spectrum}\label{subsec:content_space}
 
 \paragraph{Ideal content space.}
 As thermodynamics builds on the ideal gas, we build on the \textit{ideal
-  content space} $\mathcal{X}$: an idealization of real content data. The ideal
+    content space} $\mathcal{X}$: an idealization of real content data. The ideal
 gas averages how molecules move; $\mathcal{X}$ averages how people feel a
 work. It is a continuous vector space, and every work that could be made
 holds a unique position $x \in \mathcal{X}$.
@@ -27,22 +27,22 @@ many works. Three axioms follow, and the third tells how a quale lies in
 $\mathcal{X}$.
 
 \begin{description}
-  \item[\textbf{(Axiom 1) Sufficiency.}] The quality of a work carries what
-        people feel in it---as far as the connotation we mean to reach.
-  \item[\textbf{(Axiom 2) Similarity.}] $\mathcal{X}$ carries an inner
-        product $\langle x, x' \rangle$, and closeness in it means likeness
-        as people judge it, typically
-        $\operatorname{Ave}\bigl[\operatorname{Sim}(w, w')\bigr] =
-          \exp \langle x, x' \rangle$~\citep{Shepard19871317}.
-  \item[\textbf{(Axiom 3) Manifold hypothesis.}] A quale is a probability
-        density over $\mathcal{X}$, characterized by a smooth manifold.
+    \item[\textbf{(Axiom 1) Sufficiency.}] The quality of a work carries what
+          people feel in it---as far as the connotation we mean to reach.
+    \item[\textbf{(Axiom 2) Similarity.}] $\mathcal{X}$ carries an inner
+          product $\langle x, x' \rangle$, and closeness in it means likeness
+          as people judge it, typically
+          $\operatorname{Ave}\bigl[\operatorname{Sim}(w, w')\bigr] =
+              \exp \langle x, x' \rangle$~\citep{Shepard19871317}.
+    \item[\textbf{(Axiom 3) Manifold hypothesis.}] A quale is a probability
+          density over $\mathcal{X}$, characterized by a smooth manifold.
 \end{description}
 
 \noindent
 Axiom 3 turns sharing into a matter of degree. The density peaks on the manifold
 and decays away from it: a work may carry a quale strongly, weakly, or hardly at
 all. The manifold is the geometry of the quale, and we call it the \textit{quale
-  manifold}---an idealized principal manifold, carrying the dominant structure of
+    manifold}---an idealized principal manifold, carrying the dominant structure of
 the density and smooth enough to move along.
 
 The three axioms together ask for one thing: a representation space faithful
@@ -55,51 +55,51 @@ modern embedding methods---Transformers and large language models---aim at
 the very representation these axioms describe~\citep{Grand2022}.
 
 \begin{figure}[t]
-  \centering
-  \begin{subfigure}[t]{0.262\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{fig/fig2a.pdf}
-    \caption{A base qualia spectrum.}
-    \label{fig:base_spectrum}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.262\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{fig/fig2b.pdf}
-    \caption{An entangled weft.}
-    \label{fig:weft_fails}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.262\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{fig/fig2c.pdf}
-    \caption{The induced spectrum.}
-    \label{fig:induced_spectrum}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.190\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{fig/fig2d.pdf}
-    \caption{$\mathcal{U}\times\mathcal{V}$.}
-    \label{fig:uv_square}
-  \end{subfigure}
-  \caption{
-    \textbf{Base spectrum (fiber/warp) and induced spectrum (section/weft).}
-    Panels (a)--(c) picture the ideal content space $\mathcal{X}$; each
-    point is the quality of one work. We take the color example literally:
-    the spectrum is given by hue; each quale manifold consists of colors
-    having the same hue.
-    (a) A base qualia spectrum: the manifolds vary continuously along the
-    base space $\mathcal{U}$.
-    (b) An entangled weft: infinitely many such solutions exist.
-    (c) The spectrum over $\mathcal{V}$ induced by the base $\mathcal{U}$,
-    the solution the OT bias leaves. The weft runs shortest in total, and
-    $u$ and $v$ become statistically independent. $\mathcal{V}$ carries the
-    common qualia of the base (e.g., brightness).
-    (d) The disentangled representation, woven by warp $\mathcal{U}$ and
-    weft $\mathcal{V}$.
-  }
-  \label{fig:spectra}
+    \begin{subfigure}[t]{0.262\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig/fig2a.pdf}
+        \caption{A base qualia spectrum.}
+        \label{fig:base_spectrum}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.262\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig/fig2b.pdf}
+        \caption{An entangled weft.}
+        \label{fig:weft_fails}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.262\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig/fig2c.pdf}
+        \caption{The induced spectrum.}
+        \label{fig:induced_spectrum}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.190\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig/fig2d.pdf}
+        \caption{$\mathcal{U}\times\mathcal{V}$.}
+        \label{fig:uv_square}
+    \end{subfigure}
+    \caption{
+        \textbf{Base spectrum (fiber/warp) and induced spectrum (section/weft).}
+        Panels (a)--(c) picture the ideal content space $\mathcal{X}$; each
+        point is the quality of one work. We take the color example literally:
+        the spectrum is given by hue; each quale manifold consists of colors
+        having the same hue.
+        (a) A base qualia spectrum: the manifolds vary continuously along the
+        base space $\mathcal{U}$.
+        (b) An entangled weft: infinitely many such solutions exist.
+        (c) The spectrum over $\mathcal{V}$ induced by the base $\mathcal{U}$,
+        the solution the OT bias leaves. The weft runs shortest in total, and
+        $u$ and $v$ become statistically independent. $\mathcal{V}$ carries the
+        common qualia of the base (e.g., brightness).
+        (d) The disentangled representation, woven by warp $\mathcal{U}$ and
+        weft $\mathcal{V}$.
+    }
+    \label{fig:spectra}
 \end{figure}
 
 \paragraph{Qualia spectrum.}
@@ -135,10 +135,10 @@ ill-posedness of Section~\ref{subsec:disentanglement}~\citep{Locatello20197247}.
 We need an inductive bias. Ours has two parts.
 
 \begin{description}
-  \item[\textbf{(Bias 1) Independence.}] The density over the bundle
-        factorizes: $p(u, v) = p(u)\,p(v)$.
-  \item[\textbf{(Bias 2) Shortest weft.}] Among such coordinate systems,
-        take the one whose sections run shortest in total.
+    \item[\textbf{(Bias 1) Independence.}] The density over the bundle
+          factorizes: $p(u, v) = p(u)\,p(v)$.
+    \item[\textbf{(Bias 2) Shortest weft.}] Among such coordinate systems,
+          take the one whose sections run shortest in total.
 \end{description}
 
 \noindent
@@ -146,7 +146,7 @@ Bias 1 makes a quale common: $v$ says the same thing wherever it sits on the
 base. Bias 2 makes it faithful: by Axiom 2, a short weft joins the qualities
 that feel most alike, so each section is spun from like qualities throughout.
 The two together form one inductive bias, and we call it the \textit{optimal
-  transport bias} (OT bias), since shortest total length is the problem of optimal
+    transport bias} (OT bias), since shortest total length is the problem of optimal
 transport. The OT bias leaves one bundle: disentangled by Bias 1, taut by
 Bias 2. We call that bundle an \textit{optimal transport fiber bundle} (OT-FB),
 and its induced spectrum carries the \textit{common qualia} of the base
@@ -157,7 +157,7 @@ disentangled representation (panel (d)).
 
 %%% Subsection 4.2 %%%
 \subsection{Content Space Equipped with
-  Denotation}\label{subsec:denotation}
+    Denotation}\label{subsec:denotation}
 
 So far we have seen the geometry of $\mathcal{X}$: a world continuous,
 countless, and nameless. But the library is built of names: a world discrete,
@@ -185,10 +185,10 @@ Each focus is a named class, and its name passes to a quale. So in $\mathcal{X}$
 the facet is a set of qualia: jazz-ness, classical-ness, rock-ness, and the
 rest.
 
-Now lay this set along a coordinate $u \in \mathcal{U}$. Move $u$, and the
-quale moves with it: folk-ness shades into rock-ness, rock-ness into
-electronic-ness. The facet is then a qualia spectrum in $\mathcal{X}$, and we
-call it the \textit{facet spectrum}.
+One characteristic cuts them all, so lay this set along a coordinate $u \in
+    \mathcal{U}$. Move $u$, and the quale moves with it: folk-ness shades into
+rock-ness, rock-ness into electronic-ness. The facet is then a qualia spectrum
+in $\mathcal{X}$, and we call it the \textit{facet spectrum}.
 
 Which $u$ each focus takes, Section~\ref{subsec:principal_connotative} settles.
 For now we suppose it given.
@@ -211,11 +211,11 @@ multi-floor library with rabbit holes, now in geometry:
 Section~\ref{sec:framework} postulated such a library; here it exists. Three
 vocabularies now name one structure.
 \begin{itemize}
-  \item Fix $u$: a fiber appears---one focus, one warp thread, one floor of
-        the library. The coordinate $u$ runs over $\mathcal{U}$, from floor
-        to floor.
-  \item Fix $v$: a section appears---one weft thread, one rabbit hole. The
-        coordinate $v$ runs over $\mathcal{V}$, across each floor alike.
+    \item Fix $u$: a fiber appears---one focus, one warp thread, one floor of
+          the library. The coordinate $u$ runs over $\mathcal{U}$, from floor
+          to floor.
+    \item Fix $v$: a section appears---one weft thread, one rabbit hole. The
+          coordinate $v$ runs over $\mathcal{V}$, across each floor alike.
 \end{itemize}
 
 Figure~\ref{fig:two_views}(c) draws the bundle twice. On the left stands the
