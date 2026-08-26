@@ -159,22 +159,38 @@ least error, as in PCA{}. Finally, we obtain the disentangled representation
 \subsection{Content Space Equipped with
     Denotation}\label{subsec:denotation}
 
+So far we have seen the geometry of $\mathcal{X}$: a world continuous,
+countless, and nameless. But the library is built of names: a world discrete,
+few, and spoken. This section joins the two worlds.
+
 \paragraph{Denotation and connotation.}
 Section~\ref{subsec:naming} divided meaning by naming. That division now falls
-on qualia. A quale that has a name is a \textit{denotation}; a quale that has
-none is a \textit{connotation}. Their quale manifolds we call
-\textit{denotative} and \textit{connotative}.
+on qualia. A quale with a name is a \textit{denotation}; a quale without one is
+a \textit{connotation}. A catalogue, though, names classes, not qualia: jazz is
+a set of works, jazz-ness a density over $\mathcal{X}$. In the ideal content
+space the two agree---the works of jazz, each a point of $\mathcal{X}$, are
+drawn from the density jazz-ness---so the name passes from the class to the
+quale.
 
 Naming leaves the geometry untouched. Jazz-ness and ``quiet, with feeling in
-it'' are manifolds of one kind, and only one of them has a word. The
-catalogue records the first; $\mathcal{X}$ holds both.
+it'' are alike in kind: each is a quale, a density over $\mathcal{X}$ modeled by
+a manifold. Only one of them has a word. The catalogue records the first;
+$\mathcal{X}$ holds both.
 
 \paragraph{Facet.}
-A qualia spectrum that has a name is a \textit{facet}~\citep{Ranganathan1967}.
-Genre is one. Its quale manifolds---jazz, classical, and the rest---are its
-\textit{foci}, and together they vary with genre-ness. A catalogue gives a work
-one focus. Here the foci become continuous: a work no longer takes one, but a
-position among them. That position is the base coordinate $u$.
+One characteristic of division yields a group of \textit{foci}, and that group
+is a \textit{facet}~\citep{Ranganathan1967}. Genre is our facet throughout this
+paper, and jazz, classical, rock, and the rest are its foci. Each focus is a
+named class, and its name passes to a quale. So in $\mathcal{X}$ the facet is a
+set of qualia: jazz-ness, classical-ness, rock-ness, and the rest.
+
+Now lay this set along a coordinate $u \in \mathcal{U}$. Move $u$, and the
+quale moves with it: folk-ness shades into rock-ness, rock-ness into
+electronic-ness. The facet is then a qualia spectrum in $\mathcal{X}$, and we
+call it the \textit{facet spectrum}.
+
+Which $u$ each focus takes, Section~\ref{subsec:principal_connotative} settles.
+For now we suppose it given.
 
 
 %%% Subsection 4.3 %%%
@@ -183,18 +199,20 @@ position among them. That position is the base coordinate $u$.
 \paragraph{Definition.}
 A facet is the base of a spectrum fiber bundle, so the construction of
 Section~\ref{subsec:content_space} applies unchanged
-(Figure~\ref{fig:spectra}). The foci are its fibers---jazz, classical, and the
-rest---and they are the warp, already strung. Thread the weft by the two
-biases, and the induced spectrum follows. Every work then sits at an address
-$(u, v)$: $u$ says which focus, $v$ says which section.
+(Figure~\ref{fig:spectra}). The foci---jazz, classical, and the rest---are its
+fibers, the warp. A catalogue lists the foci but never spaces them; the OT bias
+does, by making the weft shortest. Every work then sits at an address $(u, v)$:
+$u$ says where among the foci, $v$ says which section. One bias fixes both
+coordinates.
 
 What does each coordinate carry? The facet has a name, so $u$ carries a
-denotation: $\mathcal{U}$ is the \textit{denotation space}, holding the one
-denotation this library admits. The other coordinate $v$ carries what the facet
-cannot name. Genre names jazz and classical, nothing more, yet $v$ holds a quale
-common to every focus. A quale without a name is a connotation
-(Section~\ref{subsec:denotation}), so $\mathcal{V}$ is the \textit{facet-induced
-    connotation space}.
+denotation: $\mathcal{U}$ is the \textit{denotation space}. Genre names jazz
+and classical, nothing more. Yet the bundle returns two things the names never
+said. The first lies between the names: in $\mathcal{U}$, pops-ness sits near
+rock-ness, folk-ness near country-ness. The second lies beyond them: $v$
+carries a quale common to every genre, one the facet cannot name. A quale
+without a name is a connotation (Section~\ref{subsec:denotation}), so
+$\mathcal{V}$ is the \textit{facet-induced connotation space}.
 
 \paragraph{Facet-induced OT-FB.}
 The bundle so built we call the \textit{facet-induced OT-FB}. It is the
