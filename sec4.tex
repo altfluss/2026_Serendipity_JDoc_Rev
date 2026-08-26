@@ -7,6 +7,7 @@ name does there. One name is enough: a single facet. Its task here is to draw
 out what description leaves behind. From it the space of the unnamed follows,
 and we define that space in geometry, not in words.
 
+
 %%% Subsection 4.1 %%%
 \subsection{Content Space, Quale, and Qualia
     Spectrum}\label{subsec:content_space}
@@ -53,21 +54,71 @@ Axiom 3 has served machine learning for years~\citep{Bengio20131798}, and
 modern embedding methods---Transformers and large language models---aim at
 the very representation these axioms describe~\citep{Grand2022}.
 
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}[t]{0.262\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig/fig2a.pdf}
+        \caption{A base qualia spectrum.}
+        \label{fig:base_spectrum}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.262\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig/fig2b.pdf}
+        \caption{A weft that fails.}
+        \label{fig:weft_fails}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.262\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig/fig2c.pdf}
+        \caption{The induced spectrum.}
+        \label{fig:induced_spectrum}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.190\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{fig/fig2d.pdf}
+        \caption{$\mathcal{U}\times\mathcal{V}$.}
+        \label{fig:uv_square}
+    \end{subfigure}
+    \caption{
+        \textbf{Base spectrum (fiber/warp) and induced spectrum (section/weft).}
+        Panels (a)--(c) picture the ideal content space $\mathcal{X}$; each
+        point is the quality of one work. We take the colour example
+        literally: a point's hue is the quale it carries, its brightness which
+        work within that quale. The points of one hue thus form a quale
+        manifold, and the shaded surface is the family of them---the cloth the
+        two spectra weave.
+        (a) A base qualia spectrum: the manifolds shift continuously along the
+        base space $\mathcal{U}$.
+        (b) A weft threaded badly: the points it picks do not share a
+        brightness, and a section's grey wavers along its length.
+        (c) The weft the OT bias leaves: joining the points of equal
+        brightness, one from every fiber, gives a section, and these form the
+        induced qualia spectrum over $\mathcal{V}$.
+        (d) The same cloth unwoven: the disentangled representation. No longer
+        $\mathcal{X}$, but the coordinates themselves---along $\mathcal{U}$ and
+        $\mathcal{V}$, warp and weft become a square grid.
+    }
+    \label{fig:spectra}
+\end{figure}
 
 \paragraph{Qualia spectrum.}
-A quale can vary continuously---violet shades into blue, blue into green, and
-so on to red---and its quale manifold moves with it. We call such a family of
-manifolds a \textit{qualia spectrum}. Geometry already knows this structure as
-a \textit{fiber bundle}, and we call it a \textit{spectrum fiber bundle}: the
-base space $\mathcal{U}$ is the parameter---of any dimension---along which the
-quale varies, and each fiber is a quale manifold.
-
+A quale can vary continuously---violet shades into blue, blue into green, and so
+on to red---and its quale manifold moves with it. We call such a family of
+manifolds a \textit{qualia spectrum} (Figure~\ref{fig:spectra}(a)). Geometry
+already knows this structure as a \textit{fiber bundle}, and we call it a
+\textit{spectrum fiber bundle}: the base space $\mathcal{U}$ is the
+parameter---of any dimension---along which the quale varies, and each fiber is a
+quale manifold.
 
 \paragraph{Induced qualia spectrum.}
 A spectrum fiber bundle yields a second spectrum. Call the given one the
 \textit{base qualia spectrum}. Its fibers share a shape, so a single
 coordinate system $\mathcal{V}$ fits them all, and every point of the bundle
-gains an address $(u, v)$.
+gains an address $(u, v)$ (Figure~\ref{fig:spectra}).
 
 Now fix $v$ and let $u$ run. This joins the points at $v$, one from every
 fiber, into a manifold of its own---a \textit{section} of the bundle. Let $v$
@@ -82,10 +133,9 @@ across, indexed by $v$, and they are the weft: we thread them one by one. The
 qualities are the cloth.
 
 The warp is given, then, and the weft is ours to choose. Infinitely many
-threadings fit, and the data alone cannot choose among them: the
-ill-posedness of
-Section~\ref{subsec:disentanglement}~\citep{Locatello20197247}. We need an
-inductive bias. Ours has two parts.
+threadings fit, and the data alone cannot choose among them (panel (b)): the
+ill-posedness of Section~\ref{subsec:disentanglement}~\citep{Locatello20197247}.
+We need an inductive bias. Ours has two parts.
 
 \begin{description}
     \item[\textbf{(Bias 1) Independence.}] The density over the bundle
@@ -95,14 +145,18 @@ inductive bias. Ours has two parts.
 \end{description}
 
 \noindent
-Bias 1 is what makes a quale common: $v$ says the same thing wherever it sits
-on the base. Bias 2 makes it faithful: by Axiom 2, a short weft joins the
-qualities that feel most alike, so each section is spun from like qualities
-throughout. Together the two leave one bundle---disentangled by Bias 1, taut
-by Bias 2. Shortest total length is the problem of optimal transport, so we
-call this inductive bias the \textit{optimal transport bias} (OT bias). The
-resulting bundle is an \textit{optimal transport fiber bundle} (OT-FB), and
-what its induced spectrum carries is the \textit{common qualia} of the base.
+Bias 1 is what makes a quale common: $v$ says the same thing wherever it sits on
+the base. Bias 2 makes it faithful: by Axiom 2, a short weft joins the qualities
+that feel most alike, so each section is spun from like qualities throughout.
+Together the two leave one bundle---disentangled by Bias 1, taut by Bias 2.
+Shortest total length is the problem of optimal transport, so we call this
+inductive bias the \textit{optimal transport bias} (OT bias). The resulting
+bundle is an \textit{optimal transport fiber bundle} (OT-FB), and what its
+induced spectrum carries is the \textit{common qualia} of the base (panel (c)).
+Give $\mathcal{V}$ few dimensions, and it keeps the principal common qualia, in
+the sense of least error. Finally, we obtain the disentangled representation
+(panel (d)).
+
 
 %%% Subsection 4.2 %%%
 \subsection{Content Space Equipped with
