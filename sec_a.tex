@@ -21,7 +21,8 @@ the work coordinates $U = (u_1, \dots, u_N)$ in $\mathcal{U}$ and
 $V = (v_1, \dots, v_N)$ in $\mathcal{V}$.
 
 The objective aligns the $K$ genre distributions by minimizing the
-2-Wasserstein distance---the multi-marginal problem.
+2-Wasserstein distance---a multi-marginal optimal transport
+problem~\citep{villani2009optimal,pass2015multi}.
 \begin{align}\label{eq:main_objective}
     W^2_2(p_\text{data}, q_\Phi)
            & = \inf_{\gamma\in\Pi(p_{\text{data}},\, q_\Phi)}
