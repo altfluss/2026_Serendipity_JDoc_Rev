@@ -1,54 +1,13 @@
-%%%%% Section 6. Demonstration with real data %%%%%
-\section{Demonstration}\label{sec:demonstration}
+%%%%% Section 5. Demonstration with real data %%%%%
+\section{Facet-Induced Connotation Spaces from Real Data}
+\label{sec:demonstration}
 
-Sections~\ref{sec:framework}--\ref{sec:mathematics} designed the
-library in concept, and in mathematics. This section
-builds two. The first, a music collection, takes its content data
-from sound alone. The second, a collection of children's books, takes
-two kinds of content data, and so opens two bundles of rabbit holes
-over one base. We first state what the construction asks of the
-content data, then build the two libraries in turn.
-
-
-%%% Subsection 6.1 %%%
-\subsection{What the Construction Asks of the Content
-    Data}\label{subsec:content_data}
-
-\paragraph{Unfolded content data.}
-The construction asks one thing of the content data: that closeness
-in $\mathcal{X}$ mean kinship between works. Both the proximity (A2)
-and the transport cost are stated in the Euclidean distance of
-$\mathcal{X}$, so what counts as close there decides which works a
-rabbit hole joins. Two requirements follow.
-
-The first is Euclidean geometry. The content data must carry an inner
-product, or a distance that is Euclidean at least locally. The second
-is that the space be \emph{unfolded}. A space of raw signals is
-folded: kindred works may lie far apart, and local distance tells
-little about kinship. Unfolding is the preprocessing the construction
-asks for, and it must be generic---made for no particular task. Deep
-embeddings meet both requirements: foundation encoders are trained on
-large corpora so that semantic closeness becomes geometric closeness,
-and trained for no single purpose.
-
-\paragraph{Description as content data.}
-A description of a work, embedded by a large language model (LLM),
-meets both requirements. An abstract or a synopsis serves as it
-stands. What the embedding returns is no longer a set of words but a
-place, and the place keeps the nuance: \textit{chill} and
-\textit{relaxed} land close, as they do in use, and \textit{beautiful
-    and sad} is read as one impression rather than two labels.
-
-Where no description exists, one can be composed from the tags users
-have freely given---``\textit{this work is described by the following
-    words: $t_1, t_2, \ldots$}''---and embedded whole. No controlled
-vocabulary is needed; whatever words come will do.
-
-Which words are embedded then decides what the bundle carries. Embed
-the nouns given to a work, and its themes enter the content space;
-embed the adjectives, and the impression it leaves does.
-Section~\ref{subsec:book_library} uses this freedom to give one
-collection two kinds of rabbit holes.
+Section~\ref{sec:mathematics} took the ideal content space as given. Here we
+take it as data. Modern general-purpose encoders---CLIP, CLAP, and the
+like---aim at the same ideal: trained on large corpora, for no single task, they
+turn likeness into closeness. So their embeddings serve as content data. This
+section builds two libraries, one from sound and one from sight, and reads the
+connotation space each one gives.
 
 \begin{figure}[p]
     \centering
@@ -89,9 +48,9 @@ collection two kinds of rabbit holes.
     \label{fig:mtg_otfb}
 \end{figure}
 
-%%% Subsection 6.2 %%%
-\subsection{A Music Library Built from Sound
-    Alone}\label{subsec:music_library}
+%%% Subsection 5.1 %%%
+\subsection{A Music Library from Sound and Genre}
+\label{subsec:music_library}
 
 \paragraph{Setup.}
 The first library is built from MTG-Jamendo~\cite{Bogdanov2019}, an
@@ -107,7 +66,7 @@ themes---and they are held out, to be read afterward against the space
 the sound itself has built.
 
 \paragraph{The learned bundle.}
-Figure~\ref{fig:mtg_otfb} shows the collection modeled by the OT-FB.
+Figure~\ref{fig:mtg_otfb} shows the collection modeled by the OT-FB{}.
 The five galaxies separate cleanly in the content space
 $\mathcal{X}$: sound alone, embedded, already tells the genres apart.
 In (a) a manifold is fitted to each galaxy independently; in (b) the
@@ -121,10 +80,9 @@ same lines descend in order. Five galaxies that lie apart in
 $\mathcal{X}$ now share one coordinate system, and each line is a
 rabbit hole: five works, one per genre, standing at the same $v$.
 
-Both results satisfy the independence (A1): in (c) as in (d), $v$ runs
-independently of the genre. (A1) alone leaves the floors unaligned.
-The proximity (A2) aligns them, minimizing the total length of the
-connections between the manifolds.
+Both results satisfy Bias 1: in (c) as in (d), $v$ runs independently
+of the genre. Bias 1 alone leaves the floors unaligned. Bias 2 aligns
+them, minimizing the total length of the weft.
 
 
 \begin{figure}[t]
@@ -239,16 +197,14 @@ connections between the manifolds.
     \end{tabular}
 \end{table}
 
-\paragraph{Reading $\mathcal{V}$ through the tags.}
-What does the connotation space $\mathcal{V}$ hold? The tags held out
-of the modeling---instruments, moods, and themes---give the reading.
-Each tag defines a density over $\mathcal{V}$: the distribution
-$p(v \mid \textit{tag})$ of the works that carry it.
-Figure~\ref{fig:v_tags}(a--d) shows four of them---\textit{piano},
-\textit{trumpet}, \textit{acoustic guitar}, and \textit{happy}. Each
-peaks at a place of its own, yet the four densities
-overlap---connotation runs as a continuous spectrum, not as discrete
-regions.
+\paragraph{Reading $\mathcal{V}$ through the tags.} What does the facet-induced
+connotation space $\mathcal{V}$ hold? The tags held out of the
+modeling---instruments, moods, and themes---give the reading. Each tag defines a
+density over $\mathcal{V}$: the distribution $p(v \mid \textit{tag})$ of the
+works that carry it. Figure~\ref{fig:v_tags}(a--d) shows four of
+them---\textit{piano}, \textit{trumpet}, \textit{acoustic guitar}, and
+\textit{happy}. Each peaks at a place of its own, yet the four densities
+overlap---connotation runs as a continuous spectrum, not as discrete regions.
 
 Tags differ in how much they tell about $v$. The mutual information
 $\mathrm{MI}[v; \textit{tag}]$ measures it: how unevenly the works
@@ -278,223 +234,171 @@ accordion and ukulele; at D, piano, relaxing and sad. No single tag
 names a point; the tags gathered there do.
 
 \paragraph{What $\mathcal{V}$ represents.}
-The tags have read $\mathcal{V}$ as a continuous spectrum.
-Connotation itself, though, is known by hearing rather than by words.
-It lies in what the works gathered at one point have in common, and no
-single word holds it. The tags cannot name it; they let the seeker
-guess what a point holds, and a guess is enough to start walking.
+The tags have read $\mathcal{V}$ as a continuous spectrum. Connotation
+itself, though, is known by hearing rather than by words. It lies in
+what the works gathered at one point have in common, and no single
+word holds it. The tags cannot name it; they let the seeker guess what
+a point holds, and a guess is enough to start walking.
 
-$\mathcal{V}$ does not hold every connotation---only the principal
-ones. Here it is built from the sound and the genre labels alone:
-genre gave the denotation, and all else was left to connotation. Of
-that remainder $\mathcal{V}$ keeps the principal components, in the
-sense of least error (Section~\ref{subsec:content_space}). They read as
-instruments first, and the moods that go with them
-(Table~\ref{tab:tag_mi}). \textit{Principal} claims no more than this:
-many connotations run through the music, and $\mathcal{V}$ holds those
-that account for it best.
+What $\mathcal{V}$ holds follows from the facet. Genre was the only
+facet, so all else---instruments, moods, themes---was left to
+connotation. Which of them, then, does $\mathcal{V}$ carry?
+
+$\mathcal{V}$ carries the two as one. An instrument tends to bring its
+own moods---the ring of brass, the cheer of a ukulele, the warmth of
+an acoustic guitar. So tags do not settle at points of $\mathcal{V}$.
+Each one spreads over a stretch of the spectrum, and the stretches
+overlap: \textit{piano} peaks at the lower left, among relaxing and
+sad, and reaches the upper right as well, where the music runs
+energetic (Figure~\ref{fig:v_tags}(a)). $\mathcal{V}$ is a qualia
+spectrum, and its qualia are instrument and mood joined.
+\textit{Principal} means this: the two dimensions that account for
+that joining with least error (Section~\ref{subsec:content_space}).
 
 A single point of $\mathcal{V}$ does not hold a single kind of music.
 The works gathered there are alike in connotation, yet they run from
 genre to genre; the space is one, shared by the five. Each point is a
-rabbit hole, opening at the same $v$ on every floor. At point A
-(Figure~\ref{fig:v_tags}), rock is energetic music driven by drums;
-through the hole, on the classical floor, brass plays with the same
-force. At point D, emotional piano jazz leads to romantic classical
-piano---and to some trumpet as well, faint but there (panel~(b))---
-close to what the visitor of Section~\ref{sec:introduction} was
-seeking.
+rabbit hole, opening at the same $v$ on every floor. At point A, rock
+is energetic music driven by drums; through the hole, on the classical
+floor, brass plays with the same force.
+
+Return now to the visitor of Section~\ref{sec:introduction}. The
+catalogue told him \textit{trumpet}, and most trumpet music sits at A,
+fast and played with force. That is the crowd of trumpeters his search
+returned, and almost none of it was what he wanted. What he wanted
+lies at D, where trumpets are few, yet present
+(Figure~\ref{fig:v_tags}(b)). The name Miles Davis carries him to the
+jazz floor and to D upon it, and the hole at D opens onto the
+emotional pianos of every other floor. In
+Section~\ref{sec:introduction} he made that passage by chance, weeks
+later, in a train station. Here it lies under his feet.
 
 
-%%% Subsection 6.3 %%%
-\subsection{A Book Library with Two Kinds of Rabbit
-    Holes}\label{subsec:book_library}
-
-\begin{figure}[t]
+\begin{figure}[p]
     \centering
-    \begin{subfigure}[t]{0.32\linewidth}
-        \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig6a.pdf}
-        \caption{The genre map $\mathcal{U}$.}
+    \begin{subfigure}[b]{0.45\linewidth}
+        \includegraphics[width=\linewidth]{fig/fig6a.pdf}
+        \caption{Spectrum of style/subject}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.32\linewidth}
-        \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig6b.pdf}
-        \caption{The theme space $\mathcal{V}_{\mathrm{thm}}$.}
+    \begin{subfigure}[b]{0.45\linewidth}
+        \includegraphics[width=\linewidth]{fig/fig6b.pdf}
+        \caption{$\mathcal{U}$ for style/subject}
+    \end{subfigure}
+
+    \vspace{2mm}
+
+    \begin{subfigure}[b]{0.42\linewidth}
+        \includegraphics[width=\linewidth]{fig/fig6c.pdf}
+        \caption{Words on $\mathcal{V}$}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[t]{0.32\linewidth}
-        \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig6c.pdf}
-        \caption{The impression space $\mathcal{V}_{\mathrm{imp}}$.}
+    \begin{subfigure}[b]{0.55\linewidth}
+        \includegraphics[width=\linewidth]{fig/fig6d.pdf}
+        \caption{Emotion on $\mathcal{V}$}
     \end{subfigure}
     \caption{
-        \textbf{The book library with two kinds of rabbit holes.}
-        The same 409 books, given one denotative and two connotative
-        addresses.
-        (a) The denotation space, learned from the fuzzy genre
-        descriptors; each circle marks one of the fifteen genres.
-        (b, c) The connotation spaces built from the theme and the
-        impression descriptions, read as in
-        Figure~\ref{fig:v_tags}: the top-30 words by mutual
-        information with $v$, each at the peak of its density
-        $p(v \mid \textit{word})$.}
-    \label{fig:book_otfb}
+        \textbf{The twenty-six-floor OT-FB learned from WikiArt.}
+        (a) The manifolds in the content space $\mathcal{X}$ (CLIP
+        embeddings of the images, first three principal components), one
+        per floor.
+        (b) The denotation space $\mathcal{U}$. Each marker is one floor,
+        its shape the subject: $\triangle$ landscape, $\square$ genre
+        painting, $\Diamond$ religious painting, $\bigcirc$ portrait.
+        Style runs across, subject runs down.
+        (c, d) The connotation space $\mathcal{V}$, read through the
+        held-out ArtEmis annotations. Markers sit at the peak of each
+        density $p(v \mid \cdot)$: in (c) pairs of emotions, since a
+        single emotion peaks in several places while a pair settles in
+        one; in (d) words. Larger markers and labels carry higher
+        pointwise mutual information with $v$, on each panel's own scale.
+        Both panels share one background, the emotion spectrum: the nine
+        emotion densities are turned into PPMI, reduced to three axes by
+        SVD, and printed as cyan, magenta, and yellow ink on white. Hue
+        tells which emotions gather; lightness tells how strongly. White
+        marks where no emotion stands out.}
+    \label{fig:wikiart}
 \end{figure}
 
+%%% Subsection 5.2 %%%
+\subsection{A Painting Library from Image, Style, and Subject}
+
 \paragraph{Setup.}
-The second library is built from 409 well-known children's books. An
-LLM annotator (OpenAI GPT-4) gives each book two descriptions: six to
-eight nouns for its themes, and six to eight adjectives for the
-impression it leaves. Across the collection, 74 nouns and 79
-adjectives are used. Each set is joined into a description as in
-Section~\ref{subsec:content_data}---``\textit{This is a children's
-    book. The impressions are humorous, warm, and adventurous}''---then
-embedded by an LLM text encoder (OpenAI
-\texttt{text-embedding-3-small}) and prepared as in
-Section~\ref{subsec:music_library}. One collection thus yields two
-content datasets: theme data and impression data.
+The second library is built from WikiArt, a community-curated
+encyclopedia of visual art. Here a focus is compound: a style and a
+subject together, such as \textit{Impressionist landscape}. Nine
+styles---Baroque, Rococo, Romanticism, Realism, Impressionism,
+Post-Impressionism, Expressionism, Symbolism, and Art Nouveau---each
+pair with two or three subjects among portrait, genre painting,
+landscape, and religious painting, giving twenty-six floors of two
+hundred fifty paintings each. The content data come from the image
+alone: each painting is resized whole to 224 by 224, never cropped,
+and embedded by CLIP~\cite{Radford2021,Cherti2023}, a joint
+image--text encoder, then normalized to unit norm, centered, and
+reduced by PCA to ten dimensions. These embeddings and the
+style--subject labels are all the modeling uses. The collection also
+carries ArtEmis~\cite{Achlioptas2021}---nine emotions and a written
+reason, from a median of five viewers per painting---and they are
+held out, as the community tags were.
 
-The descriptors are fifteen genres, assigned by the same annotator.
-They arrive fuzzy: each book names a primary genre, a secondary,
-sometimes a third, each with a strength---fantasy above all, adventure
-next. Genre-ness is thus continuous, and the floor coordinate becomes
-a per-work coordinate $u_n$: the case the first extension of
-Section~\ref{sec:computation} anticipated.
+\paragraph{The learned bundle.}
+The twenty-six floors are learned as one OT-FB, as the five genres
+were. Figure~\ref{fig:wikiart}(a) shows the manifolds in $\mathcal{X}$:
+twenty-six surfaces, packed close, each shading into the next. The
+algorithm was told twenty-six names and nothing of how they were made.
+Style and subject never entered as such.
 
-\paragraph{One base, two bundles.}
-The base is built first, and both bundles rest on it. The genre
-descriptors, verbalized with their strengths and embedded likewise,
-give each book its denotation coordinate $u_n$.
-Figure~\ref{fig:book_otfb}(a) shows the resulting genre map: the two
-dramas side by side, the two fantasies adjoining legends, myths, and
-folktales, adventure beside science fiction and horror. Two bundles
-are then learned over this one base, one from the theme data, one from
-the impression data. Every book now holds one denotative address and
-two connotative ones, $(u, v_{\mathrm{thm}}, v_{\mathrm{imp}})$: under
-every book, two rabbit holes open.
 
-\paragraph{The two landscapes.}
-Figures~\ref{fig:book_otfb}(b) and (c) are read as $\mathcal{V}$ was
-in Section~\ref{subsec:music_library}. The theme landscape divides
-into bonds and inner life in the upper left---\textit{family},
-\textit{friendship}, \textit{loss}; struggle in the upper
-right---\textit{war}, \textit{courage}, \textit{oppression}; the play
-of the mind in the lower left---\textit{imagination},
-\textit{curiosity}, \textit{discovery}. The impression landscape
-divides along other lines: sorrow above---\textit{melancholic},
-\textit{poignant}, \textit{haunting}; warmth in the upper
-right---\textit{gentle}, \textit{cozy}, \textit{nostalgic}; play in
-the lower right---\textit{whimsical}, \textit{playful},
-\textit{humorous}. The same 409 books are arranged twice: $u$ carries
-the genre; $v_{\mathrm{thm}}$ and $v_{\mathrm{imp}}$ carry two
-connotations---what a book is about, and the impression it leaves.
-
-\begin{table}[p]
+\begin{table}[t]
     \centering\small
-    \caption{Leaping through the two kinds of rabbit holes. Three books
-        on the Drama-Daily floor, each with its theme hole and its
-        impression hole. The middle column lists the words most
-        concentrated at the hole; the last column names five of the many
-        books met on other floors.}
-    \label{tab:book_holes}
-    \begin{tabular}{@{}p{0.15\linewidth} p{0.30\linewidth}
-        p{0.44\linewidth}@{}}
+    \caption{Representative tags at the four points A--D of
+        $\mathcal{V}$: the top five annotated words, annotated
+        emotions, and painting features by pointwise mutual
+        information (PMI, in bits, in parentheses). Negative PMI
+        is omitted; PMI of at least 1 bit is in bold. Painting
+        features are binarised within each of the 54 classes at
+        the 20\% tails, so they are independent of both
+        CLIP and the annotations.}
+    \label{tab:point_tags_wikiart}
+    \begin{tabular}{@{}c p{0.25\linewidth} p{0.24\linewidth} p{0.35\linewidth}@{}}
         \toprule
-        \textbf{Hop on} & \textbf{Hole and representative words}            &
-        \textbf{Hop off}                                                      \\
+        \textbf{Point}              & \textbf{Annotated words}                                                                    &
+        \textbf{Annotated emotions} & \textbf{Painting features}                                                                                                                                                                                                                                                                                                \\
         \midrule
-        \multirow{2}{=}{\textit{Anne of Green Gables}
-            (Drama-Daily)}
-                        & \textbf{Theme}\newline
-        \textit{belonging, empathy, self-discovery, growth,
-            nature, loss, resilience, kindness}
-                        & \textit{The Children of the New Forest}
-        (Historical)\newline
-        \textit{Bambi} (Nature/Animals)\newline
-        \textit{Corduroy} (PictureBooks)\newline
-        \textit{Stick Man} (PictureBooks)\newline
-        \textit{Kiki's Delivery Service}
-        (Fantasy-Real-World)                                                  \\
-        \cmidrule(l){2-3}
-                        & \textbf{Impression}\newline
-        \textit{pastoral, gentle, warm, innocent, nostalgic,
-            sentimental, comforting, cozy}
-                        & \textit{Little Men} (Drama-School)\newline
-        \textit{Zlateh the Goat and Other Stories}
-        (Folktales)\newline
-        \textit{Rasmus and the Vagabond}
-        (Adventure/Action)\newline
-        \textit{The Story of Ferdinand}
-        (PictureBooks)\newline
-        \textit{The Merry Adventures of Robin Hood}
-        (Legends/Myths)                                                       \\
-        \midrule
-        \multirow{2}{=}{\textit{A Dog of Flanders}
-            (Drama-Daily)}
-                        & \textbf{Theme}\newline
-        \textit{overcoming-adversity, perseverance, magic,
-            betrayal, good-and-evil, poverty, justice,
-            mentorship}
-                        & \textit{A Little Princess} (Drama-School)\newline
-        \textit{Ragged Dick} (Historical)\newline
-        \textit{Kidnapped} (Adventure/Action)\newline
-        \textit{Mio, My Son} (Fantasy-Other-World)\newline
-        \textit{Treasure Island} (Adventure/Action)                           \\
-        \cmidrule(l){2-3}
-                        & \textbf{Impression}\newline
-        \textit{melancholic, poignant, haunting, moving,
-            tragic, bittersweet, lyrical, dreamlike}
-                        & \textit{Tarka the Otter} (Nature/Animals)\newline
-        \textit{Skellig} (Fantasy-Real-World)\newline
-        \textit{When Marnie Was There}
-        (Horror/Ghost)\newline
-        \textit{At the Back of the North Wind}
-        (Folktales)\newline
-        \textit{The Fox and the Hound}
-        (Nature/Animals)                                                      \\
-        \midrule
-        \multirow{2}{=}{\textit{Pippi Longstocking}
-            (Drama-Daily)}
-                        & \textbf{Theme}\newline
-        \textit{discovery, imagination, adventure,
-            curiosity, responsibility, self-discovery,
-            problem-solving, creativity}
-                        & \textit{The Blue Moonstone}
-        (Fantasy-Real-World)\newline
-        \textit{Jumanji} (Fantasy-Real-World)\newline
-        \textit{Mary Poppins} (Fantasy-Real-World)\newline
-        \textit{Five on a Treasure Island}
-        (Adventure/Action)\newline
-        \textit{Around the World in Eighty Days}
-        (Adventure/Action)                                                    \\
-        \cmidrule(l){2-3}
-                        & \textbf{Impression}\newline
-        \textit{whimsical, humorous, playful, satirical,
-            anthropomorphic, eccentric, curious, charming}
-                        & \textit{The Sneetches and Other Stories}
-        (PictureBooks)\newline
-        \textit{Curious George} (PictureBooks)\newline
-        \textit{Olivia} (PictureBooks)\newline
-        \textit{Tom Sawyer Abroad}
-        (Adventure/Action)\newline
-        \textit{The Surprising Adventures of Baron
-        Munchausen} (Fantasy-Real-World)                                      \\
+        A                           & \textbf{black (1.13)}, \textbf{lines (1.10)}, simple (0.87), men (0.84), white (0.78)       & anger (0.67), fear (0.65), disgust (0.26), sadness (0.22), something else (0.19) & \textbf{chroma range (lo) (1.18)}, \textbf{colorfulness (lo) (1.14)}, hue variety (lo) (0.94), chroma (lo) (0.93), lightness (hi) (0.79) \\
+        \addlinespace
+        B                           & \textbf{flowers (1.08)}, fruit (0.69), red (0.66), colorful (0.62), pink (0.61)             & contentment (0.18), something else (0.13), excitement (0.13), disgust (0.05)     & coarseness (lo) (0.50), colorfulness (hi) (0.50), lightness range (lo) (0.44), chroma (hi) (0.41), hue variety (hi) (0.40)               \\
+        \addlinespace
+        C                           & \textbf{women (1.11)}, \textbf{people (1.02)}, field (0.99), animals (0.89), vibrant (0.81) & excitement (0.36), awe (0.16), contentment (0.09)                                & self-similarity (hi) (0.94), edge strength (hi) (0.91), brushwork energy (hi) (0.87), anisotropy (lo) (0.85), coarseness (lo) (0.75)     \\
+        \addlinespace
+        D                           & \textbf{dress (1.23)}, fruit (0.88), street (0.87), skin (0.65), city (0.64)                & contentment (0.27), awe (0.13), excitement (0.07)                                & energy height (hi) (0.59), energy spread (lo) (0.53), lightness range (hi) (0.48), center focus (hi) (0.48), warm (hi) (0.47)            \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-\paragraph{Which hole to take.}
-Table~\ref{tab:book_holes} takes the leap. Three books stand on the
-same floor, Drama-Daily, and under each the two holes open. Through a
-theme hole, the books met on other floors share the subject of the
-book left behind; through an impression hole, they share the
-impression it leaves. A leap is not the end: hopping off, the visitor
-walks the new floor as before, among the books gathered around the
-hole. The same book, two holes, two journeys.
 
-\bigskip\noindent
-The remark that closed Section~\ref{sec:framework} is now an
-actual library. The visitor is no longer asked whether to leap; he
-is asked which hole to take.
+\paragraph{The genre map.}
+Figure~\ref{fig:wikiart}(b) shows the denotation space $\mathcal{U}$.
+The floors fall into rows---landscape above, genre painting in the
+middle, portrait below---and within each row the order repeats:
+Expressionism, Impressionism, Realism, Romanticism, Baroque. Style
+runs across, subject runs down. Twenty-six names went in, and this
+collection returned two axes.
+
+\paragraph{Reading $\mathcal{V}$.}
+Figures~\ref{fig:wikiart}(c) and (d) read $\mathcal{V}$ as the tags
+read it before. The held-out ArtEmis annotations give two readings:
+the emotions viewers reported, and the words they wrote, each placed
+at the peak of its density. The background of both panels is the
+emotion spectrum itself, so the two readings lie one upon the other.
+
+The reading runs as it did for music. Neither emotions nor words
+settle at points; each spreads over a stretch of the spectrum, and the
+stretches overlap. And again the two are joined. Where fear gathers,
+at the upper left, the words are \textit{dark}, \textit{black},
+\textit{lines}, \textit{figure}. Where awe gathers, at the upper
+right, they are \textit{mountains}, \textit{hills}, \textit{clouds},
+\textit{blue}. Where contentment gathers, below, they are
+\textit{flowers}, \textit{dress}, \textit{young}, \textit{peaceful}.
+Here too $\mathcal{V}$ is a qualia spectrum, and its qualia are
+subject and feeling joined.
