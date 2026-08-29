@@ -30,10 +30,9 @@ $\mathcal{X}$.
     \item[\textbf{(Axiom 1) Sufficiency.}] The quality of a work carries what
           people feel in it---as far as the connotation we mean to reach.
     \item[\textbf{(Axiom 2) Similarity.}] $\mathcal{X}$ carries an inner
-          product $\langle x, x' \rangle$, and closeness in it means likeness
-          as people judge it, typically
-          $\operatorname{Ave}\bigl[\operatorname{Sim}(w, w')\bigr] =
-              \exp \langle x, x' \rangle$~\citep{Shepard19871317}.
+          product $\langle x, x' \rangle$, and it grows monotonically
+          with the likeness people judge between the two
+          works~\citep{Shepard19871317}.
     \item[\textbf{(Axiom 3) Manifold hypothesis.}] A quale is a probability
           density over $\mathcal{X}$, characterized by a smooth manifold.
 \end{description}
@@ -50,9 +49,9 @@ to what people feel in a work. How that feeling is measured, and how such a
 space is obtained, we leave open. We take it as given.
 
 Current practice already reaches for such a space. The manifold hypothesis of
-Axiom 3 has served machine learning for years~\citep{Bengio20131798}, and
-modern embedding methods---Transformers and large language models---aim at
-the very representation these axioms describe~\citep{Grand2022975}.
+Axiom 3 has served machine learning for years~\citep{Bengio20131798}, and the
+geometry of learned embeddings already carries how people judge
+things~\citep{Grand2022975}.
 
 \begin{figure}[t]
     \centering
@@ -179,11 +178,10 @@ $\mathcal{X}$ holds both.
 
 \paragraph{Facet.}
 One characteristic of division yields a group of \textit{foci}, and that group
-is a \textit{facet}~\citep{Ranganathan1967,Vickery1960}. Genre is our facet
-throughout this paper, and jazz, classical, rock, and the rest are its foci.
-Each focus is a named class, and its name passes to a quale. So in $\mathcal{X}$
-the facet is a set of qualia: jazz-ness, classical-ness, rock-ness, and the
-rest.
+is a \textit{facet}~\citep{Vickery1960}. Genre is our facet throughout this
+paper, and jazz, classical, rock, and the rest are its foci. Each focus is a
+named class, and its name passes to a quale. So in $\mathcal{X}$ the facet is a
+set of qualia: jazz-ness, classical-ness, rock-ness, and the rest.
 
 One characteristic cuts them all, so lay this set along a coordinate $u \in
     \mathcal{U}$. Move $u$, and the quale moves with it: folk-ness shades into
