@@ -298,25 +298,20 @@ later, in a train station. Here it lies under his feet.
         \caption{Words on $\mathcal{V}$}
     \end{subfigure}
     \caption{
-        \textbf{The twenty-six-floor OT-FB learned from WikiArt.}
+        \textbf{The fifty-four-class OT-FB learned from WikiArt.}
         (a) The manifolds in the content space $\mathcal{X}$ (CLIP
-        embeddings of the images, first three principal components), one
-        per floor.
-        (b) The denotation space $\mathcal{U}$. Each marker is one floor,
-        its shape the subject: $\triangle$ landscape, $\square$ genre
-        painting, $\Diamond$ religious painting, $\bigcirc$ portrait.
-        Style runs across, subject runs down.
-        (c, d) The connotation space $\mathcal{V}$, read through the
-        held-out ArtEmis annotations. Markers sit at the peak of each
-        density $p(v \mid \cdot)$: in (c) pairs of emotions, since a
-        single emotion peaks in several places while a pair settles in
-        one; in (d) words. Larger markers and labels carry higher
-        pointwise mutual information with $v$, on each panel's own scale.
-        Both panels share one background, the emotion spectrum: the nine
-        emotion densities are turned into PPMI, reduced to three axes by
-        SVD, and printed as cyan, magenta, and yellow ink on white. Hue
-        tells which emotions gather; lightness tells how strongly. White
-        marks where no emotion stands out.}
+        embeddings, first three principal components), laid out by style
+        and subject. Colour marks $v$: one colour, one connotation.
+        (b) The denotation space $\mathcal{U}$. Subject runs across,
+        style runs down.
+        (c) The connotation space $\mathcal{V}$, read through the held-out
+        ArtEmis emotions. Each painting sits at its $v$, coloured by the
+        emotion it drew, the darker the higher the PMI; negative PMI is
+        omitted. Points A--E are those of
+        Table~\ref{tab:point_tags_wikiart}.
+        (d) The same space read through BLIP captions: the words of
+        highest mutual information with $v$, each at the peak of its
+        density.}
     \label{fig:wikiart}
 \end{figure}
 
@@ -363,17 +358,13 @@ $u$ and leaves $v$ where it was: the connotation is kept.
 
 \begin{table}[t]
     \centering\small
-    \caption{Representative tags at the five points A--E of
-        $\mathcal{V}$: the top 5 annotated emotions,
-        the top 5 painting features, and the top
-        10 annotated words by pointwise
-        mutual
-        information (PMI, in bits, in parentheses). Negative PMI
-        is omitted; PMI of at least 0.5 bit is in bold.
-        Painting
-        features are binarised within each of the 54 classes at
-        the 20\% tails, so they are independent of both
-        CLIP and the annotations.}
+    \caption{The three probes at the five points A--E of $\mathcal{V}$,
+        ranked by pointwise mutual information (PMI, in bits, in
+        parentheses): the top five emotions and features, and the top ten
+        words. Negative PMI is omitted, so some points show fewer. Bold
+        marks PMI of at least 0.5 bit. Features are binarised within each
+        class at the 20\% tails, which keeps them independent of both CLIP
+        and the annotations.}
     \label{tab:point_tags_wikiart}
     \begin{tabular}{@{}c p{0.22\linewidth} p{0.35\linewidth} p{0.3\linewidth}@{}}
         \toprule
