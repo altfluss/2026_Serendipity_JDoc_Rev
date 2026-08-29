@@ -154,3 +154,18 @@ and so on---a catalogue's facets, made continuous. The connotation
 space remains the remainder of them all.
 \end{comment}
 
+
+%%% Subsection 5.3 Multiple facets %%%
+\subsection{Multiple Facets}
+
+Two facets make a class a pair: the $i$-th focus of one and the $j$-th
+of the other. The denotation coordinate splits, $u_{ij} = (u^1_i,
+    u^2_j)$, and so does the kernel of \eqref{eq:kernel_smoothing}:
+\begin{equation*}
+    \mathcal{N}(u \mid u_{ij}, \alpha^{-1} I) =
+    \mathcal{N}(u^1 \mid u^1_i, \alpha^{-1} I)\,
+    \mathcal{N}(u^2 \mid u^2_j, \alpha^{-1} I).
+\end{equation*}
+Smoothing runs along each facet in turn, following the tensor
+SOM~\citep{Iwasaki2016107}, and $\varphi_{ij}$ is fitted to each cross
+class. More facets follow the same way.

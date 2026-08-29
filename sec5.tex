@@ -325,28 +325,34 @@ later, in a train station. Here it lies under his feet.
 
 \paragraph{Setup.}
 The second library is built from WikiArt, a community-curated
-encyclopedia of visual art. Here a focus is compound: a style and a
-subject together, such as \textit{Impressionist landscape}. Nine
-styles---Baroque, Rococo, Romanticism, Realism, Impressionism,
-Post-Impressionism, Expressionism, Symbolism, and Art Nouveau---each
-pair with two or three subjects among portrait, genre painting,
-landscape, and religious painting, giving twenty-six floors of two
-hundred fifty paintings each. The content data come from the image
-alone: each painting is resized whole to 224 by 224, never cropped,
-and embedded by CLIP~\cite{Radford2021,Cherti2023}, a joint
-image--text encoder, then normalized to unit norm, centered, and
-reduced by PCA to ten dimensions. These embeddings and the
-style--subject labels are all the modeling uses. The collection also
-carries ArtEmis~\cite{Achlioptas2021}---nine emotions and a written
-reason, from a median of five viewers per painting---and they are
-held out, as the community tags were.
+encyclopedia of visual art. Here two facets are given at once: style
+and subject. Nine styles, from Baroque to Cubism, meet six subjects
+such as landscape and portrait, and every painting carries one name
+from each: \textit{Impressionism--landscape}, for instance. All
+fifty-four combinations are filled, with up to two hundred paintings
+each and nearly nine thousand in all; Figure~\ref{fig:wikiart}(b)
+names them. The content data come from the image alone: each painting
+is resized whole to 224 by 224, never cropped, and embedded by
+CLIP~\citep{Radford2021,Cherti2023}, a joint image--text encoder, then
+normalized to unit norm, centered, and reduced by PCA to ten
+dimensions. These embeddings and the two labels are all the modeling
+uses. The collection also carries ArtEmis~\citep{Achlioptas2021}---%
+nine emotions, chosen by a median of six viewers per painting---and
+these are held out, as the community tags were.
 
 \paragraph{The learned bundle.}
-The twenty-six floors are learned as one OT-FB, as the five genres
-were. Figure~\ref{fig:wikiart}(a) shows the manifolds in $\mathcal{X}$:
-twenty-six surfaces, packed close, each shading into the next. The
-algorithm was told twenty-six names and nothing of how they were made.
-Style and subject never entered as such.
+Figure~\ref{fig:wikiart}(a) shows the fifty-four manifolds in
+$\mathcal{X}$, laid out by style and subject. Colour marks $v$: one
+colour, one connotation, on every manifold alike. From cell to cell
+the surfaces bend and stretch, yet the colours hold their places.
+Fifty-four manifolds make one spectrum, as the five genres did.
+
+Read as a library, each style is a floor, and each floor holds six
+rooms, one per subject. The rabbit holes join every room to every
+other. A visitor may leap to another subject on the same floor, or to
+the same subject on another floor, or take both leaps at once---from a
+Baroque portrait to a Cubist landscape, in one step. Every leap moves
+$u$ and leaves $v$ where it was: the connotation is kept.
 
 
 \begin{table}[t]
@@ -377,13 +383,22 @@ Style and subject never entered as such.
 \end{table}
 
 
-\paragraph{The genre map.}
-Figure~\ref{fig:wikiart}(b) shows the denotation space $\mathcal{U}$.
-The floors fall into rows---landscape above, genre painting in the
-middle, portrait below---and within each row the order repeats:
-Expressionism, Impressionism, Realism, Romanticism, Baroque. Style
-runs across, subject runs down. Twenty-six names went in, and this
-collection returned two axes.
+\paragraph{The facet map.}
+Figure~\ref{fig:wikiart}(b) shows the denotation space $\mathcal{U}$:
+the floor-room arrangement of the library. Two facets went in as two
+axes, and each axis returned an order.
+
+Style runs in the order of its dates, Baroque to Cubism, though no
+date entered the modeling. The spacing is uneven: Expressionism and
+Fauvism nearly touch, because their paintings nearly touch in
+$\mathcal{X}$.
+
+Subject runs from far to near---cityscape and landscape, then still
+life, then genre painting and portrait, and last nude painting. The
+view moves from the distant scene to the human body.
+
+Nobody set these orders. Transport places each focus where its works
+ask it to stand.
 
 \paragraph{Reading $\mathcal{V}$.}
 Figures~\ref{fig:wikiart}(c) and (d) read $\mathcal{V}$ as the tags
