@@ -1,89 +1,55 @@
 \section{Discussion}\label{sec:discussion}
 
-\subsection{What the Principal Connotation Space Tells
-    Us}\label{subsec:what_pcs_tells}
+\subsection{What the Facet-Induced Connotation Space
+    Means}\label{subsec:what_it_means}
 
-\paragraph{Connotation lives in relations.}
-The first thing the space tells us is where the \emph{principal
-    connotation} exists: in the relations among works. Miles Davis and
-Debussy are joined by one connotation, yet not by any affinity the
-pair holds on its own---neither in their descriptors nor in their
-sound. They are joined because the position Miles Davis occupies
-within jazz is homologous to the position Debussy occupies within
-classical music. This homology of standing is what the transport
-means by connotation, and it is a conclusion deduced from
-independence (A1) and proximity (A2) alone
-(Section~\ref{subsec:two_genres}). A name is attached to one work
-at a time; connotation is a relation among many. Some things are
-defined through naming; others exist beyond naming, defined only
-through relations. Connotation is of the second kind.
+We have built the space and read it. What does it mean? The machine's answer
+is exact: the space holds the simplest structure the facet leaves behind---%
+simplest in the sense of Occam's razor, and principal in the sense of PCA.
+Linear algebra says it as a picture. Meaning spans a space of infinite
+dimension; the words we hold span a finite subspace of it; a complement
+therefore always remains, orthogonal to everything the words account for. Our
+space is the principal part of that complement. Without a basis, no
+complement: the named is what locates the unnamed.
 
-\paragraph{The connotation space stands on the boundary of naming.}
-The second thing the space tells us is how the connotation space was built: on
-the boundary of naming. Whatever descriptors a record carries, there always
-remains a residue---something of the work beyond them. That boundary served as
-the foundation: the residue is given a definite place, the orthogonal complement
-of what the denotation accounts for, and from it the principal connotation space
-is carved. The construction repeats what the bundle drew:
-fibers standing on a base. Here too, both kinds are affirmed. There are things
-naming attains; and where naming ends, the path beyond it begins.
-
-\paragraph{A metric to measure with, names to cut by.}
-The third thing the space tells us is what the construction needed: a
-general-purpose metric on the content data. An LLM serves any purpose because it
-holds a generic encoding within, and CLAP does the same for sound
-(Section~\ref{subsec:content_data}). With such encodings, a general-purpose
-metric arrived: the similarity of two works, measurable as an inner product.
-Such a representation arrives entangled: genre and everything else are woven
-into one geometry, and separating them requires a criterion
-(Section~\ref{subsec:disentanglement}). That is the role the descriptors play.
-Naming returns here in its full strength: it is the criterion by which the cut
-is made. It takes both---a generic representation to measure with, and
-descriptors to cut by---for the principal connotation space to stand as an
-orthogonal subspace.
-
-\bigskip
-\noindent
-Three statements, one space. Naming gives the foundation and the
-criterion, content data gives the metric---and together, for the
-first time, they reach beyond naming.
+And to a person? If the content space is faithful (Axiom~1), the simplest
+remaining structure is smooth, and such a simple structure is likely to be a
+qualia spectrum that many people feel in common. Likely, and no more than
+likely: Occam's razor promises this much, and no more. And in
+Section~\ref{sec:demonstration} it held---instruments and moods in the music
+library, the emotions of viewers in the painting library. Whether people do
+find meaning there is answered by watching them---by asking whether this space
+changes how they walk the library. That is the next stage.
 
 
 
 \subsection{Reading Connotation from
     Preference}\label{subsec:reading_preference}
 
-\paragraph{Connotation found in relations with people.}
-The content data are not limited to the work itself or a
-description of it. The OT-FB asks one thing of content data: that
-proximity between works be measurable
-(Section~\ref{subsec:content_data}). Preference data gathered from
-enough people meet this condition; recommender systems rest on
-exactly such data~\cite{Koren200930,Oord20132643}. They are not
-bibliographic data, and they describe no work directly. Yet where
-the similarity they give between two works agrees with the
-similarity the content data give, the principal connotation space
-that follows is the same space. In this sense, principal
-connotation lies in the relations among works, and equally in the
-relations between works and users.
+\paragraph{Preference data as content data.}
+Content data need not describe a work. The OT-FB asks one thing of them: that
+proximity between works be measurable (Section~\ref{subsec:content_space}).
+Preference data gathered from enough people meet this condition; recommender
+systems rest on exactly such data~\cite{Koren200930,Oord20132643}. They say
+nothing about any work directly---they say what people chose. Yet where the
+proximity they give agrees with the proximity the content data give, the
+connotation space that follows is the same space. Connotation lies in the
+relations among works, and equally in the relations between works and people.
 
-Preference data also let each user be weighed. How much a user
-tells about the principal connotation is measured by
-$\mathrm{MI}[v; \textit{user}]$, the same measure that read the
-tags in Section~\ref{subsec:music_library}. Generally, a user
-whose favorites run across genres is more informative about $v$; a
-user who stays within one genre is less informative.
+Preference data also let each user be weighed. $\mathrm{MI}[v;
+        \textit{user}]$ measures how much a user tells about the connotation---the
+same measure that read the tags in Section~\ref{subsec:music_library}. A user
+whose favorites run across genres tells much; a user who stays within one genre
+tells little.
 
 \paragraph{The rabbit hole as anthologist.}
-Users highly informative about connotation have a name in the
-world: anthologists, who wander across genres and gather works by
-a criterion of their own~\cite{Lee20001106,Riva2017}. A rabbit
-hole plays their very role, and $v$ can be read as a measure of
-\emph{anthologist-ness}~\cite{Bowker1999}. Anthologists
-themselves---on the web, in the world of criticism---have often
-carried the role of joining different fields: living rabbit holes.
-A library with rabbit holes, then, is a library with librarians and
-anthologists.
+Users highly informative about connotation have a name in the world:
+anthologists, who wander across genres and gather works by a criterion of their
+own~\cite{Lee20001106,Riva2017}. So $\mathrm{MI}[v; \textit{user}]$ measures
+\emph{anthologist-ness}~\cite{Bowker1999}. And anthologists---on the web, in
+the world of criticism---have long joined field to field: living rabbit holes.
+A rabbit hole plays their very role, then, and a library with rabbit holes is a
+library with librarians and anthologists.
 
 Return, then, to the reference desk of
 Section~\ref{sec:introduction}. The visitor asks for ``something
@@ -95,29 +61,4 @@ through jazz and far beyond it, and takes the visitor walking. What
 once waited weeks for a street pianist now stands at the end of a
 corridor.
 
-\subsection{From Representation to
-    Systems}\label{subsec:representation_to_systems}
 
-Section~\ref{sec:introduction} said it at the outset: representation
-precedes any interface, for no interface can surface what the space
-beneath it does not encode. The OT-FB now hands the representation
-over, and the question turns around: what interfaces does it open?
-
-The possibilities are many. The most direct realizes the image
-itself: the multi-floor library with rabbit holes, offered as a
-space to walk. A seeker can also point with a work---\textit{Kind
-    of Blue}---and be shown the floor it stands on and the rabbit hole
-that opens beneath it. And a third reads the seeker's own words as
-content data. The groping description of
-Section~\ref{sec:introduction}---``quiet, but with feeling in it;
-colors that seem to melt into one another''---is a description like
-any other, and the encoder that placed the works
-(Section~\ref{subsec:book_library}) gives it, too, a place in the
-same space. From there, an AI librarian can point to the nearest
-floor, an AI anthologist to the nearest rabbit hole, and both can
-say: try walking from here. With an LLM at hand, such
-staff are readily built.
-
-How its visitors will walk, and whether serendipity will meet them
-on the way, is a question of real interest---and it must wait for
-the next work. The library is built; the walking is to come.
