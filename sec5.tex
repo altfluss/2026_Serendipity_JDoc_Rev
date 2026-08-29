@@ -13,13 +13,13 @@ connotation space each one gives.
     \centering
     \begin{subfigure}[t]{0.48\linewidth}
         \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig4a.png}
+        \includegraphics[width=1.0\linewidth]{fig/fig3a.png}
         \caption{Independent manifolds in $\mathcal{X}$.}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.48\linewidth}
         \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig4b.png}
+        \includegraphics[width=1.0\linewidth]{fig/fig3b.png}
         \caption{The OT-FB in $\mathcal{X}$.}
     \end{subfigure}
 
@@ -27,13 +27,13 @@ connotation space each one gives.
 
     \begin{subfigure}[t]{0.38\linewidth}
         \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig4c.png}
+        \includegraphics[width=1.0\linewidth]{fig/fig3c.png}
         \caption{Independent manifolds, stacked.}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.38\linewidth}
         \centering
-        \includegraphics[width=1.0\linewidth]{fig/fig4d.png}
+        \includegraphics[width=1.0\linewidth]{fig/fig3d.png}
         \caption{The OT-FB, stacked.}
     \end{subfigure}
     \caption{
@@ -90,24 +90,24 @@ them, minimizing the total length of the weft.
     \begin{minipage}[b]{0.47\textwidth}
         \centering
         \begin{subfigure}[b]{0.48\linewidth}
-            \includegraphics[width=\linewidth]{fig/fig5a.pdf}
+            \includegraphics[width=\linewidth]{fig/fig4a.pdf}
             \caption{\textit{piano}}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.48\linewidth}
-            \includegraphics[width=\linewidth]{fig/fig5b.pdf}
+            \includegraphics[width=\linewidth]{fig/fig4b.pdf}
             \caption{\textit{trumpet}}
         \end{subfigure}
 
         \vspace{2mm}
 
         \begin{subfigure}[b]{0.48\linewidth}
-            \includegraphics[width=\linewidth]{fig/fig5c.pdf}
+            \includegraphics[width=\linewidth]{fig/fig4c.pdf}
             \caption{\textit{acoustic guitar}}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.48\linewidth}
-            \includegraphics[width=\linewidth]{fig/fig5d.pdf}
+            \includegraphics[width=\linewidth]{fig/fig4d.pdf}
             \caption{\textit{happy}}
         \end{subfigure}
     \end{minipage}
@@ -115,7 +115,7 @@ them, minimizing the total length of the weft.
     \begin{minipage}[b]{0.51\textwidth}
         \centering
         \begin{subfigure}[b]{\linewidth}
-            \includegraphics[width=\linewidth]{fig/fig5e.pdf}
+            \includegraphics[width=\linewidth]{fig/fig4e.pdf}
             \caption{The landscape of $\mathcal{V}$}
         \end{subfigure}
     \end{minipage}
@@ -277,25 +277,25 @@ later, in a train station. Here it lies under his feet.
 \begin{figure}[p]
     \centering
     \begin{subfigure}[b]{0.45\linewidth}
-        \includegraphics[width=\linewidth]{fig/fig6a.pdf}
+        \includegraphics[width=\linewidth]{fig/fig5a.pdf}
         \caption{Spectrum of style/subject}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\linewidth}
-        \includegraphics[width=\linewidth]{fig/fig6b.pdf}
+        \includegraphics[width=\linewidth]{fig/fig5b.pdf}
         \caption{$\mathcal{U}$ for style/subject}
     \end{subfigure}
 
     \vspace{2mm}
 
-    \begin{subfigure}[b]{0.42\linewidth}
-        \includegraphics[width=\linewidth]{fig/fig6c.pdf}
-        \caption{Words on $\mathcal{V}$}
+    \begin{subfigure}[b]{0.43\linewidth}
+        \includegraphics[width=\linewidth]{fig/fig5c.pdf}
+        \caption{Emotion on $\mathcal{V}$}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.55\linewidth}
-        \includegraphics[width=\linewidth]{fig/fig6d.pdf}
-        \caption{Emotion on $\mathcal{V}$}
+        \includegraphics[width=\linewidth]{fig/fig5d.pdf}
+        \caption{Words on $\mathcal{V}$}
     \end{subfigure}
     \caption{
         \textbf{The twenty-six-floor OT-FB learned from WikiArt.}
@@ -336,9 +336,15 @@ is resized whole to 224 by 224, never cropped, and embedded by
 CLIP~\citep{Radford2021,Cherti2023}, a joint image--text encoder, then
 normalized to unit norm, centered, and reduced by PCA to ten
 dimensions. These embeddings and the two labels are all the modeling
-uses. The collection also carries ArtEmis~\citep{Achlioptas2021}---%
-nine emotions, chosen by a median of six viewers per painting---and
-these are held out, as the community tags were.
+uses.
+
+Three probes read the space afterwards, and none took part in building
+it. BLIP~\citep{Li2022} describes each painting in a sentence, and the
+content words of that sentence name what is shown.
+ArtEmis~\citep{Achlioptas2021} gives what viewers felt: nine emotions,
+chosen by a median of six viewers per painting. Twenty-nine features,
+measured from the pixels, tell how the paint lies. A machine, people,
+and the pixels---three roads to one space.
 
 \paragraph{The learned bundle.}
 Figure~\ref{fig:wikiart}(a) shows the fifty-four manifolds in
@@ -357,27 +363,33 @@ $u$ and leaves $v$ where it was: the connotation is kept.
 
 \begin{table}[t]
     \centering\small
-    \caption{Representative tags at the four points A--D of
-        $\mathcal{V}$: the top five annotated words, annotated
-        emotions, and painting features by pointwise mutual
+    \caption{Representative tags at the five points A--E of
+        $\mathcal{V}$: the top 5 annotated emotions,
+        the top 5 painting features, and the top
+        10 annotated words by pointwise
+        mutual
         information (PMI, in bits, in parentheses). Negative PMI
-        is omitted; PMI of at least 1 bit is in bold. Painting
+        is omitted; PMI of at least 0.5 bit is in bold.
+        Painting
         features are binarised within each of the 54 classes at
         the 20\% tails, so they are independent of both
         CLIP and the annotations.}
     \label{tab:point_tags_wikiart}
-    \begin{tabular}{@{}c p{0.25\linewidth} p{0.24\linewidth} p{0.35\linewidth}@{}}
+    \begin{tabular}{@{}c p{0.22\linewidth} p{0.35\linewidth} p{0.3\linewidth}@{}}
         \toprule
-        \textbf{Point}              & \textbf{Annotated words}                                                                    &
-        \textbf{Annotated emotions} & \textbf{Painting features}                                                                                                                                                                                                                                                                                                \\
+        \textbf{Point}             & \textbf{Annotated emotions}                                                                        &
+        \textbf{Painting features} &
+        \textbf{Representative words}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    \\
         \midrule
-        A                           & \textbf{black (1.13)}, \textbf{lines (1.10)}, simple (0.87), men (0.84), white (0.78)       & anger (0.67), fear (0.65), disgust (0.26), sadness (0.22), something else (0.19) & \textbf{chroma range (lo) (1.18)}, \textbf{colorfulness (lo) (1.14)}, hue variety (lo) (0.94), chroma (lo) (0.93), lightness (hi) (0.79) \\
+        A                          & \textbf{anger (0.67)}, \textbf{fear (0.65)}, disgust (0.26), sadness (0.22), something else (0.19) & \textbf{chroma range (lo) (1.18)}, \textbf{colorfulness (lo) (1.14)}, \textbf{hue variety (lo) (0.94)}, \textbf{chroma (lo) (0.93)}, \textbf{lightness (hi) (0.79)}               & \textbf{black (1.13)}, \textbf{lines (1.10)}, \textbf{simple (0.87)}, \textbf{men (0.84)}, \textbf{white (0.78)}, \textbf{trying (0.76)}, \textbf{darkness (0.75)}, \textbf{scary (0.70)}, \textbf{gloomy (0.67)}, \textbf{man (0.67)}     \\
         \addlinespace
-        B                           & \textbf{flowers (1.08)}, fruit (0.69), red (0.66), colorful (0.62), pink (0.61)             & contentment (0.18), something else (0.13), excitement (0.13), disgust (0.05)     & coarseness (lo) (0.50), colorfulness (hi) (0.50), lightness range (lo) (0.44), chroma (hi) (0.41), hue variety (hi) (0.40)               \\
+        B                          & contentment (0.18), something else (0.13), excitement (0.13)                                       & \textbf{coarseness (lo) (0.50)}, colorfulness (hi) (0.50), lightness range (lo) (0.44), chroma (hi) (0.41), hue variety (hi) (0.40)                                               & \textbf{flowers (1.08)}, \textbf{fruit (0.69)}, \textbf{red (0.66)}, \textbf{colorful (0.62)}, \textbf{pink (0.61)}, \textbf{bright (0.58)}, \textbf{green (0.56)}, \textbf{wall (0.51)}, vibrant (0.48), table (0.47)                     \\
         \addlinespace
-        C                           & \textbf{women (1.11)}, \textbf{people (1.02)}, field (0.99), animals (0.89), vibrant (0.81) & excitement (0.36), awe (0.16), contentment (0.09)                                & self-similarity (hi) (0.94), edge strength (hi) (0.91), brushwork energy (hi) (0.87), anisotropy (lo) (0.85), coarseness (lo) (0.75)     \\
+        C                          & excitement (0.36), awe (0.16)                                                                      & \textbf{self-similarity (hi) (0.94)}, \textbf{edge strength (hi) (0.91)}, \textbf{brushwork energy (hi) (0.87)}, \textbf{anisotropy (lo) (0.85)}, \textbf{coarseness (lo) (0.75)} & \textbf{women (1.11)}, \textbf{people (1.02)}, \textbf{field (0.99)}, \textbf{animals (0.89)}, \textbf{vibrant (0.81)}, \textbf{enjoying (0.67)}, \textbf{men (0.65)}, \textbf{fun (0.63)}, \textbf{naked (0.59)}, \textbf{sun (0.59)}     \\
         \addlinespace
-        D                           & \textbf{dress (1.23)}, fruit (0.88), street (0.87), skin (0.65), city (0.64)                & contentment (0.27), awe (0.13), excitement (0.07)                                & energy height (hi) (0.59), energy spread (lo) (0.53), lightness range (hi) (0.48), center focus (hi) (0.48), warm (hi) (0.47)            \\
+        D                          & contentment (0.27), awe (0.13)                                                                     & \textbf{energy height (hi) (0.59)}, \textbf{energy spread (lo) (0.53)}, lightness range (hi) (0.48), center focus (hi) (0.48), warm (hi) (0.47)                                   & \textbf{dress (1.23)}, \textbf{fruit (0.88)}, \textbf{street (0.87)}, \textbf{skin (0.65)}, \textbf{city (0.64)}, \textbf{detailed (0.61)}, \textbf{wearing (0.59)}, \textbf{town (0.57)}, \textbf{boat (0.53)}, \textbf{realistic (0.53)} \\
+        \addlinespace
+        E                          & \textbf{sadness (0.63)}, fear (0.14), contentment (0.13)                                           & \textbf{edge strength (lo) (0.52)}, \textbf{brushwork energy (lo) (0.51)}, spectral slope (lo) (0.49), chroma range (lo) (0.47), lightness (lo) (0.46)                            & \textbf{house (1.01)}, \textbf{home (0.71)}, \textbf{sadness (0.64)}, \textbf{village (0.64)}, \textbf{sad (0.59)}, \textbf{woman (0.59)}, \textbf{street (0.54)}, \textbf{objects (0.54)}, \textbf{muted (0.52)}, \textbf{wall (0.51)}    \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -385,7 +397,7 @@ $u$ and leaves $v$ where it was: the connotation is kept.
 
 \paragraph{The facet map.}
 Figure~\ref{fig:wikiart}(b) shows the denotation space $\mathcal{U}$:
-the floor-room arrangement of the library. Two facets went in as two
+the floor--room arrangement of the library. Two facets went in as two
 axes, and each axis returned an order.
 
 Style runs in the order of its dates, Baroque to Cubism, though no
@@ -401,19 +413,39 @@ Nobody set these orders. Transport places each focus where its works
 ask it to stand.
 
 \paragraph{Reading $\mathcal{V}$.}
-Figures~\ref{fig:wikiart}(c) and (d) read $\mathcal{V}$ as the tags
-read it before. The held-out ArtEmis annotations give two readings:
-the emotions viewers reported, and the words they wrote, each placed
-at the peak of its density. The background of both panels is the
-emotion spectrum itself, so the two readings lie one upon the other.
+What connotation do two facets induce? Style-ness and subject-ness
+have both gone to $\mathcal{U}$, so something else should remain. The
+three probes read what $\mathcal{V}$ holds.
 
-The reading runs as it did for music. Neither emotions nor words
-settle at points; each spreads over a stretch of the spectrum, and the
-stretches overlap. And again the two are joined. Where fear gathers,
-at the upper left, the words are \textit{dark}, \textit{black},
-\textit{lines}, \textit{figure}. Where awe gathers, at the upper
-right, they are \textit{mountains}, \textit{hills}, \textit{clouds},
-\textit{blue}. Where contentment gathers, below, they are
-\textit{flowers}, \textit{dress}, \textit{young}, \textit{peaceful}.
-Here too $\mathcal{V}$ is a qualia spectrum, and its qualia are
-subject and feeling joined.
+Start with what the viewers felt (Figure~\ref{fig:wikiart}(c)). Each
+painting is placed where its emotion leans, and drawn the more darkly
+the stronger the leaning. Contentment and excitement hold the left,
+fear and anger the upper right, sadness a blue band along the bottom.
+The colours shade into each other, and feeling runs as one continuous
+spectrum.
+
+Then what is shown in the paintings (Figure~\ref{fig:wikiart}(d)).
+The upper left names the far view---\textit{group}, \textit{people},
+\textit{park}, \textit{village}. The lower left names the near---%
+\textit{dress}, \textit{woman}, \textit{bed}, \textit{couch}. On the
+upper right the objects give way to the hand: \textit{black},
+\textit{white}, \textit{drawing}. And the colours gather on their own,
+at the centre, low and a little right---\textit{green}, \textit{red},
+\textit{yellow}, \textit{blue}. Each word sits at the peak of its own
+density, so no place belongs to one word. The words mark the spectrum;
+they do not divide it.
+
+Table~\ref{tab:point_tags_wikiart} reads five points, A--E. Each point only
+leans; the words listed are the most typical, not the only ones. Point A angers
+and frightens, in black and white with little hue---\textit{black},
+\textit{lines}, \textit{simple}. B is calm, colourful and
+fine---\textit{flowers}, \textit{fruit}. C excites, with strong edges and
+energetic brushwork---\textit{women}, \textit{people}, \textit{field}. D
+contents, warm and centred---\textit{dress}, \textit{street}, \textit{skin}. E
+saddens, its edges soft and its colours muted---\textit{house}, \textit{home},
+\textit{village}. At E the viewers choose sadness and BLIP writes \textit{sad}:
+people and machine reach one word by different roads.
+
+This is what the facet-induced connotation space holds. Its qualia are
+independent of style and of subject, and all fifty-four classes share
+them alike. One spectrum runs through every room of the library.
