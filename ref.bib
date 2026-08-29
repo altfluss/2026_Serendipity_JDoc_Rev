@@ -1,60 +1,6 @@
-%%%%% ===== コメントの約束(2026-08-21 改訂) =====
-%%%%% %%%%% = ファイルの見出しと規則(このブロックとセクション区切り)
-%%%%% ###   = 人間(せんせー)の ToDo。必ずエントリーの先頭に置く
-%%%%% %%%   = クロさんの残作業
-%%%%% Note: = 論文に直結する注釈。判定(A-E)、文献の内容、引用した理由、書誌上の注意
-%%%%% ### も %%% も付いていないエントリーが「クリーン」。Note: は付いていてよい
-%%%%% A: 絶対必要 / B: 必要 / C: 重要 / D: 参考程度 / E: なくても困らない。A-C を掲載する
-%%%%%
-%%%%% ===== 頁の付け方(2026-08-21 確定) =====
-%%%%% 本文で `` '' の引用符を使って逐語引用したときだけ、\citep[p.~NN]{key} で頁を載せる。
-%%%%% イタリック(\textit / \emph)で分野の語句を名指す場合は頁を載せない。
-%%%%% 現状の sec1 / sec2 は引用符を場面の声にのみ使い、借用語句はイタリックなので、頁を載せる箇所はない。
-%%%%%
-%%%%% ===== エントリーの規則 =====
-%%%%% 1. できる限り Scopus からエントリーを取得する(source = {Scopus} が目印)
-%%%%% 2. Scopus 非収録の場合は、代替ルートで確認し、その旨をコメントに残す
-%%%%% 3. Ver.2 (paper202605) の ref.bib は投稿時に確認済みの正典。全量を保持し、重複は Ver.2 本文を正とする
-%%%%% 4. 未引用のエントリーは削除せず倉庫へ置く
-%%%%%
-%%%%% ===== 進捗(2026-08-20) =====
-%%%%% Section 1 / Section 2 — エントリー・現物・本文との突き合わせまで完了(2026-08-21)。
-%%%%%   残るのは各エントリー冒頭の ### と、引用を残すか削るかの判断のみ
-%%%%% Section 3 以降 — 未着手。CitedPapers/index.json は 2026-08-08 生成で古い(現在の引用 66 件を反映していない)
-%%%%%
-%%%%% ===== 触ってはいけないこと・繰り返し間違えたこと =====
-%%%%% - JDoc は Emerald Harvard。main.tex は natbib の authoryear,round,semicolon,sort,nobibstyle +
-%%%%%   bibliographystyle{agsm}。nobibstyle を外すと agsm が natbib の句読点を上書きして & が出る
-%%%%% - agsm は article title を sentence case にする(Emerald の規定どおり)。固有名詞・システム名・
-%%%%%   ローマ数字は {} で保護する。書籍タイトルは大文字が保たれるので手当て不要
-%%%%% - このファイルのコメントにアットマーク記号を書かない。bibtex はコメント記号を解釈せず、
-%%%%%   アットマーク+article の文字列を新エントリーの開始と誤読する(「article 型」と書く)
-%%%%% - ページのハイフンは ASCII の - を使う。Emerald はページを省略しない(175-179、175-9 は不可)
-%%%%% - Scopus は conference paper や書籍を article 型(journal = Proceedings...)で吐く。agsm の出力は
-%%%%%   Harvard として読めるため型は直さない方針(Chen2019, Hasan2023933, Thudt20121461,
-%%%%%   Oliveira2011105, Shrivastava20231, McCayPeet20181 が該当)
-%%%%% - Taylor1968178: 本文引用は 1968 オリジナル、CitedPapers の PDF は 2015 再版。中身は同一で、
-%%%%%   これは 2026-08-06 に確定した方針。「名前と中身が違う」として直さないこと
-%%%%% - McBirnie2008600: Scopus は刊年を 2009 と誤記している。誌面(Received/Accepted 2008)で 2008 を確認済み。
-%%%%%   Scopus から再取得したら year を 2008 に戻すこと
-%%%%% - Locatello20197247: Scopus は著者名を Lucie, Mario と誤記している。正しくは Lucic, Mario。
-%%%%%   arXiv:1811.12359 の著者表示で確認済み(2026-08-22 に修正)。Scopus から再取得したら Lucic に直すこと
-%%%%% - Ziarani2021375: author = {Ziarani, Reza Jafari and ...} は出版社の推奨形。Harvard では
-%%%%%   「Ziarani and Ravanmehr (2021)」と出る。これで正しいので変更しない
-%%%%% - Cutter1876: 1876 / 1875 の揺れは 1876 で確定(HathiTrust, WorldCat, Google Books)
-%%%%% - Erdelez199926: 現物の柱は開始頁 25 だが、Scopus と Crossref はどちらも 26-29。二次情報が一致して
-%%%%%   いるので 26-29 のままにしてある。現物を見て「25 に直す」ことはしない
-%%%%% - Belkin198261: Syracuse の機関リポジトリ版は著者順を Oddy, Belkin, Brooks として掲げているが、
-%%%%%   JDoc 掲載版の正順は Belkin, Oddy, Brooks。リポジトリ版を見て並べ替えないこと
-%%%%% - Bates1989407 / Taylor1968178 / Makri2012706 の現物は再録版または著者稿。書誌は初出誌のものを使う
-%%%%% - スタイルを変えた直後の初回 build は必ず失敗する。IEEEtran.bst は .bbl に numeric を強制する命令
-%%%%%   (NAT-force-numbers)を書き込むため、古い build/main.bbl が残っていると natbib が authoryear と
-%%%%%   衝突してエラーになる。latexmk -C で掃除してから build する
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Section 1 (sec1.tex)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 Note: [判定 A] recsys の serendipity サーベイ。誌面 p.182 "the serendipitous item is required to be
 Note: unexpected and relevant"。引用理由: (1) §1 P2 と §2.1 P2 の *unexpected and relevant* の出所。
@@ -85,6 +31,8 @@ Note: (2) §2.3 P1 で Ziarani2021375 と対にして「recommendation の seren
 Note: [判定 C] serendipity 指向 recsys の systematic literature review。誌面 p.376 "not only unexpected
 Note: but also relevant"。引用理由: (1) §1 P2 と §2.1 P2 で「across the field」を担う。
 Note: (2) §2.3 P1 の review 2本の一方
+Note: 書誌の注意: author = {Ziarani, Reza Jafari and ...} は出版社の推奨形。Harvard では
+Note: 「Ziarani and Ravanmehr (2021)」と出る。これで正しいので変更しない。
 @article{Ziarani2021375,
   author            = {Ziarani, Reza Jafari and Ravanmehr, Reza},
   title             = {Serendipity in Recommender Systems: A Systematic Literature Review},
@@ -135,10 +83,6 @@ Note: [判定 A] serendipity の process model(Part 1)。誌面 p.684 "involves 
   source            = {Scopus}
 }
 
-### Munzner2009921: Scopus からエントリーを取得して差し替える(TVCG 2009 は Scopus 収録)。
-### 下は IEEE Xplore と著者業績リストで確認した手書きの暫定エントリー。
-### 現物は CitedPapers/candidates/NestedModel.pdf(著者版 TR)。慣例どおり Munzner2009921.pdf に改名して直下へ移す。
-%%% sec1 l.73-79 の書き換え待ち。まだ本文から引用されていないので、検証スクリプトが「未引用」と報告する
 Note: [判定 B] 可視化の設計と検証の四層入れ子モデル。abstract "The output from a level above is input to
 Note: the level below, bringing attention to the design challenge that an upstream error inevitably
 Note: cascades to all downstream levels"。sec1「interface は下層が符号化したものしか surface できない」の主柱。
@@ -151,6 +95,7 @@ Note: 注意: §3.2 が「四段階が厳密な時間順で行われることは
 Note: 時系列の規範としては引かないこと。
 Note: 書誌の注意: dblp は題を "A Nested Process Model for ..." と表示するが、IEEE Xplore と著者業績リストは
 Note: Process 無しが正。頁は誌面 921-928(著者版 TR の独自ノンブルとは一致しない)
+Note: 現物は CitedPapers/candidates/NestedModel.pdf(著者版 TR)。Munzner2009921.pdf に改名して直下へ移すこと
 @article{Munzner2009921,
   author            = {Munzner, Tamara},
   title             = {A nested model for visualization design and validation},
@@ -160,8 +105,9 @@ Note: Process 無しが正。頁は誌面 921-928(著者版 TR の独自ノン�
   number            = {6},
   pages             = {921-928},
   doi               = {10.1109/TVCG.2009.111},
-  type              = {Article},
-  publication_stage = {Final}
+  type              = {Conference paper},
+  publication_stage = {Final},
+  source            = {Scopus}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -219,6 +165,8 @@ Note: [判定 C] serendipity と情報探索の実証研究。"Erdelez is amongs
 }
 
 Note: [判定 C] information encountering と super-encounterer。「偶然の発見に個人差がある」の LIS 側の原典。sec2「disposition」の側
+Note: 書誌の注意: 現物の柱は開始頁 25 だが、Scopus と Crossref はどちらも 26-29。二次情報が一致して
+Note: いるので 26-29 のままにしてある。現物を見て「25 に直す」ことはしない。
 @article{Erdelez199926,
   author            = {Erdelez, Sanda},
   title             = {Information encountering: It's more than just bumping into information},
@@ -257,6 +205,8 @@ Note: [判定 C] 創造的職業者14人への面接から serendipity を高め
 }
 
 Note: [判定 B] seeking serendipity の paradox of control。abstract "exploring the paradox of control inherent in the concept of 'seeking serendipity'" ——sec2「asking whether serendipity can be sought at all」の典拠
+Note: 書誌の注意: Scopus は刊年を 2009 と誤記している。誌面の Received/Accepted で 2008 を確認済み。
+Note: Scopus から再取得したら year を 2008 に戻すこと。
 @article{McBirnie2008600,
   author  = {McBirnie, Abigail},
   title   = {Seeking serendipity: the paradox of control},
@@ -319,6 +269,9 @@ Note: それは同年の別論文。本エントリーは American Sociological 
 }
 
 Note: [判定 B] 情報要求の四層(visceral / conscious / formalized / compromised)。sec2「the path from a need merely felt to a question finally asked」の出所
+Note: 現物 CitedPapers/Taylor1968178.pdf は 2015 年の再録版。中身は初出と同一で、本文引用は
+Note: 1968 オリジナルを指す(2026-08-06 確定)。「名前と中身が違う」として直さないこと。
+Note: 書誌は初出誌(College and Research Libraries)のものを使う。
 @article{Taylor1968178,
   author    = {Taylor, Robert S.},
   title     = {Question-negotiation and information seeking in libraries},
@@ -335,9 +288,12 @@ Note: [判定 B] 情報要求の四層(visceral / conscious / formalized / compr
 }
 
 Note: [判定 A] ASK(anomalous state of knowledge)の原典。sec2「a need of this kind cannot in principle be specified by the one who has it」の主柱
+Note: 書誌の注意: Syracuse の機関リポジトリ版は著者順を Oddy, Belkin, Brooks として掲げているが、
+Note: JDoc 掲載版の正順は Belkin, Oddy, Brooks。リポジトリ版を見て並べ替えないこと。
+Note: title の {ASK} は頭字語(anomalous state of knowledge)なので保護してある。外すと "Ask" になる。
 @article{Belkin198261,
   author            = {Belkin, N.J. and Oddy, R.N. and Brooks, H.M.},
-  title             = {Ask for information retrieval: Part {I}. {B}ackground and theory},
+  title             = {{ASK} for information retrieval: Part {I}. {B}ackground and theory},
   year              = {1982},
   journal           = {Journal of Documentation},
   volume            = {38},
@@ -350,6 +306,7 @@ Note: [判定 A] ASK(anomalous state of knowledge)の原典。sec2「a need of t
 }
 
 Note: [判定 B] 目録の Objects を定めた原典。sec2「the aims Cutter set for the catalogue」。現物なし(1876)、HathiTrust / WorldCat / Google Books で書誌整合
+Note: 書誌の注意: 刊年は 1876 / 1875 で揺れるが 1876 で確定(HathiTrust, WorldCat, Google Books)。
 @book{Cutter1876,
   author    = {Cutter, Charles A.},
   title     = {Rules for a Printed Dictionary Catalogue},
@@ -443,8 +400,8 @@ Note: [判定 C] relevance の諸次元。"a degree of subjectivity on the user 
   source            = {Scopus}
 }
 
-
 Note: [判定 B] berrypicking モデル。探索の過程で問いそのものが動くことを定式化 ——sec2「The seeking itself moves with what it finds」
+Note: 書誌の注意: 現物は再録版または著者稿。書誌は初出誌のものを使う。
 @article{Bates1989407,
   author            = {Bates, Marcia J.},
   title             = {The design of browsing and berrypicking techniques for the online search interface},
@@ -458,7 +415,6 @@ Note: [判定 B] berrypicking モデル。探索の過程で問いそのもの�
   publication_stage = {Final},
   source            = {Scopus}
 }
-
 
 Note: [判定 C] 画像の subject を of / about × specific / generic / abstract で分析。abstract 側が mood を含む。
 Note: 引用理由: §2.2 P3「mood itself becomes a descriptor on the record」の系譜の起点(1986)
@@ -544,7 +500,6 @@ Note: LC Catalog Card No. 56-5684)。本文と頁は 1957 年版のもの
   year      = {1957}
 }
 
-
 Note: [判定 B] BOOK HOUSE ——icon による fiction 検索の一次文献。"the mediation is carried on directly via
 Note: the interface"。引用理由: §2.3 P3「the icons of Pejtersen's Book House」——本を開かずに手触りを掴ませる
 Note: interface 層の起点
@@ -597,7 +552,7 @@ Note: [判定 B] fiction retrieval を利用者の value criteria から設計�
 Note: 引用理由: §2.3 P3 で Pejtersen198940 と対にして引く
 @article{Pejtersen1983230,
   author            = {Pejtersen, Annelise Mark and Austin, Jutta},
-  title             = {Fiction retrieval: Experimental design and evaluation of a search system based on users’ value criteria (part 1)},
+  title             = {Fiction retrieval: Experimental design and evaluation of a search system based on users' value criteria (part 1)},
   year              = {1983},
   journal           = {Journal of Documentation},
   volume            = {39},
@@ -631,7 +586,7 @@ Note: 現物の全文に expert / annotate / metadata は 0 回。
 Note: 引用理由: §2.2 P5「The third way sets words aside and works from the content data」の主柱。加えて
 Note: 「denotation が空間を埋める」の証拠も著者自身の言葉にある ——"islands represent musical genres or
 Note: styles"。§2.3 P4 でも同じ役目で引く
-@conference{Pampalk2002570,
+@inproceedings{Pampalk2002570,
   author            = {Pampalk, Elias and Rauber, Andreas and Merkl, Dieter},
   title             = {Content-based organization and visualization of music archives},
   year              = {2002},
@@ -686,7 +641,7 @@ Note: 引用理由: (1) §2.2 P4「correspondence analysis sets the labels in th
 Note: (2) §2.3 P4「the space has been built from labels」。どちらも語彙が先に決まっている点が要
 @article{Andjelkovic2019142,
   author            = {Andjelkovic, Ivana and Parra, Denis and O'Donovan, John},
-  title             = {Moodplay: Interactive music recommendation based on Artists’ mood similarity},
+  title             = {Moodplay: Interactive music recommendation based on Artists' mood similarity},
   year              = {2019},
   journal           = {International Journal of Human Computer Studies},
   volume            = {121},
@@ -720,6 +675,10 @@ Note: (2) §2.3 P4「the space has been built from labels」。どちらも語�
   source  = {Scopus}
 }
 
+Note: [判定 C] disentanglement の識別不能性。教師なしでは無限に多くの entangled 解が同じ観測を生む。
+Note: sec3「ill-posedness」と sec4 の「軸を選ぶには外からの制約が要る」の主柱。
+Note: 書誌の注意: Scopus は著者名を Lucie, Mario と誤記することがある。正しくは Lucic, Mario
+Note: (arXiv:1811.12359 の著者表示で確認、2026-08-22 修正)。再取得したら必ず見ること。
 @article{Locatello20197247,
   author            = {Locatello, Francesco and Bauer, Stefan and Lucic, Mario and Rätsch, Gunnar and Gelly, Sylvain and Schölkopf, Bernhard and Bachem, Olivier},
   title             = {Challenging common assumptions in the unsupervised learning of disentangled representations},
@@ -732,9 +691,12 @@ Note: (2) §2.3 P4「the space has been built from labels」。どちらも語�
   source            = {Scopus}
 }
 
-%%% 暫定エントリー(Scopus 非収録。書誌は一次確認要)
-%%% Note: [判定 A] facet / focus / array / postulational approach の典拠。
-%%% 用途: sec2 系譜、sec4 Facet 定義
+Note: [判定 A] facet / focus / array / postulational approach の典拠。
+Note: 用途: sec2 系譜、sec4 Facet 定義
+Note: Scopus 非収録。State Library of New South Wales の目録で確認(2026-08-29): 3rd ed.、
+Note: Asia Publishing House、1967、Ranganathan Series in Library Science 20、assisted by M. A. Gopinath、640 p.
+Note: 刊行地は目録により London と Bombay が分かれる(Asia Publishing House は両方に拠点があった)。
+Note: LIS 文献の慣行に従い Bombay のままにしてある。
 @book{Ranganathan1967,
   author    = {Ranganathan, S. R.},
   title     = {Prolegomena to Library Classification},
@@ -755,7 +717,8 @@ Note: (2) §2.3 P4「the space has been built from labels」。どちらも語�
 %%%%% Section 4 (sec4.tex)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%% Scopus 要確認
+Note: Scopus 非収録。著者が公開している公式 BibTeX(mtg.github.io/mtg-jamendo-dataset)と
+Note: 全フィールドが一致することを確認(2026-08-29)。
 @inproceedings{Bogdanov2019,
   author    = {Bogdanov, Dmitry and Won, Minz and Tovstogan, Philip and
                Porter, Alastair and Serra, Xavier},
@@ -767,29 +730,21 @@ Note: (2) §2.3 P4「the space has been built from labels」。どちらも語�
   url       = {http://hdl.handle.net/10230/42015}
 }
 
+Note: Scopus 非収録。Springer(DOI 10.1007/978-3-540-71050-9)で確認(2026-08-29):
+Note: Springer Berlin, Heidelberg、Grundlehren der mathematischen Wissenschaften 338、(c) 2009。
 @book{villani2009optimal,
   title     = {Optimal Transport: Old and New},
   author    = {Villani, C{\'e}dric},
   year      = {2009},
   publisher = {Springer},
+  address   = {Berlin},
   series    = {Grundlehren der mathematischen Wissenschaften},
   volume    = {338}
 }
 
-@article{peyre2019computational,
-  title     = {Computational Optimal Transport},
-  author    = {Peyr{\'e}, Gabriel and Cuturi, Marco},
-  journal   = {Foundations and Trends in Machine Learning},
-  volume    = {11},
-  number    = {5-6},
-  pages     = {355-607},
-  year      = {2019},
-  publisher = {Now Publishers}
-}
-
 @article{Brenier1991375,
   author            = {Brenier, Yann},
-  title             = {Polar factorization and monotone rearrangement of vector‐valued functions},
+  title             = {Polar factorization and monotone rearrangement of vector-valued functions},
   year              = {1991},
   journal           = {Communications on Pure and Applied Mathematics},
   volume            = {44},
@@ -799,30 +754,18 @@ Note: (2) §2.3 P4「the space has been built from labels」。どちらも語�
   url               = {https://www.scopus.com/pages/publications/84990623199?origin=resultslist},
   type              = {Article},
   publication_stage = {Final},
-  source            = {Scopus},
-  note              = {Cited by: 1294}
+  source            = {Scopus}
 }
 
-@article{pass2015multi,
-  title     = {Multi-marginal optimal transport: theory and applications},
-  author    = {Pass, Brendan},
-  journal   = {ESAIM: Mathematical Modelling and Numerical Analysis},
-  volume    = {49},
-  number    = {6},
-  pages     = {1771-1790},
-  year      = {2015},
-  publisher = {EDP Sciences}
-}
-
-@article{Hastie1989502,
-  author            = {Hastie, Trevor and Stuetzle, Werner},
-  title             = {Principal curves},
-  year              = {1989},
-  journal           = {Journal of the American Statistical Association},
-  volume            = {84},
-  number            = {406},
-  pages             = {502 - 516},
-  doi               = {10.1080/01621459.1989.10478797},
+@article{Pass20151771,
+  author            = {Pass, Brendan},
+  title             = {Multi-marginal optimal transport: Theory and applications},
+  year              = {2015},
+  journal           = {ESAIM: Mathematical Modelling and Numerical Analysis},
+  volume            = {49},
+  number            = {6},
+  pages             = {1771-1790},
+  doi               = {10.1051/m2an/2015020},
   type              = {Article},
   publication_stage = {Final},
   source            = {Scopus}
@@ -835,28 +778,17 @@ Note: (2) §2.3 P4「the space has been built from labels」。どちらも語�
   journal           = {Science},
   volume            = {237},
   number            = {4820},
-  pages             = {1317 - 1323},
+  pages             = {1317-1323},
   doi               = {10.1126/science.3629243},
   type              = {Article},
   publication_stage = {Final},
   source            = {Scopus}
 }
 
-### 要Scopus確認
-%%% 暫定エントリー(Scopus 非収録。書誌は一次確認要)
-%%% Note: [判定 B] Five Laws。第4法則 "Save the time of the reader" の反転に使う。
-%%% 用途: sec3 Björneborn 照合の直後
-@book{Ranganathan1931,
-  author    = {Ranganathan, S. R.},
-  title     = {The Five Laws of Library Science},
-  publisher = {Madras Library Association},
-  address   = {Madras},
-  year      = {1931}
-}
-
-### 要Scopus 確認
-%%% Note: [判定 A] facet = 単一 characteristic of division による項目の総体、という定義の典拠。
-%%% 用途: sec4 Facet 定義（Ranganathan と併記）
+Note: [判定 A] facet = 単一 characteristic of division による項目の総体、という定義の典拠。
+Note: 用途: sec4 Facet 定義(Ranganathan と併記)
+Note: Scopus 非収録。LibraryThing(原著刊年 1960)、Google Books と University of Ulster 目録
+Note: (Aslib、70 p.)で確認(2026-08-29)。1968/1970/1975 の Aslib 重版があるので初版 1960 を使う。
 @book{Vickery1960,
   author    = {Vickery, B. C.},
   title     = {Faceted Classification: A Guide to Construction and Use of
@@ -866,12 +798,32 @@ Note: (2) §2.3 P4「the space has been built from labels」。どちらも語�
   year      = {1960}
 }
 
+Note: [判定 未] 用途: §4 P? — axioms が記述する representation そのものを扱う実例。
+Note: word embedding から軸への射影で人間の特徴知識(size/danger/intelligence 等)を復元する。
+Note: §4.3 principal connotation analysis と操作が同型。掲載誌の格も JDoc 読者に効く。
+@article{Grand2022975,
+  author            = {Grand, Gabriel and Blank, Idan Asher and Pereira, Francisco and Fedorenko, Evelina},
+  title             = {Semantic projection recovers rich human knowledge of multiple object features from word embeddings},
+  year              = {2022},
+  journal           = {Nature Human Behaviour},
+  volume            = {6},
+  number            = {7},
+  pages             = {975-987},
+  doi               = {10.1038/s41562-022-01316-8},
+  type              = {Article},
+  publication_stage = {Final},
+  source            = {Scopus}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Section 5 (sec5.tex)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%% 断定エントリー(2026-08-15 追加。書誌は既知の文献情報由来、Scopus からのエントリー取得が必要。
-%%% MMOT (pairwise 二次コスト) の解の存在・一意性・Monge 性の原典。Prop 1(a) の根拠)
+Note: MMOT (pairwise 二次コスト) の解の存在・一意性・Monge 性の原典。Prop 1(a) の根拠
+Note: Crossref(DOI 10.1002/(SICI)1097-0312(199801)51:1<23::AID-CPA2>3.0.CO;2-H)で
+Note: 誌名・51(1)・23-45・1998 を確認(2026-08-29)。
+Note: 著者名は Crossref が Swiech と綴るが、Georgia Tech の公式表記は Swiech にオゴネク付き
+Note: (Andrzej ~Swi{e}ch)。本エントリーの綴りが正しいので直さないこと。
 @article{GangboSwiech199823,
   author  = {Gangbo, Wilfrid and {\'S}wi{\c{e}}ch, Andrzej},
   title   = {Optimal maps for the multidimensional {Monge}-{Kantorovich} problem},
@@ -897,137 +849,130 @@ Note: (2) §2.3 P4「the space has been built from labels」。どちらも語�
   source            = {Scopus}
 }
 
-%%% Scopus 取得する(頁・DOI は既知情報からの断定。要確認)
-@inproceedings{Radford2021,
-  author    = {Radford, Alec and Kim, Jong Wook and Hallacy, Chris and
-               Ramesh, Aditya and Goh, Gabriel and Agarwal, Sandhini and
-               Sastry, Girish and Askell, Amanda and Mishkin, Pamela and
-               Clark, Jack and Krueger, Gretchen and Sutskever, Ilya},
-  title     = {Learning transferable visual models from natural language
-               supervision},
-  booktitle = {Proceedings of the 38th International Conference on
-               Machine Learning (ICML)},
-  series    = {Proceedings of Machine Learning Research},
-  volume    = {139},
-  year      = {2021},
-  pages     = {8748-8763}
+@article{Radford20218748,
+  author            = {Radford, Alec and Kim, Jong Wook and Hallacy, Chris and Ramesh, Aditya and Goh, Gabriel and Agarwal, Sandhini and Sastry, Girish and Askell, Amanda and Mishkin, Pamela and Clark, Jack and Krueger, Gretchen and Sutskever, Ilya},
+  title             = {Learning Transferable Visual Models From Natural Language Supervision},
+  year              = {2021},
+  journal           = {Proceedings of Machine Learning Research},
+  volume            = {139},
+  pages             = {8748-8763},
+  url               = {https://www.scopus.com/pages/publications/85147256635?origin=resultslist},
+  type              = {Conference paper},
+  publication_stage = {Final},
+  source            = {Scopus}
 }
 
-%%% Scopus 取得する(頁・DOI は既知情報からの断定。要確認)
-%%% Note: OpenCLIP。実際に使った重みの出所。Radford2021 と対で引く
-@inproceedings{Cherti2023,
-  author    = {Cherti, Mehdi and Beaumont, Romain and Wightman, Ross and
-               Wortsman, Mitchell and Ilharco, Gabriel and Gordon, Cade and
-               Schuhmann, Christoph and Schmidt, Ludwig and Jitsev, Jenia},
-  title     = {Reproducible scaling laws for contrastive language-image
-               learning},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision
-               and Pattern Recognition (CVPR)},
-  year      = {2023},
-  pages     = {2818-2829},
-  doi       = {10.1109/CVPR52729.2023.00276}
+Note: OpenCLIP。実際に使った重みの出所。Radford2021 と対で引く
+@article{Cherti20232818,
+  author            = {Cherti, Mehdi and Beaumont, Romain and Wightman, Ross and Wortsman, Mitchell and Ilharco, Gabriel and Gordon, Cade and Schuhmann, Christoph and Schmidt, Ludwig and Jitsev, Jenia},
+  title             = {Reproducible scaling laws for contrastive language-image learning},
+  year              = {2023},
+  journal           = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
+  volume            = {2023-June},
+  pages             = {2818-2829},
+  doi               = {10.1109/CVPR52729.2023.00276},
+  type              = {Conference paper},
+  publication_stage = {Final},
+  source            = {Scopus}
 }
 
-%%% Scopus 取得する(頁・DOI は既知情報からの断定。要確認)
-%%% Note: held-out annotation の出所。九感情 + 自由記述
-@inproceedings{Achlioptas2021,
-  author    = {Achlioptas, Panos and Ovsjanikov, Maks and Haydarov, Kilichbek
-               and Elhoseiny, Mohamed and Guibas, Leonidas J.},
-  title     = {{ArtEmis}: affective language for visual art},
-  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision
-               and Pattern Recognition (CVPR)},
-  year      = {2021},
-  pages     = {11569-11579},
-  doi       = {10.1109/CVPR46437.2021.01140}
+Note: held-out annotation の出所。九感情 + 自由記述
+@article{Achlioptas202111564,
+  author            = {Achlioptas, Panos and Ovsjanikov, Maks and Haydarov, Kilichbek and Elhoseiny, Mohamed and Guibas, Leonidas},
+  title             = {{ArtEmis}: Affective Language for Visual Art},
+  year              = {2021},
+  journal           = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
+  pages             = {11564-11574},
+  doi               = {10.1109/CVPR46437.2021.01140},
+  type              = {Conference paper},
+  publication_stage = {Final},
+  source            = {Scopus}
 }
 
-%%% Scopus 取得する(頁・DOI 要確認)
-%%% Note: 二 facet の cross class を扱うための拡張。Appendix のアルゴリズムの土台
+Note: 2-facet の cross class を扱うための拡張。Appendix のアルゴリズムの土台
 @article{Iwasaki2016107,
-  author  = {Iwasaki, Tohru and Furukawa, Tetsuo},
-  title   = {Tensor {SOM} and tensor {GTM}: nonlinear tensor analysis by
-             topographic mappings},
-  journal = {Neural Networks},
-  year    = {2016},
-  volume  = {77},
-  pages   = {107-125},
-  doi     = {10.1016/j.neunet.2016.01.013}
+  author            = {Iwasaki, Tohru and Furukawa, Tetsuo},
+  title             = {Tensor {SOM} and tensor {GTM}: Nonlinear tensor analysis by topographic mappings},
+  year              = {2016},
+  journal           = {Neural Networks},
+  volume            = {77},
+  pages             = {107-125},
+  doi               = {10.1016/j.neunet.2016.01.013},
+  type              = {Article},
+  publication_stage = {Final},
+  source            = {Scopus}
 }
 
-%%% Scopus 取得する(頁・DOI 要確認)
-%%% Note: held-out の読みの道具。全絵に説明文を生成し、単語を抽出する
-@inproceedings{Li2022,
-  author    = {Li, Junnan and Li, Dongxu and Xiong, Caiming and Hoi, Steven},
-  title     = {{BLIP}: bootstrapping language-image pre-training for unified
-               vision-language understanding and generation},
-  booktitle = {Proceedings of the 39th International Conference on
-               Machine Learning (ICML)},
-  series    = {Proceedings of Machine Learning Research},
-  volume    = {162},
-  year      = {2022},
-  pages     = {12888-12900}
+Note: held-out の読みの道具。全絵に説明文を生成し、単語を抽出する
+Note: title の {BLIP} は保護が要る。外すと agsm の sentence case で "Blip" になる。
+@article{Li202212888,
+  author            = {Li, Junnan and Li, Dongxu and Xiong, Caiming and Hoi, Steven},
+  title             = {{BLIP}: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation},
+  year              = {2022},
+  journal           = {Proceedings of Machine Learning Research},
+  volume            = {162},
+  pages             = {12888-12900},
+  type              = {Conference paper},
+  publication_stage = {Final},
+  source            = {Scopus}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Section 6 (sec6.tex)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Scopus 取得する
-@inproceedings{Wu2023,
-  author    = {Wu, Yusong and Chen, Ke and Zhang, Tianyu and
-               Hui, Yuchen and Berg-Kirkpatrick, Taylor and
-               Dubnov, Shlomo},
-  title     = {Large-Scale Contrastive Language-Audio Pretraining with
-               Feature Fusion and Keyword-to-Caption Augmentation},
-  booktitle = {Proceedings of the IEEE International Conference on
-               Acoustics, Speech and Signal Processing (ICASSP)},
-  year      = {2023},
-  pages     = {1--5},
-  address   = {Rhodes Island, Greece},
-  doi       = {10.1109/ICASSP49357.2023.10095969}
+@article{Wu2023,
+  author            = {Wu, Yusong and Chen, Ke and Zhang, Tianyu and Hui, Yuchen and Berg-Kirkpatrick, Taylor and Dubnov, Shlomo},
+  title             = {Large-Scale Contrastive Language-Audio Pretraining with Feature Fusion and Keyword-to-Caption Augmentation},
+  year              = {2023},
+  journal           = {ICASSP, IEEE International Conference on Acoustics, Speech and Signal Processing - Proceedings},
+  volume            = {2023-June},
+  pages             = {1-5},
+  doi               = {10.1109/ICASSP49357.2023.10095969},
+  type              = {Conference paper},
+  publication_stage = {Final},
+  source            = {Scopus}
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% Section 7 以降で引用中(未改稿節。順序・帰属は暫定)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%% --- sec7.tex ---
-
-
-%%% 断定エントリー(2026-08-18 追加)。要 Scopus 取得。
-%%% DOI は Web 検索で確定(10.1109/MC.2009.263)。42(8):30-37 は複数ソースで確認済み
-%%% (42(6):42-49 とする誤記サイトあり、注意)。
-%%% 用途: §7.2 Para1。ratings のみから works の latent 表現が立つことの標準文献。
+Note: 42(6):42-49 とする誤記サイトがある。Scopus の値と食い違ったら 42(8):30-37 を疑わない
+Note: 用途: §7.2 Para1。ratings のみから works の latent 表現が立つことの標準文献
 @article{Koren200930,
-  author  = {Koren, Yehuda and Bell, Robert and Volinsky, Chris},
-  title   = {Matrix Factorization Techniques for Recommender Systems},
-  year    = {2009},
-  journal = {Computer},
-  volume  = {42},
-  number  = {8},
-  pages   = {30-37},
-  doi     = {10.1109/MC.2009.263}
+  author            = {Koren, Yehuda and Bell, Robert and Volinsky, Chris},
+  title             = {Matrix factorization techniques for recommender systems},
+  year              = {2009},
+  journal           = {Computer},
+  volume            = {42},
+  number            = {8},
+  pages             = {30-37},
+  doi               = {10.1109/MC.2009.263},
+  type              = {Article},
+  publication_stage = {Final},
+  source            = {Scopus}
 }
 
-%%% 断定エントリー(2026-08-18 追加)。要一次確認(NeurIPS proceedings、DOI なし)。
-%%% pages 2643-2651 は ACM DL / proceedings.neurips.cc で確認済み。
-%%% 用途: §7.2 Para1。audio content から CF latent factors を予測——content 表現と
-%%% preference 表現が works について通約可能な言葉で語ることの実証(music)。
-@inproceedings{Oord20132643,
-  author    = {van den Oord, A{\"a}ron and Dieleman, Sander and Schrauwen, Benjamin},
-  title     = {Deep Content-Based Music Recommendation},
-  year      = {2013},
-  booktitle = {Advances in Neural Information Processing Systems 26},
-  pages     = {2643-2651}
+Note: 頁 2643-2651 は ACM DL / proceedings.neurips.cc で確認済み。
+Note: 用途: §7.2 Para1。audio content から CF latent factors を予測——content 表現と
+Note: preference 表現が works について通約可能な言葉で語ることの実証(music)
+@article{VanDenOord2013,
+  author            = {Van Den Oord, Aäron and Dieleman, Sander and Schrauwen, Benjamin},
+  title             = {Deep content-based music recommendation},
+  year              = {2013},
+  journal           = {Advances in Neural Information Processing Systems},
+  pages             = {2643-2651},
+  type              = {Conference paper},
+  publication_stage = {Final},
+  source            = {Scopus}
 }
 
-
-%%% 断定エントリー(2026-08-18 追加)。書誌詳細(出版地・ISBN・版)は未検証——
-%%% ref.bib 整理時に IFLA 公式(repository.ifla.org)で確認すること。
-%%% 用途: §7.2 Para2。aggregating work の正式典拠——「選択・配列という行為自体が
-%%% work である」をモデル化。every aggregate manifestation also embodies an
-%%% expression of the aggregating work.
+Note: Scopus 非収録。IFLA 公式 PDF(ifla-lrm-august-2017_rev201712.pdf)の扉で確認(2026-08-29):
+Note: 著者三名・題・2017年8月刊(as amended and corrected through December 2017)・
+Note: IFLA, P.O. Box 95312, 2509 CH Den Haag。出版地 The Hague は正しい。
+Note: 用途: §7.2 Para2。aggregating work の正式典拠——「選択・配列という行為自体が work である」
+Note: をモデル化。every aggregate manifestation also embodies an expression of the aggregating work.
 @book{Riva2017,
   author    = {Riva, Pat and Le B{\oe}uf, Patrick and {\v{Z}}umer, Maja},
   title     = {{IFLA} Library Reference Model: A Conceptual Model for
@@ -1038,13 +983,13 @@ Note: (2) §2.3 P4「the space has been built from labels」。どちらも語�
   address   = {The Hague}
 }
 
-
  
 
-%%% 断定エントリー(2026-08-18 追加、シロさん Deep Research 由来)。DOI 検証済み。
-%%% 用途: §7.2 Para2。collection は members ではなく developer の intent が構成する。
-%%% 「編む基準はその人固有のもの」の LIS 側の裏書き。著者名は Hur-Li Lee(要注意:
-%%% Hyuk-Jin Lee ではない)。
+Note: Scopus 非収録。Wiley と RePEc(bla/jamest/v51y2000i12p1106-1113)で
+Note: 51(12), 1106-1113, 2000 と DOI を確認(2026-08-29)。
+Note: 著者名は Hur-Li Lee(Hyuk-Jin Lee ではない)。
+Note: 用途: §7.2 Para2。collection は members ではなく developer の intent が構成する。
+Note: 「編む基準はその人固有のもの」の LIS 側の裏書き
 @article{Lee20001106,
   author  = {Lee, Hur-Li},
   title   = {What is a Collection?},
@@ -1057,1564 +1002,12 @@ Note: (2) §2.3 P4「the space has been built from labels」。どちらも語�
 }
  
 
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
+Note: Scopus 非収録。MIT Press / AbeBooks で確認(2026-08-29): 1999 年ハードカバー初版、
+Note: MIT Press、Inside Technology 叢書。2000 年のペーパーバックは別版なので刊年 1999 を使う。
 @book{Bowker1999,
   author    = {Bowker, Geoffrey C. and Star, Susan Leigh},
   title     = {Sorting Things Out: Classification and Its Consequences},
   publisher = {MIT Press},
   address   = {Cambridge, MA},
   year      = {1999}
-}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% 倉庫(未使用。削除しない)
-%%%%% 本文から引用されていないエントリー。引用を再開するときはここから戻す
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Note: 2026-08-22 sec1 / sec2 の書き換えで引用がゼロになったため倉庫へ。判定 C なので呼び戻せる
-Note: [判定 C] STAIRS の再現率調査。full-text 検索の再現率は約2割(誌面 p.293)で、著者は原因を検索者ではなく
-Note: 「the principles on which it and other full-text document-retrieval systems are based」に置く(p.289)。
-Note: 処方は手作業索引語の追加(p.298 の WESTLAW)。sec2 §2.2「第一の道」の起点として使える。
-Note: representation / interface の対比は原典に無い(representation・interface・encode が全文で0件)
-@article{Blair1985289,
-  author            = {Blair, David C. and Maron, M.E.},
-  title             = {An evaluation of retrieval effectiveness for a full-text document-retrieval system},
-  year              = {1985},
-  journal           = {Communications of the ACM},
-  volume            = {28},
-  number            = {3},
-  pages             = {289-299},
-  doi               = {10.1145/3166.3197},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: 2026-08-22 sec1 / sec2 の書き換えで引用がゼロになったため倉庫へ。判定 C なので呼び戻せる
-Note: [判定 C] vocabulary problem。2人が同じ語を選ぶ確率は 0.20 未満。誌面 p.967「there is no one good
-Note: access term for most objects. The idea of an 'obvious,' 'self-evident,' or 'natural' term is a myth!」。
-Note: 処方は unlimited aliasing で、対象集合を固定したまま命名写像を太らせる(p.968)。Blair1985289 と対で
-Note: sec2 §2.2「第一の道」の起点になる。主張は未習熟者の初回試行に限定(p.964)なので一般化して引かないこと
-@article{Furnas1987964,
-  author            = {Furnas, G.W. and Landauer, T.K. and Gomez, L.M. and Dumais, S.T.},
-  title             = {The Vocabulary Problem in Human-System Communication},
-  year              = {1987},
-  journal           = {Communications of the ACM},
-  volume            = {30},
-  number            = {11},
-  pages             = {964-971},
-  doi               = {10.1145/32206.32212},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: 2026-08-22 §2.3 の exploration 束が Marchionini200641 一本に絞られたため倉庫へ。判定 C なので呼び戻せる
-Note: [判定 C] デジタル情報環境における serendipity 研究の総説(Synthesis Lectures)。sec2「exploration gives terrain」の束
-@article{McCayPeet20181,
-  author            = {McCay-Peet, Lori and Toms, Elaine G.},
-  title             = {Researching serendipity in digital information environments},
-  year              = {2018},
-  journal           = {Synthesis Lectures on Information Concepts, Retrieval, and Services},
-  volume            = {9},
-  number            = {6},
-  pages             = {1-109},
-  doi               = {10.2200/S00790ED1V01Y201707ICR059},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: 2026-08-22 §2.3 の exploration 束が Marchionini200641 一本に絞られたため倉庫へ。判定 C なので呼び戻せる
-Note: [判定 C] Bohemian Bookshelf(CHI 2012)。"serendipity can be facilitated through visualization"。同束
-@article{Thudt20121461,
-  author            = {Thudt, Alice and Hinrichs, Uta and Carpendale, Sheelagh},
-  title             = {The {B}ohemian {B}ookshelf: Supporting serendipitous book discoveries through information visualization},
-  year              = {2012},
-  journal           = {Conference on Human Factors in Computing Systems-Proceedings},
-  pages             = {1461-1470},
-  doi               = {10.1145/2207676.2208607},
-  type              = {Conference paper},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: 2026-08-22 §2.3 の exploration 束が Marchionini200641 一本に絞られたため倉庫へ。判定 C なので呼び戻せる
-Note: [判定 C] ambient intelligence による探索支援。"components that support serendipitous discovery"。同束
-@article{Beale2007ambient,
-  author            = {Beale, Russell},
-  title             = {Supporting serendipity: Using ambient intelligence to augment user exploration for data mining and web browsing},
-  year              = {2007},
-  journal           = {International Journal of Human Computer Studies},
-  volume            = {65},
-  number            = {5},
-  pages             = {421-433},
-  doi               = {10.1016/j.ijhcs.2006.11.012},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-
-Note: 2026-08-22 §2.1 の process 文の書き換えで引用がゼロになったため倉庫へ。束は
-Note: McCayPeet20151463 + Busch20241110 の2件で立つ。判定 C なので呼び戻せる。
-Note: なお本文の *the unexpected yet sought-for* との緊張は、Rubin を外したことで解消している
-Note: (Rubin は "With respect to chance," に支配された文脈で unsought finding 寄りに読まれる)。
-Note: [判定 C] blog 記述の grounded theory から serendipity の facets を抽出し、find が全 facet を束ねるモデルを立てる。process 束
-@article{Rubin2011,
-  author            = {Rubin, Victoria L. and Burkell, Jacquelyn and Quan-Haase, Anabel},
-  title             = {Facets of serendipity in everyday chance encounters: A grounded theory approach to blog analysis},
-  year              = {2011},
-  journal           = {Information Research},
-  volume            = {16},
-  number            = {3},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: 2026-08-21 §2.2 の書き換えで引用がゼロになったため倉庫へ。書誌は現物の扉で確認済み
-Note: (JPSP 39(6), 1161-1178)。circumplex model が必要になれば呼び戻せる(判定 B)。
-Note: [判定 B] circumplex model of affect。誌面 JPSP 39(6), 1161-1178 を現物で確認。abstract に pleasure(0°) / arousal(90°) の円環 ——sec2「a plane of valence and arousal in its best-known descendant」
-@article{Russell1980,
-  author  = {Russell, James A.},
-  title   = {A circumplex model of affect},
-  journal = {Journal of Personality and Social Psychology},
-  year    = {1980},
-  volume  = {39},
-  number  = {6},
-  pages   = {1161-1178},
-  doi     = {10.1037/h0077714}
-}
-
-Note: 2026-08-21 同上。加えて現物に serendipity の記述が 0 件で、束の趣旨(serendipity literature)に
-Note: 合わなかった(判定 E)。
-Note: [判定 E] recsys における diversification のサーベイ。現物の全文テキスト 62KB を検索したが
-Note: serendipity / novelty がいずれも 0 件。sec2 §2.3「recommendation, with a rich serendipity
-Note: literature of its own」の根拠にはならない
-@article{Kunaver2017,
-  author            = {Kunaver, Matev\v{z} and Po\v{z}rl, Toma\v{z}},
-  title             = {Diversity in recommender systems-A survey},
-  year              = {2017},
-  journal           = {Knowledge-Based Systems},
-  volume            = {123},
-  pages             = {154-162},
-  doi               = {10.1016/j.knosys.2017.02.009},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: 2026-08-21 同上。recommender 束の縮小により倉庫へ(判定 C)。
-Note: [判定 C] accuracy / diversity / serendipity の多目的最適化。sec2 §2.3 の recsys 文献束
-@article{Shrivastava20231,
-  author            = {Shrivastava, Rahul and Sisodia, Dilip Singh and Nagwani, Naresh Kumar},
-  title             = {On Diverse and Serendipitous Item Recommendation: A Reinforced Similarity and Multi-objective Optimization-Based Composite Recommendation Framework},
-  year              = {2023},
-  journal           = {Lecture Notes in Electrical Engineering},
-  volume            = {997 LNEE},
-  pages             = {1-13},
-  doi               = {10.1007/978-981-99-0085-5_1},
-  type              = {Conference paper},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: 2026-08-21 §2.3 P1 の recommender 束を serendipity の review 2件(Kotkov2016180, Ziarani2021375)に
-Note: 絞ったため倉庫へ。原典・書誌の確認は済んでいる(判定 C)。呼び戻すならそのまま使える。
-Note: [判定 C] 3,000人超の大規模ユーザ評価(WWW 2019)。誌面 p.240 "not only be relevant ... but also be unexpected"。束のなかで唯一の実証研究
-@inproceedings{Chen2019,
-  author    = {Chen, Li and Yang, Yonghua and Wang, Ningxia and Yang, Keping and Yuan, Quan},
-  title     = {How serendipity improves user satisfaction with recommendations? {A} large-scale user evaluation},
-  booktitle = {Proceedings of the 2019 World Wide Web Conference (WWW '19)},
-  year      = {2019},
-  pages     = {240-250},
-  publisher = {Association for Computing Machinery},
-  address   = {New York, NY},
-  doi       = {10.1145/3308558.3313469},
-  isbn      = {978-1-4503-6674-8}
-}
-
-Note: 2026-08-21 §2.1 P3 から引用を外したため倉庫へ。本文の「process として理解されている」の
-Note: 典拠は Part 1 (Makri2012684) が担う。Part 2 は classification framework で的が違う(判定 D)。
-Note: [判定 C] Part 2 の classification framework。process 束(Part 1 と対)。現物は author draft(published 版は未入手)
-@article{Makri2012706,
-  author            = {Makri, Stephann and Blandford, Ann},
-  title             = {Coming across information serendipitously - Part 2: A classification framework},
-  year              = {2012},
-  journal           = {Journal of Documentation},
-  volume            = {68},
-  number            = {5},
-  pages             = {706-724},
-  doi               = {10.1108/00220411211256049},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-Note: 2026-08-21 §1 と §2.1 の両方から引用を外したため倉庫へ(判定 E)。
-Note: [判定 E] science 領域の serendipity を大規模計量で扱う working paper。ただし定義は Fine and Deegan
-Note: (1996, p.434) の "the interactive outcome of unique and contingent 'mixes' of insight coupled with
-Note: chance"(現物 p.2)で、unexpected / relevant の対を用いていない ——本文が引いている「varied wordings」の
-Note: 例としては系統が違う。2026-08-20 時点で未公刊(Russell Funk の CV で arXiv working paper のまま)
-@misc{Nahm2023,
-  title         = {Serendipity in Science},
-  author        = {Pyung Nahm and Raviv Murciano-Goroff and Michael Park and Russell J. Funk},
-  year          = {2023},
-  eprint        = {2308.07519},
-  archiveprefix = {arXiv},
-  primaryclass  = {econ.EM},
-  url           = {https://arxiv.org/abs/2308.07519}
-}
-
-
-@book{Mawer20141,
-  author            = {Mawer, Deborah},
-  title             = {French music and Jazz in conversation: From Debussy to Brubeck},
-  year              = {2014},
-  journal           = {French Music and Jazz in Conversation: From Debussy to Brubeck},
-  pages             = {1-304},
-  doi               = {10.1017/CBO9781139775359},
-  type              = {Book},
-  publication_stage = {Final},
-  publisher         = {Cambridge University Press},
-  source            = {Scopus}
-}
-
-@book{Davis1989,
-  author    = {Davis, Miles and Troupe, Quincy},
-  title     = {Miles: The Autobiography},
-  year      = {1989},
-  publisher = {Simon and Schuster},
-  address   = {New York}
-}
-
-@article{Ross1999783,
-  author            = {Ross, Catherine Sheldrick},
-  title             = {Finding without seeking: The information encounter in the context of reading for pleasure},
-  year              = {1999},
-  journal           = {Information Processing and Management},
-  volume            = {35},
-  number            = {6},
-  pages             = {783-799},
-  doi               = {10.1016/S0306-4573(99)00026-6},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-%%% Clark1996: Cambridge Core 書誌で確認(CUP 1996, Ch.4 "Common ground" pp.92-122, book DOI 10.1017/CBO9780511620539)
-@book{Clark1996,
-  author    = {Clark, Herbert H.},
-  title     = {Using Language},
-  publisher = {Cambridge University Press},
-  address   = {Cambridge},
-  year      = {1996}
-}
-
-%%% Langacker2008: Cambridge Core 掲載書評の書誌で確認(Oxford UP 2008, x+562, ISBN 9780195331967)
-@book{Langacker2008,
-  author    = {Langacker, Ronald W.},
-  title     = {Cognitive Grammar: A Basic Introduction},
-  publisher = {Oxford University Press},
-  address   = {Oxford},
-  year      = {2008}
-}
-
-%%% Hjorland1995400: 2026-08-08 PDF現物で一次検証(Wiley正規版)。DOI 10.1002/(SICI)1097-4571(199507)46:6<400::AID-ASI2>3.0.CO;2-Y
-%%% 内容確認: p.413 "the meaning of a term can only be understood from the context in which it appears"(gold の例)。sec2 §2.2 (d) の gloss を直接支持
-@article{Hjorland1995400,
-  author            = {Hjørland, Birger and Albrechtsen, Hanne},
-  title             = {Toward a new horizon in information science: Domain‐analysis},
-  year              = {1995},
-  journal           = {Journal of the American Society for Information Science},
-  volume            = {46},
-  number            = {6},
-  pages             = {400-425},
-  doi               = {10.1002/(SICI)1097-4571(199507)46:6<400::AID-ASI2>3.0.CO;2-Y},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-%%% Rafferty2005: 2026-08-08 一次確認。Rafferty2011283 の参考文献欄に「Rafferty, Pauline, and Hidderley, Rob. 2005. Indexing multimedia and creative works: The problems of meaning and interpretation. Aldershot: Ashgate.」——著者本人が 2005 で引いており、本文でも「Hidderley and Rafferty's (1997, 2005) democratic indexing」。出版社・地・年とも現物一致
-%%% Rafferty20171(Routledge 2017)は同一書の再刊。Scopus 収録はそちらだけだが、収録の有無は引用年を決めない(instructions.md 2026-08-06「Scopus は正典ではない」)。素材庫へ移した
-@book{Rafferty2005,
-  author    = {Rafferty, Pauline and Hidderley, Rob},
-  title     = {Indexing Multimedia and Creative Works: The Problems of Meaning and Interpretation},
-  publisher = {Ashgate},
-  address   = {Aldershot},
-  year      = {2005}
-}
-
-%%% 断定エントリー(2026-08-11 追加)。要 Scopus 取得。
-%%% DOI は検索結果 URL から確定。volume/pages は記憶ベースで未検証(33(1):51-73 の見込み)。PubMed 21585463。
-%%% 用途: §7.2 P3 の主柱1。都市名の共起統計のみから緯度経度が復元できる——「言語には誰も書かなかったものが刻まれている」の最も直截な実証。
-@article{LouwerseZwaan2009,
-  author  = {Louwerse, Max M. and Zwaan, Rolf A.},
-  title   = {Language encodes geographical information},
-  year    = {2009},
-  journal = {Cognitive Science},
-  volume  = {33},
-  number  = {1},
-  pages   = {51-73},
-  doi     = {10.1111/j.1551-6709.2008.01003.x}
-}
-
-%%% 断定エントリー(2026-08-11 追加)。要 Scopus 取得。
-%%% DOI は検索結果 URL から確定。volume/pages は記憶ベースで未検証(3(2):273-302 の見込み)。
-%%% 用途: §7.2 P3 の主柱2。symbol interdependency hypothesis——言語のシンボル体系は身体的・知覚的経験の痕跡を符号化している。
-%%% 「LLM は間接的に身体性を備える」に認知科学側で付いている名前(2026-08-11 せんせーと確認)。
-@article{Louwerse2011,
-  author  = {Louwerse, Max M.},
-  title   = {Symbol interdependency in symbolic and embodied cognition},
-  year    = {2011},
-  journal = {Topics in Cognitive Science},
-  volume  = {3},
-  number  = {2},
-  pages   = {273-302},
-  doi     = {10.1111/j.1756-8765.2010.01106.x}
-}
-
-%%% 断定エントリー(2026-08-11 追加)。要 Scopus 取得。
-%%% DOI は検索結果 URL から確定。volume/pages は記憶ベースで未検証(6(7):975-987 の見込み)。PubMed 35422527。
-%%% 用途: §7.2 P3 の主柱3(最重要)。word embedding から**軸への射影**で人間の特徴知識(size/danger/intelligence 等)を復元。
-%%% §4.3 principal connotation analysis と操作が同型。掲載誌の格も JDoc 読者に効く。
-@article{Grand2022,
-  author  = {Grand, Gabriel and Blank, Idan Asher and Pereira, Francisco and Fedorenko, Evelina},
-  title   = {Semantic projection recovers rich human knowledge of multiple object features from word embeddings},
-  year    = {2022},
-  journal = {Nature Human Behaviour},
-  volume  = {6},
-  number  = {7},
-  pages   = {975-987},
-  doi     = {10.1038/s41562-022-01316-8}
-}
-
-%%% 断定エントリー(2026-08-11 追加)。要 Scopus 取得。
-%%% DOI は検索結果 URL から確定。volume/article number と著者リストは未検証(arXiv:2302.01308 が前刷)。PubMed 39271909。
-%%% 用途: §7.2 P3 の補強。LLM が六つのモダリティで人間の感覚判断を予測する。
-@article{Marjieh2024,
-  author  = {Marjieh, Raja and Sucholutsky, Ilia and van Rijn, Pol and Jacoby, Nori and Griffiths, Thomas L.},
-  title   = {Large language models predict human sensory judgments across six modalities},
-  year    = {2024},
-  journal = {Scientific Reports},
-  volume  = {14},
-  doi     = {10.1038/s41598-024-72071-1}
-}
-
-%%% 断定エントリー(2026-08-11 追加)。Scopus 対象外の見込み(CoNLL proceedings)——ACL Anthology で確定させる。
-%%% Anthology ID 2021.conll-1.9 は確定。pages(109-132 の見込み)と著者リストは未検証。
-%%% 用途: §7.2 P3 の補強。色の知覚構造が grounding なしに言語モデルに現れる。タイトル自体が本節の問いの形。
-@inproceedings{Abdou2021,
-  author    = {Abdou, Mostafa and Kulmizev, Artur and Hershcovich, Daniel and Frank, Stella and Pavlick, Ellie and S{\o}gaard, Anders},
-  title     = {Can language models encode perceptual structure without grounding? A case study in color},
-  year      = {2021},
-  booktitle = {Proceedings of the 25th Conference on Computational Natural Language Learning (CoNLL)},
-  pages     = {109-132},
-  url       = {https://aclanthology.org/2021.conll-1.9/}
-}
-
-%%% 断定エントリー(2026-08-11 追加)。Scopus 対象外の見込み(ACL proceedings)——ACL Anthology で確定させる。
-%%% Anthology ID 2020.acl-main.463 は検索結果から裏付けあり。pages(5185-5198 の見込み)は未検証。
-%%% 用途: §7.2 P3。**反対側**として敬意を持って引く。form から meaning へ到達するとは本論文も主張しない。
-@inproceedings{BenderKoller2020,
-  author    = {Bender, Emily M. and Koller, Alexander},
-  title     = {Climbing towards {NLU}: On meaning, form, and understanding in the age of data},
-  year      = {2020},
-  booktitle = {Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (ACL)},
-  pages     = {5185-5198},
-  doi       = {10.18653/v1/2020.acl-main.463}
-}
-
-%%% 断定エントリー(2026-08-11 追加)。Scopus 対象外の見込み(EMNLP proceedings)——ACL Anthology で確定させる。
-%%% Anthology ID 2020.emnlp-main.703 は確定。pages(8718-8735 の見込み)は未検証。
-%%% **著者リスト要注意**: 12 名前後の共著。記憶ベースで書いたため取得時に全員を突き合わせること。
-%%% 用途: §7.2 P3。反対側の二本目。
-@inproceedings{Bisk2020,
-  author    = {Bisk, Yonatan and Holtzman, Ari and Thomason, Jesse and Andreas, Jacob and Bengio, Yoshua and Chai, Joyce and Lapata, Mirella and Lazaridou, Angeliki and May, Jonathan and Nisnevich, Aleksandr and Pinto, Nicolas and Turian, Joseph},
-  title     = {Experience grounds language},
-  year      = {2020},
-  booktitle = {Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
-  pages     = {8718-8735},
-  doi       = {10.18653/v1/2020.emnlp-main.703}
-}
-
-%%% 断定エントリー(2026-08-18 追加)。要 Scopus 取得。
-%%% DOI・巻号ページは tandfonline で確認済み(50(5-7):456-472)。
-%%% 用途: §7.2 Para2。anthology = aggregate の LIS(目録理論)側の学術文献。
-@article{Zumer2012456,
-  author  = {{\v{Z}}umer, Maja and O'Neill, Edward T.},
-  title   = {Modeling Aggregates in {FRBR}},
-  year    = {2012},
-  journal = {Cataloging \& Classification Quarterly},
-  volume  = {50},
-  number  = {5-7},
-  pages   = {456-472},
-  doi     = {10.1080/01639374.2012.679547}
-}
-
-%%% 任意・代替(2026-08-18)。aggregating work の一次ソース。Riva2017 の代わりに
-%%% 引く場合はこちら。「選択自体が知的創造であり work の要件を満たす」の原文。
-%%% URL: https://www.ifla.org/wp-content/uploads/2019/05/assets/cataloguing/frbrrg/AggregatesFinalReport.pdf
-@techreport{IFLAWGAggregates2011,
-  author      = {{IFLA FRBR Review Group, Working Group on Aggregates}},
-  title       = {Final Report of the Working Group on Aggregates},
-  institution = {International Federation of Library Associations and
-                 Institutions},
-  year        = {2011}
-}
-
-%%% 任意・色(2026-08-18)。「蔵書の 20% 超が aggregates」の推計。使う場合のみ追加。
-%%% 巻号ページ未検証(LRTS 59 と見込み)——bibkey の開始頁も未確定のため仮名。
-@article{ONeill2015frbr,
-  author  = {O'Neill, Edward T. and {\v{Z}}umer, Maja and Mixter, Jeffrey},
-  title   = {{FRBR} Aggregates: Their Types and Frequency in Library
-             Collections},
-  year    = {2015},
-  journal = {Library Resources \& Technical Services},
-  volume  = {59}
-}
-
-%%% 断定エントリー(2026-08-18 追加、Deep Research 由来)。JDoc・DOI 検証済み。
-%%% 用途: §7.2 Para2。情報システム(分類・コレクション)は対象領域の特定の解釈を
-%%% 主張する rhetorical な装置である。選択=意味の担い手、の LIS 内理論。投稿先と同誌。
-@article{Feinberg2010491,
-  author  = {Feinberg, Melanie},
-  title   = {Two Kinds of Evidence: How Information Systems Form
-             Rhetorical Arguments},
-  year    = {2010},
-  journal = {Journal of Documentation},
-  volume  = {66},
-  number  = {4},
-  pages   = {491-512},
-  doi     = {10.1108/00220411011052920}
-}
-
-%%% 断定エントリー(2026-08-18 追加、Deep Research 由来)。DOI 未発見——
-%%% ref.bib 整理時に KO (ISKO) 側で要確認。巻号ページは調査で確認済み。
-%%% 用途: §7.2 Para2。expressive bibliography——コレクションは選者の sensibility を
-%%% 表現する communication である。「選集そのものが意味を運ぶ」の LIS 内最近接。
-@article{Feinberg2011123,
-  author  = {Feinberg, Melanie},
-  title   = {Expressive Bibliography: Personal Collections in Public Space},
-  year    = {2011},
-  journal = {Knowledge Organization},
-  volume  = {38},
-  number  = {2},
-  pages   = {123-134}
-}
-
-%%% 2026-08-08 §2.2改稿で未引用化(在庫。行き先候補は Notes/2026-08-08_sec2書き直し 参照)
-@unpublished{Dervin1983,
-  author = {Brenda Dervin},
-  title  = {An Overview of Sense-Making Research: Concepts, Methods, and Results to Date},
-  year   = {1983},
-  month  = may,
-  note   = {Presented at the International Communication Association Annual Meeting, Dallas, TX}
-}
-
-%%% 2026-08-08 §2.2改稿で未引用化(在庫。行き先候補は Notes/2026-08-08_sec2書き直し 参照)
-@article{Lee20154851,
-  author            = {Lee, Kibeom and Lee, Kyogu},
-  title             = {Escaping your comfort zone: A graph-based recommender system for finding novel recommendations among relevant items},
-  year              = {2015},
-  journal           = {Expert Systems with Applications},
-  volume            = {42},
-  number            = {10},
-  pages             = {4851-4858},
-  doi               = {10.1016/j.eswa.2014.07.024},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-%%% 2026-08-08 §2.2改稿で未引用化(在庫。行き先候補は Notes/2026-08-08_sec2書き直し 参照)
-@article{Xu2007179,
-  author            = {Xu, Yunjie},
-  title             = {Relevance Judgment in Epistemic and Hedonic Information Searches},
-  year              = {2007},
-  journal           = {Journal of the American Society for Information Science and Technology},
-  volume            = {58},
-  number            = {2},
-  pages             = {179-189},
-  doi               = {10.1002/asi.20461},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-%%% 2026-08-08 §2.2改稿で未引用化(在庫。行き先候補は Notes/2026-08-08_sec2書き直し 参照)
-@article{Layne1994583,
-  author            = {Layne, Sara Shatford},
-  title             = {Some issues in the indexing of images},
-  year              = {1994},
-  journal           = {Journal of the American Society for Information Science},
-  volume            = {45},
-  number            = {8},
-  pages             = {583-588},
-  doi               = {10.1002/(SICI)1097-4571(199409)45:8<583::AID-ASI13>3.0.CO;2-N},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-%%% 2026-08-08 §2.2改稿で未引用化(在庫。行き先候補は Notes/2026-08-08_sec2書き直し 参照)
-@article{Mai2001591,
-  author            = {Mai, Jens-Erik},
-  title             = {Semiotics and indexing: An analysis of the subject indexing process},
-  year              = {2001},
-  journal           = {Journal of Documentation},
-  volume            = {57},
-  number            = {5},
-  pages             = {591-622},
-  doi               = {10.1108/EUM0000000007095},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-%%% 2026-08-08 §2.2改稿で未引用化(在庫。行き先候補は Notes/2026-08-08_sec2書き直し 参照)
-%%% Scopus 記載なし、書誌情報は Crossref(DOI 10.2307/2799807)で確認済み
-@article{Needham1975349,
-  author  = {Needham, Rodney},
-  title   = {Polythetic classification: convergence and consequences},
-  journal = {Man (New Series)},
-  volume  = {10},
-  number  = {3},
-  pages   = {349-369},
-  year    = {1975},
-  doi     = {10.2307/2799807}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@book{Wilson1968,
-  author    = {Wilson, Patrick},
-  title     = {Two Kinds of Power: An Essay on Bibliographical Control},
-  publisher = {University of California Press},
-  address   = {Berkeley},
-  year      = {1968}
-}
-
-%%% 断定エントリー(2026-08-01 追加。書誌は Deep Research 由来、Scopus 未取得・一次確認要)
-@incollection{Barthes1977,
-  author    = {Barthes, Roland},
-  title     = {Rhetoric of the Image},
-  booktitle = {Image-Music-Text},
-  publisher = {Fontana Press},
-  address   = {London},
-  year      = {1977},
-  pages     = {32-51},
-  note      = {Translated by Stephen Heath}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@manual{ISO704,
-  title        = {Terminology Work---Principles and Methods},
-  organization = {International Organization for Standardization},
-  address      = {Geneva},
-  note         = {ISO 704:2022},
-  year         = {2022}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@book{Olson2002,
-  author    = {Olson, Hope A.},
-  title     = {The Power to Name: Locating the Limits of Subject Representation in Libraries},
-  publisher = {Kluwer Academic},
-  address   = {Dordrecht},
-  year      = {2002}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Kuhlthau1991361,
-  author  = {Kuhlthau, Carol C.},
-  title   = {Inside the search process: information seeking from the user's perspective},
-  journal = {Journal of the American Society for Information Science},
-  volume  = {42},
-  number  = {5},
-  pages   = {361-371},
-  year    = {1991}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Slovic1995364,
-  author  = {Slovic, Paul},
-  title   = {The construction of preference},
-  journal = {American Psychologist},
-  volume  = {50},
-  number  = {5},
-  pages   = {364-371},
-  year    = {1995}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@inproceedings{Campbell1996251,
-  author    = {Campbell, Iain and van Rijsbergen, C. J.},
-  title     = {The ostensive model of developing information needs},
-  booktitle = {CoLIS 2: Proceedings of the Second International Conference on Conceptions of Library and Information Science},
-  pages     = {251-268},
-  address   = {Copenhagen},
-  year      = {1996}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Flesch1948221,
-  author  = {Flesch, Rudolf},
-  title   = {A new readability yardstick},
-  journal = {Journal of Applied Psychology},
-  volume  = {32},
-  number  = {3},
-  pages   = {221-233},
-  year    = {1948}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Tamura1978460,
-  author  = {Tamura, Hideyuki and Mori, Shunji and Yamawaki, Takashi},
-  title   = {Textural features corresponding to visual perception},
-  journal = {IEEE Transactions on Systems, Man, and Cybernetics},
-  volume  = {SMC-8},
-  number  = {6},
-  pages   = {460-473},
-  year    = {1978}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Hevner1936246,
-  author  = {Hevner, Kate},
-  title   = {Experimental studies of the elements of expression in music},
-  journal = {The American Journal of Psychology},
-  volume  = {48},
-  number  = {2},
-  pages   = {246-268},
-  year    = {1936}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Shepard1962125,
-  author  = {Shepard, Roger N.},
-  title   = {The analysis of proximities: multidimensional scaling with an unknown distance function. I},
-  journal = {Psychometrika},
-  volume  = {27},
-  number  = {2},
-  pages   = {125-140},
-  year    = {1962}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Deerwester1990391,
-  author  = {Deerwester, Scott and Dumais, Susan T. and Furnas, George W. and Landauer, Thomas K. and Harshman, Richard},
-  title   = {Indexing by latent semantic analysis},
-  journal = {Journal of the American Society for Information Science},
-  volume  = {41},
-  number  = {6},
-  pages   = {391-407},
-  year    = {1990}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Salton1975613,
-  author  = {Salton, Gerard and Wong, Anita and Yang, Chung-Shu},
-  title   = {A vector space model for automatic indexing},
-  journal = {Communications of the ACM},
-  volume  = {18},
-  number  = {11},
-  pages   = {613-620},
-  year    = {1975}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@inproceedings{Lavrenko2001120,
-  author    = {Lavrenko, Victor and Croft, W. Bruce},
-  title     = {Relevance-based language models},
-  booktitle = {Proceedings of the 24th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
-  pages     = {120-127},
-  year      = {2001}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Dahlberg1978142,
-  author  = {Dahlberg, Ingetraut},
-  title   = {A referent-oriented, analytical concept theory for INTERCONCEPT},
-  journal = {International Classification},
-  volume  = {5},
-  number  = {3},
-  pages   = {142-151},
-  year    = {1978}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Beghtol198684,
-  author  = {Beghtol, Clare},
-  title   = {Bibliographic classification theory and text linguistics: aboutness analysis, intertextuality and the cognitive act of classifying documents},
-  journal = {Journal of Documentation},
-  volume  = {42},
-  number  = {2},
-  pages   = {84-113},
-  year    = {1986}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@book{Beghtol1994,
-  author    = {Beghtol, Clare},
-  title     = {The Classification of Fiction: The Development of a System Based on Theoretical Principles},
-  publisher = {Scarecrow Press},
-  address   = {Metuchen, NJ},
-  year      = {1994}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Jorgensen1998161,
-  author  = {J{\"o}rgensen, Corinne},
-  title   = {Attributes of images in describing tasks},
-  journal = {Information Processing \& Management},
-  volume  = {34},
-  number  = {2--3},
-  pages   = {161-174},
-  year    = {1998}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認) 著者名・出典形式要確認
-@inproceedings{Lin2018869,
-  author    = {Lin, Chih-Shiuan and Wang, Yi-Yun},
-  title     = {The performance of reading appeal descriptors for fiction: from the perspective of indexing consistency},
-  booktitle = {Proceedings of the Association for Information Science and Technology},
-  volume    = {55},
-  pages     = {869-870},
-  year      = {2018}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認) 頁範囲要確認
-@incollection{Sneath1962,
-  author    = {Sneath, Peter H. A.},
-  title     = {The construction of taxonomic groups},
-  booktitle = {Microbial Classification},
-  editor    = {Ainsworth, G. C. and Sneath, P. H. A.},
-  publisher = {Cambridge University Press},
-  address   = {Cambridge},
-  year      = {1962}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@book{Wittgenstein1953,
-  author    = {Wittgenstein, Ludwig},
-  title     = {Philosophical Investigations},
-  publisher = {Blackwell},
-  address   = {Oxford},
-  year      = {1953}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@book{Kuhn1962,
-  author    = {Kuhn, Thomas S.},
-  title     = {The Structure of Scientific Revolutions},
-  edition   = {2nd},
-  publisher = {University of Chicago Press},
-  address   = {Chicago},
-  year      = {1970},
-  note      = {First published 1962}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Rosch1975573,
-  author  = {Rosch, Eleanor and Mervis, Carolyn B.},
-  title   = {Family resemblances: studies in the internal structure of categories},
-  journal = {Cognitive Psychology},
-  volume  = {7},
-  number  = {4},
-  pages   = {573-605},
-  year    = {1975}
-}
-
-%%% 書籍のため Scopus 非収載(書誌は出版社公式で確認)
-@book{MertonBarber2004,
-  author    = {Merton, Robert K. and Barber, Elinor},
-  title     = {The Travels and Adventures of Serendipity: A Study in Sociological Semantics and the Sociology of Science},
-  publisher = {Princeton University Press},
-  address   = {Princeton, NJ},
-  year      = {2004}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認) 既存 Bjorneborn20171053 との使い分け要判断
-@article{Bjorneborn2008,
-  author  = {Bj{\"o}rneborn, Lennart},
-  title   = {Serendipity dimensions and users' information behaviour in the physical library interface},
-  journal = {Information Research},
-  volume  = {13},
-  number  = {4},
-  note    = {paper 370},
-  year    = {2008}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Agarwal2015,
-  author  = {Agarwal, Naresh Kumar},
-  title   = {Towards a definition of serendipity in information behaviour},
-  journal = {Information Research},
-  volume  = {20},
-  number  = {3},
-  note    = {paper 675},
-  year    = {2015}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@book{Lichtenstein2006,
-  editor    = {Lichtenstein, Sarah and Slovic, Paul},
-  title     = {The Construction of Preference},
-  publisher = {Cambridge University Press},
-  address   = {Cambridge},
-  year      = {2006}
-}
-
-%%% 書籍のため Scopus 非収載
-@book{Polanyi1966,
-  author    = {Polanyi, Michael},
-  title     = {The Tacit Dimension},
-  publisher = {Doubleday},
-  address   = {Garden City, NY},
-  year      = {1966}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@book{Goodman1955,
-  author    = {Goodman, Nelson},
-  title     = {Fact, Fiction, and Forecast},
-  publisher = {Harvard University Press},
-  address   = {Cambridge, MA},
-  year      = {1955}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Kruskal19641,
-  author  = {Kruskal, Joseph B.},
-  title   = {Multidimensional scaling by optimizing goodness of fit to a nonmetric hypothesis},
-  journal = {Psychometrika},
-  volume  = {29},
-  number  = {1},
-  pages   = {1-27},
-  year    = {1964}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@inproceedings{Ponte1998,
-  author    = {Ponte, Jay M. and Croft, W. Bruce},
-  title     = {A language modeling approach to information retrieval},
-  booktitle = {Proceedings of the 21st Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
-  pages     = {275-281},
-  year      = {1998}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@inproceedings{Hofmann1999,
-  author    = {Hofmann, Thomas},
-  title     = {Probabilistic latent semantic indexing},
-  booktitle = {Proceedings of the 22nd Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
-  pages     = {50-57},
-  year      = {1999}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Blei2003993,
-  author  = {Blei, David M. and Ng, Andrew Y. and Jordan, Michael I.},
-  title   = {Latent Dirichlet allocation},
-  journal = {Journal of Machine Learning Research},
-  volume  = {3},
-  pages   = {993-1022},
-  year    = {2003}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認) 頁範囲要確認
-@inproceedings{Chang2009,
-  author    = {Chang, Jonathan and Boyd-Graber, Jordan and Gerrish, Sean and Wang, Chong and Blei, David M.},
-  title     = {Reading tea leaves: how humans interpret topic models},
-  booktitle = {Advances in Neural Information Processing Systems 22},
-  pages     = {288-296},
-  year      = {2009}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Nagamachi19953,
-  author  = {Nagamachi, Mitsuo},
-  title   = {Kansei engineering: a new ergonomic consumer-oriented technology for product development},
-  journal = {International Journal of Industrial Ergonomics},
-  volume  = {15},
-  number  = {1},
-  pages   = {3-11},
-  year    = {1995}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@inproceedings{Kato1992112,
-  author    = {Kato, Toshikazu},
-  title     = {Database architecture for content-based image retrieval},
-  booktitle = {Image Storage and Retrieval Systems, Proceedings of SPIE},
-  volume    = {1662},
-  pages     = {112-123},
-  year      = {1992}
-}
-
-%%% 要 Scopus 取得(暫定エントリー)
-@article{vanAndel1994,
-  author  = {van Andel, Pek},
-  title   = {Anatomy of the unsought finding. Serendipity: Origin, history, domains, traditions, appearances, patterns and programmability},
-  journal = {The British Journal for the Philosophy of Science},
-  year    = {1994},
-  volume  = {45},
-  number  = {2},
-  pages   = {631-648},
-  doi     = {10.1093/bjps/45.2.631}
-}
-
-%%% ワークショップ論文のため Scopus 非収載の可能性(書誌要確認)
-@inproceedings{Toms2000,
-  author    = {Toms, Elaine G.},
-  title     = {Serendipitous information retrieval},
-  booktitle = {Proceedings of the First {DELOS} Network of Excellence Workshop on Information Seeking, Searching and Querying in Digital Libraries},
-  publisher = {ERCIM},
-  address   = {Zurich, Switzerland},
-  year      = {2000},
-  pages     = {17-20}
-}
-
-@article{Fu2024,
-  author            = {Fu, Zhe and Niu, Xi and Maher, Mary Lou},
-  title             = {Deep Learning Models for Serendipity Recommendations: A Survey and New Perspectives},
-  year              = {2024},
-  journal           = {ACM Computing Surveys},
-  volume            = {56},
-  number            = {1},
-  doi               = {10.1145/3605145},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-%%% 要 Scopus 取得(暫定エントリー)
-@article{Bawden1986203,
-  author  = {Bawden, David},
-  title   = {Information systems and the stimulation of creativity},
-  journal = {Journal of Information Science},
-  year    = {1986},
-  volume  = {12},
-  number  = {5},
-  pages   = {203-216},
-  doi     = {10.1177/016555158601200501}
-}
-
-%%% 要 Scopus 取得(暫定エントリー)
-@inproceedings{Andre2009305,
-  author    = {Andr{\'e}, Paul and schraefel, m.c. and Teevan, Jaime and Dumais, Susan T.},
-  title     = {Discovery is never by chance: Designing for (un)serendipity},
-  booktitle = {Proceedings of the 7th ACM Conference on Creativity and Cognition, C\&C '09},
-  publisher = {ACM},
-  year      = {2009},
-  pages     = {305-314},
-  doi       = {10.1145/1640233.1640279}
-}
-
-%%% CEUR-WS のため Scopus 収載要確認。正式タイトル・頁も要検証(暫定エントリー)
-@inproceedings{Smets202246,
-  author    = {Smets, Annelien and Michiels, Lien and Bogers, Toine and Bj{\"o}rneborn, Lennart},
-  title     = {Serendipity in recommender systems beyond the algorithm: A feature repository and experimental design},
-  booktitle = {Proceedings of the 9th Joint Workshop on Interfaces and Human Decision Making for Recommender Systems (IntRS '22), CEUR Workshop Proceedings, Vol.~3222},
-  year      = {2022},
-  pages     = {46-66}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Ingwersen19963,
-  author  = {Ingwersen, Peter},
-  title   = {Cognitive perspectives of information retrieval interaction: elements of a cognitive IR theory},
-  journal = {Journal of Documentation},
-  volume  = {52},
-  number  = {1},
-  pages   = {3-50},
-  year    = {1996}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Frohmann199081,
-  author  = {Frohmann, Bernd},
-  title   = {Rules of indexing: a critique of mentalism in information retrieval theory},
-  journal = {Journal of Documentation},
-  volume  = {46},
-  number  = {2},
-  pages   = {81-101},
-  year    = {1990}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Ruthven2021554,
-  author  = {Ruthven, Ian},
-  title   = {Resonance and the experience of relevance},
-  journal = {Journal of the Association for Information Science and Technology},
-  volume  = {72},
-  number  = {5},
-  pages   = {554-569},
-  year    = {2021}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@inproceedings{Nguyen2014677,
-  author    = {Nguyen, Tien T. and Hui, Pik-Mai and Harper, F. Maxwell and Terveen, Loren and Konstan, Joseph A.},
-  title     = {Exploring the filter bubble: the effect of using recommender systems on content diversity},
-  booktitle = {Proceedings of the 23rd International Conference on World Wide Web},
-  pages     = {677-686},
-  year      = {2014}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{SparckJones197211,
-  author  = {Sp{\"a}rck Jones, Karen},
-  title   = {A statistical interpretation of term specificity and its application in retrieval},
-  journal = {Journal of Documentation},
-  volume  = {28},
-  number  = {1},
-  pages   = {11-21},
-  year    = {1972}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@book{Blair1990,
-  author    = {Blair, David C.},
-  title     = {Language and Representation in Information Retrieval},
-  publisher = {Elsevier},
-  address   = {Amsterdam},
-  year      = {1990}
-}
-
-%%% 暫定エントリー(Scopus 未取得。書誌詳細は v9 引用文献リスト由来、投稿前に一次確認)
-@article{Buckland1991351,
-  author  = {Buckland, Michael K.},
-  title   = {Information as thing},
-  journal = {Journal of the American Society for Information Science},
-  volume  = {42},
-  number  = {5},
-  pages   = {351-360},
-  year    = {1991}
-}
-
-@article{Lewis1935118,
-  author            = {Lewis, W.S.},
-  title             = {Yale edition of Horace Walpole's correspondence},
-  year              = {1935},
-  journal           = {Notes and Queries},
-  volume            = {169},
-  number            = {AUG17},
-  pages             = {118},
-  doi               = {10.1093/nq/CLXIX.aug17.118-a},
-  type              = {Letter},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Copeland20192385,
-  author            = {Copeland, Samantha},
-  title             = {On serendipity in science: discovery at the intersection of chance and wisdom},
-  year              = {2019},
-  journal           = {Synthese},
-  volume            = {196},
-  number            = {6},
-  pages             = {2385-2406},
-  doi               = {10.1007/s11229-017-1544-3},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Kotkov2016251,
-  author            = {Kotkov, Denis and Veijalainen, Jari and Wang, Shuaiqiang},
-  title             = {Challenges of serendipity in recommender systems},
-  year              = {2016},
-  journal           = {WEBIST 2016-Proceedings of the 12th International Conference on Web Information Systems and Technologies},
-  volume            = {2},
-  pages             = {251-256},
-  doi               = {10.5220/0005879802510256},
-  type              = {Conference paper},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Wang20192678,
-  author                 = {Wang, Chang-Dong and Deng, Zhi-Hong and Lai, Jian-Huang and Yu, Philip S.},
-  title                  = {Serendipitous recommendation in e-commerce using innovator-based collaborative filtering},
-  year                   = {2019},
-  journal                = {IEEE Transactions on Cybernetics},
-  volume                 = {49},
-  number                 = {7},
-  pages                  = {2678-2692},
-  doi                    = {10.1109/TCYB.2018.2841924},
-  affiliations           = {School of Data and Computer Science, Sun Yat-sen University, Guangzhou, 510006, China; Department of Computer Science, University of Illinois at Chicago, Chicago, 60607, IL, United States; Institute for Data Science, Tsinghua University, Beijing, 100084, China},
-  abstract               = {Collaborative filtering (CF) algorithms have been widely used to build recommender systems since they have distinguishing capability of sharing collective wisdoms and experiences. However, they may easily fall into the trap of the Matthew effect, which tends to recommend popular items and hence less popular items become increasingly less popular. Under this circumstance, most of the items in the recommendation list are already familiar to users and therefore the performance would seriously degenerate in finding cold items, i.e., new items and niche items. To address this issue, in this paper, a user survey is first conducted on the online shopping habits in China, based on which a novel recommendation algorithm termed innovator-based CF is proposed that can recommend cold items to users by introducing the concept of innovators. Specifically, innovators are a special subset of users who can discover cold items without the help of recommender system. Therefore, cold items can be captured in the recommendation list via innovators, achieving the balance between serendipity and accuracy. To confirm the effectiveness of our algorithm, extensive experiments are conducted on the dataset provided by Alibaba Group in Ali Mobile Recommendation Algorithm Competition, which is collected from the real e-commerce environment and covers massive user behavior log data. © 2013 IEEE.},
-  author_keywords        = {Cold items; Collaborative filtering (CF); Innovators; Recommender system; Serendipity},
-  keywords               = {Behavioral research; Cybernetics; Electronic mail; Electronic mail filters; Interactive computer systems; Mobile commerce; Real time systems; Recommender systems; Sorting; Cold items; Collaboration; innovators; serendipity; Technological innovation; Collaborative filtering},
-  correspondence_address = {J.-H. Lai; School of Data and Computer Science, Sun Yat-sen University, Guangzhou, 510006, China; email: stsljh@mail.sysu.edu.cn},
-  publisher              = {Institute of Electrical and Electronics Engineers Inc.},
-  issn                   = {21682267},
-  pmid                   = {29994495},
-  language               = {English},
-  abbrev_source_title    = {IEEE Trans. Cybern.},
-  type                   = {Article},
-  publication_stage      = {Final},
-  source                 = {Scopus}
-}
-
-@article{Balzano2022130,
-  author            = {Balzano, Marco},
-  title             = {Serendipity in management studies: a literature review and future research directions},
-  year              = {2022},
-  journal           = {Management Decision},
-  volume            = {60},
-  number            = {13},
-  pages             = {130-152},
-  doi               = {10.1108/MD-02-2022-0245},
-  type              = {Review},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Litman200375,
-  author            = {Litman, Jordan A. and Spielberger, Charles D.},
-  title             = {Measuring epistemic curiosity and its diversive and specific components},
-  year              = {2003},
-  journal           = {Journal of Personality Assessment},
-  volume            = {80},
-  number            = {1},
-  pages             = {75-86},
-  doi               = {10.1207/S15327752JPA8001_16},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Berlyne1960,
-  author    = {Daniel E Berlyne},
-  publisher = {McGraw-Hill Book Company},
-  title     = {Conflict, arousal, and curiosity},
-  year      = {1960}
-}
-
-@article{Chen2018,
-  author            = {Chen, Tian Qi and Li, Xuechen and Grosse, Roger and Duvenaud, David},
-  title             = {Isolating sources of disentanglement in variational autoencoders},
-  year              = {2018},
-  journal           = {6th International Conference on Learning Representations, ICLR 2018-Workshop Track Proceedings},
-  type              = {Conference paper},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{agueh2011barycenters,
-  author            = {Agueh, Martial and Carlier, Guillaume},
-  title             = {Barycenters in the wasserstein space},
-  year              = {2011},
-  journal           = {SIAM Journal on Mathematical Analysis},
-  volume            = {43},
-  number            = {2},
-  pages             = {904-924},
-  doi               = {10.1137/100805741},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{cuturi2013sinkhorn,
-  author            = {Cuturi, Marco},
-  title             = {Sinkhorn distances: Lightspeed computation of optimal transport},
-  year              = {2013},
-  journal           = {Advances in Neural Information Processing Systems},
-  type              = {Conference paper},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Ishibashi2022138,
-  author            = {Ishibashi, Hideaki and Higa, Kazushi and Furukawa, Tetsuo},
-  title             = {Multi-task manifold learning for small sample size datasets},
-  year              = {2022},
-  journal           = {Neurocomputing},
-  volume            = {473},
-  pages             = {138-157},
-  doi               = {10.1016/j.neucom.2021.11.043},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Tolstikhin2018,
-  author  = {Tolstikhin, Ilya and Bousquet, Olivier and Gelly, Sylvain and Schölkopf, Bernhard},
-  title   = {Wasserstein auto-encoders},
-  year    = {2018},
-  journal = {6th International Conference on Learning Representations, ICLR 2018-Conference Track Proceedings},
-  type    = {Conference paper},
-  source  = {Scopus}
-}
-
-@article{Onken2021,
-  author            = {Onken, Derek and Fung, Samy Wu and Li, Xingjian and Ruthotto, Lars},
-  title             = {OT-Flow: Fast and Accurate Continuous Normalizing Flows via Optimal Transport},
-  year              = {2021},
-  journal           = {35th AAAI Conference on Artificial Intelligence, AAAI 2021},
-  volume            = {10B},
-  pages             = {9223-9232},
-  doi               = {10.1609/aaai.v35i10.17113},
-  type              = {Conference paper},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Memoli2011,
-  author            = {Mémoli, Facundo},
-  title             = {Gromov-Wasserstein Distances and the Metric Approach to Object Matching},
-  year              = {2011},
-  journal           = {Foundations of Computational Mathematics},
-  volume            = {11},
-  number            = {4},
-  pages             = {417-487},
-  doi               = {10.1007/s10208-011-9093-5},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Vaswani2017,
-  author            = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, {\L}ukasz and Polosukhin, Illia},
-  title             = {Attention is all you need},
-  year              = {2017},
-  journal           = {Advances in Neural Information Processing Systems},
-  volume            = {2017-December},
-  pages             = {5999-6009},
-  type              = {Conference paper},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Saracevic1975321,
-  author            = {Saracevic, Tefko},
-  title             = {RELEVANCE: A review of and a framework for the thinking on the notion in information science},
-  year              = {1975},
-  journal           = {Journal of the American Society for Information Science},
-  volume            = {26},
-  number            = {6},
-  pages             = {321-343},
-  doi               = {10.1002/asi.4630260604},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Saracevic20071915,
-  author            = {Saracevic, Tefko},
-  title             = {Relevance: A review of the literature and a framework for thinking on the notion in information science. Part II: Nature and manifestations of relevance},
-  year              = {2007},
-  journal           = {Journal of the American Society for Information Science and Technology},
-  volume            = {58},
-  number            = {13},
-  pages             = {1915-1933},
-  doi               = {10.1002/asi.20682},
-  type              = {Review},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Saracevic20072126,
-  author            = {Saracevic, Tefko},
-  title             = {Relevance: A review of the literature and a framework for thinking on the notion in information science. Part III: Behavior and effects of relevance},
-  year              = {2007},
-  journal           = {Journal of the American Society for Information Science and Technology},
-  volume            = {58},
-  number            = {13},
-  pages             = {2126-2144},
-  doi               = {10.1002/asi.20681},
-  type              = {Review},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Schamber1990755,
-  author            = {Schamber, Linda and Eisenberg, Michael B. and Nilan, Michael S.},
-  title             = {A re-examination of relevance: toward a dynamic, situational definition*},
-  year              = {1990},
-  journal           = {Information Processing and Management},
-  volume            = {26},
-  number            = {6},
-  pages             = {755-776},
-  doi               = {10.1016/0306-4573(90)90050-C},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Fu202529,
-  author    = {Fu, Zhe and Niu, Xi and Wu, Xiangcheng and Rahman, Ruhani},
-  title     = {A Deep Learning Model for Cross-Domain Serendipity Recommendations},
-  year      = {2025},
-  journal   = {ACM Transactions on Recommender Systems},
-  volume    = {3},
-  number    = {3},
-  articleno = {29},
-  numpages  = {21},
-  pages     = {29:1-29:21},
-  month     = mar,
-  doi       = {10.1145/3690654},
-  publisher = {Association for Computing Machinery},
-  address   = {New York, NY, USA}
-}
-
-@article{Belkin1980,
-  title   = {Anomalous states of knowledge as a basis for information retrieval},
-  author  = {Belkin, Nicholas J and others},
-  journal = {Canadian journal of information science},
-  volume  = {5},
-  number  = {1},
-  pages   = {133-143},
-  year    = {1980}
-}
-
-@article{Belkin1982145,
-  author            = {Belkin, N.J. and Oddy, R.N. and Brooks, H.M.},
-  title             = {Ask for information retrieval: Part II. Results of a design study},
-  year              = {1982},
-  journal           = {Journal of Documentation},
-  volume            = {38},
-  number            = {3},
-  pages             = {145-164},
-  doi               = {10.1108/eb026726},
-  type              = {Review},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Hearst200659,
-  author            = {Hearst, Marti A.},
-  title             = {Clustering versus faceted categories for information exploration},
-  year              = {2006},
-  journal           = {Communications of the ACM},
-  volume            = {49},
-  number            = {4},
-  pages             = {59-61},
-  doi               = {10.1145/1121949.1121983},
-  type              = {Review},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@conference{Sarrafzadeh2017145,
-  author            = {Sarrafzadeh, Bahareh and Lank, Edward},
-  title             = {Improving exploratory search experience through hierarchical knowledge graphs},
-  year              = {2017},
-  booktitle         = {SIGIR 2017-Proceedings of the 40th International ACM SIGIR Conference on Research and Development in Information Retrieval},
-  pages             = {145-154},
-  doi               = {10.1145/3077136.3080829},
-  type              = {Conference paper},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Tenenbaum20002319,
-  author            = {Tenenbaum, J.B. and De Silva, V. and Langford, J.C.},
-  title             = {A global geometric framework for nonlinear dimensionality reduction},
-  year              = {2000},
-  journal           = {Science},
-  volume            = {290},
-  number            = {5500},
-  pages             = {2319-2323},
-  doi               = {10.1126/science.290.5500.2319},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-@article{Borlund2003913,
-  author            = {Borlund, Pia},
-  title             = {The concept of relevance in IR},
-  year              = {2003},
-  journal           = {Journal of the American Society for Information Science and Technology},
-  volume            = {54},
-  number            = {10},
-  pages             = {913-925},
-  doi               = {10.1002/asi.10286},
-  type              = {Review},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-%%% 2026-08-06 Section 2 ブロックから素材庫へ移動(未引用のため。引用は Taylor1968178)
-%%% 未引用。引用は 1968 年版(Taylor1968178)で行う。CitedPapers の PDF はこの再録版から取得したため、
-%%% 出所の記録として保持する
-@article{Taylor2015251,
-  author            = {Taylor, Robert S.},
-  title             = {Question-negotiation and information seeking in libraries},
-  year              = {2015},
-  journal           = {College and Research Libraries},
-  volume            = {76},
-  number            = {3},
-  pages             = {251-267},
-  doi               = {10.5860/crl.76.3.251},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-%%% 2026-08-06 sec2 改稿により未引用化(「seven per cent」の記述を削除)。書誌は確認済みだが PDF 未入手
-%%% PDFなし（入手必要）
-%%% Scopus 記載なし、書誌情報は Google Scholar 等で確認済み
-@article{Markey1984155,
-  author  = {Markey, Karen},
-  title   = {Interindexer consistency tests: a literature review and report of a test of consistency in indexing visual materials},
-  journal = {Library \& Information Science Research},
-  volume  = {6},
-  number  = {2},
-  pages   = {155-177},
-  year    = {1984}
-}
-
-%%% Fillmore1982111: 【未引用・素材庫】2026-08-08 引用から外した(共有基盤の議論は Clark+Langacker の2本で立てる判断)。書誌は ACL W97-0204 と Petruck (HoP) で一致確認済み(pp.111-137)
-@incollection{Fillmore1982111,
-  author    = {Fillmore, Charles J.},
-  title     = {Frame semantics},
-  booktitle = {Linguistics in the Morning Calm},
-  editor    = {{The Linguistic Society of Korea}},
-  publisher = {Hanshin Publishing Co.},
-  address   = {Seoul},
-  pages     = {111-137},
-  year      = {1982}
-}
-
-%%% Rafferty20171: 【未引用・素材庫】2026-08-08 引用から外した。Rafferty2005(Ashgate)と同一書の Routledge 再刊。本文は著者本人の引用慣行に従い 2005 を採用する
-@book{Rafferty20171,
-  author            = {Rafferty, Pauline and Hidderley, Rob},
-  title             = {Indexing multimedia and creative works: The problems of meaning and interpretation},
-  year              = {2017},
-  journal           = {Indexing Multimedia and Creative Works: The Problems of Meaning and Interpretation},
-  pages             = {1-208},
-  doi               = {10.4324/9781315252469},
-  url               = {https://www.scopus.com/pages/publications/85082587013?origin=resultslist},
-  type              = {Book},
-  publication_stage = {Final},
-  source            = {Scopus},
-  note              = {Cited by: 2}
-}
-
-%%% Corneli2020: 【未引用・素材庫】2026-08-09 引用から外した。arXiv のみ(出版版なし、Scopus 未収録をせんせー確認 2026-08-09)。§2.1 process 束から除外——束は査読誌4本で立つ
-%%% Corneli2020: arXiv 版(1411.0440)。出版版が Scopus にあるか要確認(2026-08-09 メモ)
-@misc{Corneli2020,
-  title         = {Modelling serendipity in a computational context},
-  author        = {Joseph Corneli and Anna Jordanous and Christian Guckelsberger and Alison Pease and Simon Colton},
-  year          = {2020},
-  eprint        = {1411.0440},
-  archiveprefix = {arXiv},
-  primaryclass  = {cs.AI},
-  url           = {https://arxiv.org/abs/1411.0440}
-}
-
-%%% Higgins2018: 【未引用・素材庫】2026-08-09 引用から外した。arXiv のみ。§2.4 の定義 cite から除外——定義は Higgins2017(ICLR)で立つ(Higgins2017 自身が定義を Bengio 2013 に帰属)
-%%% Higgins2018: arXiv preprint のみ(1812.02230)。Scopus 対象外の見込み(2026-08-09 メモ)
-@misc{Higgins2018,
-  author        = {Higgins, Irina and Amos, David and Pfau, David and Racaniere, Sebastien and Matthey, Loic and Rezende, Danilo and Lerchner, Alexander},
-  title         = {Towards a Definition of Disentangled Representations},
-  year          = {2018},
-  eprint        = {1812.02230},
-  archiveprefix = {arXiv},
-  primaryclass  = {cs.LG}
-}
-
-%%% Bronstein201718: 【未引用・素材庫】2026-08-09 引用から外した。§2.4 書き換えで cite の係り先(空間の幾何の定義句)が消えたため除外。geometric DL サーベイであり "representation learning names" の典拠としては不適。sec4/5 で幾何の cite が要る場合の候補として保持
-@article{Bronstein201718,
-  author            = {Bronstein, Michael M. and Bruna, Joan and Lecun, Yann and Szlam, Arthur and Vandergheynst, Pierre},
-  title             = {Geometric Deep Learning: Going beyond {Euclidean} data},
-  year              = {2017},
-  journal           = {IEEE Signal Processing Magazine},
-  volume            = {34},
-  number            = {4},
-  pages             = {18-42},
-  doi               = {10.1109/MSP.2017.2693418},
-  type              = {Review},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-%%% Louwerse2018: 【未引用・素材庫】2026-08-11 追加。§7.2 の主柱2(Louwerse2011)の姉妹論文——
-%%% 「語の意味は、それが連れている言語的および知覚的な仲間から知られる」。distributional semantics の
-%%% 標語(company it keeps)を知覚側へ拡張した題名。P3 を一本増やす必要が出たときの候補。
-%%% 要 Scopus 取得。DOI は検索結果 URL から確定、volume/pages(10(3):573-589 の見込み)は未検証。
-@article{Louwerse2018,
-  author  = {Louwerse, Max M.},
-  title   = {Knowing the meaning of a word by the linguistic and perceptual company it keeps},
-  year    = {2018},
-  journal = {Topics in Cognitive Science},
-  volume  = {10},
-  number  = {3},
-  pages   = {573-589},
-  doi     = {10.1111/tops.12349}
-}
-
-%%% 2026-08-18 sec1–sec6 書き直しで未引用化(旧「Section 4 (sec4.tex)」から移動。在庫として保持)
-@inproceedings{Bertin-Mahieux2011,
-  author    = {Thierry Bertin-Mahieux and Daniel P.W. Ellis and Brian Whitman and Paul Lamere},
-  title     = {The Million Song Dataset},
-  booktitle = {{Proceedings of the 12th International Conference on Music Information
-               Retrieval ({ISMIR} 2011)}},
-  year      = {2011},
-  owner     = {thierry},
-  timestamp = {2010.03.07}
-}
-
-%%% 2026-08-18 sec1–sec6 書き直しで未引用化(旧「Section 6 以降で引用中(未改稿節。順序・帰属は暫定)」から移動。在庫として保持)
-@article{DiCarlo2007333,
-  author            = {DiCarlo, James J. and Cox, David D.},
-  title             = {Untangling invariant object recognition},
-  year              = {2007},
-  journal           = {Trends in Cognitive Sciences},
-  volume            = {11},
-  number            = {8},
-  pages             = {333-341},
-  doi               = {10.1016/j.tics.2007.06.010},
-  type              = {Article},
-  publication_stage = {Final},
-  source            = {Scopus}
-}
-
-%%%%% --- Ver.2 (paper202605) 由来。現行では別 bibkey が使われている重複エントリー ---
-%%%%% Ver.2 正典の全量保持の規則により残す。本文からは引用しない
-
-%%% Ver.2 由来。現行は Taylor1968178 を使用(同一文献)。
-@article{Taylor1968,
-  abstract  = {Seekers of information in libraries either go through a librarian intermediary or they help themselves. When they go through librarians they must develop their questions through four levels of need, referred to here as the visceral, conscious, formalized, and compromised needs. In his pre-search interview with an information-seeker the reference librarian attempts to help him arrive at an understanding of his "compromised" need by determining: (1) the subject of his interest; (2) his motivation; (3) his personal characteristics; (4) the relationship of the inquiry to file organization; and (5) anticipated answers. The author contends that research is needed into the techniques of conducting this negotiation between the user and the reference librarian.},
-  author    = {Robert S. Taylor and Robert S. Taylor},
-  doi       = {10.5860/crl_29_03_178},
-  issn      = {0010-0870},
-  issue     = {3},
-  journal   = {College \& Research Libraries},
-  month     = {4},
-  pages     = {178-194},
-  publisher = {American Library Association},
-  title     = {Question-Negotiation and Information Seeking in Libraries},
-  volume    = {29},
-  year      = {1968}
-}
-
-%%% Ver.2 由来。現行は Makri2012684 を使用(同一文献)。
-@article{Makri2012part1,
-  author                 = {Makri, Stephann and Blandford, Ann},
-  title                  = {Coming across information serendipitously-Part 1: A process model},
-  year                   = {2012},
-  journal                = {Journal of Documentation},
-  volume                 = {68},
-  number                 = {5},
-  pages                  = {684-705},
-  doi                    = {10.1108/00220411211256030},
-  affiliations           = {UCL Interaction Centre, University College London, London, United Kingdom},
-  abstract               = {Purpose: This research seeks to gain a detailed understanding of how researchers come across information serendipitously, grounded in real-world examples. This research was undertaken to enrich the theoretical understanding of this slippery phenomenon. Design/methodology/approach: Semi-structured critical incident interviews were conducted with 28 interdisciplinary researchers. Interviewees were asked to discuss memorable examples of coming across information serendipitously from their research or everyday life. The data collection and analysis process followed many of the core principles of grounded theory methodology. Findings: The examples provided were varied, but shared common elements (they involved a mix of unexpectedness and insight and led to a valuable, unanticipated outcome). These elements form part of an empirically grounded process model of serendipity. In this model, a new connection is made that involves a mix of unexpectedness and insight and has the potential to lead to a valuable outcome. Projections are made on the potential value of the outcome and actions are taken to exploit the connection, leading to an (unanticipated) valuable outcome. Originality/value: The model provides researchers across disciplines with a structured means of understanding and describing serendipitous experiences. © Emerald Group Publishing Limited.},
-  author_keywords        = {Chance; Encountering; Information discovery; Modelling; Research; Serendipitous; Serendipity},
-  correspondence_address = {S. Makri; UCL Interaction Centre, University College London, London, United Kingdom; email: s.makri@ucl.ac.uk},
-  issn                   = {00220418},
-  language               = {English},
-  abbrev_source_title    = {J. Doc.},
-  type                   = {Article},
-  publication_stage      = {Final},
-  source                 = {Scopus}
 }

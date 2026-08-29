@@ -22,7 +22,7 @@ $V = (v_1, \dots, v_N)$ in $\mathcal{V}$.
 
 The objective aligns the $K$ genre distributions by minimizing the
 2-Wasserstein distance---a multi-marginal optimal transport
-problem~\citep{villani2009optimal,pass2015multi}.
+problem~\citep{villani2009optimal,Pass20151771}.
 \begin{align}\label{eq:main_objective}
     W^2_2(p_\text{data}, q_\Phi)
            & = \inf_{\gamma\in\Pi(p_{\text{data}},\, q_\Phi)}
@@ -55,8 +55,8 @@ correspondence is unique in the following sense.
     continuous with finite second moment. For such marginals, the
     multi-marginal problem with pairwise squared-distance cost has a
     unique solution, given by Monge
-    maps~\cite{GangboSwiech199823,pass2015multi}; for $K=2$ this is
-    Brenier's theorem~\cite{Brenier1991375}. The OT-FB inherits this
+    maps~\citep{GangboSwiech199823,Pass20151771}; for $K=2$ this is
+    Brenier's theorem~\citeyearpar{Brenier1991375}. The OT-FB inherits this
     uniqueness.
     (b) Let $g_\mathcal{U}$ and $g_\mathcal{V}$ be measure-preserving
     maps of $\mathcal{U}$ and $\mathcal{V}$, leaving $q(u)$ and $q(v)$
@@ -100,7 +100,7 @@ Here $\rho_{kn} = 1$ when work $n$ belongs to genre $k$ and $0$
 otherwise, and $\alpha$ controls the kernel width. Equation
 \eqref{eq:kernel_smoothing} is \textit{hierarchical kernel
     smoothing}---the algorithm of the SOM of
-SOMs~\cite{Furukawa2009463}---obtained here not as a modeling
+SOMs~\citep{Furukawa2009463}---obtained here not as a modeling
 assumption but as a consequence of optimal transport.
 
 \paragraph{Transport optimization $p_\text{data} \rightarrow q_\Phi$.}

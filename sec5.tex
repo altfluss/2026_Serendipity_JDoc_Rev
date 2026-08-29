@@ -53,11 +53,11 @@ connotation space each one gives.
 \label{subsec:music_library}
 
 \paragraph{Setup.}
-The first library is built from MTG-Jamendo~\cite{Bogdanov2019}, an
+The first library is built from MTG-Jamendo~\citep{Bogdanov2019}, an
 openly licensed music collection. Five genres---classical, jazz, rock,
 electronic, and folk---enter the library, one thousand tracks each, and
 every track carries exactly one genre tag. The content data come from
-sound alone: each track is embedded by CLAP~\cite{Wu2023}, a joint
+sound alone: each track is embedded by CLAP~\citep{Wu2023}, a joint
 audio--text encoder, over excerpts drawn from across it, then averaged,
 normalized to unit norm, and reduced by PCA to ten dimensions. These
 embeddings and the genre labels are all the modeling uses. The
@@ -328,15 +328,15 @@ fifty-four combinations are filled, with up to two hundred paintings
 each and nearly nine thousand in all; Figure~\ref{fig:wikiart}(b)
 names them. The content data come from the image alone: each painting
 is resized whole to 224 by 224, never cropped, and embedded by
-CLIP~\citep{Radford2021,Cherti2023}, a joint image--text encoder, then
+CLIP~\citep{Radford20218748,Cherti20232818}, a joint image--text encoder, then
 normalized to unit norm, centered, and reduced by PCA to ten
 dimensions. These embeddings and the two labels are all the modeling
 uses.
 
 Three probes read the space afterwards, and none took part in building
-it. BLIP~\citep{Li2022} describes each painting in a sentence, and the
+it. BLIP~\citep{Li202212888} describes each painting in a sentence, and the
 content words of that sentence name what is shown.
-ArtEmis~\citep{Achlioptas2021} gives what viewers felt: nine emotions,
+ArtEmis~\citep{Achlioptas202111564} gives what viewers felt: nine emotions,
 chosen by a median of six viewers per painting. Twenty-nine features,
 measured from the pixels, tell how the paint lies. A machine, people,
 and the pixels---three roads to one space.
