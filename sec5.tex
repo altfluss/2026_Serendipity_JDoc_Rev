@@ -4,8 +4,8 @@
 
 Section~\ref{sec:mathematics} took the ideal content space as given. Here we
 take it as data. Modern general-purpose encoders---CLIP, CLAP, and the
-like---aim at the same ideal: trained on large corpora, for no single task, they
-turn likeness into closeness. So their embeddings serve as content data. This
+like---aim at the same ideal: trained on large corpora, they turn likeness into
+closeness. So their embeddings serve as content data. This
 section builds two libraries, one from sound and one from sight, and reads the
 connotation space each one gives.
 
@@ -44,7 +44,7 @@ connotation space each one gives.
         (b) The same five learned jointly as one OT-FB.
         (c, d) The manifolds of (a) and of (b), translated apart and
         stacked as floors; each line joins the same coordinate $v$
-        through all five.}
+        through all five floors.}
     \label{fig:mtg_otfb}
 \end{figure}
 
@@ -57,11 +57,12 @@ The first library is built from MTG-Jamendo~\citep{Bogdanov2019}, a collection
 of openly licensed music. The artists tag their own uploads. Five
 genres---classical, jazz, rock, electronic, and folk---enter the library, one
 thousand tracks each, and no track names two of them. The content data come from
-sound alone: we embed ten-second excerpts from across each track by
+sound alone: we embed ten-second excerpts from across each track with
 CLAP~\citep{Wu2023}, a joint audio--text encoder, and average them. The result
 is normalized to unit norm and reduced by PCA to ten dimensions. These
-embeddings and the genre tags are all the modeling uses. The instrument, mood,
-and theme tags stay held out, and read the space afterward.
+embeddings and the genre tags are all the modeling uses. The artists' own
+tags---instrument, mood, and theme---stay held out. They read the space
+afterward. They read the space afterward.
 
 \paragraph{The learned bundle.}
 Figure~\ref{fig:mtg_otfb} shows the collection modeled by the OT-FB{}.
@@ -205,10 +206,9 @@ them---\textit{piano}, \textit{trumpet}, \textit{acoustic guitar}, and
 overlap---connotation runs as a continuous spectrum, not as discrete regions.
 
 Tags differ in how much they tell about $v$. The mutual information
-$\mathrm{MI}[v; \textit{tag}]$ measures it: how unevenly the works
-carrying the tag fall over $\mathcal{V}$. Table~\ref{tab:tag_mi}
-lists the top twenty. Instruments occupy the upper ranks, and moods
-follow.
+$\mathrm{MI}[v; \textit{tag}]$ measures it: how strongly the works carrying the
+tag gather on $\mathcal{V}$. Table~\ref{tab:tag_mi} lists the top twenty.
+Instruments occupy the upper ranks, and moods follow.
 
 \paragraph{The landscape of $\mathcal{V}$.}
 Figure~\ref{fig:v_tags}(e) widens the reading to the top forty tags,
@@ -216,13 +216,12 @@ each placed at the peak of its density $p(v \mid \textit{tag})$. Each
 tag still spreads around its peak, as (a--d) show; the map marks
 where it gathers most.
 
-The landscape divides in two. The upper half is lively: to the right,
-drums, bass, electric guitar, and brass---powerful music; to the
-left, happy and uplifting. The lower half is quiet: to the right,
-acoustic guitar, with love and dream---ballads; to the left, piano,
-with emotional, relaxing, sad, and romantic. The two coordinates of
-$\mathcal{V}$ carry no names, no more than a principal component
-does; yet the landscape they span is legible from end to end.
+The landscape divides in two. The upper half is lively: to the right, drums,
+bass, electric guitar, and brass---powerful music; to the left, happy and
+uplifting. The lower half is quiet: to the right, acoustic guitar, with love and
+dream---ballads; to the left, piano, with emotional, relaxing, sad, and
+romantic. The two coordinates of $\mathcal{V}$ are as nameless as principal
+components; yet the landscape they span is legible from end to end.
 
 Table~\ref{tab:point_tags} reads four points more closely: the
 corners A--D, each a rabbit hole, seen through the tags concentrated
@@ -242,23 +241,21 @@ What $\mathcal{V}$ holds follows from the facet. Genre was the only
 facet, so all else---instruments, moods, themes---was left to
 connotation. Which of them, then, does $\mathcal{V}$ carry?
 
-$\mathcal{V}$ carries the two as one. An instrument tends to bring its
-own moods---the ring of brass, the cheer of a ukulele, the warmth of
-an acoustic guitar. So tags do not settle at points of $\mathcal{V}$.
-Each one spreads over a stretch of the spectrum, and the stretches
-overlap: \textit{piano} peaks at the lower left, among relaxing and
-sad, and reaches the upper right as well, where the music runs
-energetic (Figure~\ref{fig:v_tags}(a)). $\mathcal{V}$ is a qualia
-spectrum, and its qualia are instrument and mood joined.
-\textit{Principal} means this: the two dimensions that account for
-that joining with least error (Section~\ref{subsec:content_space}).
+$\mathcal{V}$ carries them as one. An instrument tends to bring
+its own moods---the ring of brass, the cheer of a ukulele, the warmth of an
+acoustic guitar. So each tag spreads over a stretch of the spectrum, not a
+point, and the stretches overlap: \textit{piano} peaks at the lower left, among
+relaxing and sad, and reaches the upper right as well, where the music runs
+energetic (Figure~\ref{fig:v_tags}(a)). $\mathcal{V}$ is a qualia spectrum, and
+its qualia are instrument and mood joined. \textit{Principal} means this: the
+two dimensions that account for that joining with least error
+(Section~\ref{subsec:content_space}).
 
-A single point of $\mathcal{V}$ does not hold a single kind of music.
-The works gathered there are alike in connotation, yet they run from
-genre to genre; the space is one, shared by the five. Each point is a
-rabbit hole, opening at the same $v$ on every floor. At point A, rock
-is energetic music driven by drums; through the hole, on the classical
-floor, brass plays with the same force.
+One point of $\mathcal{V}$ holds many kinds of music. The works gathered there
+are alike in connotation, yet they run from genre to genre; the space is one,
+shared by the five genres. Each point is a rabbit hole, opening at the same $v$
+on every floor. At point A, rock is energetic music driven by drums; through the
+hole, on the classical floor, brass plays with the same force.
 
 Return now to the visitor of Section~\ref{sec:introduction}. The
 catalogue told him \textit{trumpet}, and most trumpet music sits at A,
@@ -404,12 +401,11 @@ What connotation do two facets induce? Style-ness and subject-ness
 have both gone to $\mathcal{U}$, so something else should remain. The
 three probes read what $\mathcal{V}$ holds.
 
-Start with what the viewers felt (Figure~\ref{fig:wikiart}(c)). Each
-painting is placed where its emotion leans, and drawn the more darkly
-the stronger the leaning. Contentment and excitement hold the left,
-fear and anger the upper right, sadness a blue band along the bottom.
-The colours shade into each other, and feeling runs as one continuous
-spectrum.
+Start with what the viewers felt (Figure~\ref{fig:wikiart}(c)). Each painting is
+placed where its emotion leans, and drawn darker as the leaning grows stronger.
+Contentment and excitement hold the left, fear and anger the upper right,
+sadness a blue band along the bottom. The colours shade into each other, and
+feeling runs as one continuous spectrum.
 
 Then what is shown in the paintings (Figure~\ref{fig:wikiart}(d)).
 The upper left names the far view---\textit{group}, \textit{people},
