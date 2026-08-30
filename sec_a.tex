@@ -23,12 +23,14 @@ $V = (v_1, \dots, v_N)$ in $\mathcal{V}$.
 The objective aligns the $K$ genre distributions by minimizing the
 2-Wasserstein distance---a multi-marginal optimal transport
 problem~\citep{Pass20151771}.
-\begin{align}\label{eq:main_objective}
-    W^2_2(p_\text{data}, q_\Phi)
-           & = \inf_{\gamma\in\Pi(p_{\text{data}},\, q_\Phi)}
-    \iint \|x - x'\|^2\, \gamma(x, x')\, dx\, dx',            \\
-    \Phi^* & = \argmin_{\Phi} W^2_2(p_\text{data}, q_\Phi),
-\end{align}
+\begin{equation}\label{eq:main_objective}
+    \begin{aligned}
+        W^2_2(p_\text{data}, q_\Phi)
+               & = \inf_{\gamma\in\Pi(p_{\text{data}},\, q_\Phi)}
+        \iint \|x - x'\|^2\, \gamma(x, x')\, dx\, dx',            \\
+        \Phi^* & = \argmin_{\Phi} W^2_2(p_\text{data}, q_\Phi),
+    \end{aligned}
+\end{equation}
 where $\gamma \in \Pi$ is a transport plan meeting the two marginal
 constraints $p_{\text{data}}(x) = \int \gamma(x,x')\,dx'$
 ($p \rightarrow q$) and $q_\Phi(x') = \int \gamma(x,x')\,dx$
@@ -65,6 +67,7 @@ correspondence is unique in the following sense.
     gives the same $q_\Phi$, the same transport cost, and the same
     correspondence. Conversely, any two maps realizing the
     correspondence of (a) differ only by such a reparametrization.
+    \hfill\openbox
 \end{proof}
 
 This is the sense of \emph{essentially unique} used in the main text:
