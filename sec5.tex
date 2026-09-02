@@ -322,7 +322,7 @@ for instance. All fifty-four combinations are filled, with up to two hundred
 paintings each and nearly nine thousand in all; Figure~\ref{fig:wikiart}(b)
 names them. The content data come from the image alone: each painting is resized
 whole to 224 by 224, never cropped, and embedded by CLIP
-ViT-B/32~\citep{Radford20218748,Cherti20232818}, a joint image--text encoder,
+ViT-B/32~\citep{Radford20218748,Cherti20232818},
 then normalized to unit norm, centred, and reduced by PCA to ten dimensions.
 These embeddings and the two labels are all the modeling uses.
 
@@ -339,7 +339,7 @@ Figure~\ref{fig:wikiart}(a) shows the fifty-four manifolds in
 $\mathcal{X}$, laid out by style and subject. Colour marks $v$: one
 colour, one connotation, on every manifold alike. From cell to cell
 the surfaces bend and stretch, yet the colours hold their places.
-Fifty-four manifolds make one spectrum, as the five genres did.
+Fifty-four manifolds make one spectrum, as five did in the music library.
 
 Read as a library, each style is a floor, and each floor holds six
 rooms, one per subject. The rabbit holes join every room to every
@@ -381,8 +381,8 @@ $u$ and leaves $v$ where it was: the connotation is kept.
 
 \paragraph{The facet map.}
 Figure~\ref{fig:wikiart}(b) shows the denotation space $\mathcal{U}$:
-the floor--room arrangement of the library. Two facets went in as two
-axes, and each axis returned an order.
+the floor--room arrangement of the library. Two facets went in as bare
+labels, and each axis returned an order.
 
 Style runs in the order of its dates, Baroque to Cubism, though no
 date entered the modeling. The spacing is uneven: Expressionism and
@@ -393,8 +393,6 @@ Subject runs from far to near---cityscape and landscape, then still
 life, then genre painting and portrait, and last nude painting. The
 view moves from the distant scene to the human body.
 
-Nobody set these orders. Transport places each focus where its works
-ask it to stand.
 
 \begin{figure}[p]
     \centering
