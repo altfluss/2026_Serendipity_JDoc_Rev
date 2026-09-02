@@ -296,11 +296,11 @@ later, in a train station. Here it lies under his feet.
         \textbf{The fifty-four-class OT-FB learned from WikiArt.}
         (a) The manifolds in the content space $\mathcal{X}$ (CLIP
         embeddings, first three principal components), laid out by style
-        and subject. Colour marks $v$: one colour, one connotation.
+        and subject. color marks $v$: one color, one connotation.
         (b) The denotation space $\mathcal{U}$. Subject runs across,
         style runs down.
         (c) The connotation space $\mathcal{V}$, read through the held-out
-        ArtEmis emotions. Each painting sits at its $v$, coloured by the
+        ArtEmis emotions. Each painting sits at its $v$, colored by the
         emotion it drew, the darker the higher the PMI; negative PMI is
         omitted. Points A--E are those of
         Table~\ref{tab:point_tags_wikiart}.
@@ -323,7 +323,7 @@ paintings each and nearly nine thousand in all; Figure~\ref{fig:wikiart}(b)
 names them. The content data come from the image alone: each painting is resized
 whole to 224 by 224, never cropped, and embedded by CLIP
 ViT-B/32~\citep{Radford20218748,Cherti20232818},
-then normalized to unit norm, centred, and reduced by PCA to ten dimensions.
+then normalized to unit norm, centered, and reduced by PCA to ten dimensions.
 These embeddings and the two labels are all the modeling uses.
 
 Three probes read the space afterwards, and none took part in building
@@ -336,9 +336,9 @@ and the pixels---three roads to one space.
 
 \paragraph{The learned bundle.}
 Figure~\ref{fig:wikiart}(a) shows the fifty-four manifolds in
-$\mathcal{X}$, laid out by style and subject. Colour marks $v$: one
-colour, one connotation, on every manifold alike. From cell to cell
-the surfaces bend and stretch, yet the colours hold their places.
+$\mathcal{X}$, laid out by style and subject. color marks $v$: one
+color, one connotation, on every manifold alike. From cell to cell
+the surfaces bend and stretch, yet the colors hold their places.
 Fifty-four manifolds make one spectrum, as five did in the music library.
 
 Read as a library, each style is a floor, and each floor holds six
@@ -355,7 +355,7 @@ $u$ and leaves $v$ where it was: the connotation is kept.
         ranked by pointwise mutual information (PMI, in bits, in
         parentheses): the top five emotions and features, and the top ten
         words. Negative PMI is omitted, so some points show fewer. Bold
-        marks PMI of at least 0.5 bit. Features are binarised within each
+        marks PMI of at least 0.5 bit. Features are binarized within each
         class at the 20\% tails, which keeps them independent of both CLIP
         and the annotations.}
     \label{tab:point_tags_wikiart}
@@ -413,7 +413,7 @@ three probes read what $\mathcal{V}$ holds.
 Start with what the viewers felt (Figure~\ref{fig:wikiart}(c)). Each painting is
 placed where its emotion leans, and drawn darker as the leaning grows stronger.
 Contentment and excitement hold the left, fear and anger the upper right,
-sadness a blue band along the bottom. The colours shade into each other, and
+sadness a blue band along the bottom. The colors shade into each other, and
 feeling runs as one continuous spectrum.
 
 Then what is shown in the paintings (Figure~\ref{fig:wikiart}(d)).
@@ -421,8 +421,8 @@ The upper left names the far view---\textit{group}, \textit{people},
 \textit{park}, \textit{village}. The lower left names the near---%
 \textit{dress}, \textit{woman}, \textit{bed}, \textit{couch}. On the
 upper right the objects give way to the hand: \textit{black},
-\textit{white}, \textit{drawing}. And the colours gather on their own,
-at the centre, low and a little right---\textit{green}, \textit{red},
+\textit{white}, \textit{drawing}. And the colors gather on their own,
+at the center, low and a little right---\textit{green}, \textit{red},
 \textit{yellow}, \textit{blue}. Each word sits at the peak of its own
 density, so no place belongs to one word. The words mark the spectrum;
 they do not divide it.
@@ -430,11 +430,11 @@ they do not divide it.
 Table~\ref{tab:point_tags_wikiart} reads five points, A--E. Each point only
 leans; the words listed are the most typical, not the only ones. Point A angers
 and frightens, in black and white with little hue---\textit{black},
-\textit{lines}, \textit{simple}. B is calm, colourful and
+\textit{lines}, \textit{simple}. B is calm, colorful and
 fine---\textit{flowers}, \textit{fruit}. C excites, with strong edges and
 energetic brushwork---\textit{women}, \textit{people}, \textit{field}. D
-contents, warm and centred---\textit{dress}, \textit{street}, \textit{skin}. E
-saddens, its edges soft and its colours muted---\textit{house}, \textit{home},
+contents, warm and centered---\textit{dress}, \textit{street}, \textit{skin}. E
+saddens, its edges soft and its colors muted---\textit{house}, \textit{home},
 \textit{village}. At E the viewers choose sadness and BLIP writes \textit{sad}:
 people and machine reach one word by different roads.
 
