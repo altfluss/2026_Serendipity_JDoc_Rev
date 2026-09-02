@@ -1,0 +1,92 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== パッケージ =====
+\PassOptionsToPackage{numbers,sort&compress}{natbib}
+
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{amsmath,amsfonts,bm}
+\usepackage{graphicx}
+\usepackage{booktabs,multirow,array}
+\usepackage{caption,subcaption}
+\usepackage{algorithm2e}
+\usepackage{relsize}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[hyphens]{url}
+\usepackage{natbib}  
+\usepackage{multirow}
+
+% ===== External References =====
+\usepackage{xr}
+\externaldocument{main}
+
+% ===== Proposition Environment =====
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proof}{Proof}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theequation}{S\arabic{equation}}
+
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\topfraction}{0.8}     % ページ上部に float を詰める割合を緩める
+\renewcommand{\bottomfraction}{0.8}  % ページ下部も少し緩める
+\renewcommand{\textfraction}{0.2}   % テキストの最低割合を下げる
+
+\begin{document}
+
+% ===== Title and Authors =====
+\title{Facet-induced connotation space: A library with rabbit holes where visitors seek serendipity}
+\author{
+    Tatsuya Kanatsu\textsuperscript{1}, Tohru Iwasaki\textsuperscript{2}, Hideaki Ishibashi\textsuperscript{1}, \\
+    Kaori Yoshida\textsuperscript{1}, and Tetsuo Furukawa\textsuperscript{1} \\[3pt]
+    \small \textsuperscript{1}Graduate School of Life Science and Systems Engineering, Kyushu Institute of Technology, Japan \\
+    \small \textsuperscript{2}Data / AI System Division, ZOZO, Inc., Japan \\
+    \small Corresponding author: furukawa@brain.kyutech.ac.jp
+}
+\date{}
+\maketitle
+
+\section{Use of Large Language Models}\label{sup:use_of_llms}
+In preparing this manuscript, we used Large Language Models (LLMs) in the
+following capacities, in accordance with the journal's guidelines.
+
+\paragraph{Programming assistance.}
+ChatGPT (OpenAI), Claude (Anthropic), and Cursor were used to assist in
+developing the code for the computational experiments. Concretely, they
+supported code generation and debugging for the data preprocessing, the
+embedding extraction, the OT-FB learning, and the analysis and plotting
+scripts.
+
+\paragraph{Manuscript preparation.}
+Claude (Anthropic) was used for translation assistance (converting the
+authors' ideas from Japanese to English), language polishing (grammar,
+sentence structure, and clarity), and consistency checking (terminology
+throughout the manuscript).
+
+\paragraph{Human oversight.}
+All scientific content---conceptual frameworks, mathematical formulations,
+experimental designs, results, and interpretations---originated entirely from
+the authors. All LLM outputs were critically reviewed, and the authors retain
+full responsibility for all claims and content in this manuscript.
+
+
+\section{Acknowledgments}
+We are deeply grateful to the reviewers. Their thorough and constructive
+comments led us to rethink this work from its foundations, and the paper that
+resulted is a far better one than the paper they received. We thank
+Ms.\ Hirowatari for her kind assistance.
+
+This research was supported in part by JSPS KAKENHI Grant Numbers 21K12061 and
+26K14941. We also gratefully acknowledge the support of ZOZO, Inc.
+
+\end{document}
+
+
+
+
